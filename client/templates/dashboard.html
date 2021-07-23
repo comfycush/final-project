@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./template.css">
+    <title>Dashboard</title>
+</head>
+<body id="body-pd">
+    <div class="l-navbar" id="navbar">
+        <nav class="nav">
+            <div>
+                <div class="nav_brand">
+                    <ion-icon name="menu-outline" class="nav_toggle" id="nav-toggle"></ion-icon>
+                    <a href="#" class="nav_logo">Webber</a>
+                </div>
+                <div class="nav_list">
+                    <a href="#" class="nav_link">
+                        <ion-icon name="home-outline" class="nav_icon"></ion-icon>
+                        <span class="nav_name">Home</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <ion-icon name="add-circle-outline" class="nav_icon"></ion-icon>
+                        <span class="nav_name">Create Website</span>
+                    </a>
+                    <a href="#" class="nav_link">
+                        <ion-icon name="call-outline" class="nav_icon"></ion-icon>
+                        <span class="nav_name">Contact Assistant</span>
+                    </a> 
+                </div>
+            </div>
+            <a href="#" class="nav_link">
+                <ion-icon name="log-out-outline" class="nav_icon"></ion-icon>
+                <span class="nav_name">Log Out</span>
+            </a>
+        </nav>
+    </div>
+    <section id="content">
+        <h1>Welcome, User!</h1>
+        <hr>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="logo">
+                    <h2>Project Title</h2>
+                    <button>View</button>
+                    <button>Update</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="logo">
+                    <h2>Project Title</h2>
+                    <button>View</button>
+                    <button>Update</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="logo">
+                    <h2>Project Title</h2>
+                    <button>View</button>
+                    <button>Update</button>
+                    <button>Delete</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="intro-section">
+        <h1>Let's Build Your Website</h1>
+        <div class="intro-input">
+            <label for="project-title">Project Title</label>
+            <input style="margin-left: 1rem;" type="text" name="project-title" id="project-title">
+        </div><br><br>
+        <button class="button-navbar">next</button>
+    </section>
+    <section id="navbar-section">
+        <h1>Navbar Section</h1>
+        <h3>1 of 6</h3>
+        <div class="input">
+            <label for="generate-color" class="generate-color-label">Generate Color Palatte</label>
+            <input type="color" name="generate-color" class="generate-color">
+            <button>Refresh</button>
+            <br><br>
+            <label for="company-title" class="company-title">Company Title</label>
+            <input type="text" name="company-title" class="company-title">
+            <label for="company-title-color" class="company-title-color">Color</label>
+            <input type="text" name="company-title-color" class="company-title-color"><br><br>
+            <label for="company-logo" class="company-logo">Your Company Logo</label>
+            <input type="file" name="company-logo" class="company-logo">
+            <br><br>
+            <label for="links-navbar">Links</label>
+            <input type="radio" name="about" id="about" style="margin-left: 1.5rem" value="About">
+            <label for="about">About</label>
+            <input type="radio" name="service" id="service" value="Service">
+            <label for="about">Service</label>
+            <input type="radio" name="contact" id="contact" value="Contact">
+            <label for="contact">Contact</label><br><br>
+            <label for="color-navbar">Color</label>
+            <input type="text" name="color-navbar" id="color-navbar"><br><br>
+            <label for="background-color-navbar">Background Color</label>
+            <input type="text" name="background-color-navbar" id="background-color-navbar"><br><br>
+            <label for="template-layout">Template Layout</label><br><br>
+            <div class="selection-navbar">
+                <input type="radio" name="opt1-navbar" id="opt1-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image1">
+                <input type="radio" name="opt2-navbar" id="opt2-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image2">
+                <input type="radio" name="opt3-navbar" id="opt3-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image3">
+            </div><br><br>
+            <button class="button-navbar">next</button>
+        </div>
+    </section>
+    <section id="main-section">
+        <h1>Main Section</h1>
+        <h3>2 of 6</h3>
+        <div class="input">
+            <label for="generate-color" class="generate-color-label">Generate Color Palatte</label>
+            <input type="color" name="generate-color" class="generate-color">
+            <button>Refresh</button>
+            <br><br>
+            <label for="main-headline" class="main-headline">Headline</label>
+            <input type="text" name="main-headline" class="main-headline">
+            <label for="main-headline" class="main-headline">Color</label>
+            <input type="text" name="main-headline" class="main-headline"><br><br>
+            <label for="main-subheadline" class="main-subheadline">Subheadline</label>
+            <input type="text" name="main-subheadline" class="main-subheadline">
+            <label for="main-subheadline" class="main-subheadline">Color</label>
+            <input type="text" name="main-subheadline" class="main-subheadline"><br><br>
+            <label for="company-background" class="company-background">Image</label>
+            <input type="file" name="company-background" class="company-background">
+            <br><br>
+            <label for="background-color-main">Background Color</label>
+            <input type="text" name="background-color-mainb" id="background-color-main"><br><br>
+            <label for="template-layout">Template Layout</label><br><br>
+            <div class="selection-main">
+                <input type="radio" name="opt1-navbar" id="opt1-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image1">
+                <input type="radio" name="opt2-navbar" id="opt2-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image2">
+                <input type="radio" name="opt3-navbar" id="opt3-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image3">
+            </div><br><br>
+            <div class="button-main">
+                <button>prev</button>
+                <button>skip</button>
+                <button>next</button>
+            </div>
+        </div>
+    </section>
+    <section id="about-section">
+        <h1>About Section</h1>
+        <h3>3 of 6</h3>
+        <div class="input">
+            <label for="generate-color" class="generate-color-label">Generate Color Palatte</label>
+            <input type="color" name="generate-color" class="generate-color">
+            <button>Refresh</button>
+            <br><br>
+            <label for="about-headline" class="about-headline">Headline</label>
+            <input type="text" name="about-headline" class="about-headline">
+            <label for="about-headline" class="about-headline">Color</label>
+            <input type="text" name="about-headline" class="about-headline"><br><br>
+            <label for="about-paragraph" class="about-paragraph">Paragraph</label><br>
+            <textarea name="about-paragraph" class="about-paragraph" cols="30" rows="10"></textarea><br><br>
+            <label for="about-paragraph" class="about-paragraph">Paragraph Color</label>
+            <input type="text" name="about-paragraph" class="about-paragraph"><br><br>
+            <label for="about-image" class="about-image">Image</label>
+            <input type="file" name="about-image" class="about-image">
+            <br><br>
+            <label for="background-color-about">Background Color</label>
+            <input type="text" name="background-color-about" id="background-color-about"><br><br>
+            <label for="template-layout">Template Layout</label><br><br>
+            <div class="selection-about">
+                <input type="radio" name="opt1-navbar" id="opt1-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image1">
+                <input type="radio" name="opt2-navbar" id="opt2-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image2">
+                <input type="radio" name="opt3-navbar" id="opt3-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image3">
+            </div><br><br>
+            <div class="button-about">
+                <button>prev</button>
+                <button>skip</button>
+                <button>next</button>
+            </div>
+        </div>
+    </section>
+    <section id="service-section">
+        <h1>Service Section</h1>
+        <h3>4 of 6</h3>
+        <div class="input">
+            <label for="generate-color" class="generate-color-label">Generate Color Palatte</label>
+            <input type="color" name="generate-color" class="generate-color">
+            <button>Refresh</button>
+            <br><br>
+            <label for="service-headline" class="service-headline">Headline</label>
+            <input type="text" name="service-headline" class="service-headline">
+            <label for="service-headline" class="service-headline">Color</label>
+            <input type="text" name="service-headline" class="service-headline"><br><br>
+            <label for="service-card1" class="service-card1">Card 1 Image</label>
+            <input type="file" name="service-card1" class="service-card1">
+            <br><br>
+            <label for="service-card1" class="service-card1">Card 1 Text</label>
+            <input type="text" name="service-card1" class="service-card1">
+            <label for="service-card1" class="service-card1">Color</label>
+            <input type="text" name="service-card1" class="service-card1">
+            <br><br>
+            <label for="service-card1" class="service-card1">Card 1 Background Color</label>
+            <input type="text" name="service-card1" class="service-card1">
+            <br><br>
+            <label for="service-card2" class="service-card2">Card 2 Image</label>
+            <input type="file" name="service-card2" class="service-card2">
+            <br><br>
+            <label for="service-card2" class="service-card2">Card 2 Text</label>
+            <input type="text" name="service-card2" class="service-card2">
+            <label for="service-card2" class="service-card2">Color</label>
+            <input type="text" name="service-card2" class="service-card2">
+            <br><br>
+            <label for="service-card2" class="service-card2">Card 2 Background Color</label>
+            <input type="text" name="service-card2" class="service-card2">
+            <br><br>            
+            <label for="service-card3" class="service-card3">Card 3 Image</label>
+            <input type="file" name="service-card3" class="service-card3">
+            <br><br>
+            <label for="service-card3" class="service-card3">Card 3 Text</label>
+            <input type="text" name="service-card3" class="service-card3">
+            <label for="service-card3" class="service-card3">Color</label>
+            <input type="text" name="service-card3" class="service-card3">
+            <br><br>
+            <label for="service-card3" class="service-card3">Card 3 Background Color</label>
+            <input type="text" name="service-card3" class="service-card3">
+            <br><br>
+            <label for="background-color-service">Background Color</label>
+            <input type="text" name="background-color-service" id="background-color-service"><br><br>
+            <label for="template-layout">Template Layout</label><br><br>
+            <div class="selection-service">
+                <input type="radio" name="opt1-navbar" id="opt1-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image1">
+                <input type="radio" name="opt2-navbar" id="opt2-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image2">
+                <input type="radio" name="opt3-navbar" id="opt3-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image3">
+            </div>
+            <div class="button-service">
+                <button>prev</button>
+                <button>skip</button>
+                <button>next</button>
+            </div>
+        </div>
+    </section>
+    <section id="contact-section">
+        <h1>Contact Section</h1>
+        <h3>5 of 6</h3>
+        <div class="input">
+            <label for="generate-color" class="generate-color-label">Generate Color Palatte</label>
+            <input type="color" name="generate-color" class="generate-color">
+            <button>Refresh</button><br><br>
+            <label for="contact-headline" class="contact-headline">Headline</label>
+            <input type="text" name="contact-headline" class="contact-headline">
+            <label for="contact-headline" class="contact-headline">Color</label>
+            <input type="text" name="contact-headline" class="contact-headline"><br><br>
+            <label for="contact-email" class="contact-email">Email</label>
+            <input type="text" name="contact-email" class="contact-email">
+            <label for="contact-email" class="contact-email">Color</label>
+            <input type="text" name="contact-email" class="contact-email"><br><br>
+            <label for="contact-email" class="contact-email">Email Icon</label>
+            <input type="file" name="contact-email" class="contact-email"><br><br>
+            <label for="contact-phone" class="contact-phone">Phone</label>
+            <input type="text" name="contact-phone" class="contact-phone">
+            <label for="contact-phone" class="contact-phone">Color</label>
+            <input type="text" name="contact-phone" class="contact-phone"><br><br>
+            <label for="contact-phone" class="contact-phone">Phone Icon</label>
+            <input type="file" name="contact-phone" class="contact-phone"><br><br>
+            <label for="contact-address" class="contact-address">Address</label>
+            <input type="text" name="contact-address" class="contact-address">
+            <label for="contact-address" class="contact-address">Color</label>
+            <input type="text" name="contact-address" class="contact-address"><br><br>
+            <label for="contact-address" class="contact-address">Address Icon</label>
+            <input type="file" name="contact-address" class="contact-address"><br><br>
+            <label for="background-color-contact">Background Color</label>
+            <input type="text" name="background-color-contact" id="background-color-contact"><br><br>
+            <label for="template-layout">Template Layout</label><br><br>
+            <div class="selection-contact">
+                <input type="radio" name="opt1-navbar" id="opt1-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image1">
+                <input type="radio" name="opt2-navbar" id="opt2-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image2">
+                <input type="radio" name="opt3-navbar" id="opt3-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image3">
+            </div>
+            <div class="button-contact">
+                <button>prev</button>
+                <button>skip</button>
+                <button>next</button>
+            </div>
+        </div>
+    </section>
+    <section id="footer-section">
+        <h1>Footer Section</h1>
+        <h3>6 of 6</h3>
+        <div class="input">
+            <label for="generate-color" class="generate-color-label">Generate Color Palatte</label>
+            <input type="color" name="generate-color" class="generate-color">
+            <button>Refresh</button><br><br>
+            <label for="link-facebook" class="link-facebook">Link Facebook</label>
+            <input type="text" name="link-facebook" class="link-facebook"><br><br>
+            <label for="link-instagram" class="link-instagram">Link Instagram</label>
+            <input type="text" name="link-instagram" class="link-instagram"><br><br>
+            <label for="link-instagram" class="link-instagram">Link Twitter</label>
+            <input type="text" name="link-twitter" class="link-twitter"><br><br>
+            <label for="link-linkedin" class="link-linkedin">Link Linkedin</label>
+            <input type="text" name="link-linkedin" class="link-linkedin"><br><br>
+            <label for="link-youtube" class="link-youtube">Link Youtube</label>
+            <input type="text" name="link-youtube" class="link-youtube"><br><br>
+            <label for="icon-color">Icon Color</label>
+            <input type="radio" style="margin-left: 1.5rem;" value="black" name="black-icon" id="black-icon">
+            <label for="black-icon">Black</label>
+            <input type="radio" name="white-icon" value="white" id="white-icon">
+            <label for="white-icon">White</label><br><br>
+            <label for="background-color-navbar">Background Color</label>
+            <input type="text" name="background-color-navbar" id="background-color-navbar"><br><br>
+            <label for="template-layout">Template Layout</label><br><br>
+            <div class="selection-footer">
+                <input type="radio" name="opt1-navbar" id="opt1-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image1">
+                <input type="radio" name="opt2-navbar" id="opt2-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image2">
+                <input type="radio" name="opt3-navbar" id="opt3-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image3">
+            </div><br><br>
+            <div class="button-footer">
+                <button>prev</button>
+                <button>finish</button>
+            </div>
+        </div>
+    </section>
+    <section id="update-section">
+        <h1>Update Section</h1><br>
+        <div class="input">
+            <select name="select-section" class="select-section">
+                <option value="navbar">Navbar</option>
+                <option value="main">Main</option>
+                <option value="about">About</option>
+                <option value="service">Service</option>
+                <option value="contact">Contact</option>
+                <option value="footer">Footer</option>
+            </select><br><br>
+            <label for="generate-color" class="generate-color-label">Generate Color Palatte</label>
+            <input type="color" name="generate-color" class="generate-color">
+            <button>Refresh</button>
+            <br><br>
+            <label for="company-title" class="company-title">Company Title</label>
+            <input type="text" name="company-title" class="company-title">
+            <label for="company-title-color" class="company-title-color">Color</label>
+            <input type="text" name="company-title-color" class="company-title-color"><br><br>
+            <label for="company-logo" class="company-logo">Your Company Logo</label>
+            <input type="file" name="company-logo" class="company-logo">
+            <br><br>
+            <label for="links-navbar">Links</label>
+            <input type="radio" name="about" id="about" style="margin-left: 1.5rem" value="About">
+            <label for="about">About</label>
+            <input type="radio" name="service" id="service" value="Service">
+            <label for="about">Service</label>
+            <input type="radio" name="contact" id="contact" value="Contact">
+            <label for="contact">Contact</label><br><br>
+            <label for="color-navbar">Color</label>
+            <input type="text" name="color-navbar" id="color-navbar"><br><br>
+            <label for="background-color-navbar">Background Color</label>
+            <input type="text" name="background-color-navbar" id="background-color-navbar"><br><br>
+            <label for="template-layout">Template Layout</label><br><br>
+            <div class="selection-navbar">
+                <input type="radio" name="opt1-navbar" id="opt1-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image1">
+                <input type="radio" name="opt2-navbar" id="opt2-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image2">
+                <input type="radio" name="opt3-navbar" id="opt3-navbar">
+                <img class="selection-img" src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg" alt="image3">
+            </div><br><br>
+            <button class="button-navbar">Update</button>
+        </div>
+    </section>
+    <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="./template.js"></script>
+</body>
+</html>
