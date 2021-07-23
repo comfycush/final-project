@@ -15,7 +15,9 @@ export default function Main({ mainData }) {
       <img src={mainData.image} alt="main" />
       <div className="text-main-section">
         <h1 style={{ color: mainData.headlineColor }}>{mainData.headline}</h1>
-        <h2>{mainData.subHeadline}</h2>
+        <p style={{ color: mainData.subHeadlineColor }}>
+          {mainData.subHeadline}
+        </p>
       </div>
     </main>
   );

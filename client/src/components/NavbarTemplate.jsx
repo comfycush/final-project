@@ -1,4 +1,5 @@
 import "../styles/navbar.css";
+import { HashLink } from "react-router-hash-link";
 
 export default function NavbarTemplate({ navbarData }) {
   return (
@@ -21,9 +22,12 @@ export default function NavbarTemplate({ navbarData }) {
       <ul>
         {navbarData.navLinks.map((link, index) => (
           <li key={index}>
-            <a href={`#${link}`} style={{ color: navbarData.navLinksColor }}>
+            <HashLink
+              to={`#${link}`}
+              style={{ color: navbarData.navLinksColor }}
+            >
               {link}
-            </a>
+            </HashLink>
           </li>
         ))}
       </ul>

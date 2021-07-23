@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import NavbarTemplate from "../components/NavbarTemplate";
 import MainTemplate from "../components/MainTemplate";
+import AboutTemplate from "../components/AboutTemplate";
 
 export default function RenderFinish() {
   const id = 1;
@@ -21,6 +22,9 @@ export default function RenderFinish() {
       )}
       {templateData.main && (
         <MainTemplate mainData={templateData.main}></MainTemplate>
+      )}
+      {templateData.about && (
+        <AboutTemplate aboutData={templateData.about}></AboutTemplate>
       )}
     </div>
   );
