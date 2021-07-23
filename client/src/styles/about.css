@@ -57,3 +57,8 @@
   font-size: 1.2rem;
   margin-top: 2rem;
 }
+
+.update-about-section button {
+  background-color: #b0c35a;
+  color: white;
+}

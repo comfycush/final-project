@@ -56,3 +56,8 @@
   font-size: 1.5rem;
   margin-top: 2rem;
 }
+
+.update-main-section button {
+  background-color: #6cbfd8;
+  color: white;
+}

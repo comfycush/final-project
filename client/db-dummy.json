@@ -32,7 +32,7 @@
         "backgroundColor": "#F0E3CA"
       },
       "service": {
-        "type": 1,
+        "type": 2,
         "headline": "Our Service",
         "headlineColor": "#BB371A",
         "backgroundColor": "#FAF3E0",
@@ -56,7 +56,7 @@
         "cardTextColor3": "#171010"
       },
       "contact": {
-        "type": 1,
+        "type": 2,
         "headline": "Contact Us",
         "headlineColor": "#BB371A",
         "emailIcon": "https://image.flaticon.com/icons/png/512/726/726623.png",
@@ -71,7 +71,7 @@
         "backgroundColor": "#F0E3CA"
       },
       "footer": {
-        "type": 3,
+        "type": 1,
         "backgroundColor": "#4F0E0E",
         "iconColor": "white",
         "facebook": "https://www.facebook.com/",

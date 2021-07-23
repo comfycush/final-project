@@ -24,8 +24,9 @@ h1 {
 .type-2-nav {
   display: flex;
   justify-content: space-between;
-  padding: 1rem 3rem;
+  padding: 1rem 5rem;
   align-items: center;
+  width: 100%;
 }
 
 .type-1-nav .left-side,
@@ -55,4 +56,22 @@ h1 {
 .type-3-nav ul {
   padding: 1.5rem 0;
   padding-top: 1rem;
+}
+
+.section-and-update {
+  display: flex;
+  /* flex-wrap: wrap; */
+  align-items: center;
+}
+
+.update-nav-section button {
+  background-color: #f09027;
+  color: white;
+}
+
+.btn-update-section {
+  font-size: 0.8rem !important;
+  padding: 1rem !important;
+  font-weight: normal;
+  background-color: #e2e2e2;
 }
