@@ -3,7 +3,13 @@ import "../styles/main.css";
 export default function Main({ mainData }) {
   return (
     <main
-      className="type-1-main"
+      className={
+        mainData.type === 1
+          ? "type-1-main"
+          : mainData.type === 2
+          ? "type-2-main"
+          : "type-3-main"
+      }
       style={{ backgroundColor: mainData.backgroundColor }}
     >
       <img src={mainData.image} alt="main" />
