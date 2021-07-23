@@ -1,0 +1,31 @@
+#contact-section {
+  margin-left: 8rem;
+}
+
+#contact-section h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#contact-section h3 {
+  display: flex;
+  justify-content: center;
+}
+
+.selection-contact {
+  display: flex;
+  flex-direction: row;
+}
+
+.selection-contact .selection-img {
+  max-width: 100px;
+}
+
+.button-contact {
+  display: inline-block;
+  margin-left: 29rem;
+}
+
+.button-contact button {
+  width: 100px;
+}
