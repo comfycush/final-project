@@ -5,10 +5,10 @@ export default function NavbarTemplate({ navbarData }) {
     <nav
       className={
         navbarData.type === 1
-          ? "type-1"
+          ? "type-1-nav"
           : navbarData.type === 2
-          ? "type-2"
-          : "type-3"
+          ? "type-2-nav"
+          : "type-3-nav"
       }
       style={{ backgroundColor: navbarData.backgroundColor }}
     >

@@ -7,20 +7,20 @@
       "navbar": {
         "type": 1,
         "logo": "https://image.flaticon.com/icons/png/512/4252/4252296.png",
-        "backgroundColor": "#FFF8D9",
+        "backgroundColor": "#EBA83A",
         "companyName": "Go Law Firm",
-        "companyNameColor": "#EBA83A",
+        "companyNameColor": "#FFF8D9",
         "navLinks": ["About", "Service", "Contact"],
         "navLinksColor": "#BB371A"
       },
       "main": {
         "type": 1,
-        "image": "https://cdn1-production-images-kly.akamaized.net/lJN-QRjGEGU4JrYoTBaf5etJ8PM=/0x204:1799x1218/673x379/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3195933/original/094731700_1596206149-Ilustrasi_ayam_2.jpg",
-        "headline": "Makan Di Ayam Jago",
-        "headlineColor": "#FF3F00",
-        "subHeadline": "Makan puas hanya di ayam jago!",
+        "image": "https://images.pexels.com/photos/4427553/pexels-photo-4427553.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "headline": "Welcome To Go Law Firm",
+        "headlineColor": "#BB371A",
+        "subHeadline": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "subHeadlineColor": "#8E2657",
-        "backgroundColor": "#EEEEEE"
+        "backgroundColor": "#FFF8D9"
       },
       "about": {
         "type": 1,

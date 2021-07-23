@@ -1,0 +1,29 @@
+.type-1-main {
+  height: 40rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 3rem 5rem;
+  align-items: center;
+}
+
+.type-1-main img {
+  width: 40rem;
+  height: 30rem;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.text-main-section {
+  max-width: 40rem;
+}
+
+.text-main-section h1 {
+  font-size: 4rem;
+  margin-bottom: 2rem;
+}
+
+.text-main-section h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  font-weight: normal;
+}
