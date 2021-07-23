@@ -6,6 +6,8 @@ import MainTemplate from "../components/MainTemplate";
 import AboutTemplate from "../components/AboutTemplate";
 import ServiceTemplate from "../components/ServiceTemplate";
 import ContactTemplate from "../components/ContactTemplate";
+import FooterTemplate from "../components/FooterTemplate";
+import ButtonTemplate from "../components/ButtonTemplate";
 
 export default function RenderFinish() {
   const id = 1;
@@ -34,6 +36,13 @@ export default function RenderFinish() {
       {templateData.contact && (
         <ContactTemplate contactData={templateData.contact}></ContactTemplate>
       )}
+      {templateData.footer && (
+        <FooterTemplate
+          footerData={templateData.footer}
+          navbarData={templateData.navbar}
+        ></FooterTemplate>
+      )}
+      <ButtonTemplate></ButtonTemplate>
     </div>
   );
 }

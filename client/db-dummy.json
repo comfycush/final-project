@@ -56,7 +56,7 @@
         "cardTextColor3": "#171010"
       },
       "contact": {
-        "type": 3,
+        "type": 1,
         "headline": "Contact Us",
         "headlineColor": "#BB371A",
         "emailIcon": "https://image.flaticon.com/icons/png/512/726/726623.png",
@@ -71,14 +71,15 @@
         "backgroundColor": "#F0E3CA"
       },
       "footer": {
-        "type": 1,
-        "backgroundColor": "#EEEEEE",
-        "iconColor": "black",
-        "facebook": "link fb",
-        "instagram": "link ig",
-        "twitter": "link tw",
-        "linkedin": "link linkedin",
-        "youtube": "link youtube"
+        "type": 3,
+        "backgroundColor": "#4F0E0E",
+        "iconColor": "white",
+        "facebook": "https://www.facebook.com/",
+        "instagram": "https://www.instagram.com/",
+        "twitter": "https://twitter.com/?lang=en",
+        "linkedin": "https://www.linkedin.com/",
+        "youtube": "https://www.youtube.com/",
+        "companyNameColor": "#FFE5B9"
       }
     }
   ]
