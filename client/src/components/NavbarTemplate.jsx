@@ -16,14 +16,17 @@ export default function NavbarTemplate({ navbarData }) {
         }
         style={{
           backgroundColor: navbarData.backgroundColor,
+          width: "100%",
           flexShrink: 0,
         }}
       >
         <div className="left-side">
-          <img src={navbarData.logo} alt="logo" />
-          <h1 style={{ color: navbarData.companyNameColor }}>
-            {navbarData.companyName}
-          </h1>
+          {navbarData.logo && <img src={navbarData.logo} alt="logo" />}
+          {navbarData.companyName && (
+            <h1 style={{ color: navbarData.companyNameColor }}>
+              {navbarData.companyName}
+            </h1>
+          )}
         </div>
         <ul>
           {navbarData.navLinks.map((link, index) => (

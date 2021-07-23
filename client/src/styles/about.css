@@ -45,7 +45,7 @@
 }
 
 .text-about-section {
-  max-width: 40rem;
+  width: 40rem;
 }
 
 .text-about-section h1 {
@@ -56,6 +56,7 @@
 .text-about-section p {
   font-size: 1.2rem;
   margin-top: 2rem;
+  max-width: 36rem;
 }
 
 .update-about-section button {

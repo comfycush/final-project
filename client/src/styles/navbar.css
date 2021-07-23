@@ -5,7 +5,7 @@ ul {
 
 a {
   text-decoration: none;
-  margin-left: 3rem;
+  margin: 0 1.5rem;
   font-weight: bold;
   font-size: 1.3rem;
 }
@@ -48,9 +48,10 @@ h1 {
 
 .type-3-nav .left-side {
   display: flex;
-  width: 20rem;
+  /* width: 20rem; */
   margin: 1.5rem auto;
   align-items: center;
+  text-align: center;
 }
 
 .type-3-nav ul {
