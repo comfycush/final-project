@@ -20,6 +20,7 @@
 
 body {
   position: relative;
+  height: 100%;
   margin: 0;
   padding: 2 rem 0 0 6.75rem;
   font-family: var(--body-font);
@@ -165,6 +166,7 @@ a {
 
 #intro-section {
   margin-left: 8rem;
+  height: 100%;
 }
 
 #intro-section h1 {
@@ -374,7 +376,7 @@ a {
 
 .button-footer {
   display: inline-block;
-  margin-left: 31rem;
+  margin-left: 29rem;
 }
 
 .button-footer button {
