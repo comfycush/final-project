@@ -1,0 +1,82 @@
+{
+  "template": [
+    {
+      "templateId": 1,
+      "userId": 1,
+      "projectTitle": "Ayam Jago",
+      "navbar": {
+        "type": 1,
+        "logo": "https://i.pinimg.com/736x/3c/ff/4a/3cff4a0b2b76cdb2fddef84b35056c74.jpg",
+        "backgroundColor": "#EEEEEE",
+        "companyName": "Ayam Jago",
+        "companyNameColor": "#FF3F00",
+        "navLinks": ["About", "Service", "Contact"],
+        "navLinksColor": "#FAFF00"
+      },
+      "main": {
+        "type": 2,
+        "image": "https://cdn1-production-images-kly.akamaized.net/lJN-QRjGEGU4JrYoTBaf5etJ8PM=/0x204:1799x1218/673x379/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3195933/original/094731700_1596206149-Ilustrasi_ayam_2.jpg",
+        "headline": "Makan Di Ayam Jago",
+        "headlineColor": "#FF3F00",
+        "subHeadline": "Makan puas hanya di ayam jago!",
+        "subHeadlineColor": "#8E2657",
+        "backgroundColor": "#EEEEEE"
+      },
+      "about": {
+        "type": 1,
+        "image": "https://cdn1-production-images-kly.akamaized.net/lJN-QRjGEGU4JrYoTBaf5etJ8PM=/0x204:1799x1218/673x379/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3195933/original/094731700_1596206149-Ilustrasi_ayam_2.jpg",
+        "headline": "About Ayam Jago",
+        "headlineColor": "#8E2657",
+        "paragraph": "ini about ayam jago",
+        "paragraphColor": "#171010",
+        "backgroundColor": "#EEEEEE"
+      },
+      "service": {
+        "type": 3,
+        "headline": "Service Ayam Jago",
+        "headlineColor": "#FF3F00",
+        "backgroundColor": "#EEEEEE",
+        "cardImage1": "https://img.okezone.com/content/2020/08/21/320/2265466/eksistensi-logo-ayam-di-dunia-bisnis-dari-restoran-hingga-jamu-97G9P2QKv1.png",
+        "cardBackgroundColor1": "#FFEEDB",
+        "cardTitle1": "Card 1 Ayam",
+        "cardTitleColor1": "#171010",
+        "cardText1": "Text card ayam 1",
+        "cardTextColor1": "#171010",
+        "cardImage2": "https://img.okezone.com/content/2020/08/21/320/2265466/eksistensi-logo-ayam-di-dunia-bisnis-dari-restoran-hingga-jamu-97G9P2QKv1.png",
+        "cardBackgroundColor2": "#FFEEDB",
+        "cardTitle2": "Card 2 Ayam",
+        "cardTitleColor2": "#171010",
+        "cardText2": "Text card ayam 2",
+        "cardTextColor2": "#171010",
+        "cardImage3": "https://img.okezone.com/content/2020/08/21/320/2265466/eksistensi-logo-ayam-di-dunia-bisnis-dari-restoran-hingga-jamu-97G9P2QKv1.png",
+        "cardBackgroundColor3": "#FFEEDB",
+        "cardTitle3": "Card 3 Ayam",
+        "cardTitleColor3": "#171010",
+        "cardText3": "Text card ayam 3",
+        "cardTextColor3": "#171010"
+      },
+      "contact": {
+        "type": 3,
+        "headline": "Concact Me",
+        "headlineColor": "#FF3F00",
+        "email": "ayam@gmail.com",
+        "emailColor": "#171010",
+        "phone": "02929292",
+        "phoneColor": "#171010",
+        "address": "jalan ayam",
+        "addressColor": "#171010",
+        "backgroundColor": "#EEEEEE"
+      },
+      "footer": {
+        "type": 2,
+        "backgroundColor": "#EEEEEE",
+        "iconColor": "black",
+        "facebook": "link fb",
+        "instagram": "link ig",
+        "twitter": "link tw",
+        "linkedin": "link linkedin",
+        "youtube": "link youtube"
+      }
+    }
+  ]
+}
