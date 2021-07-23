@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import NavbarTemplate from "../components/NavbarTemplate";
 import MainTemplate from "../components/MainTemplate";
 import AboutTemplate from "../components/AboutTemplate";
+import ServiceTemplate from "../components/ServiceTemplate";
 
 export default function RenderFinish() {
   const id = 1;
@@ -25,6 +26,9 @@ export default function RenderFinish() {
       )}
       {templateData.about && (
         <AboutTemplate aboutData={templateData.about}></AboutTemplate>
+      )}
+      {templateData.service && (
+        <ServiceTemplate serviceData={templateData.service}></ServiceTemplate>
       )}
     </div>
   );

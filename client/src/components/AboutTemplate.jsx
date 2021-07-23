@@ -1,6 +1,10 @@
 import "../styles/about.css";
 
 export default function AboutTemplate({ aboutData }) {
+  if (!aboutData.headline) {
+    return null;
+  }
+
   return (
     <div
       id="About"

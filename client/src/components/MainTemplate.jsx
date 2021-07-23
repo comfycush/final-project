@@ -1,6 +1,10 @@
 import "../styles/main.css";
 
 export default function Main({ mainData }) {
+  if (!mainData.headline) {
+    return null;
+  }
+
   return (
     <main
       className={
