@@ -7,9 +7,9 @@
       "navbar": {
         "type": 1,
         "logo": "https://image.flaticon.com/icons/png/512/4252/4252296.png",
-        "backgroundColor": "#EBA83A",
+        "backgroundColor": "#F6D887",
         "companyName": "Go Law Firm",
-        "companyNameColor": "#FFF8D9",
+        "companyNameColor": "#B05B3B",
         "navLinks": ["About", "Service", "Contact"],
         "navLinksColor": "#BB371A"
       },
@@ -56,16 +56,19 @@
         "cardTextColor3": "#171010"
       },
       "contact": {
-        "type": 1,
-        "headline": "Concact Me",
-        "headlineColor": "#FF3F00",
-        "email": "ayam@gmail.com",
-        "emailColor": "#171010",
-        "phone": "02929292",
-        "phoneColor": "#171010",
-        "address": "jalan ayam",
-        "addressColor": "#171010",
-        "backgroundColor": "#EEEEEE"
+        "type": 3,
+        "headline": "Contact Us",
+        "headlineColor": "#BB371A",
+        "emailIcon": "https://image.flaticon.com/icons/png/512/726/726623.png",
+        "email": "golawfirm@email.com",
+        "emailColor": "#B05B3B",
+        "phoneIcon": "https://image.flaticon.com/icons/png/512/3014/3014736.png",
+        "phone": "0283994",
+        "phoneColor": "#B05B3B",
+        "addressIcon": "https://image.flaticon.com/icons/png/512/1198/1198464.png",
+        "address": "Merlyn Tower, Merlyn Street 13, West Jakarta",
+        "addressColor": "#B05B3B",
+        "backgroundColor": "#F0E3CA"
       },
       "footer": {
         "type": 1,

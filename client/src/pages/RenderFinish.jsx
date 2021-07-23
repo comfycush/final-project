@@ -5,6 +5,7 @@ import NavbarTemplate from "../components/NavbarTemplate";
 import MainTemplate from "../components/MainTemplate";
 import AboutTemplate from "../components/AboutTemplate";
 import ServiceTemplate from "../components/ServiceTemplate";
+import ContactTemplate from "../components/ContactTemplate";
 
 export default function RenderFinish() {
   const id = 1;
@@ -29,6 +30,9 @@ export default function RenderFinish() {
       )}
       {templateData.service && (
         <ServiceTemplate serviceData={templateData.service}></ServiceTemplate>
+      )}
+      {templateData.contact && (
+        <ContactTemplate contactData={templateData.contact}></ContactTemplate>
       )}
     </div>
   );
