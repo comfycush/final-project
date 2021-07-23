@@ -1,17 +1,17 @@
 {
   "template": [
     {
-      "templateId": 1,
+      "id": 1,
       "userId": 1,
-      "projectTitle": "Ayam Jago",
+      "projectTitle": "Go Law Firm Website",
       "navbar": {
         "type": 1,
-        "logo": "https://i.pinimg.com/736x/3c/ff/4a/3cff4a0b2b76cdb2fddef84b35056c74.jpg",
-        "backgroundColor": "#EEEEEE",
-        "companyName": "Ayam Jago",
-        "companyNameColor": "#FF3F00",
+        "logo": "https://image.flaticon.com/icons/png/512/4252/4252296.png",
+        "backgroundColor": "#FFF8D9",
+        "companyName": "Go Law Firm",
+        "companyNameColor": "#EBA83A",
         "navLinks": ["About", "Service", "Contact"],
-        "navLinksColor": "#FAFF00"
+        "navLinksColor": "#BB371A"
       },
       "main": {
         "type": 1,

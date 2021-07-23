@@ -9,7 +9,7 @@ export function setTemplate(input) {
 
 export function getTemplateId(id) {
   return async (dispatch) => {
-    const response = await fetch(`http://localhost:3000/template${id}`);
+    const response = await fetch(`http://localhost:3001/template/${id}`);
     const data = await response.json();
     dispatch(setTemplate(data));
   };
