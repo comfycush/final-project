@@ -9,8 +9,7 @@ class UserController {
 
     static register(req, res, next) {
         let { email, password } = req.body
-        console.log(req.body, `ini req body`)
-        password = bcrypt.hashSync(password, 10)
+        // password = bcrypt.hashSync(password, 10)
         User.create({ email, password })
         .then( data => {
             res.status(201).json({ 
@@ -19,7 +18,19 @@ class UserController {
             })
         })
         .catch( err => {
-            next({ message: err })
+            if (err.name === 'SequelizeValidationError') {
+                let errMsg = err.errors.map(e => {
+                  return e.message
+                })
+                next({name: 'SequelizeValidationError', message: errMsg})
+              } else if (err.name === 'SequelizeUniqueConstraintError') {      
+                let errMsg = err.errors.map(e => {
+                    return e.message
+                })
+                next({name: 'SequelizeUniqueConstraintError', message: errMsg})
+              } else {
+                next({message: err})
+              }
         })
     }
 
@@ -35,10 +46,10 @@ class UserController {
                     })
                     res.status(200).json({access_token, email: data.email, id: data.id })
                 } else {
-                    next({ name: `EmailPasswordInvalid`, message: `Invalid email/password` })
+                    next({ name: `EmailPasswordInvalid`, message: [`Invalid email/password`] })
                 }
             } else {
-                next({ name: `EmailPasswordInvalid`, message: `Invalid email/password` })
+                next({ name: `EmailPasswordInvalid`, message: [`Invalid email/password`] })
             }
         })
         .catch( err => {

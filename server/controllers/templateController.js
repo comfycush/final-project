@@ -32,6 +32,7 @@ class TemplateController {
             if(countOfDeletedRows) {
                 res.status(200).json({ message: `Template deleted successfully` })
             } else {
+                console.log('masuk');
                 next({ name: `NotFound`, message: `Template with such id not found` })
             }
         })
@@ -47,7 +48,10 @@ class TemplateController {
         })
         .catch(err => {
             if(err.name === `SequelizeValidationError`) {
-                next({ name: `SequelizeValidationError`, message: err.errors })
+                let errMsg = err.errors.map(e => {
+                    return e.message
+                  })
+                next({ name: `SequelizeValidationError`, message: errMsg })
             } else {
                 next({ message: err })
             }
@@ -57,11 +61,12 @@ class TemplateController {
     static updateTemplate(req,res, next) {
         let templateId = req.params.templateId
         let { userId, projectTitle, navbar, main, about, service, contact, footer } = req.body
-        
-        Template.update({ userId, projectTitle, navbar, main, about, service, contact, footer }, { where : { id:templateId } })
+        let putData = { userId, projectTitle, navbar, main, about, service, contact, footer }
+
+        Template.update(putData, { where : { id:templateId } })
         .then( data => {
             if(data[0]) {
-                res.status(200).json({ message: `Template updated successfully` })
+                res.status(200).json(putData)
             } else {
                 next({ name: `NotFound`, message: `Template with such id not found` })
             }
