@@ -179,6 +179,24 @@ describe('Post, get, update, delete template [SUCCESS CASE]', () => {
       })
   })
 
+  test('Should change template isDeploy to true', (done) => {
+    let isDeploy = { isDeploy: true }
+    request(app)
+      .patch(`/template/${templateId}`)
+      .set('access_token', access_token)
+      .send(isDeploy)
+      .end((err, res) => {
+        if (err) {
+          done(err)
+        } else {
+          expect(res.status).toBe(200)
+          expect(res.body).toEqual(expect.any(Object))
+          expect(res.body.message).toEqual(`Template is successfully deployed`)
+          done()
+        }
+      })
+  })
+
   test('Should send template based on templateId without access_token', (done) => {
     request(app)
       .get(`/${templateId}`)
@@ -346,5 +364,23 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
       })
   })
 
-
+  test("Failed to fetch template because template has not been deployed", (done) => {
+    Template.create(dummyData)
+    .then(data => {
+      templateId = data.id
+      request(app)
+      .get(`/${templateId}?ProjectSapi`)
+      .end((err, res) => {
+        if (err) {
+          done(err)
+        } else {
+          expect(res.status).toBe(404)
+          expect(res.body).toEqual(expect.any(Object))
+          expect(res.body.errors).toContain('Template with such id has not been deployed')
+          done()
+        }
+      })
+    })
+   
+  })
 })

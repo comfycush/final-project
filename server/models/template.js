@@ -34,6 +34,9 @@ module.exports = (sequelize, DataTypes) => {
       },
       allowNull: false
     },
+    isDeploy: {
+      type: DataTypes.BOOLEAN,
+    },
     navbar: {
       type: DataTypes.JSON
     },
@@ -55,6 +58,11 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Template',
+    hooks: {
+      beforeCreate: (instance) => {
+        instance.isDeploy = false
+      }
+    }
   });
   return Template;
 };
