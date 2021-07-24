@@ -1,9 +1,9 @@
 import "../styles/service.css";
 import CardService from "./CardService";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
-export default function ServiceTemplate({ serviceData }) {
-  const isDeploy = useSelector((state) => state.template.isDeploy);
+export default function ServiceTemplate({ serviceData, isDeploy }) {
+  // const isDeploy = useSelector((state) => state.template.isDeploy);
 
   if (!serviceData.type) {
     return null;

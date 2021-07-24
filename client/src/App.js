@@ -11,6 +11,7 @@ import ServiceSection from "./pages/ServiceSection";
 import ContactSection from "./pages/ContactSection";
 import FooterSection from "./pages/FooterSection";
 import { useLocation } from "react-router-dom";
+import UpdateSection from "./pages/UpdateSection";
 
 function App() {
   const location = useLocation();
@@ -44,6 +45,9 @@ function App() {
         </Route>
         <Route exact path="/finish">
           <RenderFinish></RenderFinish>
+        </Route>
+        <Route exact path="/update-template">
+          <UpdateSection></UpdateSection>
         </Route>
       </Switch>
     </div>

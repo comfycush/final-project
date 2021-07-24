@@ -4,7 +4,12 @@ import "../styles/contactSection.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setContactSection, updateTemplate } from "../store/actions/forms";
-import { getImageUrl } from "../store/actions/uploadImage";
+import {
+  getImageUrl,
+  setEmailIconUrl,
+  setPhoneIconUrl,
+  setAddressIconUrl,
+} from "../store/actions/uploadImage";
 import { useLocation } from "react-router";
 
 function ContactSection() {
@@ -34,7 +39,7 @@ function ContactSection() {
   const [addressColor, setAddressColor] = useState("#000000");
 
   const stateService = location.state;
-  const templateId = 3;
+  const templateId = 4;
 
   function addContactSection() {
     const dataContactSection = {
@@ -176,6 +181,9 @@ function ContactSection() {
             alt="email"
           />
         )}
+        <button onClick={() => dispatch(setEmailIconUrl(""))}>
+          Remove Image
+        </button>
         <br />
         <br />
         <label htmlFor="contact-phone" className="contact-phone">
@@ -216,6 +224,9 @@ function ContactSection() {
             alt="phone"
           />
         )}
+        <button onClick={() => dispatch(setPhoneIconUrl(""))}>
+          Remove Image
+        </button>
         <br />
         <br />
         <label htmlFor="contact-address" className="contact-address">
@@ -256,6 +267,9 @@ function ContactSection() {
             alt="address"
           />
         )}
+        <button onClick={() => dispatch(setAddressIconUrl(""))}>
+          Remove Image
+        </button>
         <br />
         <br />
         <label htmlFor="background-color-contact">Background Color</label>

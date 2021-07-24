@@ -1,8 +1,8 @@
 import "../styles/main.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
-export default function Main({ mainData }) {
-  const isDeploy = useSelector((state) => state.template.isDeploy);
+export default function Main({ mainData, isDeploy }) {
+  // const isDeploy = useSelector((state) => state.template.isDeploy);
 
   if (!mainData.type) {
     return null;

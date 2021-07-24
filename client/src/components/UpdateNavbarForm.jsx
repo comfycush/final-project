@@ -1,29 +1,25 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { setNavbarSection, updateTemplate } from "../store/actions/forms";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import swal from "sweetalert";
-import { getImageUrl, setLogoUrl } from "../store/actions/uploadImage";
-import "../styles/navbarSection.css";
-import { useLocation } from "react-router";
+import { useDispatch } from "react-redux";
+import { setNavbarSection, updateTemplate } from "../store/actions/forms";
+import { getImageUrl } from "../store/actions/uploadImage";
+import { useHistory } from "react-router-dom";
 
-function NavbarSection(props) {
-  const history = useHistory();
+export default function UpdateNavbarForm({ data, allData }) {
+  console.log(allData, "<< ALL DATA NAVBAR FORM");
   const dispatch = useDispatch();
-  const location = useLocation();
-  const [type, setType] = useState(null);
-  // const [logo, setLogo] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
-  const [companyName, setCompanyName] = useState("");
-  const [companyNameColor, setCompanyNameColor] = useState("#000000");
-  const [navlinks, setNavlinks] = useState([]);
-  const [navlinksColor, setNavlinksColor] = useState("#000000");
+  const history = useHistory();
+  const [type, setType] = useState(data.type);
+  const [backgroundColor, setBackgroundColor] = useState(data.backgroundColor);
+  const [companyName, setCompanyName] = useState(data.companyName);
+  const [companyNameColor, setCompanyNameColor] = useState(
+    data.companyNameColor
+  );
+  const [navlinks, setNavlinks] = useState(data.navLinks);
+  const [navlinksColor, setNavlinksColor] = useState(data.navlinksColor);
   const logoUrl = useSelector((state) => state.uploadImage.logoUrl);
-
-  const stateIntro = location.state;
-  // console.log(stateIntro, "<<<< stateIntro");
-  const navbar = useSelector((state) => state.forms.navbar);
-  const templateId = 4;
+  // const [logoUrl, setLO]
 
   function addNavlink(status, input) {
     if (status) {
@@ -34,7 +30,7 @@ function NavbarSection(props) {
     }
   }
 
-  function addNavbarSection(event) {
+  function updateNavbarSection(event) {
     let sortNavlinks = [];
     const aboutValue = navlinks.filter((link) => link === "About")[0];
     const serviceValue = navlinks.filter((link) => link === "Service")[0];
@@ -68,22 +64,23 @@ function NavbarSection(props) {
       swal("please choose your required template");
     } else {
       dispatch(setNavbarSection(dataNavbarSection));
-      const newestTemplate = {
-        ...stateIntro,
+      const updatedTemplate = {
+        isDeploy: allData.isDeploy,
+        projectTitle: allData.projectTitle,
+        userId: allData.userId,
+        main: allData.main,
+        about: allData.about,
+        service: allData.service,
+        contact: allData.contact,
+        footer: allData.footer,
         navbar: dataNavbarSection,
-        main: {},
-        about: {},
-        service: {},
-        contact: {},
-        footer: {},
       };
-      dispatch(updateTemplate(templateId, newestTemplate));
-      console.log(templateId, newestTemplate, "<<< update");
+      dispatch(updateTemplate(allData.id, updatedTemplate));
+      // console.log(templateId, updatedTemplate, "<<< update");
       history.push({
-        pathname: "/main-section",
+        pathname: "/finish",
         state: {
-          ...stateIntro,
-          navbar: dataNavbarSection,
+          templateId: allData.id,
         },
       });
     }
@@ -91,13 +88,12 @@ function NavbarSection(props) {
   }
 
   function uploadLogo(file, code) {
-    dispatch(getImageUrl(file, code));
+    if (logoUrl) dispatch(getImageUrl(file, code));
   }
 
   return (
     <section id="navbar-section">
       <h1>Navbar Section</h1>
-      <h3>1 of 6</h3>
       <div className="input">
         <label htmlFor="generate-color" className="generate-color-label">
           Generate Color Palatte
@@ -114,6 +110,7 @@ function NavbarSection(props) {
           type="text"
           name="company-title"
           className="company-title"
+          value={companyName}
         />
         <label
           style={{ marginLeft: "1.5rem" }}
@@ -127,6 +124,7 @@ function NavbarSection(props) {
           type="color"
           name="company-title-color"
           id="company-title-color"
+          value={companyNameColor}
         />
         <br />
         <br />
@@ -139,14 +137,13 @@ function NavbarSection(props) {
           name="company-logo"
           className="company-logo"
         />
-        {logoUrl && (
+        {data.logo && (
           <img
             style={{ width: "5rem", height: "5rem" }}
-            src={logoUrl}
+            src={data.logo}
             alt="logo"
           />
         )}
-        <button onClick={() => dispatch(setLogoUrl(""))}>Remove Image</button>
         <br />
         <br />
         <label htmlFor="links-navbar">Links</label>
@@ -159,6 +156,7 @@ function NavbarSection(props) {
           id="about"
           style={{ marginLeft: "1.5rem" }}
           defaultValue="About"
+          defaultChecked={navlinks.includes("About") ? true : false}
         />
         <label htmlFor="about">About</label>
         <input
@@ -169,6 +167,7 @@ function NavbarSection(props) {
           name="service"
           id="service"
           defaultValue="Service"
+          defaultChecked={navlinks.includes("Service") ? true : false}
         />
         <label htmlFor="service">Service</label>
         <input
@@ -179,6 +178,7 @@ function NavbarSection(props) {
           name="contact"
           id="contact"
           defaultValue="Contact"
+          defaultChecked={navlinks.includes("Contact") ? true : false}
         />
         <label htmlFor="contact">Contact</label>
         <br />
@@ -189,6 +189,7 @@ function NavbarSection(props) {
           type="color"
           name="navlink-color"
           id="navlink-color"
+          value={navlinksColor}
         />
         <br />
         <br />
@@ -198,6 +199,7 @@ function NavbarSection(props) {
           type="color"
           name="background-color-navbar"
           id="background-color-navbar"
+          value={backgroundColor}
         />
         <br />
         <br />
@@ -208,9 +210,10 @@ function NavbarSection(props) {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
             defaultValue="1"
+            defaultChecked={type === 1 ? true : false}
           />
           <img
             className="selection-img"
@@ -220,9 +223,10 @@ function NavbarSection(props) {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
             defaultValue="2"
+            defaultChecked={type === 2 ? true : false}
           />
           <img
             className="selection-img"
@@ -232,9 +236,10 @@ function NavbarSection(props) {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
             defaultValue="3"
+            defaultChecked={type === 3 ? true : false}
           />
           <img
             className="selection-img"
@@ -244,12 +249,10 @@ function NavbarSection(props) {
         </div>
         <br />
         <br />
-        <button onClick={addNavbarSection} className="button-navbar">
+        <button onClick={updateNavbarSection} className="button-navbar">
           next
         </button>
       </div>
     </section>
   );
 }
-
-export default NavbarSection;

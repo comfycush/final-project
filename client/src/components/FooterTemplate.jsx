@@ -1,8 +1,8 @@
 import "../styles/footer.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
-export default function FooterTemplate({ footerData, navbarData }) {
-  const isDeploy = useSelector((state) => state.template.isDeploy);
+export default function FooterTemplate({ footerData, navbarData, isDeploy }) {
+  // const isDeploy = useSelector((state) => state.template.isDeploy);
 
   if (!footerData.backgroundColor) {
     return null;

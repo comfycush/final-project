@@ -1,8 +1,8 @@
 import "../styles/about.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
-export default function AboutTemplate({ aboutData }) {
-  const isDeploy = useSelector((state) => state.template.isDeploy);
+export default function AboutTemplate({ aboutData, isDeploy }) {
+  // const isDeploy = useSelector((state) => state.template.isDeploy);
 
   if (!aboutData.type) {
     return null;

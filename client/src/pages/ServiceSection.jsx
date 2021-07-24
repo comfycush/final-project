@@ -4,7 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../styles/serviceSection.css";
 import { setServiceSection, updateTemplate } from "../store/actions/forms";
-import { getImageUrl } from "../store/actions/uploadImage";
+import {
+  getImageUrl,
+  setCardImage1Url,
+  setCardImage2Url,
+  setCardImage3Url,
+} from "../store/actions/uploadImage";
 import { useLocation } from "react-router";
 
 function ServiceSection() {
@@ -41,7 +46,7 @@ function ServiceSection() {
   const [cardTextColor3, setCardTextColor3] = useState("#000000");
 
   const stateAbout = location.state;
-  const templateId = 3;
+  const templateId = 4;
 
   function addServiceSection() {
     const dataServiceSection = {
@@ -181,6 +186,9 @@ function ServiceSection() {
             alt="card 1"
           />
         )}
+        <button onClick={() => dispatch(setCardImage1Url(""))}>
+          Remove Image
+        </button>
         <br />
         <br />
         <label htmlFor="service-card1" className="service-card1">
@@ -250,6 +258,9 @@ function ServiceSection() {
             alt="card 2"
           />
         )}
+        <button onClick={() => dispatch(setCardImage2Url(""))}>
+          Remove Image
+        </button>
         <br />
         <br />
         <label htmlFor="service-card2" className="service-card2">
@@ -319,6 +330,9 @@ function ServiceSection() {
             alt="card 3"
           />
         )}
+        <button onClick={() => dispatch(setCardImage3Url(""))}>
+          Remove Image
+        </button>
         <br />
         <br />
         <label htmlFor="service-card3" className="service-card3">

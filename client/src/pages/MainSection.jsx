@@ -21,7 +21,7 @@ function MainSection() {
   const mainImageUrl = useSelector((state) => state.uploadImage.mainImageUrl);
 
   const stateNavbar = location.state;
-  const templateId = 3;
+  const templateId = 4;
 
   function addMainSection(event) {
     event.preventDefault();
@@ -169,7 +169,7 @@ function MainSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="1"
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
           />
           <img
@@ -181,7 +181,7 @@ function MainSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="2"
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
           />
           <img
@@ -193,7 +193,7 @@ function MainSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="3"
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
           />
           <img

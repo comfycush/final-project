@@ -1,8 +1,8 @@
 import "../styles/contact.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
-export default function ContactTemplate({ contactData }) {
-  const isDeploy = useSelector((state) => state.template.isDeploy);
+export default function ContactTemplate({ contactData, isDeploy }) {
+  // const isDeploy = useSelector((state) => state.template.isDeploy);
 
   if (!contactData.type) {
     return null;
