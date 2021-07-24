@@ -1,4 +1,3 @@
 const app = require('../app')
-const port = 3000
-
-app.listen(port, () => `server listen at port ${port}`)
+const port = 4000
+app.listen(port, () => console.log(`App listening at http://localhost:${port}`))

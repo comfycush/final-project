@@ -4,7 +4,7 @@ import '../styles/dashboard.css'
 function Dashboard () {
     return (
         <section id="content">
-          <h1>Welcome, User!</h1>
+          <h1>Welcome, {localStorage.getItem('email')}!</h1>
           <hr />
           <div className="row">
             <div className="column">
