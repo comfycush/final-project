@@ -6,16 +6,16 @@
       "isDeploy": false,
       "projectTitle": "Go Law Firm Website",
       "navbar": {
-        "type": 3,
+        "type": 1,
         "logo": "https://image.flaticon.com/icons/png/512/4252/4252296.png",
         "backgroundColor": "#753422",
         "companyName": "Go Law Firm",
         "companyNameColor": "#FFEBC9",
-        "navLinks": ["About", "Service", "Contact"],
+        "navLinks": ["About", "Contact", "Service"],
         "navLinksColor": "#D79771"
       },
       "main": {
-        "type": 3,
+        "type": 1,
         "image": "https://images.pexels.com/photos/4427553/pexels-photo-4427553.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "headline": "Consult Your Legal Needs With Us",
         "headlineColor": "#BB371A",
@@ -24,7 +24,7 @@
         "backgroundColor": "#FFF8D9"
       },
       "about": {
-        "type": 3,
+        "type": 2,
         "image": "https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "headline": "About Go Law Firm",
         "headlineColor": "#BB371A",
@@ -33,7 +33,7 @@
         "backgroundColor": "#F0E3CA"
       },
       "service": {
-        "type": 3,
+        "type": 1,
         "headline": "Our Services",
         "headlineColor": "#BB371A",
         "backgroundColor": "#FAF3E0",
@@ -48,7 +48,7 @@
         "cardTitle2": "Legal Case Handling",
         "cardTitleColor2": "#FAF3E0",
         "cardText2": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        "cardTextColor2": "#753422  ",
+        "cardTextColor2": "#753422",
         "cardImage3": "https://image.flaticon.com/icons/png/512/1006/1006555.png",
         "cardBackgroundColor3": "#D79771",
         "cardTitle3": "Agreement Creation and Analysis",
@@ -57,14 +57,14 @@
         "cardTextColor3": "#753422"
       },
       "contact": {
-        "type": 2,
+        "type": 1,
         "headline": "Contact Us",
         "headlineColor": "#BB371A",
         "emailIcon": "https://image.flaticon.com/icons/png/512/893/893247.png",
         "email": "golawfirm@email.com",
         "emailColor": "#B05B3B",
         "phoneIcon": "https://image.flaticon.com/icons/png/512/890/890547.png",
-        "phone": "0283994",
+        "phone": "023849283",
         "phoneColor": "#B05B3B",
         "addressIcon": "https://image.flaticon.com/icons/png/512/717/717940.png",
         "address": "Merlyn Tower, Merlyn Street 13, West Jakarta",
@@ -72,7 +72,7 @@
         "backgroundColor": "#F0E3CA"
       },
       "footer": {
-        "type": 3,
+        "type": 1,
         "backgroundColor": "#753422",
         "iconColor": "white",
         "facebook": "https://www.facebook.com/",
@@ -93,7 +93,7 @@
         "logo": "https://image.flaticon.com/icons/png/512/3899/3899466.png",
         "backgroundColor": "#B2EBF2",
         "companyName": "Get Laundry",
-        "companyNameColor": "#DD2C00",
+        "companyNameColor": "#00BCD4",
         "navLinks": ["About", "Service", "Contact"],
         "navLinksColor": "#FF5722"
       },
@@ -107,7 +107,7 @@
         "backgroundColor": "#FFFFFF"
       },
       "about": {
-        "type": 1,
+        "type": 2,
         "image": "https://images.pexels.com/photos/4959868/pexels-photo-4959868.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "headline": "About Us",
         "headlineColor": "#00BCD4",
@@ -141,7 +141,7 @@
       },
       "contact": {
         "type": 1,
-        "headline": "Visit Us",
+        "headline": "Contact & Visit Us",
         "headlineColor": "#FF5722",
         "emailIcon": "",
         "email": "",
@@ -163,7 +163,7 @@
         "twitter": "https://twitter.com/?lang=en",
         "linkedin": "https://www.linkedin.com/",
         "youtube": "https://www.youtube.com/",
-        "companyNameColor": "#FFEBC9"
+        "companyNameColor": "#B2EBF2"
       }
     }
   ]

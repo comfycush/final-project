@@ -59,6 +59,10 @@
   max-width: 36rem;
 }
 
+.type-3-about .text-about-section p {
+  max-width: none;
+}
+
 .update-about-section button {
   background-color: #b0c35a;
   color: white;

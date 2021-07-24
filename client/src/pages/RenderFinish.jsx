@@ -10,7 +10,7 @@ import FooterTemplate from "../components/FooterTemplate";
 import ButtonTemplate from "../components/ButtonTemplate";
 
 export default function RenderFinish() {
-  const id = 1;
+  const id = 2;
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
   const templateIsLoading = useSelector((state) => state.template.isLoading);

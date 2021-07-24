@@ -30,7 +30,9 @@ export default function ContactTemplate({ contactData }) {
         <div className="contact-inside">
           {contactData.email && (
             <div className="card-contact">
-              <img src={contactData.emailIcon} alt="email" />
+              {contactData.emailIcon && (
+                <img src={contactData.emailIcon} alt="email" />
+              )}
               <p style={{ color: contactData.emailColor }}>
                 {contactData.email}
               </p>
@@ -38,7 +40,9 @@ export default function ContactTemplate({ contactData }) {
           )}
           {contactData.phone && (
             <div className="card-contact">
-              <img src={contactData.phoneIcon} alt="phone" />
+              {contactData.phoneIcon && (
+                <img src={contactData.phoneIcon} alt="phone" />
+              )}
               <p style={{ color: contactData.phoneColor }}>
                 {contactData.phone}
               </p>
@@ -46,7 +50,9 @@ export default function ContactTemplate({ contactData }) {
           )}
           {contactData.address && (
             <div className="card-contact">
-              <img src={contactData.addressIcon} alt="address" />
+              {contactData.addressIcon && (
+                <img src={contactData.addressIcon} alt="address" />
+              )}
               <p style={{ color: contactData.addressColor }}>
                 {contactData.address}
               </p>
