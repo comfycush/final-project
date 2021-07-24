@@ -28,7 +28,7 @@ export default function Register() {
 
   return (
     <div className="register-card">
-    <h2>Register</h2>
+    <h2 className="register-title">Register</h2>
     <form onSubmit={handleSubmit}>
       <div className="mb">
         <label className="email-register-label">Email:</label>
@@ -38,7 +38,9 @@ export default function Register() {
         <label className="password-register-label">Password:</label>
         <input type="password" onChange={(e) => setPassword(e.target.value)} className="password-register-input" />
       </div>
-      <button className="btn" type="submit">Register</button>
+      <div className="btn-register">
+        <button className="btn" type="submit">Register</button>
+      </div>
     </form>
   </div>
   )
