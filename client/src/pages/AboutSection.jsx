@@ -9,11 +9,11 @@ function AboutSection () {
   const history = useHistory()
   const [type, setType] = useState(null)
   const [headline, setHeadline] = useState('')
-  const [headlineColor, setHeadlineColor] = useState('')
+  const [headlineColor, setHeadlineColor] = useState('#000000')
   const [image, setImage] = useState('')
-  const [backgroundColor, setBackgroundColor] = useState('')
+  const [backgroundColor, setBackgroundColor] = useState('#000000')
   const [paragraph, setParagraph] = useState('')
-  const [paragraphColor, setParagraphColor] = useState('')
+  const [paragraphColor, setParagraphColor] = useState('#000000')
 
   function addAboutSection (event) {
     event.preventDefault()
@@ -59,17 +59,16 @@ function AboutSection () {
         <label htmlFor="about-headline" className="about-headline">Headline</label>
         <input onChange={(event) => setHeadline(event.target.value)} type="text" name="about-headline" className="about-headline" />
         <label htmlFor="about-headline" className="about-headline">Color</label>
-        <input type="text" onChange={(event) => setHeadlineColor(event.target.value)} name="about-headline" className="about-headline" /><br /><br />
+        <input type="color" onChange={(event) => setHeadlineColor(event.target.value)} name="about-headline" className="about-headline" /><br /><br />
         <label htmlFor="about-paragraph" className="about-paragraph">Paragraph</label><br />
         <textarea onChange={(event) => setParagraph(event.target.value)} name="about-paragraph" className="about-paragraph" cols={30} rows={10} defaultValue={""} /><br /><br />
         <label htmlFor="about-paragraph" className="about-paragraph">Paragraph Color</label>
-        <input onChange={(event) => setParagraphColor(event.target.value)} type="text" name="about-paragraph" className="about-paragraph" /><br /><br />
+        <input type="color" onChange={(event) => setParagraphColor(event.target.value)} name="about-paragraph" className="about-paragraph" /><br /><br />
         <label htmlFor="about-image" className="about-image">Image</label>
-        {/* <input type="file" name="about-image" className="about-image" /> */}
-        <input onChange={(event) => setImage(event.target.value)} type="text" name="about-image" id="about-image" />
+        <input onChange={(event) => setImage(event.target.files[0])} type="file" name="about-image" className="about-image" />
         <br /><br />
         <label htmlFor="background-color-about">Background Color</label>
-        <input onChange={(event) => setBackgroundColor(event.target.value)} type="text" name="background-color-about" id="background-color-about" /><br /><br />
+        <input type="color" onChange={(event) => setBackgroundColor(event.target.value)} name="background-color-about" id="background-color-about" /><br /><br />
         <label htmlFor="template-layout">Template Layout</label><br /><br />
         <div className="selection-about">
           <input onClick={(event) => setType(event.target.value)} type="radio" name="opt1-navbar" id="opt1-navbar" defaultValue="1" />

@@ -8,11 +8,11 @@ function MainSection () {
   const history = useHistory()
   const dispatch = useDispatch()
   const [headline, setHeadline] = useState('')
-  const [headlineColor, setHeadlineColor] = useState('')
+  const [headlineColor, setHeadlineColor] = useState('#000000')
   const [image, setImage] = useState('')
-  const [backgroundColor, setBackgroundColor] = useState('')
+  const [backgroundColor, setBackgroundColor] = useState('#000000')
   const [subHeadline, setSubHeadline] = useState('')
-  const [subHeadlineColor, setsubHeadlineColor] = useState('')
+  const [subHeadlineColor, setsubHeadlineColor] = useState('#000000')
   const [type, setType] = useState(null)
 
   function addMainSection (event) {
@@ -26,7 +26,7 @@ function MainSection () {
       subHeadlineColor,
       backgroundColor
     }
-
+    
     dispatch(setMainSection(dataMainSection))
     history.push('/about-section')
   }
@@ -59,17 +59,16 @@ function MainSection () {
           <label htmlFor="main-headline" className="main-headline">Headline</label>
           <input onChange={(event) => setHeadline(event.target.value)} type="text" name="main-headline" className="main-headline" />
           <label htmlFor="main-headline" className="main-headline">Color</label>
-          <input onChange={(event) => setHeadlineColor(event.target.value)} type="text" name="main-headline" className="main-headline" /><br /><br />
+          <input onChange={(event) => setHeadlineColor(event.target.value)} type="color" name="main-headline" className="main-headline" /><br/><br/>
           <label htmlFor="main-subheadline" className="main-subheadline">Subheadline</label>
           <input onChange={(event) => setSubHeadline(event.target.value)} type="text" name="main-subheadline" className="main-subheadline" />
           <label htmlFor="main-subheadline" className="main-subheadline">Color</label>
-          <input onChange={(event) => setsubHeadlineColor(event.target.value)} type="text" name="main-subheadline" className="main-subheadline" /><br /><br />
+          <input onChange={(event) => setsubHeadlineColor(event.target.value)} type="color" name="main-subheadline" className="main-subheadline" /><br /><br />
           <label htmlFor="company-background" className="company-background">Image</label>
-          {/* <input type="file" name="company-background" className="company-background" /> */}
-          <input onChange={(event) => setImage(event.target.value)} type="text" name="company-background" id="company-background" />
+          <input onChange={(event) => setImage(event.target.files[0])} type="file" name="company-background" className="company-background" />
           <br /><br />
           <label htmlFor="background-color-main">Background Color</label>
-          <input onChange={(event) => setBackgroundColor(event.target.value)} type="text" name="background-color-mainb" id="background-color-main" /><br /><br />
+          <input onChange={(event) => setBackgroundColor(event.target.value)} type="color" name="background-color-mainb" id="background-color-main" /><br /><br />
           <label htmlFor="template-layout">Template Layout</label><br /><br />
           <div className="selection-main">
             <input onClick={(event) => setType(event.target.value)} defaultValue='1' type="radio" name="opt1-navbar" id="opt1-navbar" />
