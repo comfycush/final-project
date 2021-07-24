@@ -1,22 +1,30 @@
-ul {
+.type-1-nav ul,
+.type-2-nav ul,
+.type-3-nav ul {
   display: flex;
   list-style-type: none;
 }
 
-a {
+.type-1-nav a,
+.type-2-nav a,
+.type-3-nav a {
   text-decoration: none;
   margin: 0 1.5rem;
   font-weight: bold;
   font-size: 1.3rem;
 }
 
-img {
+.type-1-nav img,
+.type-2-nav img,
+.type-3-nav img {
   width: 3rem;
   height: 3rem;
   margin-right: 2rem;
 }
 
-h1 {
+.type-1-nav h1,
+.type-2-nav h1,
+.type-3-nav h1 {
   font-size: 2rem;
 }
 

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { setContactSection } from "../store/actions/forms";
 import swal from "sweetalert";
 import "../styles/contactSection.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setContactSection } from "../store/actions/forms";
+import { getImageUrl } from "../store/actions/uploadImage";
 
 function ContactSection() {
   const dispatch = useDispatch();
@@ -12,13 +13,21 @@ function ContactSection() {
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
   const [backgroundColor, setBackgroundColor] = useState("#000000");
-  const [emailIcon, setEmailIcon] = useState("");
+
+  // const [emailIcon, setEmailIcon] = useState('')
+  const emailIconUrl = useSelector((state) => state.uploadImage.emailIconUrl);
   const [email, setEmail] = useState("");
   const [emailColor, setEmailColor] = useState("#000000");
-  const [phoneIcon, setPhoneIcon] = useState("");
+
+  // const [phoneIcon, setPhoneIcon] = useState('')
+  const phoneIconUrl = useSelector((state) => state.uploadImage.phoneIconUrl);
   const [phone, setPhone] = useState("");
   const [phoneColor, setPhoneColor] = useState("#000000");
-  const [addressIcon, setAddressIcon] = useState("");
+
+  // const [addressIcon, setAddressIcon] = useState('')
+  const addressIconUrl = useSelector(
+    (state) => state.uploadImage.addressIconUrl
+  );
   const [address, setAddress] = useState("");
   const [addressColor, setAddressColor] = useState("#000000");
 
@@ -28,13 +37,13 @@ function ContactSection() {
       headline,
       headlineColor,
       backgroundColor,
-      emailIcon,
+      emailIcon: emailIconUrl,
       email,
       emailColor,
-      phoneIcon,
+      phoneIcon: phoneIconUrl,
       phone,
       phoneColor,
-      addressIcon,
+      addressIcon: addressIconUrl,
       address,
       addressColor,
     };
@@ -53,6 +62,9 @@ function ContactSection() {
       dispatch(setContactSection(dataContactSection));
       history.push("/footer-section");
     }
+    console.log(dataContactSection, "<<<< data contact");
+    dispatch(setContactSection(dataContactSection));
+    history.push("/footer-section");
   }
 
   function skipContactSection() {
@@ -74,6 +86,10 @@ function ContactSection() {
 
     dispatch(setContactSection(dataContactSection));
     history.push("/footer-section");
+  }
+
+  function uploadContactIcon(file, code) {
+    dispatch(getImageUrl(file, code));
   }
 
   return (
@@ -132,11 +148,20 @@ function ContactSection() {
           Email Icon
         </label>
         <input
-          onChange={(event) => setEmailIcon(event.target.files[0])}
+          onChange={(event) =>
+            uploadContactIcon(event.target.files[0], "email")
+          }
           type="file"
           name="contact-email"
           className="contact-email"
         />
+        {emailIconUrl && (
+          <img
+            style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+            src={emailIconUrl}
+            alt="email"
+          />
+        )}
         <br />
         <br />
         <label htmlFor="contact-phone" className="contact-phone">
@@ -163,11 +188,20 @@ function ContactSection() {
           Phone Icon
         </label>
         <input
-          onChange={(event) => setPhoneIcon(event.target.files[0])}
+          onChange={(event) =>
+            uploadContactIcon(event.target.files[0], "phone")
+          }
           type="file"
           name="contact-phone"
           className="contact-phone"
         />
+        {phoneIconUrl && (
+          <img
+            style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+            src={phoneIconUrl}
+            alt="phone"
+          />
+        )}
         <br />
         <br />
         <label htmlFor="contact-address" className="contact-address">
@@ -194,11 +228,20 @@ function ContactSection() {
           Address Icon
         </label>
         <input
-          onChange={(event) => setAddressIcon(event.target.files[0])}
+          onChange={(event) =>
+            uploadContactIcon(event.target.files[0], "address")
+          }
           type="file"
           name="contact-address"
           className="contact-address"
         />
+        {addressIconUrl && (
+          <img
+            style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+            src={addressIconUrl}
+            alt="address"
+          />
+        )}
         <br />
         <br />
         <label htmlFor="background-color-contact">Background Color</label>

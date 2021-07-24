@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setFooterSection } from "../store/actions/forms";
 import swal from "sweetalert";
 import "../styles/footerSection.css";
+import { setFooterSection } from "../store/actions/forms";
 
 function FooterSection() {
   const dispatch = useDispatch();
@@ -47,6 +47,8 @@ function FooterSection() {
       dispatch(setFooterSection(dataFooterSection));
       history.push("/finish");
     }
+    dispatch(setFooterSection(dataFooterSection));
+    history.push("/finish");
   }
 
   return (
@@ -127,13 +129,12 @@ function FooterSection() {
         />
         <br />
         <br />
-        <label htmlFor="icon-color">Icon Color</label>
+        <label htmlFor="icon-color">Social Media Icon Color</label>
         <input
           onClick={(event) => setIconColor(event.target.value)}
           defaultValue="black"
           type="radio"
           style={{ marginLeft: "1.5rem" }}
-          defaultValue="black"
           name="black-icon"
           id="black-icon"
         />
@@ -143,7 +144,6 @@ function FooterSection() {
           defaultValue="white"
           type="radio"
           name="white-icon"
-          defaultValue="white"
           id="white-icon"
         />
         <label htmlFor="white-icon">White</label>

@@ -1,26 +1,28 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import swal from "sweetalert";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setMainSection } from "../store/actions/forms";
-import swal from "sweetalert";
 import "../styles/mainSection.css";
+import { getImageUrl } from "../store/actions/uploadImage";
 
 function MainSection() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState('')
   const [backgroundColor, setBackgroundColor] = useState("#000000");
   const [subHeadline, setSubHeadline] = useState("");
   const [subHeadlineColor, setsubHeadlineColor] = useState("#000000");
   const [type, setType] = useState(null);
+  const mainImageUrl = useSelector((state) => state.uploadImage.mainImageUrl);
 
   function addMainSection(event) {
     event.preventDefault();
     const dataMainSection = {
       type,
-      image,
+      image: mainImageUrl,
       headline,
       headlineColor,
       subHeadline,
@@ -38,6 +40,9 @@ function MainSection() {
       dispatch(setMainSection(dataMainSection));
       history.push("/about-section");
     }
+    console.log(dataMainSection, "<< data main");
+    dispatch(setMainSection(dataMainSection));
+    history.push("/about-section");
   }
 
   function skipMainSection(event) {
@@ -54,6 +59,10 @@ function MainSection() {
 
     dispatch(setMainSection(dataMainSection));
     history.push("/about-section");
+  }
+
+  function uploadMainImage(file, code) {
+    dispatch(getImageUrl(file, code));
   }
 
   return (
@@ -112,11 +121,18 @@ function MainSection() {
           Image
         </label>
         <input
-          onChange={(event) => setImage(event.target.files[0])}
+          onChange={(event) => uploadMainImage(event.target.files[0], "main")}
           type="file"
           name="company-background"
           className="company-background"
         />
+        {mainImageUrl && (
+          <img
+            style={{ width: "10rem", height: "10rem", objectFit: "cover" }}
+            src={mainImageUrl}
+            alt="about"
+          />
+        )}
         <br />
         <br />
         <label htmlFor="background-color-main">Background Color</label>

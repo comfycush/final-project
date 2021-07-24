@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { setServiceSection } from "../store/actions/forms";
 import swal from "sweetalert";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import "../styles/serviceSection.css";
+import { setServiceSection } from "../store/actions/forms";
+import { getImageUrl } from "../store/actions/uploadImage";
 
 function ServiceSection() {
   const dispatch = useDispatch();
@@ -12,19 +13,25 @@ function ServiceSection() {
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
   const [backgroundColor, setBackgroundColor] = useState("#000000");
-  const [cardImage1, setCardImage1] = useState("");
+
+  // const [cardImage1, setCardImage1] = useState('')
+  const card1ImageUrl = useSelector((state) => state.uploadImage.card1ImageUrl);
   const [cardBackgroundColor1, setcardBackgroundColor1] = useState("#000000");
   const [cardTitle1, setCardTitle1] = useState("");
   const [cardTitleColor1, setCardTitleColor1] = useState("#000000");
   const [cardText1, setCardText1] = useState("");
   const [cardTextColor1, setCardTextColor1] = useState("#000000");
-  const [cardImage2, setCardImage2] = useState("");
+
+  // const [cardImage2, setCardImage2] = useState('')
+  const card2ImageUrl = useSelector((state) => state.uploadImage.card2ImageUrl);
   const [cardBackgroundColor2, setcardBackgroundColor2] = useState("#000000");
   const [cardTitle2, setCardTitle2] = useState("");
   const [cardTitleColor2, setCardTitleColor2] = useState("#000000");
   const [cardText2, setCardText2] = useState("");
   const [cardTextColor2, setCardTextColor2] = useState("#000000");
-  const [cardImage3, setCardImage3] = useState("");
+
+  // const [cardImage3, setCardImage3] = useState('')
+  const card3ImageUrl = useSelector((state) => state.uploadImage.card3ImageUrl);
   const [cardBackgroundColor3, setcardBackgroundColor3] = useState("#000000");
   const [cardTitle3, setCardTitle3] = useState("");
   const [cardTitleColor3, setCardTitleColor3] = useState("#000000");
@@ -37,19 +44,19 @@ function ServiceSection() {
       headline,
       headlineColor,
       backgroundColor,
-      cardImage1,
+      cardImage1: card1ImageUrl,
       cardBackgroundColor1,
       cardTitle1,
       cardTitleColor1,
       cardText1,
       cardTextColor1,
-      cardImage2,
+      cardImage2: card2ImageUrl,
       cardBackgroundColor2,
       cardTitle2,
       cardTitleColor2,
       cardText2,
       cardTextColor2,
-      cardImage3,
+      cardImage3: card3ImageUrl,
       cardBackgroundColor3,
       cardTitle3,
       cardTitleColor3,
@@ -72,6 +79,9 @@ function ServiceSection() {
       dispatch(setServiceSection(dataServiceSection));
       history.push("/contact-section");
     }
+    console.log(dataServiceSection, "<<<< data service");
+    dispatch(setServiceSection(dataServiceSection));
+    history.push("/contact-section");
   }
 
   function skipServiceSection() {
@@ -102,6 +112,10 @@ function ServiceSection() {
 
     dispatch(setServiceSection(dataServiceSection));
     history.push("/contact-section");
+  }
+
+  function uploadCardImage(file, code) {
+    dispatch(getImageUrl(file, code));
   }
 
   return (
@@ -137,14 +151,21 @@ function ServiceSection() {
         <br />
         <br />
         <label htmlFor="service-card1" className="service-card1">
-          Card 1 Image
+          Card 1 Icon
         </label>
         <input
-          onChange={(event) => setCardImage1(event.target.files[0])}
+          onChange={(event) => uploadCardImage(event.target.files[0], "card1")}
           type="file"
           name="service-card1"
           className="service-card1"
         />
+        {card1ImageUrl && (
+          <img
+            style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+            src={card1ImageUrl}
+            alt="card 1"
+          />
+        )}
         <br />
         <br />
         <label htmlFor="service-card1" className="service-card1">
@@ -168,7 +189,7 @@ function ServiceSection() {
         <br />
         <br />
         <label htmlFor="service-card1" className="service-card1">
-          Card 1 Text
+          Card 1 Paragraph
         </label>
         <input
           onChange={(event) => setCardText1(event.target.value)}
@@ -199,14 +220,21 @@ function ServiceSection() {
         <br />
         <br />
         <label htmlFor="service-card2" className="service-card2">
-          Card 2 Image
+          Card 2 Icon
         </label>
         <input
-          onChange={(event) => setCardImage2(event.target.files[0])}
+          onChange={(event) => uploadCardImage(event.target.files[0], "card2")}
           type="file"
           name="service-card2"
           className="service-card2"
         />
+        {card2ImageUrl && (
+          <img
+            style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+            src={card2ImageUrl}
+            alt="card 2"
+          />
+        )}
         <br />
         <br />
         <label htmlFor="service-card2" className="service-card2">
@@ -230,7 +258,7 @@ function ServiceSection() {
         <br />
         <br />
         <label htmlFor="service-card2" className="service-card2">
-          Card 2 Text
+          Card 2 Paragraph
         </label>
         <input
           onChange={(event) => setCardText2(event.target.value)}
@@ -261,14 +289,21 @@ function ServiceSection() {
         <br />
         <br />
         <label htmlFor="service-card3" className="service-card3">
-          Card 3 Image
+          Card 3 Icon
         </label>
         <input
-          onChange={(event) => setCardImage3(event.target.files[0])}
+          onChange={(event) => uploadCardImage(event.target.files[0], "card3")}
           type="file"
           name="service-card3"
           className="service-card3"
         />
+        {card3ImageUrl && (
+          <img
+            style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+            src={card3ImageUrl}
+            alt="card 3"
+          />
+        )}
         <br />
         <br />
         <label htmlFor="service-card3" className="service-card3">
@@ -292,7 +327,7 @@ function ServiceSection() {
         <br />
         <br />
         <label htmlFor="service-card3" className="service-card3">
-          Card 3 Text
+          Card 3 Paragraph
         </label>
         <input
           onChange={(event) => setCardText3(event.target.value)}

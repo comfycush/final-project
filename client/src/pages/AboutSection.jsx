@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { setAboutSection } from "../store/actions/forms";
 import swal from "sweetalert";
 import "../styles/aboutSection.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setAboutSection } from "../store/actions/forms";
+import { getImageUrl } from "../store/actions/uploadImage";
 
 function AboutSection() {
   const dispatch = useDispatch();
@@ -11,10 +12,11 @@ function AboutSection() {
   const [type, setType] = useState(null);
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("#000000");
   const [paragraph, setParagraph] = useState("");
   const [paragraphColor, setParagraphColor] = useState("#000000");
+  const aboutImageUrl = useSelector((state) => state.uploadImage.aboutImageUrl);
 
   function addAboutSection(event) {
     event.preventDefault();
@@ -22,7 +24,7 @@ function AboutSection() {
       type,
       headline,
       headlineColor,
-      image,
+      image: aboutImageUrl,
       backgroundColor,
       paragraph,
       paragraphColor,
@@ -40,6 +42,9 @@ function AboutSection() {
       dispatch(setAboutSection(dataAboutSection));
       history.push("/service-section");
     }
+    console.log(dataAboutSection, "<< data about");
+    dispatch(setAboutSection(dataAboutSection));
+    history.push("/service-section");
   }
 
   function skipAboutSection(event) {
@@ -53,9 +58,12 @@ function AboutSection() {
       paragraph: null,
       paragraphColor: null,
     };
-
     dispatch(setAboutSection(dataAboutSection));
     history.push("/service-section");
+  }
+
+  function uploadAboutImage(file, code) {
+    dispatch(getImageUrl(file, code));
   }
 
   return (
@@ -119,11 +127,18 @@ function AboutSection() {
           Image
         </label>
         <input
-          onChange={(event) => setImage(event.target.files[0])}
+          onChange={(event) => uploadAboutImage(event.target.files[0], "about")}
           type="file"
           name="about-image"
           className="about-image"
         />
+        {aboutImageUrl && (
+          <img
+            style={{ width: "10rem", height: "10rem", objectFit: "cover" }}
+            src={aboutImageUrl}
+            alt="about"
+          />
+        )}
         <br />
         <br />
         <label htmlFor="background-color-about">Background Color</label>

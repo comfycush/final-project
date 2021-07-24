@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { setProjectTitle } from "../store/actions/forms";
 import swal from "sweetalert";
 import "../styles/introSection.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setProjectTitle } from "../store/actions/forms";
+import { createTemplate } from "../store/actions/forms";
 
 function IntroSection() {
   const dispatch = useDispatch();
@@ -18,6 +19,21 @@ function IntroSection() {
     } else {
       swal("Please fill in your project title");
     }
+    dispatch(setProjectTitle(proTitle));
+    const newTemplate = {
+      userId: 2,
+      isDeploy: false,
+      projectTitle: proTitle,
+      navbar: {},
+      main: {},
+      about: {},
+      service: {},
+      contact: {},
+      footer: {},
+    };
+    dispatch(createTemplate(newTemplate));
+    event.preventDefault();
+    history.push("/navbar-section");
   }
 
   return (

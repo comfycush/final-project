@@ -10,11 +10,13 @@ import AboutSection from "./pages/AboutSection";
 import ServiceSection from "./pages/ServiceSection";
 import ContactSection from "./pages/ContactSection";
 import FooterSection from "./pages/FooterSection";
+import { useLocation } from "react-router-dom";
 
 function App() {
+  const location = useLocation();
   return (
     <div className="App">
-      <Sidebar></Sidebar>
+      {location.pathname !== "/finish" && <Sidebar></Sidebar>}
       <Switch>
         <Route exact path="/dashboard">
           <Dashboard></Dashboard>

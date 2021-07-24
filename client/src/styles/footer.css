@@ -1,6 +1,14 @@
+.type-1-footer .company-side img,
+.type-2-footer .company-side img,
+.type-3-footer .company-side img {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 2rem;
+}
+
 .type-1-footer {
   display: flex;
-  padding: 1.5rem 5rem;
+  padding: 1rem 5rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -43,7 +51,7 @@
 .social-media-side img {
   width: 2rem;
   height: 2rem;
-  margin: 0;
+  margin: 1rem;
 }
 
 .update-footer-section button {

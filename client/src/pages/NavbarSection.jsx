@@ -1,20 +1,22 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setNavbarSection } from "../store/actions/forms";
 import swal from "sweetalert";
+import { getImageUrl } from "../store/actions/uploadImage";
 import "../styles/navbarSection.css";
 
 function NavbarSection() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [type, setType] = useState(null);
-  const [logo, setLogo] = useState("");
+  // const [logo, setLogo] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("#000000");
   const [companyName, setCompanyName] = useState("");
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
   const [navlinks, setNavlinks] = useState([]);
   const [navlinksColor, setNavlinksColor] = useState("#000000");
+  const logoUrl = useSelector((state) => state.uploadImage.logoUrl);
 
   function addNavlink(status, input) {
     if (status) {
@@ -43,7 +45,7 @@ function NavbarSection() {
     event.preventDefault();
     const dataNavbarSection = {
       type,
-      logo,
+      logo: logoUrl,
       backgroundColor,
       companyName,
       companyNameColor,
@@ -61,6 +63,14 @@ function NavbarSection() {
       dispatch(setNavbarSection(dataNavbarSection));
       history.push("/main-section");
     }
+    console.log(dataNavbarSection, "<<< data navbar");
+
+    dispatch(setNavbarSection(dataNavbarSection));
+    history.push("/main-section");
+  }
+
+  function uploadLogo(file, code) {
+    dispatch(getImageUrl(file, code));
   }
 
   return (
@@ -103,11 +113,18 @@ function NavbarSection() {
           Your Company Logo
         </label>
         <input
-          onChange={(event) => setLogo(event.target.files[0])}
+          onChange={(event) => uploadLogo(event.target.files[0], "logo")}
           type="file"
           name="company-logo"
           className="company-logo"
         />
+        {logoUrl && (
+          <img
+            style={{ width: "5rem", height: "5rem" }}
+            src={logoUrl}
+            alt="logo"
+          />
+        )}
         <br />
         <br />
         <label htmlFor="links-navbar">Links</label>
