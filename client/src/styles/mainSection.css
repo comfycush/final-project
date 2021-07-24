@@ -1,0 +1,31 @@
+#main-section {
+  margin-left: 8rem;
+}
+
+#main-section h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#main-section h3 {
+  display: flex;
+  justify-content: center;
+}
+
+.selection-main {
+  display: flex;
+  flex-direction: row;
+}
+
+.selection-main .selection-img {
+  max-width: 100px;
+}
+
+.button-main {
+  display: inline-block;
+  margin-left: 29rem;
+}
+
+.button-main button {
+  width: 100px;
+}

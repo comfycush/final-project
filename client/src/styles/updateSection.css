@@ -1,0 +1,13 @@
+#update-section {
+  margin-left: 8rem;
+}
+
+#update-section h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#update-section .select-section {
+  margin-left: 35rem;
+  margin-bottom: 5rem;
+}

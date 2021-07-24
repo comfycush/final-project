@@ -18,7 +18,7 @@
   box-sizing: border-box;
 }
 
-body {
+#root {
   position: relative;
   height: 100%;
   margin: 0;
@@ -97,12 +97,12 @@ a {
   font-size: var(--small-font-size);
 }
 
-.body-pd {
-  padding-left: 10rem;
-}
-
 .expander {
   width: calc(var(--nav-width) + 9.25rem);
+}
+
+.body-pd {
+  padding-left: 10rem;
 }
 
 #content {

@@ -1,0 +1,31 @@
+#footer-section {
+  margin-left: 8rem;
+}
+
+#footer-section h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#footer-section h3 {
+  display: flex;
+  justify-content: center;
+}
+
+.selection-footer {
+  display: flex;
+  flex-direction: row;
+}
+
+.selection-footer .selection-img {
+  max-width: 100px;
+}
+
+.button-footer {
+  display: inline-block;
+  margin-left: 29rem;
+}
+
+.button-footer button {
+  width: 100px;
+}

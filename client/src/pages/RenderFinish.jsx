@@ -10,6 +10,8 @@ import FooterTemplate from "../components/FooterTemplate";
 import ButtonTemplate from "../components/ButtonTemplate";
 
 export default function RenderFinish() {
+  const state = useSelector(state => state.forms)
+  console.log(state)
   const id = 1;
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
