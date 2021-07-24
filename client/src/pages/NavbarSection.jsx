@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setNavbarSection } from "../store/actions/forms";
+import { setNavbarSection, updateTemplate } from "../store/actions/forms";
 import swal from "sweetalert";
 import { getImageUrl } from "../store/actions/uploadImage";
 import "../styles/navbarSection.css";
+import { useLocation } from "react-router";
 
-function NavbarSection() {
+function NavbarSection(props) {
   const history = useHistory();
   const dispatch = useDispatch();
+  const location = useLocation();
   const [type, setType] = useState(null);
   // const [logo, setLogo] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("#000000");
@@ -17,6 +19,11 @@ function NavbarSection() {
   const [navlinks, setNavlinks] = useState([]);
   const [navlinksColor, setNavlinksColor] = useState("#000000");
   const logoUrl = useSelector((state) => state.uploadImage.logoUrl);
+
+  const stateIntro = location.state;
+  console.log(stateIntro, "<<<< stateIntro");
+  const navbar = useSelector((state) => state.forms.navbar);
+  const templateId = 3;
 
   function addNavlink(status, input) {
     if (status) {
@@ -44,29 +51,43 @@ function NavbarSection() {
 
     event.preventDefault();
     const dataNavbarSection = {
-      type,
+      type: +type,
       logo: logoUrl,
       backgroundColor,
       companyName,
       companyNameColor,
-      sortNavlinks,
+      navLinks: sortNavlinks,
       navlinksColor,
     };
 
     if (!dataNavbarSection.companyName && !dataNavbarSection.logo) {
       swal("Please fill in your company name or company logo");
-    } else if (dataNavbarSection.sortNavlinks.length === 0) {
+    } else if (sortNavlinks.length === 0) {
       swal("Please choose minimum 1 link");
     } else if (!dataNavbarSection.type) {
       swal("please choose your required template");
     } else {
       dispatch(setNavbarSection(dataNavbarSection));
-      history.push("/main-section");
+      const newestTemplate = {
+        ...stateIntro,
+        navbar: dataNavbarSection,
+        main: {},
+        about: {},
+        service: {},
+        contact: {},
+        footer: {},
+      };
+      dispatch(updateTemplate(templateId, newestTemplate));
+      console.log(templateId, newestTemplate, "<<< update");
+      history.push({
+        pathname: "/main-section",
+        state: {
+          ...stateIntro,
+          navbar: dataNavbarSection,
+        },
+      });
     }
     console.log(dataNavbarSection, "<<< data navbar");
-
-    dispatch(setNavbarSection(dataNavbarSection));
-    history.push("/main-section");
   }
 
   function uploadLogo(file, code) {

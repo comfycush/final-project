@@ -3,12 +3,14 @@ import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../styles/serviceSection.css";
-import { setServiceSection } from "../store/actions/forms";
+import { setServiceSection, updateTemplate } from "../store/actions/forms";
 import { getImageUrl } from "../store/actions/uploadImage";
+import { useLocation } from "react-router";
 
 function ServiceSection() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
   const [type, setType] = useState(null);
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
@@ -38,9 +40,12 @@ function ServiceSection() {
   const [cardText3, setCardText3] = useState("");
   const [cardTextColor3, setCardTextColor3] = useState("#000000");
 
+  const stateAbout = location.state;
+  const templateId = 3;
+
   function addServiceSection() {
     const dataServiceSection = {
-      type,
+      type: +type,
       headline,
       headlineColor,
       backgroundColor,
@@ -77,11 +82,21 @@ function ServiceSection() {
       swal("Please choose your required template");
     } else {
       dispatch(setServiceSection(dataServiceSection));
-      history.push("/contact-section");
+      const newestTemplate = {
+        ...stateAbout,
+        service: dataServiceSection,
+        contact: {},
+        footer: {},
+      };
+      dispatch(updateTemplate(templateId, newestTemplate));
+      history.push({
+        pathname: "/contact-section",
+        state: {
+          ...stateAbout,
+          service: dataServiceSection,
+        },
+      });
     }
-    console.log(dataServiceSection, "<<<< data service");
-    dispatch(setServiceSection(dataServiceSection));
-    history.push("/contact-section");
   }
 
   function skipServiceSection() {

@@ -33,7 +33,14 @@ function IntroSection() {
     };
     dispatch(createTemplate(newTemplate));
     event.preventDefault();
-    history.push("/navbar-section");
+    history.push({
+      pathname: "/navbar-section",
+      state: {
+        userId: 2,
+        isDeploy: false,
+        projectTitle: proTitle,
+      },
+    });
   }
 
   return (

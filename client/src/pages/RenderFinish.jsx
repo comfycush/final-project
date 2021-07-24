@@ -8,11 +8,13 @@ import ServiceTemplate from "../components/ServiceTemplate";
 import ContactTemplate from "../components/ContactTemplate";
 import FooterTemplate from "../components/FooterTemplate";
 import ButtonTemplate from "../components/ButtonTemplate";
+import { useLocation } from "react-router";
 
 export default function RenderFinish() {
   const state = useSelector((state) => state.forms);
+  const location = useLocation();
   console.log(state);
-  const id = 1;
+  const id = location.state.templateId;
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
   const templateIsLoading = useSelector((state) => state.template.isLoading);

@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setMainSection } from "../store/actions/forms";
+import { setMainSection, updateTemplate } from "../store/actions/forms";
 import "../styles/mainSection.css";
 import { getImageUrl } from "../store/actions/uploadImage";
+import { useLocation } from "react-router";
 
 function MainSection() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const location = useLocation();
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
   // const [image, setImage] = useState('')
@@ -18,10 +20,13 @@ function MainSection() {
   const [type, setType] = useState(null);
   const mainImageUrl = useSelector((state) => state.uploadImage.mainImageUrl);
 
+  const stateNavbar = location.state;
+  const templateId = 3;
+
   function addMainSection(event) {
     event.preventDefault();
     const dataMainSection = {
-      type,
+      type: +type,
       image: mainImageUrl,
       headline,
       headlineColor,
@@ -38,11 +43,23 @@ function MainSection() {
       swal("Please choose your require template");
     } else {
       dispatch(setMainSection(dataMainSection));
-      history.push("/about-section");
+      const newestTemplate = {
+        ...stateNavbar,
+        main: dataMainSection,
+        about: {},
+        service: {},
+        contact: {},
+        footer: {},
+      };
+      dispatch(updateTemplate(templateId, newestTemplate));
+      history.push({
+        pathname: "/about-section",
+        state: {
+          ...stateNavbar,
+          main: dataMainSection,
+        },
+      });
     }
-    console.log(dataMainSection, "<< data main");
-    dispatch(setMainSection(dataMainSection));
-    history.push("/about-section");
   }
 
   function skipMainSection(event) {
