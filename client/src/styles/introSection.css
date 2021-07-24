@@ -1,0 +1,21 @@
+#intro-section {
+  margin-left: 8rem;
+  height: 100%;
+}
+
+#intro-section h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#intro-section .intro-input {
+  display: flex;
+  justify-content: center;
+  margin-top: 15rem;
+}
+
+#intro-section button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+}

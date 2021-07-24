@@ -1,0 +1,36 @@
+#navbar-section {
+  margin-left: 8rem;
+}
+
+#navbar-section h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#navbar-section h3 {
+  display: flex;
+  justify-content: center;
+}
+
+#navbar-section #company-title-color {
+  margin-left: 1rem;
+}
+
+#navbar-section .input {
+  margin-top: 5rem;
+}
+
+.button-navbar {
+  margin-left: 35rem;
+  width: 100px;
+  margin-bottom: 2rem;
+}
+
+.selection-navbar {
+  display: flex;
+  flex-direction: column;
+}
+
+.selection-navbar .selection-img {
+  max-width: 100px;
+}

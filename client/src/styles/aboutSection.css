@@ -1,0 +1,31 @@
+#about-section {
+  margin-left: 8rem;
+}
+
+#about-section h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#about-section h3 {
+  display: flex;
+  justify-content: center;
+}
+
+.selection-about {
+  display: flex;
+  flex-direction: row;
+}
+
+.selection-about .selection-img {
+  max-width: 100px;
+}
+
+.button-about {
+  display: inline-block;
+  margin-left: 29rem;
+}
+
+.button-about button {
+  width: 100px;
+}

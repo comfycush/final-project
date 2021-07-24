@@ -1,0 +1,31 @@
+#service-section {
+  margin-left: 8rem;
+}
+
+#service-section h1 {
+  display: flex;
+  justify-content: center;
+}
+
+#service-section h3 {
+  display: flex;
+  justify-content: center;
+}
+
+.selection-service {
+  display: flex;
+  flex-direction: row;
+}
+
+.selection-service .selection-img {
+  max-width: 100px;
+}
+
+.button-service {
+  display: inline-block;
+  margin-left: 29rem;
+}
+
+.button-service button {
+  width: 100px;
+}
