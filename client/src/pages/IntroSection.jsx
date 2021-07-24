@@ -1,30 +1,46 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { useHistory } from 'react-router-dom'
-import { setProjectTitle } from '../store/actions/forms'
-import '../styles/introSection.css'
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { setProjectTitle } from "../store/actions/forms";
+import swal from "sweetalert";
+import "../styles/introSection.css";
 
-function IntroSection () {
-  const dispatch = useDispatch()
-  const history = useHistory()
-  const [proTitle, setProTitle] = useState('')
+function IntroSection() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [proTitle, setProTitle] = useState("");
 
-  function addProjectTitle (event) {
-    dispatch(setProjectTitle(proTitle))
-    event.preventDefault()
-    history.push('/navbar-section')
+  function addProjectTitle(event) {
+    if (proTitle) {
+      dispatch(setProjectTitle(proTitle));
+      event.preventDefault();
+      history.push("/navbar-section");
+    } else {
+      swal("Please fill in your project title");
+    }
   }
 
   return (
-      <section id="intro-section">
-        <h1>Let's Build Your Website</h1>
-        <div className="intro-input">
-          <label htmlFor="project-title">Project Title</label>
-          <input required onChange={(event) => setProTitle(event.target.value)} style={{marginLeft: '1rem'}} type="text" name="project-title" id="project-title" />
-        </div><br /><br />
-        <button onClick={addProjectTitle} className="button-navbar">next</button>
-      </section>
-  )
+    <section id="intro-section">
+      <h1>Let's Build Your Website</h1>
+      <div className="intro-input">
+        <label htmlFor="project-title">Project Title</label>
+        <input
+          required
+          onChange={(event) => setProTitle(event.target.value)}
+          style={{ marginLeft: "1rem" }}
+          type="text"
+          name="project-title"
+          id="project-title"
+        />
+      </div>
+      <br />
+      <br />
+      <button onClick={addProjectTitle} className="button-navbar">
+        next
+      </button>
+    </section>
+  );
 }
 
-export default IntroSection
+export default IntroSection;
