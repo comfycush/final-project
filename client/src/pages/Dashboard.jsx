@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/dashboard.css'
+import { Redirect } from 'react-router-dom'
 
 function Dashboard () {
     return (
