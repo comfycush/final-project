@@ -2,11 +2,13 @@ import React, { useState } from "react"
 import '../styles/login.css'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const history = useHistory()
+  const dispatch= useDispatch()
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -21,6 +23,8 @@ export default function Login() {
       .then(({data}) => {
         localStorage.setItem('access_token', data.access_token)
         localStorage.setItem('email', data.email)
+        setEmail('')
+        setPassword('')
         history.push('/dashboard')
       })
       .catch(err => {

@@ -17,7 +17,6 @@ import { useSelector } from 'react-redux'
 
 function App() {
   const location = useLocation();
-  const isLoggedIn = useSelector(state => state.isLoggedIn.isLoggedIn)
   return (
     <div className="App">
       {
@@ -28,37 +27,37 @@ function App() {
       }
       <Switch>
         <Route exact path="/" >
-          <Login />
+          {!localStorage.access_token ? <Login /> : <Redirect to='/dashboard' />}
         </Route>
         <Route exact path="/register">
-          <Register />
+          {!localStorage.access_token ? <Register /> : <Redirect to='/dashboard' />}
         </Route>
         <Route exact path="/dashboard">
-          {isLoggedIn ? <Dashboard></Dashboard> : <Redirect to='/' />}
+          {localStorage.access_token ? <Dashboard></Dashboard> : <Redirect to='/' />}
         </Route>
         <Route exact path="/intro-section">
-          {isLoggedIn ? <IntroSection></IntroSection> : <Redirect to='/' />}          
+          {localStorage.access_token ? <IntroSection></IntroSection> : <Redirect to='/' />}          
         </Route>
         <Route exact path="/navbar-section">
-          {isLoggedIn ? <NavbarSection></NavbarSection> : <Redirect to='/' />}          
+          {localStorage.access_token ? <NavbarSection></NavbarSection> : <Redirect to='/' />}          
         </Route>
         <Route exact path="/main-section">
-          {isLoggedIn ? <MainSection></MainSection> : <Redirect to='/' />}
+          {localStorage.access_token ? <MainSection></MainSection> : <Redirect to='/' />}
         </Route>
         <Route exact path="/about-section">
-          {isLoggedIn ? <AboutSection></AboutSection> : <Redirect to='/' />}
+          {localStorage.access_token ? <AboutSection></AboutSection> : <Redirect to='/' />}
         </Route>
         <Route exact path="/service-section">
-          {isLoggedIn ? <ServiceSection></ServiceSection> : <Redirect to='/' />}
+          {localStorage.access_token ? <ServiceSection></ServiceSection> : <Redirect to='/' />}
         </Route>
         <Route exact path="/contact-section">
-          {isLoggedIn ? <ContactSection></ContactSection> : <Redirect to='/' />}
+          {localStorage.access_token ? <ContactSection></ContactSection> : <Redirect to='/' />}
         </Route>
         <Route exact path="/footer-section">
-          {isLoggedIn ? <FooterSection></FooterSection> : <Redirect to='/' />}
+          {localStorage.access_token ? <FooterSection></FooterSection> : <Redirect to='/' />}
         </Route>
         <Route exact path="/finish">
-          {isLoggedIn ? <RenderFinish></RenderFinish> : <Redirect to='/' />}
+          {localStorage.access_token ? <RenderFinish></RenderFinish> : <Redirect to='/' />}
         </Route>
       </Switch>
     </div>
