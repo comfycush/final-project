@@ -15,6 +15,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
+      isDeploy: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
+      },
       navbar: {
         type: Sequelize.JSON
       },

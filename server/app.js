@@ -13,7 +13,7 @@ app.post('/register', UserController.register) //
 app.post('/login', UserController.login) //
 app.post('/googleLogin', UserController.googleLogin)
 
-app.get('/:templateId', TemplateController.getByTemplateId) //
+app.get('/:templateId', TemplateController.getTemplateDeployedById) //
 app.use(authentication)
 
 app.get('/', TemplateController.getHome) //
@@ -21,6 +21,7 @@ app.get('/template/:templateId', TemplateController.getByTemplateId) //
 app.post('/template', TemplateController.createTemplate) //
 
 app.use('/template/:templateId', authorization)
+app.patch('/template/:templateId', TemplateController.changeIsDeploy)
 app.delete('/template/:templateId', TemplateController.deleteTemplate)
 app.put('/template/:templateId', TemplateController.updateTemplate)  //
 

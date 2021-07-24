@@ -25,6 +25,25 @@ class TemplateController {
         })
     }
 
+    static getTemplateDeployedById(req, res, next) {
+        const templateId = req.params.templateId
+        Template.findByPk(templateId)
+        .then( data => {
+            if(data) {
+                if(data.isDeploy) {
+                    res.status(200).json(data)
+                } else {
+                    next({ name: `NotFound`, message: `Template with such id has not been deployed` })
+                }
+            } else {
+                next({ name: `NotFound`, message: `Template with such id not found` })
+            }
+        })
+        .catch(err => {
+            next({ message: err })
+        })
+    }
+
     static deleteTemplate(req, res, next) {
         const templateId = req.params.templateId
         Template.destroy({ where: { id: templateId } })
@@ -77,6 +96,22 @@ class TemplateController {
             } else {
                 next({ message: err })
             }
+        })
+    }
+
+    static changeIsDeploy(req, res, next) {
+        let templateId = req.params.templateId
+        let isDeploy = req.body.isDeploy
+        Template.update( {isDeploy}, { where: { id: templateId } } )
+        .then( data => {
+            if(data[0]) {
+                res.status(200).json({ message: `Template is successfully deployed` })
+            } else {
+                next({ name: `NotFound`, message: `Template with such id not found` })
+            }
+        })
+        .catch( err => {
+            next({ message: err })
         })
     }
 }
