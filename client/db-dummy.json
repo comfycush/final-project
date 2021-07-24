@@ -11,7 +11,11 @@
         "backgroundColor": "#753422",
         "companyName": "Go Law Firm",
         "companyNameColor": "#FFEBC9",
-        "navLinks": ["About", "Contact", "Service"],
+        "navLinks": [
+          "About",
+          "Contact",
+          "Service"
+        ],
         "navLinksColor": "#D79771"
       },
       "main": {
@@ -94,7 +98,11 @@
         "backgroundColor": "#B2EBF2",
         "companyName": "Get Laundry",
         "companyNameColor": "#00BCD4",
-        "navLinks": ["About", "Service", "Contact"],
+        "navLinks": [
+          "About",
+          "Service",
+          "Contact"
+        ],
         "navLinksColor": "#FF5722"
       },
       "main": {
@@ -122,10 +130,10 @@
         "backgroundColor": "#FFFFFF",
         "cardImage1": "https://image.flaticon.com/icons/png/512/1678/1678282.png",
         "cardBackgroundColor1": "#B2EBF2",
-        "cardTitle1": "Dry Cleaning",
-        "cardTitleColor1": "#DD2C00",
         "cardText1": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
         "cardTextColor1": "#171010",
+        "cardTitle1": "Dry Cleaning",
+        "cardTitleColor1": "#DD2C00",
         "cardImage2": "https://image.flaticon.com/icons/png/512/2230/2230884.png",
         "cardBackgroundColor2": "#B2EBF2",
         "cardTitle2": "Fold Services",
@@ -165,6 +173,18 @@
         "youtube": "https://www.youtube.com/",
         "companyNameColor": "#B2EBF2"
       }
+    },
+    {
+      "userId": 2,
+      "isDeploy": false,
+      "projectTitle": "Test Title",
+      "navbar": {},
+      "main": {},
+      "about": {},
+      "service": {},
+      "contact": {},
+      "footer": {},
+      "id": 3
     }
   ]
 }

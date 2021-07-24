@@ -56,3 +56,39 @@ export function setFooterSection(input) {
     payload: input,
   };
 }
+
+export function createTemplate(data) {
+  return async (dispatch) => {
+    try {
+      const response = await fetch("http://localhost:3001/template", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response;
+      console.log(result, "<<< result");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}
+
+export function updateTemplate(id, data) {
+  return async (dispatch) => {
+    try {
+      const response = await fetch(`http://localhost:3001/template/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await response;
+      console.log(result, "<<< result");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+}

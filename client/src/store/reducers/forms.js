@@ -16,7 +16,6 @@ const initialState = {
   service: {},
   contact: {},
   footer: {},
-  imageUrl: "",
 };
 
 export default function formsReduces(state = initialState, action) {

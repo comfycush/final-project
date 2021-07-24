@@ -12,12 +12,13 @@ import ButtonTemplate from "../components/ButtonTemplate";
 export default function RenderFinish() {
   const state = useSelector((state) => state.forms);
   console.log(state);
-  const id = 2;
+  const id = 1;
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
   const templateIsLoading = useSelector((state) => state.template.isLoading);
   const templateIsError = useSelector((state) => state.template.isError);
-  const isDeploy = useSelector((state) => state.template.isDeploy);
+  // const isDeploy = useSelector((state) => state.template.isDeploy);
+  const isDeploy = templateData.isDeploy;
 
   useEffect(() => {
     dispatch(getTemplateId(id));
