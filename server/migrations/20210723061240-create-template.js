@@ -12,7 +12,8 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       projectTitle: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       navbar: {
         type: Sequelize.JSON
