@@ -1,0 +1,106 @@
+.type-1-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 5rem;
+}
+
+.type-1-contact .contact-inside {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5rem;
+}
+
+.type-1-contact h1 {
+  font-size: 3rem;
+}
+
+.type-1-contact .card-contact img {
+  width: 7rem;
+  height: 7rem;
+  margin: 0;
+  margin-bottom: 2rem;
+}
+
+.type-1-contact .card-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  /* max-width: 20rem; */
+  width: 30rem;
+  text-align: center;
+  margin: 0 5rem;
+}
+
+.type-1-contact .card-contact p {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.type-2-contact {
+  display: flex;
+  padding: 3rem 8rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.type-2-contact h1 {
+  font-size: 3.5rem;
+  width: 20rem;
+}
+
+.type-2-contact .contact-inside {
+  /* margin-left: 3rem; */
+  max-width: 50rem;
+}
+
+.type-2-contact .card-contact img {
+  width: 6rem;
+  height: 6rem;
+  margin-right: 3rem;
+}
+
+.type-2-contact .card-contact {
+  display: flex;
+  margin: 3rem 0;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.type-3-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 5rem;
+}
+
+.type-3-contact h1 {
+  font-size: 3rem;
+}
+
+.type-3-contact .contact-inside {
+  margin-top: 4rem;
+}
+
+.type-3-contact img {
+  width: 8rem;
+  height: 8rem;
+  margin: 0;
+}
+
+.type-3-contact .card-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 35rem;
+  text-align: center;
+}
+
+.type-3-contact p {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0 3rem 0;
+}

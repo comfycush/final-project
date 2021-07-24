@@ -23,7 +23,16 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     projectTitle: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty : {
+          msg: 'projectTitle required'
+        },
+        notNull: {
+          msg: 'projectTitle required'
+        }
+      },
+      allowNull: false
     },
     navbar: {
       type: DataTypes.JSON
