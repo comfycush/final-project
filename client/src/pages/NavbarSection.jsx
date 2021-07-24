@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setNavbarSection } from "../store/actions/forms";
+import swal from "sweetalert";
 import "../styles/navbarSection.css";
 
 function NavbarSection() {
@@ -14,8 +15,6 @@ function NavbarSection() {
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
   const [navlinks, setNavlinks] = useState([]);
   const [navlinksColor, setNavlinksColor] = useState("#000000");
-
-  // console.log(navlinks, "<<<< NAVLINKS");
 
   function addNavlink(status, input) {
     if (status) {
@@ -41,8 +40,6 @@ function NavbarSection() {
       sortNavlinks.push(contactValue);
     }
 
-    // console.log(sortNavlinks, "<<< sort");
-
     event.preventDefault();
     const dataNavbarSection = {
       type,
@@ -54,8 +51,16 @@ function NavbarSection() {
       navlinksColor,
     };
 
-    dispatch(setNavbarSection(dataNavbarSection));
-    // history.push("/main-section");
+    if (!dataNavbarSection.companyName && !dataNavbarSection.logo) {
+      swal("Please fill in your company name or company logo");
+    } else if (dataNavbarSection.sortNavlinks.length === 0) {
+      swal("Please choose minimum 1 link");
+    } else if (!dataNavbarSection.type) {
+      swal("please choose your required template");
+    } else {
+      dispatch(setNavbarSection(dataNavbarSection));
+      history.push("/main-section");
+    }
   }
 
   return (
