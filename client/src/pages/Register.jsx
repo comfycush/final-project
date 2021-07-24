@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import '../styles/Register.css'
+import '../styles/register.css'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 
@@ -28,6 +28,7 @@ export default function Register() {
 
   return (
     <div className="register-card">
+    <h2>Register</h2>
     <form onSubmit={handleSubmit}>
       <div className="mb">
         <label className="email-register-label">Email:</label>

@@ -10,6 +10,8 @@ import AboutSection from "./pages/AboutSection";
 import ServiceSection from "./pages/ServiceSection";
 import ContactSection from "./pages/ContactSection";
 import FooterSection from "./pages/FooterSection";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import { useLocation } from "react-router-dom";
 
 function App() {
@@ -18,6 +20,12 @@ function App() {
     <div className="App">
       {location.pathname !== "/finish" && <Sidebar></Sidebar>}
       <Switch>
+        <Route exact path="/" >
+          <Login />
+        </Route>
+        <Route exact path="/register">
+          <Register />
+        </Route>
         <Route exact path="/dashboard">
           <Dashboard></Dashboard>
         </Route>

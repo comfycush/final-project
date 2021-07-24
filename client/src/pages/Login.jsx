@@ -30,6 +30,7 @@ export default function Login() {
 
  return (
   <div className="login-card">
+    <h2>Login</h2>
     <form onSubmit={handleSubmit}>
       <div className="mb">
         <label className="email-login-label">Email:</label>
