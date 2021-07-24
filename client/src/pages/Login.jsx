@@ -30,7 +30,7 @@ export default function Login() {
 
  return (
   <div className="login-card">
-    <h2>Login</h2>
+    <h2 className="login-title">Login</h2>
     <form onSubmit={handleSubmit}>
       <div className="mb">
         <label className="email-login-label">Email:</label>
@@ -40,7 +40,9 @@ export default function Login() {
         <label className="password-login-label">Password:</label>
         <input type="password" onChange={(e) => setPassword(e.target.value)} className="password-login-input" />
       </div>
-      <button className="btn" type="submit">Login</button>
+      <div className="btn-login">
+        <button className="btn" type="submit">Login</button>
+      </div>
     </form>
   </div>
  )
