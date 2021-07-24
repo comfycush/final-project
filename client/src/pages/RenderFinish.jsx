@@ -10,19 +10,37 @@ import FooterTemplate from "../components/FooterTemplate";
 import ButtonTemplate from "../components/ButtonTemplate";
 
 export default function RenderFinish() {
-  const state = useSelector(state => state.forms)
-  console.log(state)
+  const state = useSelector((state) => state.forms);
+  console.log(state);
   const id = 1;
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
+  const templateIsLoading = useSelector((state) => state.template.isLoading);
+  const templateIsError = useSelector((state) => state.template.isError);
+  const isDeploy = useSelector((state) => state.template.isDeploy);
 
   useEffect(() => {
     dispatch(getTemplateId(id));
   }, [dispatch]);
 
+  if (templateIsLoading) {
+    return (
+      <div className="loading-render">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
+  if (templateIsError) {
+    return (
+      <div className="error-render">
+        <h1>Error Has Occured</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="render-template">
-      {/* <p>{JSON.stringify(templateData.navbar)}</p> */}
       {templateData.navbar && (
         <NavbarTemplate navbarData={templateData.navbar}></NavbarTemplate>
       )}
@@ -44,7 +62,7 @@ export default function RenderFinish() {
           navbarData={templateData.navbar}
         ></FooterTemplate>
       )}
-      <ButtonTemplate></ButtonTemplate>
+      {!isDeploy && <ButtonTemplate></ButtonTemplate>}
     </div>
   );
 }

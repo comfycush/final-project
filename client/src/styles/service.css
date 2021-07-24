@@ -72,9 +72,13 @@
 
 .type-2-service {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-  padding: 3rem 0;
+  padding: 2rem 7rem 0 7rem;
+}
+
+.type-2-service .service-card-section {
+  margin: 1rem;
 }
 
 .type-2-service .card-service {
@@ -83,8 +87,12 @@
   align-items: center;
   border-radius: 1rem;
   max-width: 60rem;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
   padding: 2rem;
+}
+
+.type-2-service .service-headline {
+  font-size: 4rem;
 }
 
 .type-2-service .card-service img {
@@ -100,4 +108,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.update-service-section button {
+  background-color: #b980f0;
+  color: white;
 }

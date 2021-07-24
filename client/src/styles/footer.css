@@ -1,6 +1,6 @@
 .type-1-footer {
   display: flex;
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 5rem;
   justify-content: space-between;
   align-items: center;
 }
@@ -44,4 +44,9 @@
   width: 2rem;
   height: 2rem;
   margin: 0;
+}
+
+.update-footer-section button {
+  background-color: #c68b59;
+  color: white;
 }

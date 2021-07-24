@@ -45,7 +45,7 @@
 }
 
 .text-about-section {
-  max-width: 40rem;
+  width: 40rem;
 }
 
 .text-about-section h1 {
@@ -56,4 +56,14 @@
 .text-about-section p {
   font-size: 1.2rem;
   margin-top: 2rem;
+  max-width: 36rem;
+}
+
+.type-3-about .text-about-section p {
+  max-width: none;
+}
+
+.update-about-section button {
+  background-color: #b0c35a;
+  color: white;
 }

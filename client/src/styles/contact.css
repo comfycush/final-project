@@ -8,8 +8,10 @@
 .type-1-contact .contact-inside {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
   margin-top: 5rem;
+  margin-bottom: 2rem;
 }
 
 .type-1-contact h1 {
@@ -47,13 +49,16 @@
 }
 
 .type-2-contact h1 {
-  font-size: 3.5rem;
-  width: 20rem;
+  font-size: 4rem;
+  width: 30rem;
 }
 
 .type-2-contact .contact-inside {
   /* margin-left: 3rem; */
-  max-width: 50rem;
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .type-2-contact .card-contact img {
@@ -103,4 +108,9 @@
   font-size: 2rem;
   font-weight: bold;
   margin: 1rem 0 3rem 0;
+}
+
+.update-contact-section button {
+  background-color: #8d2828;
+  color: white;
 }
