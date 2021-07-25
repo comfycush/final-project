@@ -15,13 +15,15 @@ export default function RenderFinish() {
   const location = useLocation();
   console.log(state);
   // const id = location.state.templateId ? location.state.templateId : 3;
-  const id = 4;
+  const id = 3;
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
   const templateIsLoading = useSelector((state) => state.template.isLoading);
   const templateIsError = useSelector((state) => state.template.isError);
   // const isDeploy = useSelector((state) => state.template.isDeploy);
   const isDeploy = templateData.isDeploy;
+
+  console.log(templateData, "<<<,");
 
   useEffect(() => {
     dispatch(getTemplateId(id));
@@ -56,24 +58,28 @@ export default function RenderFinish() {
         <MainTemplate
           mainData={templateData.main}
           isDeploy={isDeploy}
+          templateData={templateData}
         ></MainTemplate>
       )}
       {templateData.about && (
         <AboutTemplate
           aboutData={templateData.about}
           isDeploy={isDeploy}
+          templateData={templateData}
         ></AboutTemplate>
       )}
       {templateData.service && (
         <ServiceTemplate
           serviceData={templateData.service}
           isDeploy={isDeploy}
+          templateData={templateData}
         ></ServiceTemplate>
       )}
       {templateData.contact && (
         <ContactTemplate
           contactData={templateData.contact}
           isDeploy={isDeploy}
+          templateData={templateData}
         ></ContactTemplate>
       )}
       {templateData.footer && (
@@ -81,6 +87,7 @@ export default function RenderFinish() {
           footerData={templateData.footer}
           navbarData={templateData.navbar}
           isDeploy={isDeploy}
+          templateData={templateData}
         ></FooterTemplate>
       )}
       {!isDeploy && <ButtonTemplate></ButtonTemplate>}

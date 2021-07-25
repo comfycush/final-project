@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import swal from "sweetalert";
 import { useDispatch } from "react-redux";
-import { setNavbarSection, updateTemplate } from "../store/actions/forms";
-import { getImageUrl } from "../store/actions/uploadImage";
+import { setNavbarSection, updateTemplate } from "../../store/actions/forms";
+import { getImageUrl, setLogoUrl } from "../../store/actions/uploadImage";
 import { useHistory } from "react-router-dom";
 
 export default function UpdateNavbarForm({ data, allData }) {
@@ -20,6 +20,10 @@ export default function UpdateNavbarForm({ data, allData }) {
   const [navlinksColor, setNavlinksColor] = useState(data.navlinksColor);
   const logoUrl = useSelector((state) => state.uploadImage.logoUrl);
   // const [logoUrl, setLO]
+
+  useEffect(() => {
+    dispatch(setLogoUrl(data.logo));
+  }, []);
 
   function addNavlink(status, input) {
     if (status) {
@@ -88,12 +92,11 @@ export default function UpdateNavbarForm({ data, allData }) {
   }
 
   function uploadLogo(file, code) {
-    if (logoUrl) dispatch(getImageUrl(file, code));
+    dispatch(getImageUrl(file, code));
   }
 
   return (
     <section id="navbar-section">
-      <h1>Navbar Section</h1>
       <div className="input">
         <label htmlFor="generate-color" className="generate-color-label">
           Generate Color Palatte
@@ -137,13 +140,14 @@ export default function UpdateNavbarForm({ data, allData }) {
           name="company-logo"
           className="company-logo"
         />
-        {data.logo && (
+        {logoUrl && (
           <img
             style={{ width: "5rem", height: "5rem" }}
-            src={data.logo}
+            src={logoUrl}
             alt="logo"
           />
         )}
+        <button onClick={() => dispatch(setLogoUrl(""))}>Remove Image</button>
         <br />
         <br />
         <label htmlFor="links-navbar">Links</label>
@@ -250,7 +254,7 @@ export default function UpdateNavbarForm({ data, allData }) {
         <br />
         <br />
         <button onClick={updateNavbarSection} className="button-navbar">
-          next
+          Update Section
         </button>
       </div>
     </section>

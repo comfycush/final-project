@@ -23,7 +23,7 @@ function NavbarSection(props) {
   const stateIntro = location.state;
   // console.log(stateIntro, "<<<< stateIntro");
   const navbar = useSelector((state) => state.forms.navbar);
-  const templateId = 4;
+  const templateId = 3;
 
   function addNavlink(status, input) {
     if (status) {

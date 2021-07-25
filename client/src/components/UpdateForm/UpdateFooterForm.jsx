@@ -2,28 +2,27 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
-import "../styles/footerSection.css";
-import { setFooterSection, updateTemplate } from "../store/actions/forms";
+import "../../styles/footerSection.css";
+import { setFooterSection, updateTemplate } from "../../store/actions/forms";
 import { useLocation } from "react-router";
 
-function FooterSection() {
+export default function UpdateFooterForm({ data, allData }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-  const [type, setType] = useState(null);
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
-  const [iconColor, setIconColor] = useState("");
-  const [facebook, setFacebook] = useState("");
-  const [instagram, setInstagram] = useState("");
-  const [twitter, setTwitter] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [youtube, setYoutube] = useState("");
-  const [companyNameColor, setCompanyNameColor] = useState("#000000");
+  const [type, setType] = useState(data.type);
+  const [backgroundColor, setBackgroundColor] = useState(data.backgroundColor);
+  const [iconColor, setIconColor] = useState(data.iconColor);
+  const [facebook, setFacebook] = useState(data.facebook);
+  const [instagram, setInstagram] = useState(data.instagram);
+  const [twitter, setTwitter] = useState(data.twitter);
+  const [linkedin, setLinkedin] = useState(data.linkedin);
+  const [youtube, setYoutube] = useState(data.youtube);
+  const [companyNameColor, setCompanyNameColor] = useState(
+    data.companyNameColor
+  );
 
-  const stateContact = location.state;
-  const templateId = 3;
-
-  function addFooterSection() {
+  function updateFooterSection() {
     const dataFooterSection = {
       type: +type,
       backgroundColor,
@@ -50,15 +49,23 @@ function FooterSection() {
       swal("Please choose your required template");
     } else {
       dispatch(setFooterSection(dataFooterSection));
-      const newestTemplate = {
-        ...stateContact,
+      const updatedTemplate = {
+        isDeploy: allData.isDeploy,
+        projectTitle: allData.projectTitle,
+        userId: allData.userId,
+        main: allData.main,
+        about: allData.about,
+        service: allData.service,
+        contact: allData.contact,
         footer: dataFooterSection,
+        navbar: allData.navbar,
       };
-      dispatch(updateTemplate(templateId, newestTemplate));
+      dispatch(updateTemplate(allData.id, updatedTemplate));
+      // console.log(templateId, updatedTemplate, "<<< update");
       history.push({
         pathname: "/finish",
         state: {
-          templateId,
+          templateId: allData.id,
         },
       });
     }
@@ -84,6 +91,7 @@ function FooterSection() {
           type="text"
           name="link-facebook"
           className="link-facebook"
+          value={facebook}
         />
         <br />
         <br />
@@ -95,6 +103,7 @@ function FooterSection() {
           type="text"
           name="link-instagram"
           className="link-instagram"
+          value={instagram}
         />
         <br />
         <br />
@@ -106,6 +115,7 @@ function FooterSection() {
           type="text"
           name="link-twitter"
           className="link-twitter"
+          value={twitter}
         />
         <br />
         <br />
@@ -117,6 +127,7 @@ function FooterSection() {
           type="text"
           name="link-linkedin"
           className="link-linkedin"
+          value={linkedin}
         />
         <br />
         <br />
@@ -128,6 +139,7 @@ function FooterSection() {
           type="text"
           name="link-youtube"
           className="link-youtube"
+          value={youtube}
         />
         <br />
         <br />
@@ -139,6 +151,7 @@ function FooterSection() {
           type="color"
           name="company-name-color"
           className="company-name-color"
+          value={companyNameColor}
         />
         <br />
         <br />
@@ -148,16 +161,18 @@ function FooterSection() {
           defaultValue="black"
           type="radio"
           style={{ marginLeft: "1.5rem" }}
-          name="black-icon"
+          name="icon-color"
           id="black-icon"
+          defaultChecked={iconColor === "black" ? true : false}
         />
         <label htmlFor="black-icon">Black</label>
         <input
           onClick={(event) => setIconColor(event.target.value)}
           defaultValue="white"
           type="radio"
-          name="white-icon"
+          name="icon-color"
           id="white-icon"
+          defaultChecked={iconColor === "white" ? true : false}
         />
         <label htmlFor="white-icon">White</label>
         <br />
@@ -168,6 +183,7 @@ function FooterSection() {
           type="color"
           name="background-color-navbar"
           id="background-color-navbar"
+          value={backgroundColor}
         />
         <br />
         <br />
@@ -179,8 +195,9 @@ function FooterSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="1"
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
+            defaultChecked={type === 1 ? true : false}
           />
           <img
             className="selection-img"
@@ -191,8 +208,9 @@ function FooterSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="2"
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
+            defaultChecked={type === 2 ? true : false}
           />
           <img
             className="selection-img"
@@ -203,8 +221,9 @@ function FooterSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="3"
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
+            defaultChecked={type === 3 ? true : false}
           />
           <img
             className="selection-img"
@@ -215,11 +234,9 @@ function FooterSection() {
         <br />
         <br />
         <div className="button-footer">
-          <button onClick={addFooterSection}>finish</button>
+          <button onClick={updateFooterSection}>Update Section</button>
         </div>
       </div>
     </section>
   );
 }
-
-export default FooterSection;

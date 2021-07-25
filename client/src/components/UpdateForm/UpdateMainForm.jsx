@@ -1,29 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setMainSection, updateTemplate } from "../store/actions/forms";
-import "../styles/mainSection.css";
-import { getImageUrl, setMainImageUrl } from "../store/actions/uploadImage";
+import { setMainSection, updateTemplate } from "../../store/actions/forms";
+import "../../styles/mainSection.css";
+import { getImageUrl, setMainImageUrl } from "../../store/actions/uploadImage";
 import { useLocation } from "react-router";
 
-function MainSection() {
+function UpdateMainSection({ data, allData }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation();
-  const [headline, setHeadline] = useState("");
-  const [headlineColor, setHeadlineColor] = useState("#000000");
+  const [headline, setHeadline] = useState(data.headline);
+  const [headlineColor, setHeadlineColor] = useState(data.headlineColor);
   // const [image, setImage] = useState('')
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
-  const [subHeadline, setSubHeadline] = useState("");
-  const [subHeadlineColor, setsubHeadlineColor] = useState("#000000");
-  const [type, setType] = useState(null);
+  const [backgroundColor, setBackgroundColor] = useState(data.backgroundColor);
+  const [subHeadline, setSubHeadline] = useState(data.subHeadline);
+  const [subHeadlineColor, setsubHeadlineColor] = useState(
+    data.subHeadlineColor
+  );
+  const [type, setType] = useState(data.type);
   const mainImageUrl = useSelector((state) => state.uploadImage.mainImageUrl);
+  // const mainImageUrl = data.image;
 
-  const stateNavbar = location.state;
-  const templateId = 3;
+  // console.log(mainImageUrl, "<<< image url");
 
-  function addMainSection(event) {
+  useEffect(() => {
+    dispatch(setMainImageUrl(data.image));
+  }, []);
+
+  function updateMainSection(event) {
     event.preventDefault();
     const dataMainSection = {
       type: +type,
@@ -43,26 +49,28 @@ function MainSection() {
       swal("Please choose your require template");
     } else {
       dispatch(setMainSection(dataMainSection));
-      const newestTemplate = {
-        ...stateNavbar,
+      const updatedTemplate = {
+        isDeploy: allData.isDeploy,
+        projectTitle: allData.projectTitle,
+        userId: allData.userId,
+        navbar: allData.navbar,
         main: dataMainSection,
-        about: {},
-        service: {},
-        contact: {},
-        footer: {},
+        about: allData.about,
+        service: allData.service,
+        contact: allData.contact,
+        footer: allData.footer,
       };
-      dispatch(updateTemplate(templateId, newestTemplate));
+      dispatch(updateTemplate(allData.id, updatedTemplate));
       history.push({
-        pathname: "/about-section",
+        pathname: "/finish",
         state: {
-          ...stateNavbar,
-          main: dataMainSection,
+          templateId: allData.id,
         },
       });
     }
   }
 
-  function skipMainSection(event) {
+  function removeMainSection(event) {
     event.preventDefault();
     const dataMainSection = {
       type: null,
@@ -75,12 +83,23 @@ function MainSection() {
     };
 
     dispatch(setMainSection(dataMainSection));
+    const updatedTemplate = {
+      isDeploy: allData.isDeploy,
+      projectTitle: allData.projectTitle,
+      userId: allData.userId,
+      navbar: allData.navbar,
+      main: dataMainSection,
+      about: allData.about,
+      service: allData.service,
+      contact: allData.contact,
+      footer: allData.footer,
+    };
     // history.push("/about-section");
+    dispatch(updateTemplate(allData.id, updatedTemplate));
     history.push({
-      pathname: "/about-section",
+      pathname: "/finish",
       state: {
-        ...stateNavbar,
-        main: dataMainSection,
+        templateId: allData.id,
       },
     });
   }
@@ -92,7 +111,6 @@ function MainSection() {
   return (
     <section id="main-section">
       <h1>Main Section</h1>
-      <h3>2 of 6</h3>
       <div className="input">
         <label htmlFor="generate-color" className="generate-color-label">
           Generate Color Palatte
@@ -109,6 +127,7 @@ function MainSection() {
           type="text"
           name="main-headline"
           className="main-headline"
+          value={headline}
         />
         <label htmlFor="main-headline" className="main-headline">
           Color
@@ -118,6 +137,7 @@ function MainSection() {
           type="color"
           name="main-headline"
           className="main-headline"
+          value={headlineColor}
         />
         <br />
         <br />
@@ -129,6 +149,7 @@ function MainSection() {
           type="text"
           name="main-subheadline"
           className="main-subheadline"
+          value={subHeadline}
         />
         <label htmlFor="main-subheadline" className="main-subheadline">
           Color
@@ -138,6 +159,7 @@ function MainSection() {
           type="color"
           name="main-subheadline"
           className="main-subheadline"
+          value={subHeadlineColor}
         />
         <br />
         <br />
@@ -168,6 +190,7 @@ function MainSection() {
           type="color"
           name="background-color-mainb"
           id="background-color-main"
+          value={backgroundColor}
         />
         <br />
         <br />
@@ -181,6 +204,7 @@ function MainSection() {
             type="radio"
             name="opt-navbar"
             id="opt1-navbar"
+            defaultChecked={type === 1 ? true : false}
           />
           <img
             className="selection-img"
@@ -193,6 +217,7 @@ function MainSection() {
             type="radio"
             name="opt-navbar"
             id="opt2-navbar"
+            defaultChecked={type === 2 ? true : false}
           />
           <img
             className="selection-img"
@@ -205,6 +230,7 @@ function MainSection() {
             type="radio"
             name="opt-navbar"
             id="opt3-navbar"
+            defaultChecked={type === 3 ? true : false}
           />
           <img
             className="selection-img"
@@ -215,12 +241,12 @@ function MainSection() {
         <br />
         <br />
         <div className="button-main">
-          <button onClick={skipMainSection}>skip</button>
-          <button onClick={addMainSection}>next</button>
+          {/* <button onClick={removeMainSection}>Remove Section</button> */}
+          <button onClick={updateMainSection}>Update Section</button>
         </div>
       </div>
     </section>
   );
 }
 
-export default MainSection;
+export default UpdateMainSection;

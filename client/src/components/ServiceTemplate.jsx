@@ -1,12 +1,29 @@
 import "../styles/service.css";
 import CardService from "./CardService";
 // import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
-export default function ServiceTemplate({ serviceData, isDeploy }) {
+export default function ServiceTemplate({
+  serviceData,
+  isDeploy,
+  templateData,
+}) {
   // const isDeploy = useSelector((state) => state.template.isDeploy);
+  const history = useHistory();
 
   if (!serviceData.type) {
     return null;
+  }
+
+  function toUpdatePage() {
+    history.push({
+      pathname: "/update-template",
+      state: {
+        section: "service",
+        data: serviceData,
+        allData: templateData,
+      },
+    });
   }
 
   return (
@@ -76,7 +93,9 @@ export default function ServiceTemplate({ serviceData, isDeploy }) {
       </div>
       {!isDeploy && (
         <div className="update-service-section">
-          <button className="btn btn-update-section">Update Service</button>
+          <button onClick={toUpdatePage} className="btn btn-update-section">
+            Update Service
+          </button>
         </div>
       )}
     </div>

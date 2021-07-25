@@ -1,54 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import "../styles/serviceSection.css";
-import { setServiceSection, updateTemplate } from "../store/actions/forms";
+import "../../styles/serviceSection.css";
+import { setServiceSection, updateTemplate } from "../../store/actions/forms";
 import {
   getImageUrl,
   setCardImage1Url,
   setCardImage2Url,
   setCardImage3Url,
-} from "../store/actions/uploadImage";
+} from "../../store/actions/uploadImage";
 import { useLocation } from "react-router";
 
-function ServiceSection() {
+export default function UpdateServiceSection({ data, allData }) {
+  console.log(data, "<<< data");
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-  const [type, setType] = useState(null);
-  const [headline, setHeadline] = useState("");
-  const [headlineColor, setHeadlineColor] = useState("#000000");
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
+  const [type, setType] = useState(data.type);
+  const [headline, setHeadline] = useState(data.headline);
+  const [headlineColor, setHeadlineColor] = useState(data.headlineColor);
+  const [backgroundColor, setBackgroundColor] = useState(data.backgroundColor);
 
   // const [cardImage1, setCardImage1] = useState('')
   const card1ImageUrl = useSelector((state) => state.uploadImage.card1ImageUrl);
-  const [cardBackgroundColor1, setcardBackgroundColor1] = useState("#000000");
-  const [cardTitle1, setCardTitle1] = useState("");
-  const [cardTitleColor1, setCardTitleColor1] = useState("#000000");
-  const [cardText1, setCardText1] = useState("");
-  const [cardTextColor1, setCardTextColor1] = useState("#000000");
+  const [cardBackgroundColor1, setcardBackgroundColor1] = useState(
+    data.cardBackgroundColor1
+  );
+  const [cardTitle1, setCardTitle1] = useState(data.cardTitle1);
+  const [cardTitleColor1, setCardTitleColor1] = useState(data.cardTitleColor1);
+  const [cardText1, setCardText1] = useState(data.cardText1);
+  const [cardTextColor1, setCardTextColor1] = useState(data.cardTextColor1);
 
   // const [cardImage2, setCardImage2] = useState('')
   const card2ImageUrl = useSelector((state) => state.uploadImage.card2ImageUrl);
-  const [cardBackgroundColor2, setcardBackgroundColor2] = useState("#000000");
-  const [cardTitle2, setCardTitle2] = useState("");
-  const [cardTitleColor2, setCardTitleColor2] = useState("#000000");
-  const [cardText2, setCardText2] = useState("");
-  const [cardTextColor2, setCardTextColor2] = useState("#000000");
+  const [cardBackgroundColor2, setcardBackgroundColor2] = useState(
+    data.cardBackgroundColor2
+  );
+  const [cardTitle2, setCardTitle2] = useState(data.cardTitle2);
+  const [cardTitleColor2, setCardTitleColor2] = useState(data.cardTitleColor2);
+  const [cardText2, setCardText2] = useState(data.cardText2);
+  const [cardTextColor2, setCardTextColor2] = useState(data.cardTextColor2);
 
   // const [cardImage3, setCardImage3] = useState('')
   const card3ImageUrl = useSelector((state) => state.uploadImage.card3ImageUrl);
-  const [cardBackgroundColor3, setcardBackgroundColor3] = useState("#000000");
-  const [cardTitle3, setCardTitle3] = useState("");
-  const [cardTitleColor3, setCardTitleColor3] = useState("#000000");
-  const [cardText3, setCardText3] = useState("");
-  const [cardTextColor3, setCardTextColor3] = useState("#000000");
+  const [cardBackgroundColor3, setcardBackgroundColor3] = useState(
+    data.cardBackgroundColor3
+  );
+  const [cardTitle3, setCardTitle3] = useState(data.cardTitle3);
+  const [cardTitleColor3, setCardTitleColor3] = useState(data.cardTitleColor3);
+  const [cardText3, setCardText3] = useState(data.cardText3);
+  const [cardTextColor3, setCardTextColor3] = useState(data.cardTextColor3);
 
-  const stateAbout = location.state;
-  const templateId = 3;
+  useEffect(() => {
+    dispatch(setCardImage1Url(data.cardImage1));
+    dispatch(setCardImage2Url(data.cardImage2));
+    dispatch(setCardImage3Url(data.cardImage3));
+  }, []);
 
-  function addServiceSection() {
+  console.log(data.cardImage1, "data card image 1");
+
+  function updateServiceSection() {
     const dataServiceSection = {
       type: +type,
       headline,
@@ -87,24 +99,28 @@ function ServiceSection() {
       swal("Please choose your required template");
     } else {
       dispatch(setServiceSection(dataServiceSection));
-      const newestTemplate = {
-        ...stateAbout,
+      const updatedTemplate = {
+        isDeploy: allData.isDeploy,
+        projectTitle: allData.projectTitle,
+        userId: allData.userId,
+        navbar: allData.navbar,
+        main: allData.main,
+        about: allData.about,
         service: dataServiceSection,
-        contact: {},
-        footer: {},
+        contact: allData.contact,
+        footer: allData.footer,
       };
-      dispatch(updateTemplate(templateId, newestTemplate));
+      dispatch(updateTemplate(allData.id, updatedTemplate));
       history.push({
-        pathname: "/contact-section",
+        pathname: "/finish",
         state: {
-          ...stateAbout,
-          service: dataServiceSection,
+          templateId: allData.id,
         },
       });
     }
   }
 
-  function skipServiceSection() {
+  function removeServiceSection() {
     const dataServiceSection = {
       type: null,
       headline: null,
@@ -131,12 +147,22 @@ function ServiceSection() {
     };
 
     dispatch(setServiceSection(dataServiceSection));
-    // history.push("/contact-section");
+    const updatedTemplate = {
+      isDeploy: allData.isDeploy,
+      projectTitle: allData.projectTitle,
+      userId: allData.userId,
+      navbar: allData.navbar,
+      main: allData.main,
+      about: allData.about,
+      service: dataServiceSection,
+      contact: allData.contact,
+      footer: allData.footer,
+    };
+    dispatch(updateTemplate(allData.id, updatedTemplate));
     history.push({
-      pathname: "/contact-section",
+      pathname: "/finish",
       state: {
-        ...stateAbout,
-        service: dataServiceSection,
+        templateId: allData.id,
       },
     });
   }
@@ -147,8 +173,6 @@ function ServiceSection() {
 
   return (
     <section id="service-section">
-      <h1>Service Section</h1>
-      <h3>4 of 6</h3>
       <div className="input">
         <label htmlFor="generate-color" className="generate-color-label">
           Generate Color Palatte
@@ -165,6 +189,7 @@ function ServiceSection() {
           type="text"
           name="service-headline"
           className="service-headline"
+          value={headline}
         />
         <label htmlFor="service-headline" className="service-headline">
           Color
@@ -174,6 +199,7 @@ function ServiceSection() {
           type="color"
           name="service-headline"
           className="service-headline"
+          value={headlineColor}
         />
         <br />
         <br />
@@ -206,6 +232,7 @@ function ServiceSection() {
           type="text"
           name="service-card1"
           className="service-card1"
+          value={cardTitle1}
         />
         <label htmlFor="service-card1" className="service-card1">
           Color
@@ -215,6 +242,7 @@ function ServiceSection() {
           onChange={(event) => setCardTitleColor1(event.target.value)}
           name="service-card1"
           className="service-card1"
+          value={cardTitleColor1}
         />
         <br />
         <br />
@@ -226,6 +254,7 @@ function ServiceSection() {
           type="text"
           name="service-card1"
           className="service-card1"
+          value={cardText1}
         />
         <label htmlFor="service-card1" className="service-card1">
           Color
@@ -235,6 +264,7 @@ function ServiceSection() {
           onChange={(event) => setCardTextColor1(event.target.value)}
           name="service-card1"
           className="service-card1"
+          value={cardTextColor1}
         />
         <br />
         <br />
@@ -246,6 +276,7 @@ function ServiceSection() {
           onChange={(event) => setcardBackgroundColor1(event.target.value)}
           name="service-card1"
           className="service-card1"
+          value={cardBackgroundColor1}
         />
         <br />
         <br />
@@ -278,6 +309,7 @@ function ServiceSection() {
           type="text"
           name="service-card2"
           className="service-card2"
+          value={cardTitle2}
         />
         <label htmlFor="service-card2" className="service-card2">
           Color
@@ -287,6 +319,7 @@ function ServiceSection() {
           onChange={(event) => setCardTitleColor2(event.target.value)}
           name="service-card2"
           className="service-card2"
+          value={cardTitleColor2}
         />
         <br />
         <br />
@@ -298,6 +331,7 @@ function ServiceSection() {
           type="text"
           name="service-card2"
           className="service-card2"
+          value={cardText2}
         />
         <label htmlFor="service-card2" className="service-card2">
           Color
@@ -307,6 +341,7 @@ function ServiceSection() {
           onChange={(event) => setCardTextColor2(event.target.value)}
           name="service-card2"
           className="service-card2"
+          value={cardTextColor2}
         />
         <br />
         <br />
@@ -318,6 +353,7 @@ function ServiceSection() {
           onChange={(event) => setcardBackgroundColor2(event.target.value)}
           name="service-card2"
           className="service-card2"
+          value={cardBackgroundColor2}
         />
         <br />
         <br />
@@ -350,6 +386,7 @@ function ServiceSection() {
           type="text"
           name="service-card3"
           className="service-card3"
+          value={cardTitle3}
         />
         <label htmlFor="service-card3" className="service-card3">
           Color
@@ -359,6 +396,7 @@ function ServiceSection() {
           onChange={(event) => setCardTitleColor3(event.target.value)}
           name="service-card3"
           className="service-card3"
+          value={cardTitleColor3}
         />
         <br />
         <br />
@@ -370,6 +408,7 @@ function ServiceSection() {
           type="text"
           name="service-card3"
           className="service-card3"
+          value={cardText3}
         />
         <label htmlFor="service-card3" className="service-card3">
           Color
@@ -379,6 +418,7 @@ function ServiceSection() {
           onChange={(event) => setCardTextColor3(event.target.value)}
           name="service-card3"
           className="service-card3"
+          value={cardTextColor3}
         />
         <br />
         <br />
@@ -390,6 +430,7 @@ function ServiceSection() {
           onChange={(event) => setcardBackgroundColor3(event.target.value)}
           name="service-card3"
           className="service-card3"
+          value={cardBackgroundColor3}
         />
         <br />
         <br />
@@ -399,6 +440,7 @@ function ServiceSection() {
           onChange={(event) => setBackgroundColor(event.target.value)}
           name="background-color-service"
           id="background-color-service"
+          value={backgroundColor}
         />
         <br />
         <br />
@@ -410,8 +452,9 @@ function ServiceSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="1"
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
+            defaultChecked={type === 1 ? true : false}
           />
           <img
             className="selection-img"
@@ -422,8 +465,9 @@ function ServiceSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="2"
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
+            defaultChecked={type === 2 ? true : false}
           />
           <img
             className="selection-img"
@@ -434,8 +478,9 @@ function ServiceSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="3"
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
+            defaultChecked={type === 3 ? true : false}
           />
           <img
             className="selection-img"
@@ -444,11 +489,11 @@ function ServiceSection() {
           />
         </div>
         <div className="button-service">
-          <button onClick={skipServiceSection}>skip</button>
-          <button onClick={addServiceSection}>next</button>
+          <button onClick={removeServiceSection}>Remove Section</button>
+          <button onClick={updateServiceSection}>Update Section</button>
         </div>
       </div>
     </section>
   );
 }
-export default ServiceSection;
+// export default ServiceSection;

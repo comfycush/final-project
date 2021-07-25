@@ -1,14 +1,22 @@
 import React from "react";
 import "../styles/updateSection.css";
 import { useLocation } from "react-router-dom";
-import UpdateNavbarForm from "../components/UpdateNavbarForm";
+import UpdateNavbarForm from "../components/UpdateForm/UpdateNavbarForm";
+import { useState } from "react";
+import UpdateMainForm from "../components/UpdateForm/UpdateMainForm";
+import UpdateAboutForm from "../components/UpdateForm/UpdateAboutForm";
+import UpdateServiceForm from "../components/UpdateForm/UpdateServiceForm";
+import UpdateContactForm from "../components/UpdateForm/UpdateContactForm";
+import UpdateFooterForm from "../components/UpdateForm/UpdateFooterForm";
 
 function UpdateSection() {
   const location = useLocation();
   const section = location.state.section;
   const dataSection = location.state.data;
   const allData = location.state.allData;
+  // const [selectedSection, setSelectedSection] = useState("navbar");
   // console.log(allData, "<<< ALL DATA");
+  // setSelectedSection(section);
   return (
     <section id="update-section">
       <h1>Update Section</h1>
@@ -16,7 +24,12 @@ function UpdateSection() {
       <h1>{JSON.stringify(dataPopulate)}</h1> */}
       <br />
       <div className="input">
-        <select name="select-section" className="select-section">
+        <select
+          name="select-section"
+          className="select-section"
+          value={section}
+          // onChange={(e) => setSelectedSection(e.target.value)}
+        >
           <option value="navbar">Navbar</option>
           <option value="main">Main</option>
           <option value="about">About</option>
@@ -31,6 +44,33 @@ function UpdateSection() {
             data={dataSection}
             allData={allData}
           ></UpdateNavbarForm>
+        )}
+        {section === "main" && (
+          <UpdateMainForm data={dataSection} allData={allData}></UpdateMainForm>
+        )}
+        {section === "about" && (
+          <UpdateAboutForm
+            data={dataSection}
+            allData={allData}
+          ></UpdateAboutForm>
+        )}
+        {section === "service" && (
+          <UpdateServiceForm
+            data={dataSection}
+            allData={allData}
+          ></UpdateServiceForm>
+        )}
+        {section === "contact" && (
+          <UpdateContactForm
+            data={dataSection}
+            allData={allData}
+          ></UpdateContactForm>
+        )}
+        {section === "footer" && (
+          <UpdateFooterForm
+            data={dataSection}
+            allData={allData}
+          ></UpdateFooterForm>
         )}
         {/* <label htmlFor="generate-color" className="generate-color-label">
           Generate Color Palatte

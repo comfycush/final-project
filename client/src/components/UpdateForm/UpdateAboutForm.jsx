@@ -1,29 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
-import "../styles/aboutSection.css";
+import "../../styles/aboutSection.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setAboutSection, updateTemplate } from "../store/actions/forms";
-import { getImageUrl, setAboutImageUrl } from "../store/actions/uploadImage";
+import { setAboutSection, updateTemplate } from "../../store/actions/forms";
+import { getImageUrl, setAboutImageUrl } from "../../store/actions/uploadImage";
 import { useLocation } from "react-router";
 
-function AboutSection() {
+export default function UpdateAboutForm({ data, allData }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-  const [type, setType] = useState(null);
-  const [headline, setHeadline] = useState("");
-  const [headlineColor, setHeadlineColor] = useState("#000000");
+  const [type, setType] = useState(data.type);
+  const [headline, setHeadline] = useState(data.headline);
+  const [headlineColor, setHeadlineColor] = useState(data.headlineColor);
   // const [image, setImage] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
-  const [paragraph, setParagraph] = useState("");
-  const [paragraphColor, setParagraphColor] = useState("#000000");
+  const [backgroundColor, setBackgroundColor] = useState(data.backgroundColor);
+  const [paragraph, setParagraph] = useState(data.paragraph);
+  const [paragraphColor, setParagraphColor] = useState(data.paragraphColor);
+
   const aboutImageUrl = useSelector((state) => state.uploadImage.aboutImageUrl);
 
-  const stateMain = location.state;
-  const templateId = 3;
+  useEffect(() => {
+    dispatch(setAboutImageUrl(data.image));
+  }, []);
 
-  function addAboutSection(event) {
+  console.log(aboutImageUrl, "<<< about url");
+
+  function updateAboutSection(event) {
     event.preventDefault();
     const dataAboutSection = {
       type: +type,
@@ -45,25 +49,28 @@ function AboutSection() {
       swal("Please choose your required template");
     } else {
       dispatch(setAboutSection(dataAboutSection));
-      const newestTemplate = {
-        ...stateMain,
+      const updatedTemplate = {
+        isDeploy: allData.isDeploy,
+        projectTitle: allData.projectTitle,
+        userId: allData.userId,
+        navbar: allData.navbar,
+        main: allData.main,
         about: dataAboutSection,
-        service: {},
-        contact: {},
-        footer: {},
+        service: allData.service,
+        contact: allData.contact,
+        footer: allData.footer,
       };
-      dispatch(updateTemplate(templateId, newestTemplate));
+      dispatch(updateTemplate(allData.id, updatedTemplate));
       history.push({
-        pathname: "/service-section",
+        pathname: "/finish",
         state: {
-          ...stateMain,
-          about: dataAboutSection,
+          templateId: allData.id,
         },
       });
     }
   }
 
-  function skipAboutSection(event) {
+  function removeAboutSection(event) {
     event.preventDefault();
     const dataAboutSection = {
       type: null,
@@ -76,11 +83,22 @@ function AboutSection() {
     };
     dispatch(setAboutSection(dataAboutSection));
     // history.push("/service-section");
+    const updatedTemplate = {
+      isDeploy: allData.isDeploy,
+      projectTitle: allData.projectTitle,
+      userId: allData.userId,
+      navbar: allData.navbar,
+      main: allData.main,
+      about: dataAboutSection,
+      service: allData.service,
+      contact: allData.contact,
+      footer: allData.footer,
+    };
+    dispatch(updateTemplate(allData.id, updatedTemplate));
     history.push({
-      pathname: "/service-section",
+      pathname: "/finish",
       state: {
-        ...stateMain,
-        about: dataAboutSection,
+        templateId: allData.id,
       },
     });
   }
@@ -91,8 +109,6 @@ function AboutSection() {
 
   return (
     <section id="about-section">
-      <h1>About Section</h1>
-      <h3>3 of 6</h3>
       <div className="input">
         <label htmlFor="generate-color" className="generate-color-label">
           Generate Color Palatte
@@ -109,6 +125,7 @@ function AboutSection() {
           type="text"
           name="about-headline"
           className="about-headline"
+          value={headline}
         />
         <label htmlFor="about-headline" className="about-headline">
           Color
@@ -118,6 +135,7 @@ function AboutSection() {
           onChange={(event) => setHeadlineColor(event.target.value)}
           name="about-headline"
           className="about-headline"
+          value={headlineColor}
         />
         <br />
         <br />
@@ -131,7 +149,8 @@ function AboutSection() {
           className="about-paragraph"
           cols={30}
           rows={10}
-          defaultValue={""}
+          // defaultValue={""}
+          value={paragraph}
         />
         <br />
         <br />
@@ -143,6 +162,7 @@ function AboutSection() {
           onChange={(event) => setParagraphColor(event.target.value)}
           name="about-paragraph"
           className="about-paragraph"
+          value={paragraphColor}
         />
         <br />
         <br />
@@ -173,6 +193,7 @@ function AboutSection() {
           onChange={(event) => setBackgroundColor(event.target.value)}
           name="background-color-about"
           id="background-color-about"
+          value={backgroundColor}
         />
         <br />
         <br />
@@ -183,9 +204,10 @@ function AboutSection() {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
             defaultValue="1"
+            defaultChecked={type === 1 ? true : false}
           />
           <img
             className="selection-img"
@@ -195,9 +217,10 @@ function AboutSection() {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
             defaultValue="2"
+            defaultChecked={type === 2 ? true : false}
           />
           <img
             className="selection-img"
@@ -207,9 +230,10 @@ function AboutSection() {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
             defaultValue="3"
+            defaultChecked={type === 3 ? true : false}
           />
           <img
             className="selection-img"
@@ -220,12 +244,10 @@ function AboutSection() {
         <br />
         <br />
         <div className="button-about">
-          <button onClick={skipAboutSection}>skip</button>
-          <button onClick={addAboutSection}>next</button>
+          <button onClick={removeAboutSection}>Remove Section</button>
+          <button onClick={updateAboutSection}>Update Section</button>
         </div>
       </div>
     </section>
   );
 }
-
-export default AboutSection;

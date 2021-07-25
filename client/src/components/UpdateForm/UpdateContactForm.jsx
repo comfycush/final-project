@@ -1,47 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
-import "../styles/contactSection.css";
+import "../../styles/contactSection.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setContactSection, updateTemplate } from "../store/actions/forms";
+import { setContactSection, updateTemplate } from "../../store/actions/forms";
 import {
   getImageUrl,
   setEmailIconUrl,
   setPhoneIconUrl,
   setAddressIconUrl,
-} from "../store/actions/uploadImage";
+} from "../../store/actions/uploadImage";
 import { useLocation } from "react-router";
 
-function ContactSection() {
+export default function UpdateContactForm({ data, allData }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
-  const [type, setType] = useState(null);
-  const [headline, setHeadline] = useState("");
-  const [headlineColor, setHeadlineColor] = useState("#000000");
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
+  const [type, setType] = useState(data.type);
+  const [headline, setHeadline] = useState(data.headline);
+  const [headlineColor, setHeadlineColor] = useState(data.headlineColor);
+  const [backgroundColor, setBackgroundColor] = useState(data.backgroundColor);
 
   // const [emailIcon, setEmailIcon] = useState('')
   const emailIconUrl = useSelector((state) => state.uploadImage.emailIconUrl);
-  const [email, setEmail] = useState("");
-  const [emailColor, setEmailColor] = useState("#000000");
+  const [email, setEmail] = useState(data.email);
+  const [emailColor, setEmailColor] = useState(data.emailColor);
 
   // const [phoneIcon, setPhoneIcon] = useState('')
   const phoneIconUrl = useSelector((state) => state.uploadImage.phoneIconUrl);
-  const [phone, setPhone] = useState("");
-  const [phoneColor, setPhoneColor] = useState("#000000");
+  const [phone, setPhone] = useState(data.phone);
+  const [phoneColor, setPhoneColor] = useState(data.phoneColor);
 
   // const [addressIcon, setAddressIcon] = useState('')
   const addressIconUrl = useSelector(
     (state) => state.uploadImage.addressIconUrl
   );
-  const [address, setAddress] = useState("");
-  const [addressColor, setAddressColor] = useState("#000000");
+  const [address, setAddress] = useState(data.address);
+  const [addressColor, setAddressColor] = useState(data.addressColor);
 
-  const stateService = location.state;
-  const templateId = 3;
+  useEffect(() => {
+    dispatch(setEmailIconUrl(data.emailIcon));
+    dispatch(setPhoneIconUrl(data.phoneIcon));
+    dispatch(setAddressIconUrl(data.addressIcon));
+  }, []);
 
-  function addContactSection() {
+  function updateContactSection() {
     const dataContactSection = {
       type: +type,
       headline,
@@ -70,23 +73,28 @@ function ContactSection() {
       swal("Please choose your required template");
     } else {
       dispatch(setContactSection(dataContactSection));
-      const newestTemplate = {
-        ...stateService,
+      const updatedTemplate = {
+        isDeploy: allData.isDeploy,
+        projectTitle: allData.projectTitle,
+        userId: allData.userId,
+        navbar: allData.navbar,
+        main: allData.main,
+        about: allData.about,
+        service: allData.service,
         contact: dataContactSection,
-        footer: {},
+        footer: allData.footer,
       };
-      dispatch(updateTemplate(templateId, newestTemplate));
+      dispatch(updateTemplate(allData.id, updatedTemplate));
       history.push({
-        pathname: "/footer-section",
+        pathname: "/finish",
         state: {
-          ...stateService,
-          contact: dataContactSection,
+          templateId: allData.id,
         },
       });
     }
   }
 
-  function skipContactSection() {
+  function removeContactSection() {
     const dataContactSection = {
       type: null,
       headline: null,
@@ -104,7 +112,24 @@ function ContactSection() {
     };
 
     dispatch(setContactSection(dataContactSection));
-    history.push("/footer-section");
+    const updatedTemplate = {
+      isDeploy: allData.isDeploy,
+      projectTitle: allData.projectTitle,
+      userId: allData.userId,
+      navbar: allData.navbar,
+      main: allData.main,
+      about: allData.about,
+      service: allData.service,
+      contact: dataContactSection,
+      footer: allData.footer,
+    };
+    dispatch(updateTemplate(allData.id, updatedTemplate));
+    history.push({
+      pathname: "/finish",
+      state: {
+        templateId: allData.id,
+      },
+    });
   }
 
   function uploadContactIcon(file, code) {
@@ -113,8 +138,6 @@ function ContactSection() {
 
   return (
     <section id="contact-section">
-      <h1>Contact Section</h1>
-      <h3>5 of 6</h3>
       <div className="input">
         <label htmlFor="generate-color" className="generate-color-label">
           Generate Color Palatte
@@ -131,6 +154,7 @@ function ContactSection() {
           type="text"
           name="contact-headline"
           className="contact-headline"
+          value={headline}
         />
         <label htmlFor="contact-headline" className="contact-headline">
           Color
@@ -140,6 +164,7 @@ function ContactSection() {
           type="color"
           name="contact-headline"
           className="contact-headline"
+          value={headlineColor}
         />
         <br />
         <br />
@@ -151,6 +176,7 @@ function ContactSection() {
           type="text"
           name="contact-email"
           className="contact-email"
+          value={email}
         />
         <label htmlFor="contact-email" className="contact-email">
           Color
@@ -160,6 +186,7 @@ function ContactSection() {
           type="color"
           name="contact-email"
           className="contact-email"
+          value={emailColor}
         />
         <br />
         <br />
@@ -194,6 +221,7 @@ function ContactSection() {
           type="text"
           name="contact-phone"
           className="contact-phone"
+          value={phone}
         />
         <label htmlFor="contact-phone" className="contact-phone">
           Color
@@ -203,6 +231,7 @@ function ContactSection() {
           type="color"
           name="contact-phone"
           className="contact-phone"
+          value={phoneColor}
         />
         <br />
         <br />
@@ -237,6 +266,7 @@ function ContactSection() {
           type="text"
           name="contact-address"
           className="contact-address"
+          value={address}
         />
         <label htmlFor="contact-address" className="contact-address">
           Color
@@ -246,6 +276,7 @@ function ContactSection() {
           type="color"
           name="contact-address"
           className="contact-address"
+          value={addressColor}
         />
         <br />
         <br />
@@ -278,6 +309,7 @@ function ContactSection() {
           type="color"
           name="background-color-contact"
           id="background-color-contact"
+          value={backgroundColor}
         />
         <br />
         <br />
@@ -289,8 +321,9 @@ function ContactSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="1"
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
+            defaultChecked={type === 1 ? true : false}
           />
           <img
             className="selection-img"
@@ -301,8 +334,9 @@ function ContactSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="2"
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
+            defaultChecked={type === 2 ? true : false}
           />
           <img
             className="selection-img"
@@ -313,8 +347,9 @@ function ContactSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="3"
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
+            defaultChecked={type === 3 ? true : false}
           />
           <img
             className="selection-img"
@@ -323,12 +358,10 @@ function ContactSection() {
           />
         </div>
         <div className="button-contact">
-          <button onClick={skipContactSection}>skip</button>
-          <button onClick={addContactSection}>next</button>
+          <button onClick={removeContactSection}>Remove Section</button>
+          <button onClick={updateContactSection}>Update Section</button>
         </div>
       </div>
     </section>
   );
 }
-
-export default ContactSection;

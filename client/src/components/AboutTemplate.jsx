@@ -1,11 +1,24 @@
 import "../styles/about.css";
 // import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
-export default function AboutTemplate({ aboutData, isDeploy }) {
+export default function AboutTemplate({ aboutData, isDeploy, templateData }) {
   // const isDeploy = useSelector((state) => state.template.isDeploy);
+  const history = useHistory();
 
   if (!aboutData.type) {
     return null;
+  }
+
+  function toUpdatePage() {
+    history.push({
+      pathname: "/update-template",
+      state: {
+        section: "about",
+        data: aboutData,
+        allData: templateData,
+      },
+    });
   }
 
   return (
@@ -30,12 +43,16 @@ export default function AboutTemplate({ aboutData, isDeploy }) {
           <h1 style={{ color: aboutData.headlineColor }}>
             {aboutData.headline}
           </h1>
-          <p>{aboutData.paragraph}</p>
+          <p style={{ color: aboutData.paragraphColor }}>
+            {aboutData.paragraph}
+          </p>
         </div>
       </div>
       {!isDeploy && (
         <div className="update-about-section">
-          <button className="btn btn-update-section">Update About</button>
+          <button onClick={toUpdatePage} className="btn btn-update-section">
+            Update About
+          </button>
         </div>
       )}
     </div>
