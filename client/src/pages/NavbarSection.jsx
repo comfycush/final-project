@@ -1,18 +1,36 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setNavbarSection } from "../store/actions/forms";
+import { setNavbarSection, updateTemplate } from "../store/actions/forms";
 import swal from "sweetalert";
-import { getImageUrl } from "../store/actions/uploadImage";
+import { getImageUrl, setLogoUrl } from "../store/actions/uploadImage";
 import "../styles/navbarSection.css";
 import Color from "../components/Color";
-import axios from "axios";
-import convert from "color-convert";
 import { generateColorArray } from "../store/actions/template";
+import { useLocation } from "react-router";
+import navbar1 from "../assets/navbar1.png";
+import navbar2 from "../assets/navbar2.png";
+import navbar3 from "../assets/navbar3.png";
+import ModalImage from "../components/ModalImage";
 
-function NavbarSection() {
+function NavbarSection(props) {
   const history = useHistory();
   const dispatch = useDispatch();
+  const location = useLocation();
+  const [showModal, setShowModal] = useState(false);
+  const [modalImage, setModalImage] = useState("");
+  const [modalHeight, setModalHeight] = useState("");
+  const [modalWidth, setModalWidth] = useState("");
+
+  console.log(showModal, "<<< SHOW modal");
+
+  function viewImage(image, height, width) {
+    setShowModal(true);
+    setModalImage(image);
+    setModalHeight(height);
+    setModalWidth(width);
+  }
+
   const [type, setType] = useState(null);
   const [backgroundColor, setBackgroundColor] = useState("#000000");
   const [companyName, setCompanyName] = useState("");
@@ -20,6 +38,11 @@ function NavbarSection() {
   const [navlinks, setNavlinks] = useState([]);
   const [navlinksColor, setNavlinksColor] = useState("#000000");
   const logoUrl = useSelector((state) => state.uploadImage.logoUrl);
+
+  const stateIntro = location.state;
+  // console.log(stateIntro, "<<<< stateIntro");
+  const navbar = useSelector((state) => state.forms.navbar);
+  const templateId = 3;
 
   function addNavlink(status, input) {
     if (status) {
@@ -47,28 +70,42 @@ function NavbarSection() {
 
     event.preventDefault();
     const dataNavbarSection = {
-      type,
+      type: +type,
       logo: logoUrl,
       backgroundColor,
       companyName,
       companyNameColor,
-      sortNavlinks,
+      navLinks: sortNavlinks,
       navlinksColor,
     };
 
     if (!dataNavbarSection.companyName && !dataNavbarSection.logo) {
       swal("Please fill in your company name or company logo");
-    } else if (dataNavbarSection.sortNavlinks.length === 0) {
+    } else if (sortNavlinks.length === 0) {
       swal("Please choose minimum 1 link");
     } else if (!dataNavbarSection.type) {
       swal("please choose your required template");
     } else {
       dispatch(setNavbarSection(dataNavbarSection));
-      history.push("/main-section");
+      const newestTemplate = {
+        ...stateIntro,
+        navbar: dataNavbarSection,
+        main: {},
+        about: {},
+        service: {},
+        contact: {},
+        footer: {},
+      };
+      dispatch(updateTemplate(templateId, newestTemplate));
+      console.log(templateId, newestTemplate, "<<< update");
+      history.push({
+        pathname: "/main-section",
+        state: {
+          ...stateIntro,
+          navbar: dataNavbarSection,
+        },
+      });
     }
-
-    dispatch(setNavbarSection(dataNavbarSection));
-    history.push("/main-section");
   }
 
   function uploadLogo(file, code) {
@@ -118,13 +155,7 @@ function NavbarSection() {
             name="company-logo"
             className="company-logo"
           />
-          {logoUrl && (
-            <img
-              style={{ width: "5rem", height: "5rem" }}
-              src={logoUrl}
-              alt="logo"
-            />
-          )}
+          <button onClick={() => dispatch(setLogoUrl(""))}>Remove Image</button>
           <br />
           <br />
           <label htmlFor="links-navbar">Links</label>
@@ -192,74 +223,148 @@ function NavbarSection() {
             />
             <img
               className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
+              src={navbar1}
               alt="image1"
+              onClick={() => viewImage(navbar1, "4", "80")}
             />
+            {logoUrl && (
+              <img
+                style={{ width: "5rem", height: "5rem" }}
+                src={logoUrl}
+                alt="logo"
+              />
+            )}
+            <br />
+            <br />
+            <label htmlFor="links-navbar">Links</label>
             <input
-              onClick={(event) => setType(event.target.value)}
-              type="radio"
-              name="opt-navbar"
-              id="opt2-navbar"
-              defaultValue="2"
+              type="checkbox"
+              onClick={(event) =>
+                addNavlink(event.target.checked, event.target.value)
+              }
+              name="about"
+              id="about"
+              style={{ marginLeft: "1.5rem" }}
+              defaultValue="About"
             />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image2"
-            />
+            <label htmlFor="about">About</label>
             <input
-              onClick={(event) => setType(event.target.value)}
-              type="radio"
-              name="opt-navbar"
-              id="opt3-navbar"
-              defaultValue="3"
+              type="checkbox"
+              onClick={(event) =>
+                addNavlink(event.target.checked, event.target.value)
+              }
+              name="service"
+              id="service"
+              defaultValue="Service"
             />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image3"
+            <label htmlFor="service">Service</label>
+            <input
+              type="checkbox"
+              onClick={(event) =>
+                addNavlink(event.target.checked, event.target.value)
+              }
+              name="contact"
+              id="contact"
+              defaultValue="Contact"
             />
-          </div>
-          <br />
-          <br />
-          <button onClick={addNavbarSection} className="button-navbar">
-            next
-          </button>
-        </div>
-        <div
-          style={{
-            marginLeft: "auto",
-            marginTop: 100,
-            display: "flex",
-            flexDirection: "column",
-            textAlign: "center",
-            marginRight: 100,
-          }}
-        >
-          <Color />
-          <div style={{ marginTop: 20 }}>
-            <label
-              style={{ marginRight: 20 }}
-              htmlFor="generate-color"
-              className="generate-color-label"
-            >
-              Generate Color Palatte
-            </label>
-            <button
-              onClick={generateColor}
-              style={{
-                marginLeft: 20,
-                width: 80,
-                height: 30,
-                backgroundColor: "#BB5E53",
-                color: "white",
-                fontWeight: "bold",
-              }}
-            >
-              Refresh
+            <label htmlFor="contact">Contact</label>
+            <br />
+            <br />
+            <label htmlFor="color-navbar">Color</label>
+            <input
+              onChange={(event) => setNavlinksColor(event.target.value)}
+              type="color"
+              name="navlink-color"
+              id="navlink-color"
+            />
+            <br />
+            <br />
+            <label htmlFor="background-color-navbar">Background Color</label>
+            <input
+              onChange={(event) => setBackgroundColor(event.target.value)}
+              type="color"
+              name="background-color-navbar"
+              id="background-color-navbar"
+            />
+            <br />
+            <br />
+            <label htmlFor="template-layout">Template Layout</label>
+            <br />
+            <br />
+            <div className="selection-navbar">
+              <input
+                onClick={(event) => setType(event.target.value)}
+                type="radio"
+                name="opt-navbar"
+                id="opt1-navbar"
+                defaultValue="1"
+              />
+              <img className="selection-img" src={navbar1} alt="image1" />
+              <input
+                onClick={(event) => setType(event.target.value)}
+                type="radio"
+                name="opt-navbar"
+                id="opt2-navbar"
+                defaultValue="2"
+              />
+              <img className="selection-img" src={navbar2} alt="image2" />
+              <input
+                onClick={(event) => setType(event.target.value)}
+                type="radio"
+                name="opt-navbar"
+                id="opt3-navbar"
+                defaultValue="3"
+              />
+              <img className="selection-img" src={navbar3} alt="image3" />
+            </div>
+            <br />
+            <br />
+            <button onClick={addNavbarSection} className="button-navbar">
+              next
             </button>
           </div>
+          <div
+            style={{
+              marginLeft: "auto",
+              marginTop: 100,
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "center",
+              marginRight: 100,
+            }}
+          >
+            <Color />
+            <div style={{ marginTop: 20 }}>
+              <label
+                style={{ marginRight: 20 }}
+                htmlFor="generate-color"
+                className="generate-color-label"
+              >
+                Generate Color Palatte
+              </label>
+              <button
+                onClick={generateColor}
+                style={{
+                  marginLeft: 20,
+                  width: 80,
+                  height: 30,
+                  backgroundColor: "#BB5E53",
+                  color: "white",
+                  fontWeight: "bold",
+                }}
+              >
+                Refresh
+              </button>
+            </div>
+          </div>
         </div>
+        {showModal && (
+          <ModalImage
+            image={modalImage}
+            height={modalHeight}
+            width={modalWidth}
+          ></ModalImage>
+        )}
       </div>
     </section>
   );

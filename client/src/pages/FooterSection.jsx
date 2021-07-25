@@ -3,13 +3,15 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import "../styles/footerSection.css";
-import { setFooterSection } from "../store/actions/forms";
 import Color from "../components/Color";
 import { generateColorArray } from "../store/actions/template";
+import { setFooterSection, updateTemplate } from "../store/actions/forms";
+import { useLocation } from "react-router";
 
 function FooterSection() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
   const [type, setType] = useState(null);
   const [backgroundColor, setBackgroundColor] = useState("#000000");
   const [iconColor, setIconColor] = useState("");
@@ -20,9 +22,12 @@ function FooterSection() {
   const [youtube, setYoutube] = useState("");
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
 
+  const stateContact = location.state;
+  const templateId = 3;
+
   function addFooterSection() {
     const dataFooterSection = {
-      type,
+      type: +type,
       backgroundColor,
       iconColor,
       facebook,
@@ -47,10 +52,18 @@ function FooterSection() {
       swal("Please choose your required template");
     } else {
       dispatch(setFooterSection(dataFooterSection));
-      history.push("/finish");
+      const newestTemplate = {
+        ...stateContact,
+        footer: dataFooterSection,
+      };
+      dispatch(updateTemplate(templateId, newestTemplate));
+      history.push({
+        pathname: "/finish",
+        state: {
+          templateId,
+        },
+      });
     }
-    dispatch(setFooterSection(dataFooterSection));
-    history.push("/finish");
   }
 
   function generateColor() {

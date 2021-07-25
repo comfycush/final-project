@@ -1,12 +1,31 @@
 import "../styles/contact.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-export default function ContactTemplate({ contactData }) {
-  const isDeploy = useSelector((state) => state.template.isDeploy);
+export default function ContactTemplate({
+  contactData,
+  isDeploy,
+  templateData,
+}) {
+  // const isDeploy = useSelector((state) => state.template.isDeploy);
+
+  const history = useHistory();
 
   if (!contactData.type) {
     return null;
   }
+
+  function toUpdatePage() {
+    history.push({
+      pathname: "/update-template",
+      state: {
+        section: "contact",
+        data: contactData,
+        allData: templateData,
+      },
+    });
+  }
+
   return (
     <div className="section-and-update">
       <div
@@ -62,7 +81,9 @@ export default function ContactTemplate({ contactData }) {
       </div>
       {!isDeploy && (
         <div className="update-contact-section">
-          <button className="btn btn-update-section">Update Contact</button>
+          <button onClick={toUpdatePage} className="btn btn-update-section">
+            Update Contact
+          </button>
         </div>
       )}
     </div>
