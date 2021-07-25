@@ -11,7 +11,6 @@ function MainSection() {
   const dispatch = useDispatch();
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
-  // const [image, setImage] = useState('')
   const [backgroundColor, setBackgroundColor] = useState("#000000");
   const [subHeadline, setSubHeadline] = useState("");
   const [subHeadlineColor, setsubHeadlineColor] = useState("#000000");
@@ -152,7 +151,7 @@ function MainSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="1"
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
           />
           <img
@@ -164,7 +163,7 @@ function MainSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="2"
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
           />
           <img
@@ -176,7 +175,7 @@ function MainSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="3"
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
           />
           <img

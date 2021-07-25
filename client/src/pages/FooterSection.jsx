@@ -166,7 +166,7 @@ function FooterSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="1"
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
           />
           <img
@@ -178,7 +178,7 @@ function FooterSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="2"
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
           />
           <img
@@ -190,7 +190,7 @@ function FooterSection() {
             onClick={(event) => setType(event.target.value)}
             defaultValue="3"
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
           />
           <img

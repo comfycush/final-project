@@ -157,7 +157,7 @@ function AboutSection() {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
             defaultValue="1"
           />
@@ -169,7 +169,7 @@ function AboutSection() {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
             defaultValue="2"
           />
@@ -181,7 +181,7 @@ function AboutSection() {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
             defaultValue="3"
           />

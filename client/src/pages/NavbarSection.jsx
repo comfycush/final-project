@@ -10,7 +10,6 @@ function NavbarSection() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [type, setType] = useState(null);
-  // const [logo, setLogo] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("#000000");
   const [companyName, setCompanyName] = useState("");
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
@@ -186,7 +185,7 @@ function NavbarSection() {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
             defaultValue="1"
           />
@@ -198,7 +197,7 @@ function NavbarSection() {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
             defaultValue="2"
           />
@@ -210,7 +209,7 @@ function NavbarSection() {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
             defaultValue="3"
           />
