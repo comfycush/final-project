@@ -5,6 +5,8 @@ import { useHistory } from "react-router-dom";
 import "../styles/serviceSection.css";
 import { setServiceSection } from "../store/actions/forms";
 import { getImageUrl } from "../store/actions/uploadImage";
+import Color from "../components/Color";
+import { generateColorArray } from "../store/actions/template";
 
 function ServiceSection() {
   const dispatch = useDispatch();
@@ -118,299 +120,311 @@ function ServiceSection() {
     dispatch(getImageUrl(file, code));
   }
 
+  function generateColor() {
+    dispatch(generateColorArray())
+  }
+
   return (
     <section id="service-section">
       <h1>Service Section</h1>
       <h3>4 of 6</h3>
-      <div className="input">
-        <label htmlFor="generate-color" className="generate-color-label">
-          Generate Color Palatte
-        </label>
-        <input type="color" name="generate-color" className="generate-color" />
-        <button>Refresh</button>
-        <br />
-        <br />
-        <label htmlFor="service-headline" className="service-headline">
-          Headline
-        </label>
-        <input
-          onChange={(event) => setHeadline(event.target.value)}
-          type="text"
-          name="service-headline"
-          className="service-headline"
-        />
-        <label htmlFor="service-headline" className="service-headline">
-          Color
-        </label>
-        <input
-          onChange={(event) => setHeadlineColor(event.target.value)}
-          type="color"
-          name="service-headline"
-          className="service-headline"
-        />
-        <br />
-        <br />
-        <label htmlFor="service-card1" className="service-card1">
-          Card 1 Icon
-        </label>
-        <input
-          onChange={(event) => uploadCardImage(event.target.files[0], "card1")}
-          type="file"
-          name="service-card1"
-          className="service-card1"
-        />
-        {card1ImageUrl && (
-          <img
-            style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-            src={card1ImageUrl}
-            alt="card 1"
-          />
-        )}
-        <br />
-        <br />
-        <label htmlFor="service-card1" className="service-card1">
-          Card 1 Title
-        </label>
-        <input
-          onChange={(event) => setCardTitle1(event.target.value)}
-          type="text"
-          name="service-card1"
-          className="service-card1"
-        />
-        <label htmlFor="service-card1" className="service-card1">
-          Color
-        </label>
-        <input
-          type="color"
-          onChange={(event) => setCardTitleColor1(event.target.value)}
-          name="service-card1"
-          className="service-card1"
-        />
-        <br />
-        <br />
-        <label htmlFor="service-card1" className="service-card1">
-          Card 1 Paragraph
-        </label>
-        <input
-          onChange={(event) => setCardText1(event.target.value)}
-          type="text"
-          name="service-card1"
-          className="service-card1"
-        />
-        <label htmlFor="service-card1" className="service-card1">
-          Color
-        </label>
-        <input
-          type="color"
-          onChange={(event) => setCardTextColor1(event.target.value)}
-          name="service-card1"
-          className="service-card1"
-        />
-        <br />
-        <br />
-        <label htmlFor="service-card1" className="service-card1">
-          Card 1 Background Color
-        </label>
-        <input
-          type="color"
-          onChange={(event) => setcardBackgroundColor1(event.target.value)}
-          name="service-card1"
-          className="service-card1"
-        />
-        <br />
-        <br />
-        <label htmlFor="service-card2" className="service-card2">
-          Card 2 Icon
-        </label>
-        <input
-          onChange={(event) => uploadCardImage(event.target.files[0], "card2")}
-          type="file"
-          name="service-card2"
-          className="service-card2"
-        />
-        {card2ImageUrl && (
-          <img
-            style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-            src={card2ImageUrl}
-            alt="card 2"
-          />
-        )}
-        <br />
-        <br />
-        <label htmlFor="service-card2" className="service-card2">
-          Card 2 Title
-        </label>
-        <input
-          onChange={(event) => setCardTitle2(event.target.value)}
-          type="text"
-          name="service-card2"
-          className="service-card2"
-        />
-        <label htmlFor="service-card2" className="service-card2">
-          Color
-        </label>
-        <input
-          type="color"
-          onChange={(event) => setCardTitleColor2(event.target.value)}
-          name="service-card2"
-          className="service-card2"
-        />
-        <br />
-        <br />
-        <label htmlFor="service-card2" className="service-card2">
-          Card 2 Paragraph
-        </label>
-        <input
-          onChange={(event) => setCardText2(event.target.value)}
-          type="text"
-          name="service-card2"
-          className="service-card2"
-        />
-        <label htmlFor="service-card2" className="service-card2">
-          Color
-        </label>
-        <input
-          type="color"
-          onChange={(event) => setCardTextColor2(event.target.value)}
-          name="service-card2"
-          className="service-card2"
-        />
-        <br />
-        <br />
-        <label htmlFor="service-card2" className="service-card2">
-          Card 2 Background Color
-        </label>
-        <input
-          type="color"
-          onChange={(event) => setcardBackgroundColor2(event.target.value)}
-          name="service-card2"
-          className="service-card2"
-        />
-        <br />
-        <br />
-        <label htmlFor="service-card3" className="service-card3">
-          Card 3 Icon
-        </label>
-        <input
-          onChange={(event) => uploadCardImage(event.target.files[0], "card3")}
-          type="file"
-          name="service-card3"
-          className="service-card3"
-        />
-        {card3ImageUrl && (
-          <img
-            style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-            src={card3ImageUrl}
-            alt="card 3"
-          />
-        )}
-        <br />
-        <br />
-        <label htmlFor="service-card3" className="service-card3">
-          Card 3 Title
-        </label>
-        <input
-          onChange={(event) => setCardTitle3(event.target.value)}
-          type="text"
-          name="service-card3"
-          className="service-card3"
-        />
-        <label htmlFor="service-card3" className="service-card3">
-          Color
-        </label>
-        <input
-          type="color"
-          onChange={(event) => setCardTitleColor3(event.target.value)}
-          name="service-card3"
-          className="service-card3"
-        />
-        <br />
-        <br />
-        <label htmlFor="service-card3" className="service-card3">
-          Card 3 Paragraph
-        </label>
-        <input
-          onChange={(event) => setCardText3(event.target.value)}
-          type="text"
-          name="service-card3"
-          className="service-card3"
-        />
-        <label htmlFor="service-card3" className="service-card3">
-          Color
-        </label>
-        <input
-          type="color"
-          onChange={(event) => setCardTextColor3(event.target.value)}
-          name="service-card3"
-          className="service-card3"
-        />
-        <br />
-        <br />
-        <label htmlFor="service-card3" className="service-card3">
-          Card 3 Background Color
-        </label>
-        <input
-          type="color"
-          onChange={(event) => setcardBackgroundColor3(event.target.value)}
-          name="service-card3"
-          className="service-card3"
-        />
-        <br />
-        <br />
-        <label htmlFor="background-color-service">Background Color</label>
-        <input
-          type="color"
-          onChange={(event) => setBackgroundColor(event.target.value)}
-          name="background-color-service"
-          id="background-color-service"
-        />
-        <br />
-        <br />
-        <label htmlFor="template-layout">Template Layout</label>
-        <br />
-        <br />
-        <div className="selection-service">
+      <div style={{display:'flex'}}>
+
+      
+        <div className="input">
+         
+          <label htmlFor="service-headline" className="service-headline">
+            Headline
+          </label>
           <input
-            onClick={(event) => setType(event.target.value)}
-            defaultValue="1"
-            type="radio"
-            name="opt1-navbar"
-            id="opt1-navbar"
+            onChange={(event) => setHeadline(event.target.value)}
+            type="text"
+            name="service-headline"
+            className="service-headline"
           />
-          <img
-            className="selection-img"
-            src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-            alt="image1"
-          />
+          <label htmlFor="service-headline" className="service-headline">
+            Color
+          </label>
           <input
-            onClick={(event) => setType(event.target.value)}
-            defaultValue="2"
-            type="radio"
-            name="opt2-navbar"
-            id="opt2-navbar"
+            onChange={(event) => setHeadlineColor(event.target.value)}
+            type="color"
+            name="service-headline"
+            className="service-headline"
           />
-          <img
-            className="selection-img"
-            src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-            alt="image2"
-          />
+          <br />
+          <br />
+          <label htmlFor="service-card1" className="service-card1">
+            Card 1 Icon
+          </label>
           <input
-            onClick={(event) => setType(event.target.value)}
-            defaultValue="3"
-            type="radio"
-            name="opt3-navbar"
-            id="opt3-navbar"
+            onChange={(event) => uploadCardImage(event.target.files[0], "card1")}
+            type="file"
+            name="service-card1"
+            className="service-card1"
           />
-          <img
-            className="selection-img"
-            src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-            alt="image3"
+          {card1ImageUrl && (
+            <img
+              style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+              src={card1ImageUrl}
+              alt="card 1"
+            />
+          )}
+          <br />
+          <br />
+          <label htmlFor="service-card1" className="service-card1">
+            Card 1 Title
+          </label>
+          <input
+            onChange={(event) => setCardTitle1(event.target.value)}
+            type="text"
+            name="service-card1"
+            className="service-card1"
           />
+          <label htmlFor="service-card1" className="service-card1">
+            Color
+          </label>
+          <input
+            type="color"
+            onChange={(event) => setCardTitleColor1(event.target.value)}
+            name="service-card1"
+            className="service-card1"
+          />
+          <br />
+          <br />
+          <label htmlFor="service-card1" className="service-card1">
+            Card 1 Paragraph
+          </label>
+          <input
+            onChange={(event) => setCardText1(event.target.value)}
+            type="text"
+            name="service-card1"
+            className="service-card1"
+          />
+          <label htmlFor="service-card1" className="service-card1">
+            Color
+          </label>
+          <input
+            type="color"
+            onChange={(event) => setCardTextColor1(event.target.value)}
+            name="service-card1"
+            className="service-card1"
+          />
+          <br />
+          <br />
+          <label htmlFor="service-card1" className="service-card1">
+            Card 1 Background Color
+          </label>
+          <input
+            type="color"
+            onChange={(event) => setcardBackgroundColor1(event.target.value)}
+            name="service-card1"
+            className="service-card1"
+          />
+          <br />
+          <br />
+          <label htmlFor="service-card2" className="service-card2">
+            Card 2 Icon
+          </label>
+          <input
+            onChange={(event) => uploadCardImage(event.target.files[0], "card2")}
+            type="file"
+            name="service-card2"
+            className="service-card2"
+          />
+          {card2ImageUrl && (
+            <img
+              style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+              src={card2ImageUrl}
+              alt="card 2"
+            />
+          )}
+          <br />
+          <br />
+          <label htmlFor="service-card2" className="service-card2">
+            Card 2 Title
+          </label>
+          <input
+            onChange={(event) => setCardTitle2(event.target.value)}
+            type="text"
+            name="service-card2"
+            className="service-card2"
+          />
+          <label htmlFor="service-card2" className="service-card2">
+            Color
+          </label>
+          <input
+            type="color"
+            onChange={(event) => setCardTitleColor2(event.target.value)}
+            name="service-card2"
+            className="service-card2"
+          />
+          <br />
+          <br />
+          <label htmlFor="service-card2" className="service-card2">
+            Card 2 Paragraph
+          </label>
+          <input
+            onChange={(event) => setCardText2(event.target.value)}
+            type="text"
+            name="service-card2"
+            className="service-card2"
+          />
+          <label htmlFor="service-card2" className="service-card2">
+            Color
+          </label>
+          <input
+            type="color"
+            onChange={(event) => setCardTextColor2(event.target.value)}
+            name="service-card2"
+            className="service-card2"
+          />
+          <br />
+          <br />
+          <label htmlFor="service-card2" className="service-card2">
+            Card 2 Background Color
+          </label>
+          <input
+            type="color"
+            onChange={(event) => setcardBackgroundColor2(event.target.value)}
+            name="service-card2"
+            className="service-card2"
+          />
+          <br />
+          <br />
+          <label htmlFor="service-card3" className="service-card3">
+            Card 3 Icon
+          </label>
+          <input
+            onChange={(event) => uploadCardImage(event.target.files[0], "card3")}
+            type="file"
+            name="service-card3"
+            className="service-card3"
+          />
+          {card3ImageUrl && (
+            <img
+              style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+              src={card3ImageUrl}
+              alt="card 3"
+            />
+          )}
+          <br />
+          <br />
+          <label htmlFor="service-card3" className="service-card3">
+            Card 3 Title
+          </label>
+          <input
+            onChange={(event) => setCardTitle3(event.target.value)}
+            type="text"
+            name="service-card3"
+            className="service-card3"
+          />
+          <label htmlFor="service-card3" className="service-card3">
+            Color
+          </label>
+          <input
+            type="color"
+            onChange={(event) => setCardTitleColor3(event.target.value)}
+            name="service-card3"
+            className="service-card3"
+          />
+          <br />
+          <br />
+          <label htmlFor="service-card3" className="service-card3">
+            Card 3 Paragraph
+          </label>
+          <input
+            onChange={(event) => setCardText3(event.target.value)}
+            type="text"
+            name="service-card3"
+            className="service-card3"
+          />
+          <label htmlFor="service-card3" className="service-card3">
+            Color
+          </label>
+          <input
+            type="color"
+            onChange={(event) => setCardTextColor3(event.target.value)}
+            name="service-card3"
+            className="service-card3"
+          />
+          <br />
+          <br />
+          <label htmlFor="service-card3" className="service-card3">
+            Card 3 Background Color
+          </label>
+          <input
+            type="color"
+            onChange={(event) => setcardBackgroundColor3(event.target.value)}
+            name="service-card3"
+            className="service-card3"
+          />
+          <br />
+          <br />
+          <label htmlFor="background-color-service">Background Color</label>
+          <input
+            type="color"
+            onChange={(event) => setBackgroundColor(event.target.value)}
+            name="background-color-service"
+            id="background-color-service"
+          />
+          <br />
+          <br />
+          <label htmlFor="template-layout">Template Layout</label>
+          <br />
+          <br />
+          <div className="selection-service">
+            <input
+              onClick={(event) => setType(event.target.value)}
+              defaultValue="1"
+              type="radio"
+              name="opt1-navbar"
+              id="opt1-navbar"
+            />
+            <img
+              className="selection-img"
+              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
+              alt="image1"
+            />
+            <input
+              onClick={(event) => setType(event.target.value)}
+              defaultValue="2"
+              type="radio"
+              name="opt2-navbar"
+              id="opt2-navbar"
+            />
+            <img
+              className="selection-img"
+              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
+              alt="image2"
+            />
+            <input
+              onClick={(event) => setType(event.target.value)}
+              defaultValue="3"
+              type="radio"
+              name="opt3-navbar"
+              id="opt3-navbar"
+            />
+            <img
+              className="selection-img"
+              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
+              alt="image3"
+            />
+          </div>
+          <div className="button-service">
+            <button onClick={skipServiceSection}>skip</button>
+            <button onClick={addServiceSection}>next</button>
+          </div>
         </div>
-        <div className="button-service">
-          <button onClick={skipServiceSection}>skip</button>
-          <button onClick={addServiceSection}>next</button>
+        <div style={{ marginLeft:'auto', marginTop:100, display:'flex', flexDirection:'column' , textAlign:'center', marginRight:100}}>
+            <Color />
+            <div style={{marginTop:20}}>
+              <label style={{marginRight:20}} htmlFor="generate-color" className="generate-color-label">
+                Generate Color Palatte
+              </label>
+              <button onClick={generateColor} style={{marginLeft:20, width:80, height:30, backgroundColor:'#BB5E53', color:'white', fontWeight:'bold' }}>Refresh</button>
+            </div>
         </div>
+
       </div>
     </section>
   );
