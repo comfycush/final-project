@@ -57,7 +57,7 @@ export default function UpdateNavbarForm({ data, allData }) {
       companyName,
       companyNameColor,
       navLinks: sortNavlinks,
-      navlinksColor,
+      navLinksColor: navlinksColor,
     };
 
     if (!dataNavbarSection.companyName && !dataNavbarSection.logo) {

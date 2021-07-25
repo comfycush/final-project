@@ -6,85 +6,81 @@
       "isDeploy": false,
       "projectTitle": "Go Law Firm Website",
       "navbar": {
-        "type": 1,
+        "type": 3,
         "logo": "https://image.flaticon.com/icons/png/512/4252/4252296.png",
-        "backgroundColor": "#753422",
-        "companyName": "Go Law Firm",
-        "companyNameColor": "#FFEBC9",
-        "navLinks": [
-          "About",
-          "Contact",
-          "Service"
-        ],
-        "navLinksColor": "#D79771"
+        "backgroundColor": "#125D98",
+        "companyName": "Whimson Law Firm",
+        "companyNameColor": "#DDDDDD",
+        "navLinks": ["About", "Service", "Contact"],
+        "navLinksColor": "#F5A962"
       },
       "main": {
-        "type": 1,
-        "image": "https://images.pexels.com/photos/4427553/pexels-photo-4427553.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "type": 3,
+        "image": "https://images.pexels.com/photos/5668800/pexels-photo-5668800.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "headline": "Consult Your Legal Needs With Us",
-        "headlineColor": "#BB371A",
+        "headlineColor": "#125D98",
         "subHeadline": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
         "subHeadlineColor": "#171010",
-        "backgroundColor": "#FFF8D9"
+        "backgroundColor": "#FFFFFF"
       },
       "about": {
-        "type": 2,
-        "image": "https://images.pexels.com/photos/4427430/pexels-photo-4427430.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+        "type": 3,
+        "image": "https://images.pexels.com/photos/5668780/pexels-photo-5668780.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
         "headline": "About Go Law Firm",
-        "headlineColor": "#BB371A",
+        "headlineColor": "#F5A962",
         "paragraph": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
         "paragraphColor": "#171010",
-        "backgroundColor": "#F0E3CA"
+        "backgroundColor": "#FFFFFF"
       },
       "service": {
-        "type": 1,
+        "type": 3,
         "headline": "Our Services",
-        "headlineColor": "#BB371A",
-        "backgroundColor": "#FAF3E0",
+        "headlineColor": "#F5A962",
+        "backgroundColor": "#FFFFFF",
         "cardImage1": "https://image.flaticon.com/icons/png/512/608/608946.png",
-        "cardBackgroundColor1": "#D79771",
+        "cardBackgroundColor1": "#125D98",
         "cardTitle1": "Free Legal Consultation",
-        "cardTitleColor1": "#FAF3E0",
-        "cardText1": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        "cardTextColor1": "#753422",
+        "cardTitleColor1": "#FFFFFF",
+        "cardText1": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "cardTextColor1": "#FFFFFF",
         "cardImage2": "https://image.flaticon.com/icons/png/512/3979/3979423.png",
-        "cardBackgroundColor2": "#D79771",
+        "cardBackgroundColor2": "#125D98",
         "cardTitle2": "Legal Case Handling",
-        "cardTitleColor2": "#FAF3E0",
-        "cardText2": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        "cardTextColor2": "#753422",
+        "cardTitleColor2": "#FFFFFF",
+        "cardText2": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "cardTextColor2": "#FFFFFF",
         "cardImage3": "https://image.flaticon.com/icons/png/512/1006/1006555.png",
-        "cardBackgroundColor3": "#D79771",
-        "cardTitle3": "Agreement Creation and Analysis",
-        "cardTitleColor3": "#FAF3E0",
-        "cardText3": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-        "cardTextColor3": "#753422"
+        "cardBackgroundColor3": "#125D98",
+        "cardTitle3": "Agreement Analysis",
+        "cardTitleColor3": "#FFFFFF",
+        "cardText3": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        "cardTextColor3": "#FFFFFF"
       },
       "contact": {
-        "type": 1,
+        "type": 3,
         "headline": "Contact Us",
-        "headlineColor": "#BB371A",
+        "headlineColor": "#125D98",
         "emailIcon": "https://image.flaticon.com/icons/png/512/893/893247.png",
         "email": "golawfirm@email.com",
-        "emailColor": "#B05B3B",
-        "phoneIcon": "https://image.flaticon.com/icons/png/512/890/890547.png",
+        "emailColor": "#3C8DAD",
+        "phoneIcon": "https://image.flaticon.com/icons/png/512/3643/3643816.png",
         "phone": "023849283",
-        "phoneColor": "#B05B3B",
-        "addressIcon": "https://image.flaticon.com/icons/png/512/717/717940.png",
+        "phoneColor": "#3C8DAD",
+        "addressIcon": "https://image.flaticon.com/icons/png/512/2399/2399925.png",
         "address": "Merlyn Tower, Merlyn Street 13, West Jakarta",
-        "addressColor": "#B05B3B",
-        "backgroundColor": "#F0E3CA"
+        "addressColor": "#3C8DAD",
+        "backgroundColor": "#FFFFFF"
       },
       "footer": {
-        "type": 1,
-        "backgroundColor": "#753422",
+        "type": 3,
+        "backgroundColor": "#125D98",
         "iconColor": "white",
         "facebook": "https://www.facebook.com/",
         "instagram": "https://www.instagram.com/",
         "twitter": "https://twitter.com/?lang=en",
         "linkedin": "https://www.linkedin.com/",
         "youtube": "https://www.youtube.com/",
-        "companyNameColor": "#FFE5B9"
+        "companyNameColor": "#DDDDDD"
       }
     },
     {
@@ -98,11 +94,7 @@
         "backgroundColor": "#B2EBF2",
         "companyName": "Get Laundry",
         "companyNameColor": "#00BCD4",
-        "navLinks": [
-          "About",
-          "Service",
-          "Contact"
-        ],
+        "navLinks": ["About", "Service", "Contact"],
         "navLinksColor": "#FF5722"
       },
       "main": {
@@ -184,11 +176,7 @@
         "backgroundColor": "#ff9494",
         "companyName": "Laundry HaHa Hajar",
         "companyNameColor": "#ffe0e0",
-        "navLinks": [
-          "About",
-          "Service",
-          "Contact"
-        ],
+        "navLinks": ["About", "Service", "Contact"],
         "navlinksColor": "#ff6666"
       },
       "main": {
@@ -339,10 +327,7 @@
         "backgroundColor": "#ff6161",
         "companyName": "Laundry Yuk kkk",
         "companyNameColor": "#ffffff",
-        "navLinks": [
-          "About",
-          "Contact"
-        ],
+        "navLinks": ["About", "Contact"],
         "navlinksColor": "#4dfffc"
       },
       "id": 4

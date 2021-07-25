@@ -1,7 +1,7 @@
-export default function ModalImage({ image, height, width }) {
+export default function ModalImage({ image, height, width, setShowModal }) {
   console.log(image, height, width);
   return (
-    <div className="modal" onClick={(e) => e.stopPropagation()}>
+    <div className="modal" onClick={() => setShowModal(false)}>
       <img
         className="modal-content"
         src={image}

@@ -1,29 +1,56 @@
 #navbar-section {
-  margin-left: 8rem;
+  margin-left: 5rem;
+  padding: 2rem;
+  /* padding-left: 8rem; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: space-between; */
 }
 
 #navbar-section h1 {
   display: flex;
   justify-content: center;
+  font-size: 3rem;
+  color: #125d98;
 }
 
 #navbar-section h3 {
   display: flex;
   justify-content: center;
+  color: #f5a962;
+  font-size: 2rem;
 }
 
 #navbar-section #company-title-color {
   margin-left: 1rem;
 }
 
-#navbar-section .input {
-  margin-top: 5rem;
+.input {
+  margin-right: 6rem;
 }
+
+.input label {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: #125d98;
+}
+
+.input input {
+  width: 10rem;
+  height: 2rem;
+  border: 0.2rem solid #125d98;
+  border-radius: 0.2rem;
+}
+
+/* #navbar-section .input {
+} */
 
 .button-navbar {
   margin-left: 35rem;
   width: 100px;
   margin-bottom: 2rem;
+  padding: 0.5rem 2rem;
 }
 
 .selection-navbar {
@@ -33,7 +60,7 @@
 
 .selection-navbar .selection-img {
   /* max-width: 100px; */
-  width: 60rem;
+  width: 40rem;
   height: 3rem;
   object-fit: cover;
   margin-bottom: 1rem;
@@ -42,4 +69,11 @@
 
 .selection-navbar .selection-img:hover {
   cursor: pointer;
+}
+
+.btn-next {
+  width: 10rem;
+  background-color: #50cb93;
+  font-size: 1.2rem;
+  color: white;
 }

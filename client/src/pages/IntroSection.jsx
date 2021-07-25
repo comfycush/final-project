@@ -45,9 +45,11 @@ function IntroSection() {
 
   return (
     <section id="intro-section">
-      <h1>Let's Build Your Website</h1>
+      <h1>Let's Build Your Website!</h1>
       <div className="intro-input">
-        <label htmlFor="project-title">Project Title</label>
+        <label htmlFor="project-title" style={{ fontSize: "2rem" }}>
+          Project Title
+        </label>
         <input
           required
           onChange={(event) => setProTitle(event.target.value)}
@@ -59,8 +61,8 @@ function IntroSection() {
       </div>
       <br />
       <br />
-      <button onClick={addProjectTitle} className="button-navbar">
-        next
+      <button onClick={addProjectTitle} className="btn btn-intro">
+        Next
       </button>
     </section>
   );

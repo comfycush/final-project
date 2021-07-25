@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 :root {
   --nav-width: 92px;
   --first-color: #0c5df4;
@@ -18,6 +24,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  height: 100%;
 }
 
 .App {
@@ -113,7 +123,7 @@ a {
   /* display: none; Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 999; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
+  /* padding-top: 100px; Location of the box */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -126,4 +136,21 @@ a {
 .modal-content {
   margin: auto;
   display: block;
+}
+
+.generate-color-label {
+  font-size: 1.5rem;
+  color: #125d98;
+}
+
+.color-component {
+  padding: 1rem 0;
+}
+
+.btn-refresh-color {
+  margin: 0 !important;
+  background-color: #f5a962;
+  font-size: 1.2rem !important;
+  color: white;
+  padding: 0.5rem 1.5rem !important;
 }
