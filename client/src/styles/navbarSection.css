@@ -121,6 +121,10 @@ input[type="radio"] {
   height: 1rem;
 }
 
+.form-center input[type="radio"] {
+  margin: 0.5rem 0;
+}
+
 input[type="file"] {
   width: 10rem;
   height: 2rem;
