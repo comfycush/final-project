@@ -32,8 +32,7 @@ export function fetchDashboard() {
         return response.json();
       })
       .then((data) => {
-        // dispatch(setDashboard(data));
-        console.log(data, "data fetch");
+        dispatch(setDashboard(data));
       })
       .catch(() => {
         dispatch(setError(true));
