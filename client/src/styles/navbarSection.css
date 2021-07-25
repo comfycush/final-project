@@ -32,5 +32,14 @@
 }
 
 .selection-navbar .selection-img {
-  max-width: 100px;
+  /* max-width: 100px; */
+  width: 60rem;
+  height: 3rem;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  object-position: 0 30%;
+}
+
+.selection-navbar .selection-img:hover {
+  cursor: pointer;
 }

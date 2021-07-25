@@ -6,11 +6,29 @@ import swal from "sweetalert";
 import { getImageUrl, setLogoUrl } from "../store/actions/uploadImage";
 import "../styles/navbarSection.css";
 import { useLocation } from "react-router";
+import navbar1 from "../assets/navbar1.png";
+import navbar2 from "../assets/navbar2.png";
+import navbar3 from "../assets/navbar3.png";
+import ModalImage from "../components/ModalImage";
 
 function NavbarSection(props) {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation();
+  const [showModal, setShowModal] = useState(false);
+  const [modalImage, setModalImage] = useState("");
+  const [modalHeight, setModalHeight] = useState("");
+  const [modalWidth, setModalWidth] = useState("");
+
+  console.log(showModal, "<<< SHOW modal");
+
+  function viewImage(image, height, width) {
+    setShowModal(true);
+    setModalImage(image);
+    setModalHeight(height);
+    setModalWidth(width);
+  }
+
   const [type, setType] = useState(null);
   // const [logo, setLogo] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("#000000");
@@ -208,39 +226,32 @@ function NavbarSection(props) {
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt1-navbar"
+            name="opt-navbar"
             id="opt1-navbar"
             defaultValue="1"
           />
           <img
             className="selection-img"
-            src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
+            src={navbar1}
             alt="image1"
+            onClick={() => viewImage(navbar1, "4", "80")}
           />
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt2-navbar"
+            name="opt-navbar"
             id="opt2-navbar"
             defaultValue="2"
           />
-          <img
-            className="selection-img"
-            src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-            alt="image2"
-          />
+          <img className="selection-img" src={navbar2} alt="image2" />
           <input
             onClick={(event) => setType(event.target.value)}
             type="radio"
-            name="opt3-navbar"
+            name="opt-navbar"
             id="opt3-navbar"
             defaultValue="3"
           />
-          <img
-            className="selection-img"
-            src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-            alt="image3"
-          />
+          <img className="selection-img" src={navbar3} alt="image3" />
         </div>
         <br />
         <br />
@@ -248,6 +259,13 @@ function NavbarSection(props) {
           next
         </button>
       </div>
+      {showModal && (
+        <ModalImage
+          image={modalImage}
+          height={modalHeight}
+          width={modalWidth}
+        ></ModalImage>
+      )}
     </section>
   );
 }
