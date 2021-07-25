@@ -132,3 +132,7 @@ input[type="file"] {
   justify-content: flex-end;
   align-items: flex-end;
 }
+
+.generate-color-label {
+  font-weight: bold;
+}

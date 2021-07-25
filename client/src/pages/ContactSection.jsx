@@ -344,7 +344,7 @@ function ContactSection() {
               htmlFor="generate-color"
               className="generate-color-label"
             >
-              Generate Color Palatte
+              Generate Color Palette
             </label>
             <button
               onClick={generateColor}

@@ -265,7 +265,7 @@ function MainSection() {
         </div>
         <div>
           <label htmlFor="generate-color" className="generate-color-label">
-            Generate Color Palatte
+            Generate Color Palette
           </label>
           <Color />
           <button className="btn btn-refresh-color" onClick={generateColor}>

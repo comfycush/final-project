@@ -1,31 +1,49 @@
 #service-section {
   margin-left: 8rem;
+  padding: 2rem;
 }
 
 #service-section h1 {
   display: flex;
   justify-content: center;
+  font-size: 3rem;
+  color: #125d98;
 }
 
 #service-section h3 {
   display: flex;
   justify-content: center;
+  color: #f5a962;
+  font-size: 2rem;
 }
 
 .selection-service {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .selection-service .selection-img {
-  max-width: 100px;
+  /* max-width: 100px; */
+  width: 20rem;
+  height: 10rem;
+  object-fit: cover;
 }
 
 .button-service {
-  display: inline-block;
-  margin-left: 29rem;
+  /* display: inline-block;
+  margin-left: 29rem; */
+  display: flex;
+  flex-direction: column;
 }
 
-.button-service button {
+/* .button-service button {
   width: 100px;
+} */
+
+#service-section input {
+  margin-right: 1rem;
+}
+
+.selection-service .selection-img:hover {
+  cursor: pointer;
 }
