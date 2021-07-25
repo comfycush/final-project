@@ -1,7 +1,15 @@
 import React from 'react'
 import '../styles/dashboard.css'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { generateColorArray } from '../store/actions/template'
 
 function Dashboard () {
+  const dispatch = useDispatch()
+
+  useEffect( () => {
+    dispatch(generateColorArray())
+}, [])
     return (
         <section id="content">
           <h1>Welcome, User!</h1>
