@@ -69,17 +69,15 @@ function AboutSection() {
   }
 
   function generateColor() {
-    dispatch(generateColorArray())
+    dispatch(generateColorArray());
   }
 
   return (
     <section id="about-section">
       <h1>About Section</h1>
       <h3>3 of 6</h3>
-      <div style={{display:'flex'}}>
-      
+      <div style={{ display: "flex" }}>
         <div className="input">
-         
           <label htmlFor="about-headline" className="about-headline">
             Headline
           </label>
@@ -129,7 +127,9 @@ function AboutSection() {
             Image
           </label>
           <input
-            onChange={(event) => uploadAboutImage(event.target.files[0], "about")}
+            onChange={(event) =>
+              uploadAboutImage(event.target.files[0], "about")
+            }
             type="file"
             name="about-image"
             className="about-image"
@@ -159,7 +159,7 @@ function AboutSection() {
             <input
               onClick={(event) => setType(event.target.value)}
               type="radio"
-              name="opt1-navbar"
+              name="opt-navbar"
               id="opt1-navbar"
               defaultValue="1"
             />
@@ -171,7 +171,7 @@ function AboutSection() {
             <input
               onClick={(event) => setType(event.target.value)}
               type="radio"
-              name="opt2-navbar"
+              name="opt-navbar"
               id="opt2-navbar"
               defaultValue="2"
             />
@@ -183,7 +183,7 @@ function AboutSection() {
             <input
               onClick={(event) => setType(event.target.value)}
               type="radio"
-              name="opt3-navbar"
+              name="opt-navbar"
               id="opt3-navbar"
               defaultValue="3"
             />
@@ -200,16 +200,40 @@ function AboutSection() {
             <button onClick={addAboutSection}>next</button>
           </div>
         </div>
-        <div style={{ marginLeft:'auto', marginTop:100, display:'flex', flexDirection:'column' , textAlign:'center', marginRight:100}}>
-            <Color />
-            <div style={{marginTop:20}}>
-              <label style={{marginRight:20}} htmlFor="generate-color" className="generate-color-label">
-                Generate Color Palatte
-              </label>
-              <button onClick={generateColor} style={{marginLeft:20, width:80, height:30, backgroundColor:'#BB5E53', color:'white', fontWeight:'bold' }}>Refresh</button>
-            </div>
+        <div
+          style={{
+            marginLeft: "auto",
+            marginTop: 100,
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+            marginRight: 100,
+          }}
+        >
+          <Color />
+          <div style={{ marginTop: 20 }}>
+            <label
+              style={{ marginRight: 20 }}
+              htmlFor="generate-color"
+              className="generate-color-label"
+            >
+              Generate Color Palatte
+            </label>
+            <button
+              onClick={generateColor}
+              style={{
+                marginLeft: 20,
+                width: 80,
+                height: 30,
+                backgroundColor: "#BB5E53",
+                color: "white",
+                fontWeight: "bold",
+              }}
+            >
+              Refresh
+            </button>
+          </div>
         </div>
-
       </div>
     </section>
   );

@@ -7,14 +7,13 @@ import { getImageUrl } from "../store/actions/uploadImage";
 import "../styles/navbarSection.css";
 import Color from "../components/Color";
 import axios from "axios";
-import convert from 'color-convert'
+import convert from "color-convert";
 import { generateColorArray } from "../store/actions/template";
 
 function NavbarSection() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [type, setType] = useState(null);
-  // const [logo, setLogo] = useState("");
   const [backgroundColor, setBackgroundColor] = useState("#000000");
   const [companyName, setCompanyName] = useState("");
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
@@ -77,17 +76,15 @@ function NavbarSection() {
   }
 
   function generateColor() {
-   dispatch(generateColorArray())
+    dispatch(generateColorArray());
   }
 
   return (
     <section id="navbar-section">
       <h1>Navbar Section</h1>
       <h3>1 of 6</h3>
-      <div style={{display:'flex'}}>
-        
+      <div style={{ display: "flex" }}>
         <div className="input">
-         
           <label htmlFor="company-title" className="company-title">
             Company Name
           </label>
@@ -189,7 +186,7 @@ function NavbarSection() {
             <input
               onClick={(event) => setType(event.target.value)}
               type="radio"
-              name="opt1-navbar"
+              name="opt-navbar"
               id="opt1-navbar"
               defaultValue="1"
             />
@@ -201,7 +198,7 @@ function NavbarSection() {
             <input
               onClick={(event) => setType(event.target.value)}
               type="radio"
-              name="opt2-navbar"
+              name="opt-navbar"
               id="opt2-navbar"
               defaultValue="2"
             />
@@ -213,7 +210,7 @@ function NavbarSection() {
             <input
               onClick={(event) => setType(event.target.value)}
               type="radio"
-              name="opt3-navbar"
+              name="opt-navbar"
               id="opt3-navbar"
               defaultValue="3"
             />
@@ -229,16 +226,40 @@ function NavbarSection() {
             next
           </button>
         </div>
-        <div style={{ marginLeft:'auto', marginTop:100, display:'flex', flexDirection:'column' , textAlign:'center', marginRight:100}}>
-            <Color />
-            <div style={{marginTop:20}}>
-              <label style={{marginRight:20}} htmlFor="generate-color" className="generate-color-label">
-                Generate Color Palatte
-              </label>
-              <button onClick={generateColor} style={{marginLeft:20, width:80, height:30, backgroundColor:'#BB5E53', color:'white', fontWeight:'bold' }}>Refresh</button>
-            </div>
+        <div
+          style={{
+            marginLeft: "auto",
+            marginTop: 100,
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+            marginRight: 100,
+          }}
+        >
+          <Color />
+          <div style={{ marginTop: 20 }}>
+            <label
+              style={{ marginRight: 20 }}
+              htmlFor="generate-color"
+              className="generate-color-label"
+            >
+              Generate Color Palatte
+            </label>
+            <button
+              onClick={generateColor}
+              style={{
+                marginLeft: 20,
+                width: 80,
+                height: 30,
+                backgroundColor: "#BB5E53",
+                color: "white",
+                fontWeight: "bold",
+              }}
+            >
+              Refresh
+            </button>
+          </div>
         </div>
-
       </div>
     </section>
   );

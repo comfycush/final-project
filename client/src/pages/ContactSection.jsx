@@ -95,17 +95,15 @@ function ContactSection() {
   }
 
   function generateColor() {
-    dispatch(generateColorArray())
+    dispatch(generateColorArray());
   }
 
   return (
     <section id="contact-section">
       <h1>Contact Section</h1>
       <h3>5 of 6</h3>
-      <div style={{display:'flex'}}>
-
+      <div style={{ display: "flex" }}>
         <div className="input">
-         
           <label htmlFor="contact-headline" className="contact-headline">
             Headline
           </label>
@@ -263,7 +261,7 @@ function ContactSection() {
               onClick={(event) => setType(event.target.value)}
               defaultValue="1"
               type="radio"
-              name="opt1-navbar"
+              name="opt-navbar"
               id="opt1-navbar"
             />
             <img
@@ -275,7 +273,7 @@ function ContactSection() {
               onClick={(event) => setType(event.target.value)}
               defaultValue="2"
               type="radio"
-              name="opt2-navbar"
+              name="opt-navbar"
               id="opt2-navbar"
             />
             <img
@@ -287,7 +285,7 @@ function ContactSection() {
               onClick={(event) => setType(event.target.value)}
               defaultValue="3"
               type="radio"
-              name="opt3-navbar"
+              name="opt-navbar"
               id="opt3-navbar"
             />
             <img
@@ -301,16 +299,40 @@ function ContactSection() {
             <button onClick={addContactSection}>next</button>
           </div>
         </div>
-        <div style={{ marginLeft:'auto', marginTop:100, display:'flex', flexDirection:'column' , textAlign:'center', marginRight:100}}>
-            <Color />
-            <div style={{marginTop:20}}>
-              <label style={{marginRight:20}} htmlFor="generate-color" className="generate-color-label">
-                Generate Color Palatte
-              </label>
-              <button onClick={generateColor} style={{marginLeft:20, width:80, height:30, backgroundColor:'#BB5E53', color:'white', fontWeight:'bold' }}>Refresh</button>
-            </div>
+        <div
+          style={{
+            marginLeft: "auto",
+            marginTop: 100,
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+            marginRight: 100,
+          }}
+        >
+          <Color />
+          <div style={{ marginTop: 20 }}>
+            <label
+              style={{ marginRight: 20 }}
+              htmlFor="generate-color"
+              className="generate-color-label"
+            >
+              Generate Color Palatte
+            </label>
+            <button
+              onClick={generateColor}
+              style={{
+                marginLeft: 20,
+                width: 80,
+                height: 30,
+                backgroundColor: "#BB5E53",
+                color: "white",
+                fontWeight: "bold",
+              }}
+            >
+              Refresh
+            </button>
+          </div>
         </div>
-
       </div>
     </section>
   );
