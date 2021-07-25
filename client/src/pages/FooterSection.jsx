@@ -7,6 +7,10 @@ import Color from "../components/Color";
 import { generateColorArray } from "../store/actions/template";
 import { setFooterSection, updateTemplate } from "../store/actions/forms";
 import { useLocation } from "react-router";
+import footer1 from "../assets/footer1.png";
+import footer2 from "../assets/footer2.png";
+import footer3 from "../assets/footer3.png";
+import ModalImage from "../components/ModalImage";
 
 function FooterSection() {
   const dispatch = useDispatch();
@@ -21,6 +25,18 @@ function FooterSection() {
   const [linkedin, setLinkedin] = useState("");
   const [youtube, setYoutube] = useState("");
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalImage, setModalImage] = useState("");
+  const [modalHeight, setModalHeight] = useState("");
+  const [modalWidth, setModalWidth] = useState("");
+
+  function viewImage(image, height, width) {
+    setShowModal(true);
+    setModalImage(image);
+    setModalHeight(height);
+    setModalWidth(width);
+  }
 
   const stateContact = location.state;
   const templateId = 4;
@@ -74,184 +90,205 @@ function FooterSection() {
     <section id="footer-section">
       <h1>Footer Section</h1>
       <h3>6 of 6</h3>
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          marginTop: "5rem",
+        }}
+      >
         <div className="input">
-          <label htmlFor="link-facebook" className="link-facebook">
-            Link Facebook
-          </label>
-          <input
-            onChange={(event) => setFacebook(event.target.value)}
-            type="text"
-            name="link-facebook"
-            className="link-facebook"
-          />
+          <div className="form-center">
+            <label htmlFor="link-facebook" className="link-facebook">
+              Link Facebook
+            </label>
+            <input
+              onChange={(event) => setFacebook(event.target.value)}
+              type="text"
+              name="link-facebook"
+              className="link-facebook"
+            />
+          </div>
           <br />
           <br />
-          <label htmlFor="link-instagram" className="link-instagram">
-            Link Instagram
-          </label>
-          <input
-            onChange={(event) => setInstagram(event.target.value)}
-            type="text"
-            name="link-instagram"
-            className="link-instagram"
-          />
+          <div className="form-center">
+            <label htmlFor="link-instagram" className="link-instagram">
+              Link Instagram
+            </label>
+            <input
+              onChange={(event) => setInstagram(event.target.value)}
+              type="text"
+              name="link-instagram"
+              className="link-instagram"
+            />
+          </div>
           <br />
           <br />
-          <label htmlFor="link-instagram" className="link-instagram">
-            Link Twitter
-          </label>
-          <input
-            onChange={(event) => setTwitter(event.target.value)}
-            type="text"
-            name="link-twitter"
-            className="link-twitter"
-          />
+          <div className="form-center">
+            <label htmlFor="link-instagram" className="link-instagram">
+              Link Twitter
+            </label>
+            <input
+              onChange={(event) => setTwitter(event.target.value)}
+              type="text"
+              name="link-twitter"
+              className="link-twitter"
+            />
+          </div>
           <br />
           <br />
-          <label htmlFor="link-linkedin" className="link-linkedin">
-            Link Linkedin
-          </label>
-          <input
-            onChange={(event) => setLinkedin(event.target.value)}
-            type="text"
-            name="link-linkedin"
-            className="link-linkedin"
-          />
+          <div className="form-center">
+            <label htmlFor="link-linkedin" className="link-linkedin">
+              Link Linkedin
+            </label>
+            <input
+              onChange={(event) => setLinkedin(event.target.value)}
+              type="text"
+              name="link-linkedin"
+              className="link-linkedin"
+            />
+          </div>
           <br />
           <br />
-          <label htmlFor="link-youtube" className="link-youtube">
-            Link Youtube
-          </label>
-          <input
-            onChange={(event) => setYoutube(event.target.value)}
-            type="text"
-            name="link-youtube"
-            className="link-youtube"
-          />
+          <div className="form-center">
+            <label htmlFor="link-youtube" className="link-youtube">
+              Link Youtube
+            </label>
+            <input
+              onChange={(event) => setYoutube(event.target.value)}
+              type="text"
+              name="link-youtube"
+              className="link-youtube"
+            />
+          </div>
           <br />
           <br />
-          <label htmlFor="company-name-color" className="company-name-color">
-            Company Name Color
-          </label>
-          <input
-            onChange={(event) => setCompanyNameColor(event.target.value)}
-            type="color"
-            name="company-name-color"
-            className="company-name-color"
-          />
+          <div className="form-center">
+            <label htmlFor="company-name-color" className="company-name-color">
+              Company Name Color
+            </label>
+            <input
+              onChange={(event) => setCompanyNameColor(event.target.value)}
+              type="color"
+              name="company-name-color"
+              className="company-name-color"
+            />
+          </div>
           <br />
           <br />
-          <label htmlFor="icon-color">Social Media Icon Color</label>
-          <input
-            onClick={(event) => setIconColor(event.target.value)}
-            defaultValue="black"
-            type="radio"
-            style={{ marginLeft: "1.5rem" }}
-            name="black-icon"
-            id="black-icon"
-          />
-          <label htmlFor="black-icon">Black</label>
-          <input
-            onClick={(event) => setIconColor(event.target.value)}
-            defaultValue="white"
-            type="radio"
-            name="white-icon"
-            id="white-icon"
-          />
-          <label htmlFor="white-icon">White</label>
+          <div className="from-center">
+            <label htmlFor="icon-color">Social Media Icon Color</label>
+            <input
+              onClick={(event) => setIconColor(event.target.value)}
+              defaultValue="black"
+              type="radio"
+              style={{ marginLeft: "1.5rem" }}
+              name="icon"
+              id="black-icon"
+            />
+            <label htmlFor="black-icon" style={{ marginLeft: "0.3rem" }}>
+              Black
+            </label>
+            <input
+              onClick={(event) => setIconColor(event.target.value)}
+              defaultValue="white"
+              type="radio"
+              name="icon"
+              id="white-icon"
+            />
+            <label htmlFor="white-icon" style={{ marginLeft: "0.3rem" }}>
+              White
+            </label>
+          </div>
           <br />
           <br />
-          <label htmlFor="background-color-navbar">Background Color</label>
-          <input
-            onChange={(event) => setBackgroundColor(event.target.value)}
-            type="color"
-            name="background-color-navbar"
-            id="background-color-navbar"
-          />
+          <div className="form-center">
+            <label htmlFor="background-color-navbar">Background Color</label>
+            <input
+              onChange={(event) => setBackgroundColor(event.target.value)}
+              type="color"
+              name="background-color-navbar"
+              id="background-color-navbar"
+            />
+          </div>
           <br />
           <br />
           <label htmlFor="template-layout">Template Layout</label>
           <br />
           <br />
           <div className="selection-footer">
-            <input
-              onClick={(event) => setType(event.target.value)}
-              defaultValue="1"
-              type="radio"
-              name="opt-navbar"
-              id="opt1-navbar"
-            />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image1"
-            />
-            <input
-              onClick={(event) => setType(event.target.value)}
-              defaultValue="2"
-              type="radio"
-              name="opt-navbar"
-              id="opt2-navbar"
-            />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image2"
-            />
-            <input
-              onClick={(event) => setType(event.target.value)}
-              defaultValue="3"
-              type="radio"
-              name="opt-navbar"
-              id="opt3-navbar"
-            />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image3"
-            />
+            <div className="form-center">
+              <input
+                onClick={(event) => setType(event.target.value)}
+                defaultValue="1"
+                type="radio"
+                name="opt-navbar"
+                id="opt1-navbar"
+              />
+              <img
+                className="selection-img"
+                src={footer1}
+                alt="image1"
+                onClick={() => viewImage(footer1, "5", "85")}
+              />
+            </div>
+            <div className="form-center">
+              <input
+                onClick={(event) => setType(event.target.value)}
+                defaultValue="2"
+                type="radio"
+                name="opt-navbar"
+                id="opt2-navbar"
+              />
+              <img
+                className="selection-img"
+                src={footer2}
+                alt="image2"
+                onClick={() => viewImage(footer2, "12", "85")}
+              />
+            </div>
+            <div className="form-center">
+              <input
+                onClick={(event) => setType(event.target.value)}
+                defaultValue="3"
+                type="radio"
+                name="opt-navbar"
+                id="opt3-navbar"
+              />
+              <img
+                className="selection-img"
+                src={footer3}
+                alt="image3"
+                onClick={() => viewImage(footer3, "12", "85")}
+              />
+            </div>
           </div>
           <br />
           <br />
-          <div className="button-footer">
-            <button onClick={addFooterSection}>finish</button>
-          </div>
         </div>
-        <div
-          style={{
-            marginLeft: "auto",
-            marginTop: 100,
-            display: "flex",
-            flexDirection: "column",
-            textAlign: "center",
-            marginRight: 100,
-          }}
-        >
+        <div>
+          <label htmlFor="generate-color" className="generate-color-label">
+            Generate Color Palette
+          </label>
           <Color />
-          <div style={{ marginTop: 20 }}>
-            <label
-              style={{ marginRight: 20 }}
-              htmlFor="generate-color"
-              className="generate-color-label"
-            >
-              Generate Color Palette
-            </label>
-            <button
-              onClick={generateColor}
-              style={{
-                marginLeft: 20,
-                width: 80,
-                height: 30,
-                backgroundColor: "#BB5E53",
-                color: "white",
-                fontWeight: "bold",
-              }}
-            >
-              Refresh
-            </button>
-          </div>
+          <button className="btn btn-refresh-color" onClick={generateColor}>
+            Refresh
+          </button>
         </div>
+        {showModal && (
+          <ModalImage
+            image={modalImage}
+            height={modalHeight}
+            width={modalWidth}
+            setShowModal={setShowModal}
+          ></ModalImage>
+        )}
+      </div>
+      <div className="button-footer btn-form-page">
+        <button className="btn btn-next" onClick={addFooterSection}>
+          Finish
+        </button>
       </div>
     </section>
   );

@@ -14,8 +14,9 @@ export default function RenderFinish() {
   const state = useSelector((state) => state.forms);
   const location = useLocation();
   console.log(state);
-  // const id = location.state.templateId ? location.state.templateId : 3;
-  const id = 1;
+  const id = location.state.templateId ? location.state.templateId : 4;
+  console.log(location.state.templateId);
+  // const id = 1;
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
   const templateIsLoading = useSelector((state) => state.template.isLoading);

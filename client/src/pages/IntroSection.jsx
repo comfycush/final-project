@@ -47,17 +47,20 @@ function IntroSection() {
     <section id="intro-section">
       <h1>Let's Build Your Website!</h1>
       <div className="intro-input">
-        <label htmlFor="project-title" style={{ fontSize: "2rem" }}>
-          Project Title
-        </label>
-        <input
-          required
-          onChange={(event) => setProTitle(event.target.value)}
-          style={{ marginLeft: "1rem" }}
-          type="text"
-          name="project-title"
-          id="project-title"
-        />
+        <div className="form-center">
+          <label htmlFor="project-title" style={{ fontSize: "2rem" }}>
+            Project Title
+          </label>
+          <input
+            required
+            onChange={(event) => setProTitle(event.target.value)}
+            style={{ marginLeft: "1rem" }}
+            type="text"
+            name="project-title"
+            id="project-title"
+            style={{ height: "2.5rem", borderColor: "#125D98" }}
+          />
+        </div>
       </div>
       <br />
       <br />

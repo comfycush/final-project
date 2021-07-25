@@ -17,7 +17,7 @@ export default function UpdateNavbarForm({ data, allData }) {
     data.companyNameColor
   );
   const [navlinks, setNavlinks] = useState(data.navLinks);
-  const [navlinksColor, setNavlinksColor] = useState(data.navlinksColor);
+  const [navlinksColor, setNavlinksColor] = useState(data.navLinksColor);
   const logoUrl = useSelector((state) => state.uploadImage.logoUrl);
   // const [logoUrl, setLO]
 
