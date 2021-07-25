@@ -6,8 +6,6 @@ import swal from "sweetalert";
 import { getImageUrl } from "../store/actions/uploadImage";
 import "../styles/navbarSection.css";
 import Color from "../components/Color";
-import axios from "axios";
-import convert from 'color-convert'
 import { generateColorArray } from "../store/actions/template";
 
 function NavbarSection() {
