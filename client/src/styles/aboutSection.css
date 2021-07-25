@@ -1,31 +1,50 @@
 #about-section {
-  margin-left: 8rem;
+  margin-left: 5rem;
+  padding: 2rem;
 }
 
 #about-section h1 {
   display: flex;
   justify-content: center;
+  font-size: 3rem;
+  color: #125d98;
 }
 
 #about-section h3 {
   display: flex;
   justify-content: center;
+  color: #f5a962;
+  font-size: 2rem;
+}
+
+#about-section input,
+#about-section textarea {
+  margin-right: 1rem;
 }
 
 .selection-about {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .selection-about .selection-img {
-  max-width: 100px;
+  /* max-width: 100px; */
+  width: 20rem;
+  height: 10rem;
+  object-fit: cover;
 }
 
 .button-about {
-  display: inline-block;
-  margin-left: 29rem;
+  /* display: inline-block;
+  margin-left: 29rem; */
+  display: flex;
+  flex-direction: column;
 }
 
-.button-about button {
+/* .button-about button {
   width: 100px;
+} */
+
+.selection-about .selection-img:hover {
+  cursor: pointer;
 }

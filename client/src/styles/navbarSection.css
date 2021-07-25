@@ -100,9 +100,19 @@ input[type="text"] {
   height: 2rem;
 }
 
+textarea {
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  width: 18rem;
+  height: 8rem;
+  border: 0.2rem solid #125d98;
+  border-radius: 0.2rem;
+}
+
 input[type="color"] {
   width: 5rem;
   height: 2rem;
+  border: none;
 }
 
 input[type="checkbox"],
@@ -114,6 +124,7 @@ input[type="radio"] {
 input[type="file"] {
   width: 10rem;
   height: 2rem;
+  border: none;
 }
 
 .btn-form-page {
