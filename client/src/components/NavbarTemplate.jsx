@@ -47,7 +47,7 @@ export default function NavbarTemplate({ navbarData, isDeploy, templateData }) {
             <li key={index}>
               <HashLink
                 to={`#${link}`}
-                style={{ color: navbarData.navLinksColor }}
+                style={{ color: navbarData.navlinksColor }}
               >
                 {link}
               </HashLink>

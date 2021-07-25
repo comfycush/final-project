@@ -23,7 +23,7 @@ function AboutSection() {
   const aboutImageUrl = useSelector((state) => state.uploadImage.aboutImageUrl);
 
   const stateMain = location.state;
-  const templateId = 3;
+  const templateId = 4;
 
   function addAboutSection(event) {
     event.preventDefault();

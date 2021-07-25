@@ -22,7 +22,7 @@ function MainSection() {
   const mainImageUrl = useSelector((state) => state.uploadImage.mainImageUrl);
 
   const stateNavbar = location.state;
-  const templateId = 3;
+  const templateId = 4;
 
   function addMainSection(event) {
     event.preventDefault();
@@ -181,148 +181,76 @@ function MainSection() {
               name="opt-navbar"
               id="opt1-navbar"
             />
-            <label htmlFor="main-headline" className="main-headline">
-              Color
-            </label>
-            <input
-              onChange={(event) => setHeadlineColor(event.target.value)}
-              type="color"
-              name="main-headline"
-              className="main-headline"
+            <img
+              className="selection-img"
+              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
+              alt="image1"
             />
-            <br />
-            <br />
-            <label htmlFor="main-subheadline" className="main-subheadline">
-              Subheadline
-            </label>
             <input
-              onChange={(event) => setSubHeadline(event.target.value)}
-              type="text"
-              name="main-subheadline"
-              className="main-subheadline"
+              onClick={(event) => setType(event.target.value)}
+              defaultValue="2"
+              type="radio"
+              name="opt-navbar"
+              id="opt2-navbar"
             />
-            <label htmlFor="main-subheadline" className="main-subheadline">
-              Color
-            </label>
+            <img
+              className="selection-img"
+              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
+              alt="image2"
+            />
             <input
-              onChange={(event) => setsubHeadlineColor(event.target.value)}
-              type="color"
-              name="main-subheadline"
-              className="main-subheadline"
+              onClick={(event) => setType(event.target.value)}
+              defaultValue="3"
+              type="radio"
+              name="opt-navbar"
+              id="opt3-navbar"
             />
-            <br />
-            <br />
-            <label htmlFor="company-background" className="company-background">
-              Image
-            </label>
-            <input
-              onChange={(event) =>
-                uploadMainImage(event.target.files[0], "main")
-              }
-              type="file"
-              name="company-background"
-              className="company-background"
+            <img
+              className="selection-img"
+              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
+              alt="image3"
             />
-            {mainImageUrl && (
-              <img
-                style={{ width: "10rem", height: "10rem", objectFit: "cover" }}
-                src={mainImageUrl}
-                alt="about"
-              />
-            )}
-            <br />
-            <br />
-            <label htmlFor="background-color-main">Background Color</label>
-            <input
-              onChange={(event) => setBackgroundColor(event.target.value)}
-              type="color"
-              name="background-color-mainb"
-              id="background-color-main"
-            />
-            <br />
-            <br />
-            <label htmlFor="template-layout">Template Layout</label>
-            <br />
-            <br />
-            <div className="selection-main">
-              <input
-                onClick={(event) => setType(event.target.value)}
-                defaultValue="1"
-                type="radio"
-                name="opt-navbar"
-                id="opt1-navbar"
-              />
-              <img
-                className="selection-img"
-                src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-                alt="image1"
-              />
-              <input
-                onClick={(event) => setType(event.target.value)}
-                defaultValue="2"
-                type="radio"
-                name="opt-navbar"
-                id="opt2-navbar"
-              />
-              <img
-                className="selection-img"
-                src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-                alt="image2"
-              />
-              <input
-                onClick={(event) => setType(event.target.value)}
-                defaultValue="3"
-                type="radio"
-                name="opt-navbar"
-                id="opt3-navbar"
-              />
-              <img
-                className="selection-img"
-                src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-                alt="image3"
-              />
-            </div>
-            <br />
-            <br />
-            <div className="button-main">
-              <button onClick={skipMainSection}>skip</button>
-              <button onClick={addMainSection}>next</button>
-            </div>
           </div>
+          <br />
+          <br />
+          <div className="button-main">
+            <button onClick={skipMainSection}>skip</button>
+            <button onClick={addMainSection}>next</button>
+          </div>
+        </div>
 
-          <div
-            style={{
-              marginLeft: "auto",
-              marginTop: 100,
-              display: "flex",
-              flexDirection: "column",
-              textAlign: "center",
-              marginRight: 100,
-            }}
-          >
-            <Color />
-            <div style={{ marginTop: 20 }}>
-              <label
-                style={{ marginRight: 20 }}
-                htmlFor="generate-color"
-                className="generate-color-label"
-              >
-                Generate Color Palatte
-              </label>
-              <button
-                onClick={generateColor}
-                style={{
-                  marginLeft: 20,
-                  width: 80,
-                  height: 30,
-                  backgroundColor: "#BB5E53",
-                  color: "white",
-                  fontWeight: "bold",
-                }}
-              >
-                Refresh
-              </button>
-            </div>
+        <div
+          style={{
+            marginLeft: "auto",
+            marginTop: 100,
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+            marginRight: 100,
+          }}
+        >
+          <Color />
+          <div style={{ marginTop: 20 }}>
+            <label
+              style={{ marginRight: 20 }}
+              htmlFor="generate-color"
+              className="generate-color-label"
+            >
+              Generate Color Palatte
+            </label>
+            <button
+              onClick={generateColor}
+              style={{
+                marginLeft: 20,
+                width: 80,
+                height: 30,
+                backgroundColor: "#BB5E53",
+                color: "white",
+                fontWeight: "bold",
+              }}
+            >
+              Refresh
+            </button>
           </div>
         </div>
       </div>

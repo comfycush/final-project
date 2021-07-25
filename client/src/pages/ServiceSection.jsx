@@ -48,7 +48,7 @@ function ServiceSection() {
   const [cardTextColor3, setCardTextColor3] = useState("#000000");
 
   const stateAbout = location.state;
-  const templateId = 3;
+  const templateId = 4;
 
   function addServiceSection() {
     const dataServiceSection = {

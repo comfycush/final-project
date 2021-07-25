@@ -23,7 +23,7 @@ function FooterSection() {
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
 
   const stateContact = location.state;
-  const templateId = 3;
+  const templateId = 4;
 
   function addFooterSection() {
     const dataFooterSection = {

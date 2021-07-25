@@ -260,6 +260,92 @@
         "companyNameColor": "#ffc7c7"
       },
       "id": 3
+    },
+    {
+      "isDeploy": false,
+      "projectTitle": "tes setelah merge",
+      "userId": 2,
+      "main": {
+        "type": 1,
+        "image": "https://res.cloudinary.com/du39lpkuj/image/upload/v1627204604/jrjabzsg76ofg3ad5dfg.jpg",
+        "headline": "halo main",
+        "headlineColor": "#ff4d4d",
+        "subHeadline": "adfa akdfjak adfa adf ",
+        "subHeadlineColor": "#ffbdbd",
+        "backgroundColor": "#ffffff"
+      },
+      "about": {
+        "type": 2,
+        "headline": "halo about",
+        "headlineColor": "#ff7070",
+        "image": "https://res.cloudinary.com/du39lpkuj/image/upload/v1627204634/qh3zvxa1nql72c5dbnmg.jpg",
+        "backgroundColor": "#ffffff",
+        "paragraph": "adf adf dsaf dsaf dsaf sad ",
+        "paragraphColor": "#ffd1d1"
+      },
+      "service": {
+        "type": 3,
+        "headline": "halo service",
+        "headlineColor": "#ff6666",
+        "backgroundColor": "#ffffff",
+        "cardImage1": "https://res.cloudinary.com/du39lpkuj/image/upload/v1627204657/ppm6ig7dmisj9gf3kv84.png",
+        "cardBackgroundColor1": "#ff7a7a",
+        "cardTitle1": "buble",
+        "cardTitleColor1": "#ffffff",
+        "cardText1": "adfaf adsf aadsfadsf ",
+        "cardTextColor1": "#ffffff",
+        "cardImage2": "",
+        "cardBackgroundColor2": "#000000",
+        "cardTitle2": "",
+        "cardTitleColor2": "#000000",
+        "cardText2": "",
+        "cardTextColor2": "#000000",
+        "cardImage3": "",
+        "cardBackgroundColor3": "#000000",
+        "cardTitle3": "",
+        "cardTitleColor3": "#000000",
+        "cardText3": "",
+        "cardTextColor3": "#000000"
+      },
+      "contact": {
+        "type": 3,
+        "headline": "halo contact",
+        "headlineColor": "#ff6666",
+        "backgroundColor": "#ffffff",
+        "emailIcon": "https://res.cloudinary.com/du39lpkuj/image/upload/v1627204707/hot0qr3gtvejdd4swfga.png",
+        "email": "john@mail.com",
+        "emailColor": "#ff9e9e",
+        "phoneIcon": "",
+        "phone": "",
+        "phoneColor": "#000000",
+        "addressIcon": "",
+        "address": "",
+        "addressColor": "#000000"
+      },
+      "footer": {
+        "type": 1,
+        "backgroundColor": "#890101",
+        "iconColor": "white",
+        "facebook": "https://www.facebook.com/",
+        "instagram": "https://www.instagram.com/",
+        "twitter": "",
+        "linkedin": "",
+        "youtube": "",
+        "companyNameColor": "#ffffff"
+      },
+      "navbar": {
+        "type": 3,
+        "logo": "https://res.cloudinary.com/du39lpkuj/image/upload/v1627204479/udbjsomn8399s16l2ka6.png",
+        "backgroundColor": "#ff6161",
+        "companyName": "Laundry Yuk kkk",
+        "companyNameColor": "#ffffff",
+        "navLinks": [
+          "About",
+          "Contact"
+        ],
+        "navlinksColor": "#4dfffc"
+      },
+      "id": 4
     }
   ]
 }
