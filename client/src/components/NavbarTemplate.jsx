@@ -1,9 +1,23 @@
 import "../styles/navbar.css";
 import { HashLink } from "react-router-hash-link";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-export default function NavbarTemplate({ navbarData }) {
-  const isDeploy = useSelector((state) => state.template.isDeploy);
+export default function NavbarTemplate({ navbarData, isDeploy, templateData }) {
+  // const isDeploy = useSelector((state) => state.template.isDeploy);
+  const history = useHistory();
+
+  function toUpdatePage() {
+    history.push({
+      pathname: "/update-template",
+      state: {
+        section: "navbar",
+        data: navbarData,
+        allData: templateData,
+      },
+    });
+  }
+
   return (
     <div className="section-and-update">
       <nav
@@ -33,7 +47,7 @@ export default function NavbarTemplate({ navbarData }) {
             <li key={index}>
               <HashLink
                 to={`#${link}`}
-                style={{ color: navbarData.navLinksColor }}
+                style={{ color: navbarData.navlinksColor }}
               >
                 {link}
               </HashLink>
@@ -44,7 +58,9 @@ export default function NavbarTemplate({ navbarData }) {
       </nav>
       {!isDeploy && (
         <div className="update-nav-section">
-          <button className="btn btn-update-section">Update Navbar</button>
+          <button onClick={toUpdatePage} className="btn btn-update-section">
+            Update Navbar
+          </button>
         </div>
       )}
     </div>

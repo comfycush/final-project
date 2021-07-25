@@ -2,28 +2,32 @@ import React, { useState } from "react";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setMainSection } from "../store/actions/forms";
+import { setMainSection, updateTemplate } from "../store/actions/forms";
 import "../styles/mainSection.css";
-import { getImageUrl } from "../store/actions/uploadImage";
 import Color from "../components/Color";
 import { generateColorArray } from "../store/actions/template";
+import { getImageUrl, setMainImageUrl } from "../store/actions/uploadImage";
+import { useLocation } from "react-router";
 
 function MainSection() {
   const history = useHistory();
   const dispatch = useDispatch();
+  const location = useLocation();
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
-  // const [image, setImage] = useState('')
   const [backgroundColor, setBackgroundColor] = useState("#000000");
   const [subHeadline, setSubHeadline] = useState("");
   const [subHeadlineColor, setsubHeadlineColor] = useState("#000000");
   const [type, setType] = useState(null);
   const mainImageUrl = useSelector((state) => state.uploadImage.mainImageUrl);
 
+  const stateNavbar = location.state;
+  const templateId = 4;
+
   function addMainSection(event) {
     event.preventDefault();
     const dataMainSection = {
-      type,
+      type: +type,
       image: mainImageUrl,
       headline,
       headlineColor,
@@ -40,11 +44,23 @@ function MainSection() {
       swal("Please choose your require template");
     } else {
       dispatch(setMainSection(dataMainSection));
-      history.push("/about-section");
+      const newestTemplate = {
+        ...stateNavbar,
+        main: dataMainSection,
+        about: {},
+        service: {},
+        contact: {},
+        footer: {},
+      };
+      dispatch(updateTemplate(templateId, newestTemplate));
+      history.push({
+        pathname: "/about-section",
+        state: {
+          ...stateNavbar,
+          main: dataMainSection,
+        },
+      });
     }
-    console.log(dataMainSection, "<< data main");
-    dispatch(setMainSection(dataMainSection));
-    history.push("/about-section");
   }
 
   function skipMainSection(event) {
@@ -60,7 +76,14 @@ function MainSection() {
     };
 
     dispatch(setMainSection(dataMainSection));
-    history.push("/about-section");
+    // history.push("/about-section");
+    history.push({
+      pathname: "/about-section",
+      state: {
+        ...stateNavbar,
+        main: dataMainSection,
+      },
+    });
   }
 
   function uploadMainImage(file, code) {
@@ -68,16 +91,15 @@ function MainSection() {
   }
 
   function generateColor() {
-    dispatch(generateColorArray())
+    dispatch(generateColorArray());
   }
 
   return (
     <section id="main-section">
       <h1>Main Section</h1>
       <h3>2 of 6</h3>
-      <div style={{display:'flex'}}>
+      <div style={{ display: "flex" }}>
         <div className="input">
-         
           <label htmlFor="main-headline" className="main-headline">
             Headline
           </label>
@@ -134,6 +156,9 @@ function MainSection() {
               alt="about"
             />
           )}
+          <button onClick={() => dispatch(setMainImageUrl(""))}>
+            Remove Image
+          </button>
           <br />
           <br />
           <label htmlFor="background-color-main">Background Color</label>
@@ -153,7 +178,7 @@ function MainSection() {
               onClick={(event) => setType(event.target.value)}
               defaultValue="1"
               type="radio"
-              name="opt1-navbar"
+              name="opt-navbar"
               id="opt1-navbar"
             />
             <img
@@ -165,7 +190,7 @@ function MainSection() {
               onClick={(event) => setType(event.target.value)}
               defaultValue="2"
               type="radio"
-              name="opt2-navbar"
+              name="opt-navbar"
               id="opt2-navbar"
             />
             <img
@@ -177,7 +202,7 @@ function MainSection() {
               onClick={(event) => setType(event.target.value)}
               defaultValue="3"
               type="radio"
-              name="opt3-navbar"
+              name="opt-navbar"
               id="opt3-navbar"
             />
             <img
@@ -194,16 +219,40 @@ function MainSection() {
           </div>
         </div>
 
-        <div style={{ marginLeft:'auto', marginTop:100, display:'flex', flexDirection:'column' , textAlign:'center', marginRight:100}}>
-            <Color />
-            <div style={{marginTop:20}}>
-              <label style={{marginRight:20}} htmlFor="generate-color" className="generate-color-label">
-                Generate Color Palatte
-              </label>
-              <button onClick={generateColor} style={{marginLeft:20, width:80, height:30, backgroundColor:'#BB5E53', color:'white', fontWeight:'bold' }}>Refresh</button>
-            </div>
+        <div
+          style={{
+            marginLeft: "auto",
+            marginTop: 100,
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+            marginRight: 100,
+          }}
+        >
+          <Color />
+          <div style={{ marginTop: 20 }}>
+            <label
+              style={{ marginRight: 20 }}
+              htmlFor="generate-color"
+              className="generate-color-label"
+            >
+              Generate Color Palatte
+            </label>
+            <button
+              onClick={generateColor}
+              style={{
+                marginLeft: 20,
+                width: 80,
+                height: 30,
+                backgroundColor: "#BB5E53",
+                color: "white",
+                fontWeight: "bold",
+              }}
+            >
+              Refresh
+            </button>
+          </div>
         </div>
-
       </div>
     </section>
   );

@@ -19,3 +19,7 @@ export const SET_CARD_IMAGE_3_URL = "SET_CARD_IMAGE_3_URL";
 export const SET_EMAIL_ICON_URL = "SET_EMAIL_ICON_URL";
 export const SET_PHONE_ICON_URL = "SET_PHONE_ICON_URL";
 export const SET_ADDRESS_ICON_URL = "SET_ADDRESS_ICON_URL";
+
+export const SET_DASHBOARD = "SET_DASHBOARD";
+export const SET_ERROR = "SET_ERROR";
+export const SET_LOADING = "SET_LOADING";

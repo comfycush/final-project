@@ -3,14 +3,16 @@ import swal from "sweetalert";
 import "../styles/aboutSection.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { setAboutSection } from "../store/actions/forms";
-import { getImageUrl } from "../store/actions/uploadImage";
 import Color from "../components/Color";
 import { generateColorArray } from "../store/actions/template";
+import { setAboutSection, updateTemplate } from "../store/actions/forms";
+import { getImageUrl, setAboutImageUrl } from "../store/actions/uploadImage";
+import { useLocation } from "react-router";
 
 function AboutSection() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
   const [type, setType] = useState(null);
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
@@ -20,10 +22,13 @@ function AboutSection() {
   const [paragraphColor, setParagraphColor] = useState("#000000");
   const aboutImageUrl = useSelector((state) => state.uploadImage.aboutImageUrl);
 
+  const stateMain = location.state;
+  const templateId = 4;
+
   function addAboutSection(event) {
     event.preventDefault();
     const dataAboutSection = {
-      type,
+      type: +type,
       headline,
       headlineColor,
       image: aboutImageUrl,
@@ -42,11 +47,22 @@ function AboutSection() {
       swal("Please choose your required template");
     } else {
       dispatch(setAboutSection(dataAboutSection));
-      history.push("/service-section");
+      const newestTemplate = {
+        ...stateMain,
+        about: dataAboutSection,
+        service: {},
+        contact: {},
+        footer: {},
+      };
+      dispatch(updateTemplate(templateId, newestTemplate));
+      history.push({
+        pathname: "/service-section",
+        state: {
+          ...stateMain,
+          about: dataAboutSection,
+        },
+      });
     }
-    console.log(dataAboutSection, "<< data about");
-    dispatch(setAboutSection(dataAboutSection));
-    history.push("/service-section");
   }
 
   function skipAboutSection(event) {
@@ -61,7 +77,14 @@ function AboutSection() {
       paragraphColor: null,
     };
     dispatch(setAboutSection(dataAboutSection));
-    history.push("/service-section");
+    // history.push("/service-section");
+    history.push({
+      pathname: "/service-section",
+      state: {
+        ...stateMain,
+        about: dataAboutSection,
+      },
+    });
   }
 
   function uploadAboutImage(file, code) {
@@ -69,17 +92,15 @@ function AboutSection() {
   }
 
   function generateColor() {
-    dispatch(generateColorArray())
+    dispatch(generateColorArray());
   }
 
   return (
     <section id="about-section">
       <h1>About Section</h1>
       <h3>3 of 6</h3>
-      <div style={{display:'flex'}}>
-      
+      <div style={{ display: "flex" }}>
         <div className="input">
-         
           <label htmlFor="about-headline" className="about-headline">
             Headline
           </label>
@@ -98,8 +119,6 @@ function AboutSection() {
             name="about-headline"
             className="about-headline"
           />
-          <br />
-          <br />
           <label htmlFor="about-paragraph" className="about-paragraph">
             Paragraph
           </label>
@@ -112,8 +131,6 @@ function AboutSection() {
             rows={10}
             defaultValue={""}
           />
-          <br />
-          <br />
           <label htmlFor="about-paragraph" className="about-paragraph">
             Paragraph Color
           </label>
@@ -123,13 +140,13 @@ function AboutSection() {
             name="about-paragraph"
             className="about-paragraph"
           />
-          <br />
-          <br />
           <label htmlFor="about-image" className="about-image">
             Image
           </label>
           <input
-            onChange={(event) => uploadAboutImage(event.target.files[0], "about")}
+            onChange={(event) =>
+              uploadAboutImage(event.target.files[0], "about")
+            }
             type="file"
             name="about-image"
             className="about-image"
@@ -141,6 +158,9 @@ function AboutSection() {
               alt="about"
             />
           )}
+          <button onClick={() => dispatch(setAboutImageUrl(""))}>
+            Remove Image
+          </button>
           <br />
           <br />
           <label htmlFor="background-color-about">Background Color</label>
@@ -159,7 +179,7 @@ function AboutSection() {
             <input
               onClick={(event) => setType(event.target.value)}
               type="radio"
-              name="opt1-navbar"
+              name="opt-navbar"
               id="opt1-navbar"
               defaultValue="1"
             />
@@ -171,7 +191,7 @@ function AboutSection() {
             <input
               onClick={(event) => setType(event.target.value)}
               type="radio"
-              name="opt2-navbar"
+              name="opt-navbar"
               id="opt2-navbar"
               defaultValue="2"
             />
@@ -183,7 +203,7 @@ function AboutSection() {
             <input
               onClick={(event) => setType(event.target.value)}
               type="radio"
-              name="opt3-navbar"
+              name="opt-navbar"
               id="opt3-navbar"
               defaultValue="3"
             />
@@ -200,16 +220,40 @@ function AboutSection() {
             <button onClick={addAboutSection}>next</button>
           </div>
         </div>
-        <div style={{ marginLeft:'auto', marginTop:100, display:'flex', flexDirection:'column' , textAlign:'center', marginRight:100}}>
-            <Color />
-            <div style={{marginTop:20}}>
-              <label style={{marginRight:20}} htmlFor="generate-color" className="generate-color-label">
-                Generate Color Palatte
-              </label>
-              <button onClick={generateColor} style={{marginLeft:20, width:80, height:30, backgroundColor:'#BB5E53', color:'white', fontWeight:'bold' }}>Refresh</button>
-            </div>
+        <div
+          style={{
+            marginLeft: "auto",
+            marginTop: 100,
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+            marginRight: 100,
+          }}
+        >
+          <Color />
+          <div style={{ marginTop: 20 }}>
+            <label
+              style={{ marginRight: 20 }}
+              htmlFor="generate-color"
+              className="generate-color-label"
+            >
+              Generate Color Palatte
+            </label>
+            <button
+              onClick={generateColor}
+              style={{
+                marginLeft: 20,
+                width: 80,
+                height: 30,
+                backgroundColor: "#BB5E53",
+                color: "white",
+                fontWeight: "bold",
+              }}
+            >
+              Refresh
+            </button>
+          </div>
         </div>
-
       </div>
     </section>
   );

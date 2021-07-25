@@ -3,14 +3,21 @@ import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../styles/serviceSection.css";
-import { setServiceSection } from "../store/actions/forms";
-import { getImageUrl } from "../store/actions/uploadImage";
 import Color from "../components/Color";
 import { generateColorArray } from "../store/actions/template";
+import { setServiceSection, updateTemplate } from "../store/actions/forms";
+import {
+  getImageUrl,
+  setCardImage1Url,
+  setCardImage2Url,
+  setCardImage3Url,
+} from "../store/actions/uploadImage";
+import { useLocation } from "react-router";
 
 function ServiceSection() {
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
   const [type, setType] = useState(null);
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
@@ -40,9 +47,12 @@ function ServiceSection() {
   const [cardText3, setCardText3] = useState("");
   const [cardTextColor3, setCardTextColor3] = useState("#000000");
 
+  const stateAbout = location.state;
+  const templateId = 4;
+
   function addServiceSection() {
     const dataServiceSection = {
-      type,
+      type: +type,
       headline,
       headlineColor,
       backgroundColor,
@@ -79,11 +89,21 @@ function ServiceSection() {
       swal("Please choose your required template");
     } else {
       dispatch(setServiceSection(dataServiceSection));
-      history.push("/contact-section");
+      const newestTemplate = {
+        ...stateAbout,
+        service: dataServiceSection,
+        contact: {},
+        footer: {},
+      };
+      dispatch(updateTemplate(templateId, newestTemplate));
+      history.push({
+        pathname: "/contact-section",
+        state: {
+          ...stateAbout,
+          service: dataServiceSection,
+        },
+      });
     }
-    console.log(dataServiceSection, "<<<< data service");
-    dispatch(setServiceSection(dataServiceSection));
-    history.push("/contact-section");
   }
 
   function skipServiceSection() {
@@ -113,7 +133,14 @@ function ServiceSection() {
     };
 
     dispatch(setServiceSection(dataServiceSection));
-    history.push("/contact-section");
+    // history.push("/contact-section");
+    history.push({
+      pathname: "/contact-section",
+      state: {
+        ...stateAbout,
+        service: dataServiceSection,
+      },
+    });
   }
 
   function uploadCardImage(file, code) {
@@ -121,18 +148,15 @@ function ServiceSection() {
   }
 
   function generateColor() {
-    dispatch(generateColorArray())
+    dispatch(generateColorArray());
   }
 
   return (
     <section id="service-section">
       <h1>Service Section</h1>
       <h3>4 of 6</h3>
-      <div style={{display:'flex'}}>
-
-      
+      <div style={{ display: "flex" }}>
         <div className="input">
-         
           <label htmlFor="service-headline" className="service-headline">
             Headline
           </label>
@@ -157,7 +181,9 @@ function ServiceSection() {
             Card 1 Icon
           </label>
           <input
-            onChange={(event) => uploadCardImage(event.target.files[0], "card1")}
+            onChange={(event) =>
+              uploadCardImage(event.target.files[0], "card1")
+            }
             type="file"
             name="service-card1"
             className="service-card1"
@@ -169,6 +195,9 @@ function ServiceSection() {
               alt="card 1"
             />
           )}
+          <button onClick={() => dispatch(setCardImage1Url(""))}>
+            Remove Image
+          </button>
           <br />
           <br />
           <label htmlFor="service-card1" className="service-card1">
@@ -226,7 +255,9 @@ function ServiceSection() {
             Card 2 Icon
           </label>
           <input
-            onChange={(event) => uploadCardImage(event.target.files[0], "card2")}
+            onChange={(event) =>
+              uploadCardImage(event.target.files[0], "card2")
+            }
             type="file"
             name="service-card2"
             className="service-card2"
@@ -238,6 +269,9 @@ function ServiceSection() {
               alt="card 2"
             />
           )}
+          <button onClick={() => dispatch(setCardImage2Url(""))}>
+            Remove Image
+          </button>
           <br />
           <br />
           <label htmlFor="service-card2" className="service-card2">
@@ -295,7 +329,9 @@ function ServiceSection() {
             Card 3 Icon
           </label>
           <input
-            onChange={(event) => uploadCardImage(event.target.files[0], "card3")}
+            onChange={(event) =>
+              uploadCardImage(event.target.files[0], "card3")
+            }
             type="file"
             name="service-card3"
             className="service-card3"
@@ -307,6 +343,9 @@ function ServiceSection() {
               alt="card 3"
             />
           )}
+          <button onClick={() => dispatch(setCardImage3Url(""))}>
+            Remove Image
+          </button>
           <br />
           <br />
           <label htmlFor="service-card3" className="service-card3">
@@ -377,7 +416,7 @@ function ServiceSection() {
               onClick={(event) => setType(event.target.value)}
               defaultValue="1"
               type="radio"
-              name="opt1-navbar"
+              name="opt-navbar"
               id="opt1-navbar"
             />
             <img
@@ -389,7 +428,7 @@ function ServiceSection() {
               onClick={(event) => setType(event.target.value)}
               defaultValue="2"
               type="radio"
-              name="opt2-navbar"
+              name="opt-navbar"
               id="opt2-navbar"
             />
             <img
@@ -401,7 +440,7 @@ function ServiceSection() {
               onClick={(event) => setType(event.target.value)}
               defaultValue="3"
               type="radio"
-              name="opt3-navbar"
+              name="opt-navbar"
               id="opt3-navbar"
             />
             <img
@@ -415,16 +454,40 @@ function ServiceSection() {
             <button onClick={addServiceSection}>next</button>
           </div>
         </div>
-        <div style={{ marginLeft:'auto', marginTop:100, display:'flex', flexDirection:'column' , textAlign:'center', marginRight:100}}>
-            <Color />
-            <div style={{marginTop:20}}>
-              <label style={{marginRight:20}} htmlFor="generate-color" className="generate-color-label">
-                Generate Color Palatte
-              </label>
-              <button onClick={generateColor} style={{marginLeft:20, width:80, height:30, backgroundColor:'#BB5E53', color:'white', fontWeight:'bold' }}>Refresh</button>
-            </div>
+        <div
+          style={{
+            marginLeft: "auto",
+            marginTop: 100,
+            display: "flex",
+            flexDirection: "column",
+            textAlign: "center",
+            marginRight: 100,
+          }}
+        >
+          <Color />
+          <div style={{ marginTop: 20 }}>
+            <label
+              style={{ marginRight: 20 }}
+              htmlFor="generate-color"
+              className="generate-color-label"
+            >
+              Generate Color Palatte
+            </label>
+            <button
+              onClick={generateColor}
+              style={{
+                marginLeft: 20,
+                width: 80,
+                height: 30,
+                backgroundColor: "#BB5E53",
+                color: "white",
+                fontWeight: "bold",
+              }}
+            >
+              Refresh
+            </button>
+          </div>
         </div>
-
       </div>
     </section>
   );
