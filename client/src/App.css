@@ -3,7 +3,7 @@
 :root {
   --nav-width: 92px;
   --first-color: #0c5df4;
-  --bg-color: #12192c;
+  --bg-color: #125d98;
   --sub-color: #b6cefc;
   --white-color: #fff;
   --body-font: "Poppins", sans-serif;
@@ -16,11 +16,9 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-.App {
+section {
   position: relative;
   height: 100%;
   margin: 0;
@@ -64,9 +62,9 @@ a {
 }
 
 .nav_toggle {
+  cursor: pointer;
   font-size: 1.25rem;
   padding: 0.75rem;
-  cursor: pointer;
 }
 
 .nav_logo {
@@ -100,9 +98,9 @@ a {
 }
 
 .expander {
-  width: calc(var(--nav-width) + 9.25rem);
+  width: calc(var(--nav-width) + 8.5rem);
 }
 
-.app-pd {
+.body-pd {
   padding-left: 10rem;
 }

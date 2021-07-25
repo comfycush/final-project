@@ -13,54 +13,115 @@ import FooterSection from "./pages/FooterSection";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useLocation } from "react-router-dom";
-import { useSelector } from 'react-redux'
+import { useEffect } from "react";
 
 function App() {
   const location = useLocation();
-  return (
-    <div className="App">
-      {
-        location.pathname !== '/register' && location.pathname !== '/' && location.pathname !== '/finish' ?
-          <Sidebar></Sidebar>
-          :
-          null
+
+  useEffect(() => {
+    const showMenu = (toggleId, navbarId, bodyId) => {
+      const toggle = document.getElementById(toggleId),
+        navbar = document.getElementById(navbarId),
+        bodypadding = document.getElementById(bodyId);
+
+      if (toggle && navbar) {
+        toggle.addEventListener("click", () => {
+          navbar.classList.toggle("expander");
+          bodypadding.classList.toggle("body-pd");
+        });
       }
+    };
+
+    showMenu("nav-toggle", "navbar", "body-pd");
+  });
+
+  return (
+    <section id="body-pd">
+      {location.pathname !== "/register" &&
+      location.pathname !== "/" &&
+      location.pathname !== "/finish" ? (
+        <Sidebar></Sidebar>
+      ) : null}
       <Switch>
-        <Route exact path="/" >
-          {!localStorage.access_token ? <Login /> : <Redirect to='/dashboard' />}
+        <Route exact path="/">
+          {!localStorage.access_token ? (
+            <Login />
+          ) : (
+            <Redirect to="/dashboard" />
+          )}
         </Route>
         <Route exact path="/register">
-          {!localStorage.access_token ? <Register /> : <Redirect to='/dashboard' />}
+          {!localStorage.access_token ? (
+            <Register />
+          ) : (
+            <Redirect to="/dashboard" />
+          )}
         </Route>
         <Route exact path="/dashboard">
-          {localStorage.access_token ? <Dashboard></Dashboard> : <Redirect to='/' />}
+          {localStorage.access_token ? (
+            <Dashboard></Dashboard>
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/intro-section">
-          {localStorage.access_token ? <IntroSection></IntroSection> : <Redirect to='/' />}          
+          {localStorage.access_token ? (
+            <IntroSection></IntroSection>
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/navbar-section">
-          {localStorage.access_token ? <NavbarSection></NavbarSection> : <Redirect to='/' />}          
+          {localStorage.access_token ? (
+            <NavbarSection></NavbarSection>
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/main-section">
-          {localStorage.access_token ? <MainSection></MainSection> : <Redirect to='/' />}
+          {localStorage.access_token ? (
+            <MainSection></MainSection>
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/about-section">
-          {localStorage.access_token ? <AboutSection></AboutSection> : <Redirect to='/' />}
+          {localStorage.access_token ? (
+            <AboutSection></AboutSection>
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/service-section">
-          {localStorage.access_token ? <ServiceSection></ServiceSection> : <Redirect to='/' />}
+          {localStorage.access_token ? (
+            <ServiceSection></ServiceSection>
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/contact-section">
-          {localStorage.access_token ? <ContactSection></ContactSection> : <Redirect to='/' />}
+          {localStorage.access_token ? (
+            <ContactSection></ContactSection>
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/footer-section">
-          {localStorage.access_token ? <FooterSection></FooterSection> : <Redirect to='/' />}
+          {localStorage.access_token ? (
+            <FooterSection></FooterSection>
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/finish">
-          {localStorage.access_token ? <RenderFinish></RenderFinish> : <Redirect to='/' />}
+          {localStorage.access_token ? (
+            <RenderFinish></RenderFinish>
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
       </Switch>
-    </div>
+    </section>
   );
 }
 

@@ -191,7 +191,6 @@ function MainSection() {
             <button onClick={addMainSection}>next</button>
           </div>
         </div>
-
         <div
           style={{
             marginLeft: "auto",
