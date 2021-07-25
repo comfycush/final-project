@@ -175,12 +175,12 @@ function NavbarSection(props) {
               />
             )}
             <button
-              className="btn"
-              style={{
-                padding: "0.5rem 1rem",
-                backgroundColor: "#FF6767",
-                color: "white",
-              }}
+              className="btn btn-remove-image"
+              // style={{
+              //   padding: "0.5rem 1rem",
+              //   backgroundColor: "#FF6767",
+              //   color: "white",
+              // }}
               onClick={() => dispatch(setLogoUrl(""))}
             >
               Remove Image
@@ -311,16 +311,6 @@ function NavbarSection(props) {
             <br />
             <br />
           </div>
-          <div
-            style={{
-              marginLeft: "auto",
-              marginTop: 100,
-              display: "flex",
-              flexDirection: "column",
-              textAlign: "center",
-              marginRight: 100,
-            }}
-          ></div>
         </div>
         <div>
           <label htmlFor="generate-color" className="generate-color-label">
@@ -340,7 +330,7 @@ function NavbarSection(props) {
           ></ModalImage>
         )}
       </div>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
+      <div className="btn-form-page">
         <button className="btn btn-next" onClick={addNavbarSection}>
           Next
         </button>

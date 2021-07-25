@@ -10,6 +10,10 @@
   color: #125d98;
 }
 
+#main-section input {
+  margin-right: 1rem;
+}
+
 #main-section h3 {
   display: flex;
   justify-content: center;
@@ -19,18 +23,30 @@
 
 .selection-main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .selection-main .selection-img {
-  max-width: 100px;
+  /* max-width: 100px; */
+  width: 20rem;
+  height: 10rem;
+  object-fit: cover;
 }
 
 .button-main {
-  display: inline-block;
-  margin-left: 29rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.button-main button {
+/* .button-main button {
   width: 100px;
+} */
+
+.form-center {
+  display: flex;
+  align-items: center;
+}
+
+.selection-main .selection-img:hover {
+  cursor: pointer;
 }

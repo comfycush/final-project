@@ -37,8 +37,8 @@
 }
 
 .input input {
-  width: 10rem;
-  height: 2rem;
+  /* width: 10rem;
+  height: 2rem; */
   border: 0.2rem solid #125d98;
   border-radius: 0.2rem;
 }
@@ -71,9 +71,53 @@
   cursor: pointer;
 }
 
-.btn-next {
+.btn-next,
+.btn-skip {
   width: 10rem;
-  background-color: #50cb93;
   font-size: 1.2rem;
   color: white;
+}
+
+.btn-next {
+  background-color: #50cb93;
+}
+
+.btn-skip {
+  background-color: #ffa940;
+  margin-bottom: 1rem;
+}
+
+.btn-remove-image {
+  padding: 0.5rem 1rem;
+  background-color: #ff6767;
+  color: white;
+}
+
+input[type="text"] {
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  width: 15rem;
+  height: 2rem;
+}
+
+input[type="color"] {
+  width: 5rem;
+  height: 2rem;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+}
+
+input[type="file"] {
+  width: 10rem;
+  height: 2rem;
+}
+
+.btn-form-page {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
