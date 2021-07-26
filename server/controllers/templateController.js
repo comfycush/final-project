@@ -56,18 +56,12 @@ class TemplateController {
   static deleteTemplate(req, res, next) {
     const templateId = req.params.templateId;
     Template.destroy({ where: { id: templateId } })
-      .then((countOfDeletedRows) => {
-        if (countOfDeletedRows) {
-          res.status(200).json({ message: `Template deleted successfully` });
-        } else {
-          console.log("masuk");
-          next({
-            name: `NotFound`,
-            message: `Template with such id not found`,
-          });
-        }
+      .then(() => {
+        res.status(200).json({ message: `Template deleted successfully` });
       })
-      .catch((err) => next({ message: err }));
+      .catch((err) => {
+        next({ message: err });
+      });
   }
 
   static createTemplate(req, res, next) {
@@ -121,7 +115,6 @@ class TemplateController {
       contact,
       footer,
     };
-
     Template.update(putData, { where: { id: templateId } })
       .then((data) => {
         if (data[0]) {

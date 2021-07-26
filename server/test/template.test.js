@@ -2,10 +2,11 @@ const request = require('supertest')
 const app = require('../app')
 const bcrypt = require('bcryptjs')
 const { Template, User } = require('../models')
-const jwt = require('jsonwebtoken')
+const { jwtGenerator, jwtValidator } = require('../helpers/jwt')
 
 let access_token
 let registeredUser
+let registeredUser2
 let templateId
 let wrongTemplateId
 
@@ -88,7 +89,7 @@ let dummyData = {
 }
 
 let user_data = {
-  email: 'test@mail.com',
+  email: 'test1@mail.com',
   password: '12345',
 }
 
@@ -112,7 +113,7 @@ beforeAll((done) => {
             id: data.id,
             email: data.email
           }
-          access_token = jwt.sign(payload, 'rahasia')
+          access_token = jwtGenerator(payload)
           done()
         } else {
           throw confirmPassword
@@ -279,7 +280,34 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
       })
   })
 
-  test("Failed to delete template because wrong templadteId", (done) => {
+  test('Failed to get userId templates because userId in JWT is invalid', (done) => {
+    const userInvalidJWT = { ...user_data, email: 'test2@mail.com' }
+    let userIdInvalidJWT
+    let access_token_invalid
+    User.create(userInvalidJWT)
+     .then(data => {
+      userIdInvalidJWT = data.id + 2
+      access_token_invalid = jwtGenerator({
+        id: userIdInvalidJWT,
+        email: data.email
+      })
+      request(app)
+        .get('/')
+        .set('access_token', access_token_invalid)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).toBe(401)
+            expect(res.body).toEqual(expect.any(Object))
+            expect(res.body.errors).toContain('Invalid JWT')
+            done()
+          }
+        })
+     })
+  })
+
+  test("Failed to delete template because wrong templateId", (done) => {
     request(app)
       .delete(`/template/${wrongTemplateId}`)
       .set('access_token', access_token)
@@ -323,7 +351,7 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
         } else {
           expect(res.status).toBe(401)
           expect(res.body).toEqual(expect.any(Object))
-          expect(res.body.errors).toContain('please login first')
+          expect(res.body.errors).toContain('Please login first')
           done()
         }
       })
@@ -340,7 +368,7 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
         } else {
           expect(res.status).toBe(401)
           expect(res.body).toEqual(expect.any(Object))
-          expect(res.body.errors).toContain('invalid JWT')
+          expect(res.body.errors).toContain('Invalid JWT')
           done()
         }
       })
@@ -364,6 +392,29 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
       })
   })
 
+  test("Failed to update template becauseprojectTitle is null ", (done) => {
+    let putTemplateId
+    Template.create(dummyData)
+    .then((data) => {
+      putTemplateId = data.id
+      let putDummyData = { ...dummyData, projectTitle: null }
+      request(app)
+        .put(`/template/${putTemplateId}`)
+        .set('access_token', access_token)
+        .send(putDummyData)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).toBe(400)
+            expect(res.body).toEqual(expect.any(Object))
+            expect(res.body.errors).toEqual('projectTitle required')
+            done()
+          }
+        })
+    })
+  })
+
   test("Failed to fetch template because template has not been deployed", (done) => {
     Template.create(dummyData)
     .then(data => {
@@ -381,6 +432,67 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
         }
       })
     })
-   
+  })
+
+  test("Failed to fetch deployed template because templateId not found", (done) => {
+    Template.create(dummyData)
+    .then(data => {
+      templateId = data.id
+      request(app)
+        .get(`/${wrongTemplateId+2}?ProjectSapi`)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).toBe(404)
+            expect(res.body).toEqual(expect.any(Object))
+            expect(res.body.errors).toContain('Template with such id not found')
+            done()
+          }
+        })
+    })
+  })
+
+  test('Failed to delete template because user is not authorized', (done) => {
+    let templateIdDeleteFailed
+    Template.create(dummyData)
+    .then((data) => {
+      templateIdDeleteFailed = data.id
+      const user_data_2 = { ...user_data, email: 'test3@mail.com' }
+      return User.create(user_data_2)
+    })
+    .then((data) => {
+      let access_token = jwtGenerator({
+        id: data.id,
+        email: data.email
+      })
+      request(app)
+        .delete(`/template/${templateIdDeleteFailed}`)
+        .set('access_token', access_token)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).toBe(403)
+            expect(res.body).toEqual(expect.any(Object))
+            expect(res.body.errors).toContain('Access forbidden')
+            done()
+          }
+        })
+    })
+  })
+
+  test('Failed to get deployed template because templateId is not a number', (done) => {
+    let stringTemplateId = 'id'
+    request(app)
+      .get(`/${stringTemplateId}`)
+      .end((err, res) => {
+        if (err) {
+          done(err)
+        } else {
+          expect(res.status).toBe(500)
+          done()
+        }
+      })
   })
 })

@@ -15,6 +15,8 @@ function UpdateSection() {
   const dataSection = location.state.data;
   const allData = location.state.allData;
   const [selectedSection, setSelectedSection] = useState(section);
+  console.log(`masuk renderfinish`);
+  // const [selectedSection, setSelectedSection] = useState("navbar");
   // console.log(allData, "<<< ALL DATA");
   // setSelectedSection(section);
   return (
