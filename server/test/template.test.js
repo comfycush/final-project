@@ -453,7 +453,7 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
     })
   })
 
-  test('Failed delete template because user is not authorized', (done) => {
+  test('Failed to delete template because user is not authorized', (done) => {
     let templateIdDeleteFailed
     Template.create(dummyData)
     .then((data) => {
@@ -480,8 +480,19 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
           }
         })
     })
-    
   })
 
-
+  test('Failed to get deployed template because templateId is not a number', (done) => {
+    let stringTemplateId = 'id'
+    request(app)
+      .get(`/${stringTemplateId}`)
+      .end((err, res) => {
+        if (err) {
+          done(err)
+        } else {
+          expect(res.status).toBe(500)
+          done()
+        }
+      })
+  })
 })
