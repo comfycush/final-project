@@ -128,7 +128,7 @@ class TemplateController {
       })
       .catch((err) => {
         if (err.name === `SequelizeValidationError`) {
-          next({ name: `SequelizeValidationError`, message: err.errors });
+          next({ name: `SequelizeValidationError`, message: err.errors[0].message });
         } else {
           next({ message: err });
         }

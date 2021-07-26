@@ -239,7 +239,7 @@ describe('Post, get, update, delete template [SUCCESS CASE]', () => {
         } else {
           expect(res.status).toBe(200)
           expect(res.body).toEqual(expect.any(Object))
-          expect(res.body.projectTitle).toEqual('Sapi Lada Hitam')
+          expect(res.body.putData.projectTitle).toEqual('Sapi Lada Hitam')
           done()
         }
       })
