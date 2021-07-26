@@ -1,7 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
-function Sidebar() {
+function Sidebar({ isOpen, setIsOpen }) {
   const history = useHistory();
 
   function logout() {
@@ -9,15 +10,27 @@ function Sidebar() {
     history.push("/");
   }
 
+  // function clickSidebar () {
+
+  // }
+
   return (
-    <div className="l-navbar" id="navbar">
+    <div
+      className={isOpen ? "l-navbar expander" : "l-navbar"}
+      id="navbar"
+      onClick={() => setIsOpen(isOpen ? false : true)}
+    >
       <nav className="nav">
         <div>
           <div className="nav_brand">
-            <i id="nav-toggle" className="nav_toggle">
+            <i
+              id="nav-toggle"
+              className="nav_toggle"
+              onClick={() => setIsOpen(isOpen ? false : true)}
+            >
               <ion-icon name="menu-outline"></ion-icon>
             </i>
-            <p className="nav_logo">Webber</p>
+            <p className="nav_logo">webber</p>
           </div>
           <div className="nav_list">
             <a onClick={() => history.push("/dashboard")} className="nav_link">

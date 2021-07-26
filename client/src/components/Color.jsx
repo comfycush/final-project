@@ -1,7 +1,10 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { generateColorArray } from "../store/actions/template";
+import { useEffect } from "react";
 
 export default function Color() {
   let colorArray = useSelector((state) => state.template.colorArray);
+  const dispatch = useDispatch();
   if (colorArray.length <= 0) {
     colorArray = JSON.parse(localStorage.colorArray);
   }

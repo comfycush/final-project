@@ -14,40 +14,44 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useLocation } from "react-router-dom";
 import UpdateSection from "./pages/UpdateSection";
-import Deploy from './pages/Deploy'
+import Deploy from "./pages/Deploy";
 import { useParams } from "react-router";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const location = useLocation();
-  const { templateId } = useParams()
-  console.log(location.pathname, `ini pathname <<<<<<`)
+  const { templateId } = useParams();
+  console.log(location.pathname, `ini pathname <<<<<<`);
+  // const [showBar, setShowBar] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-  useEffect(() => {
-    const showMenu = (toggleId, navbarId, bodyId) => {
-      const toggle = document.getElementById(toggleId),
-        navbar = document.getElementById(navbarId),
-        bodypadding = document.getElementById(bodyId);
+  // console.log(showBar, "<<< show bar state");
 
-      if (toggle && navbar) {
-        toggle.addEventListener("click", () => {
-          navbar.classList.toggle("expander");
-          bodypadding.classList.toggle("body-pd");
-        });
-      }
-    };
+  // useEffect(() => {
+  //   const showMenu = (toggleId, navbarId, bodyId) => {
+  //     const toggle = document.getElementById(toggleId),
+  //       navbar = document.getElementById(navbarId),
+  //       bodypadding = document.getElementById(bodyId);
 
-    showMenu("nav-toggle", "navbar", "body-pd");
-  });
+  //     if (toggle && navbar) {
+  //       toggle.addEventListener("click", () => {
+  //         console.log(" ke click!");
+  //         navbar.classList.toggle("expander");
+  //         bodypadding.classList.toggle("body-pd");
+  //       });
+  //     }
+  //     showMenu("nav-toggle", "navbar", "body-pd");
+  //   };
+  // }, []);
 
   return (
-    <section id="body-pd">
+    <section id="body-pd" className={isOpen ? "body-pd" : ""}>
       {location.pathname !== "/register" &&
       location.pathname !== "/" &&
-      location.pathname !== "/finish" &&
-      location.pathname.substring(0,7) !== '/deploy' ? (
-        <Sidebar></Sidebar>
+      location.pathname.substring(0, 7) !== "/finish" &&
+      location.pathname.substring(0, 7) !== "/deploy" ? (
+        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen}></Sidebar>
       ) : null}
       <Switch>
         <Route exact path="/">
@@ -61,7 +65,7 @@ function App() {
           {!localStorage.access_token ? (
             <Register />
           ) : (
-            <Redirect to="/dashboard" />
+            localStorage.colorArray && <Redirect to="/dashboard" />
           )}
         </Route>
         <Route exact path="/dashboard">
@@ -120,10 +124,10 @@ function App() {
             <Redirect to="/" />
           )}
         </Route>
-        <Route exact path="/deploy/:templateId">
-            <Deploy></Deploy>
+        <Route exact path="/deploy/:companyName/:templateId">
+          <Deploy></Deploy>
         </Route>
-        <Route exact path="/finish">
+        <Route exact path="/finish/:templateId">
           {localStorage.access_token ? (
             <RenderFinish></RenderFinish>
           ) : (
