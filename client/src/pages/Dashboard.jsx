@@ -25,13 +25,16 @@ function Dashboard() {
         Welcome,&nbsp;
         <span className="user-email">{localStorage.getItem("email")}</span>!
       </h1>
+      <hr
+        style={{ height: "0.2rem", backgroundColor: "#125D98", border: "none" }}
+      />
       <h2
         style={{
           display: "flex",
           justifyContent: "center",
           fontSize: "3rem",
           marginBottom: "1.5rem",
-          color: "#3C8DAD",
+          color: "#125D98",
           marginTop: "2rem",
         }}
       >

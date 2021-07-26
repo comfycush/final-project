@@ -610,17 +610,19 @@ function ServiceSection() {
             </div>
           </div>
         </div>
-        <div className="colormind-component">
-          <div id="sticky-colormind">
-            <label htmlFor="generate-color" className="generate-color-label">
-              Generate Color Palette
-            </label>
-            <Color />
-            <button className="btn btn-refresh-color" onClick={generateColor}>
-              Refresh
-            </button>
+        {localStorage.colorArray && (
+          <div className="colormind-component">
+            <div id="sticky-colormind">
+              <label htmlFor="generate-color" className="generate-color-label">
+                Generate Color Palette
+              </label>
+              <Color />
+              <button className="btn btn-refresh-color" onClick={generateColor}>
+                Refresh
+              </button>
+            </div>
           </div>
-        </div>
+        )}
         {showModal && (
           <ModalImage
             image={modalImage}

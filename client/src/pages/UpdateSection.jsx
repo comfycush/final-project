@@ -24,60 +24,54 @@ function UpdateSection() {
       <h1>Update Section</h1>
       {/* <h1>{section}</h1>
       <h1>{JSON.stringify(dataPopulate)}</h1> */}
-      <br />
-      <div className="input">
-        <select
-          name="select-section"
-          className="select-section"
-          value={selectedSection}
-          onChange={(e) => setSelectedSection(e.target.value)}
-        >
-          <option value="navbar">Navbar</option>
-          <option value="main">Main</option>
-          <option value="about">About</option>
-          <option value="service">Service</option>
-          <option value="contact">Contact</option>
-          <option value="footer">Footer</option>
-        </select>
-        <br />
-        <br />
-        {selectedSection === "navbar" && (
-          <UpdateNavbarForm
-            data={allData.navbar}
-            allData={allData}
-          ></UpdateNavbarForm>
-        )}
-        {selectedSection === "main" && (
-          <UpdateMainForm
-            data={allData.main}
-            allData={allData}
-          ></UpdateMainForm>
-        )}
-        {selectedSection === "about" && (
-          <UpdateAboutForm
-            data={allData.about}
-            allData={allData}
-          ></UpdateAboutForm>
-        )}
-        {selectedSection === "service" && (
-          <UpdateServiceForm
-            data={allData.service}
-            allData={allData}
-          ></UpdateServiceForm>
-        )}
-        {selectedSection === "contact" && (
-          <UpdateContactForm
-            data={allData.contact}
-            allData={allData}
-          ></UpdateContactForm>
-        )}
-        {selectedSection === "footer" && (
-          <UpdateFooterForm
-            data={allData.footer}
-            allData={allData}
-          ></UpdateFooterForm>
-        )}
-        {/* <label htmlFor="generate-color" className="generate-color-label">
+      <select
+        name="select-section"
+        className="select-section"
+        value={selectedSection}
+        onChange={(e) => setSelectedSection(e.target.value)}
+      >
+        <option value="navbar">Navbar</option>
+        <option value="main">Main</option>
+        <option value="about">About</option>
+        <option value="service">Service</option>
+        <option value="contact">Contact</option>
+        <option value="footer">Footer</option>
+      </select>
+      {/* <div className="input"> */}
+      {selectedSection === "navbar" && (
+        <UpdateNavbarForm
+          data={allData.navbar}
+          allData={allData}
+        ></UpdateNavbarForm>
+      )}
+      {selectedSection === "main" && (
+        <UpdateMainForm data={allData.main} allData={allData}></UpdateMainForm>
+      )}
+      {selectedSection === "about" && (
+        <UpdateAboutForm
+          data={allData.about}
+          allData={allData}
+        ></UpdateAboutForm>
+      )}
+      {selectedSection === "service" && (
+        <UpdateServiceForm
+          data={allData.service}
+          allData={allData}
+        ></UpdateServiceForm>
+      )}
+      {selectedSection === "contact" && (
+        <UpdateContactForm
+          data={allData.contact}
+          allData={allData}
+        ></UpdateContactForm>
+      )}
+      {selectedSection === "footer" && (
+        <UpdateFooterForm
+          data={allData.footer}
+          allData={allData}
+        ></UpdateFooterForm>
+      )}
+      {/* <label htmlFor="generate-color" className="generate-color-label">
           Generate Color Palette
         </label>
         <input type="color" name="generate-color" className="generate-color" />
@@ -167,7 +161,7 @@ function UpdateSection() {
         <br />
         <br />
         <button className="button-navbar">Update</button> */}
-      </div>
+      {/* </div> */}
     </section>
   );
 }
