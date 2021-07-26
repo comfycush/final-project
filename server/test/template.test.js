@@ -307,6 +307,32 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
      })
   })
 
+  test('Failed to get userId templates because userId in JWT is not a number', (done) => {
+    const userInvalidJWT = { ...user_data, email: 'test6@mail.com' }
+    let userIdNotNumber = 'not number'
+    let access_token_invalid
+    User.create(userInvalidJWT)
+     .then(data => {
+      access_token_invalid = jwtGenerator({
+        id: userIdNotNumber,
+        email: data.email
+      })
+      request(app)
+        .get('/')
+        .set('access_token', access_token_invalid)
+        .end((err, res) => {
+          if (err) {
+            done(err)
+          } else {
+            expect(res.status).toBe(500)
+            expect(res.body).toEqual(expect.any(Object))
+            expect(res.body.errors).toEqual('invalid input syntax for type integer: "not number"')
+            done()
+          }
+        })
+     })
+  })
+
   test("Failed to delete template because wrong templateId", (done) => {
     request(app)
       .delete(`/template/${wrongTemplateId}`)
@@ -318,6 +344,22 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
           expect(res.status).toBe(404)
           expect(res.body).toEqual(expect.any(Object))
           expect(res.body.errors).toContain('Template with such id not found')
+          done()
+        }
+      })
+  })
+
+  test("Failed to delete template because templateId is not a number", (done) => {
+    request(app)
+      .delete(`/template/notnumber`)
+      .set('access_token', access_token)
+      .end((err, res) => {
+        if (err) {
+          done(err)
+        } else {
+          expect(res.status).toBe(500)
+          expect(res.body).toEqual(expect.any(Object))
+          expect(res.body.errors).toEqual('column "nan" does not exist')
           done()
         }
       })
