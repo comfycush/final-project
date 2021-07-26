@@ -1,0 +1,251 @@
+.wrapper {
+  background-color: whitesmoke;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-homepage {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px 0 25px;
+  background-color: #125d98;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-homepage .logo-homepage h4 {
+  font-weight: bold;
+  font-size: 23px;
+  margin-left: 25px;
+  color: #dddddd;
+}
+
+.navbar-homepage .logo-homepage span {
+  color: #ffac70;
+}
+
+.navbar-homepage .links-homepage a {
+  margin-right: 25px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #dddddd;
+}
+
+.landing-page-homepage {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10vw 0 10vw;
+  height: 100vh;
+}
+
+.landingText-homepage {
+  margin-right: 7rem;
+}
+
+.landingText-homepage h1 {
+  font-size: 4vw;
+  margin: 0;
+  color: #125d98;
+}
+
+.landingText-homepage span {
+  font-size: 4vw;
+  margin: 0;
+  color: #ffac70;
+}
+
+.landingText-homepage h3 {
+  margin: 6px;
+  font-size: 20px;
+  opacity: 0.5;
+  line-height: 30px;
+}
+
+.landingText-homepage .btn-learn {
+  width: 120px;
+  margin-top: 30px;
+  padding: 8px 12px 8px 12px;
+  background-color: #125d98;
+  border-radius: 45px;
+}
+
+.landingText-homepage .btn-learn a {
+  font-size: 1.2vw;
+  color: whitesmoke;
+  margin-left: 2px;
+}
+
+.landingImage-homepage img {
+  width: 26vw;
+}
+
+.about-homepage {
+  height: 600px;
+  padding: 50px;
+  display: flex;
+  margin-top: 10rem;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.aboutText-homepage {
+  position: relative;
+  padding: 0 50px;
+  height: inherit;
+}
+
+.aboutText-homepage h1 {
+  font-size: 35px;
+  font-weight: 700;
+  color: #125d98;
+  position: relative;
+  left: 15rem;
+  bottom: 5rem;
+}
+
+.aboutText-homepage img {
+  width: 27vw;
+  position: absolute;
+  top: 50px;
+}
+
+.aboutList-homepage {
+  margin-bottom: 5rem;
+}
+
+.aboutList-homepage h3 {
+  font-size: 27px;
+  font-weight: 600;
+  color: #f5a962;
+}
+
+.aboutList-homepage h4 {
+  font-size: 18px;
+  opacity: 0.5;
+}
+
+.about-2-homepage {
+  height: 600px;
+  padding: 50px;
+  display: flex;
+  margin-top: -10rem;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.aboutList-2-homepage {
+  margin-bottom: 5rem;
+  margin-left: 5rem;
+}
+
+.aboutList-2-homepage h3 {
+  font-size: 27px;
+  font-weight: 600;
+  color: #f5a962;
+}
+
+.aboutList-2-homepage h4 {
+  font-size: 18px;
+  opacity: 0.5;
+}
+
+.aboutText-2-homepage {
+  position: relative;
+  padding: 0 300px;
+  height: inherit;
+  margin-right: 5rem;
+}
+
+.aboutText-2-homepage img {
+  width: 27vw;
+  position: absolute;
+  top: 60px;
+}
+
+.about-3-homepage {
+  height: 600px;
+  padding: 50px;
+  display: flex;
+  margin-top: -2rem;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.aboutText-3-homepage {
+  position: relative;
+  padding: 0 50px;
+  height: inherit;
+}
+
+.aboutText-3-homepage img {
+  width: 20vw;
+  margin-right: 15rem;
+  top: 50px;
+}
+
+.aboutList-3-homepage {
+  margin-bottom: 20rem;
+}
+
+.aboutList-3-homepage h3 {
+  font-size: 27px;
+  font-weight: 600;
+  color: #f5a962;
+}
+
+.aboutList-3-homepage h4 {
+  font-size: 18px;
+  opacity: 0.5;
+}
+
+.aboutList-3-homepage .btn-start {
+  width: 120px;
+  margin-top: 30px;
+  padding: 8px 12px 8px 12px;
+  background-color: #125d98;
+  border-radius: 45px;
+}
+
+.aboutList-3-homepage .btn-start a {
+  font-size: 1.2vw;
+  color: whitesmoke;
+  margin-left: 8px;
+}
+
+.footer-homepage {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1rem;
+  margin: 0;
+}
+
+.footer-homepage h2 {
+  color: #125d98;
+  font-size: 20px;
+}
+
+.footer-homepage h2 span {
+  color: #f5a962;
+}
+
+.footer-homepage h4 {
+  margin-top: 1rem;
+  opacity: 0.5;
+  font-size: 13px;
+}

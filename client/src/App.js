@@ -11,6 +11,7 @@ import ServiceSection from "./pages/ServiceSection";
 import ContactSection from "./pages/ContactSection";
 import FooterSection from "./pages/FooterSection";
 import Login from "./pages/Login";
+import Homepage from "./pages/Homepage";
 import Register from "./pages/Register";
 import { useLocation } from "react-router-dom";
 import UpdateSection from "./pages/UpdateSection";
@@ -22,33 +23,13 @@ import { useEffect, useState } from "react";
 function App() {
   const location = useLocation();
   const { templateId } = useParams();
-  console.log(location.pathname, `ini pathname <<<<<<`);
-  // const [showBar, setShowBar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
-  // console.log(showBar, "<<< show bar state");
-
-  // useEffect(() => {
-  //   const showMenu = (toggleId, navbarId, bodyId) => {
-  //     const toggle = document.getElementById(toggleId),
-  //       navbar = document.getElementById(navbarId),
-  //       bodypadding = document.getElementById(bodyId);
-
-  //     if (toggle && navbar) {
-  //       toggle.addEventListener("click", () => {
-  //         console.log(" ke click!");
-  //         navbar.classList.toggle("expander");
-  //         bodypadding.classList.toggle("body-pd");
-  //       });
-  //     }
-  //     showMenu("nav-toggle", "navbar", "body-pd");
-  //   };
-  // }, []);
 
   return (
     <section id="body-pd" className={isOpen ? "body-pd" : ""}>
       {location.pathname !== "/register" &&
       location.pathname !== "/" &&
+      location.pathname !== "/login" &&
       location.pathname.substring(0, 7) !== "/finish" &&
       location.pathname.substring(0, 7) !== "/deploy" ? (
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen}></Sidebar>
@@ -56,7 +37,14 @@ function App() {
       <Switch>
         <Route exact path="/">
           {!localStorage.access_token ? (
-            <Login />
+            <Homepage></Homepage>
+          ) : (
+            <Redirect to="/dashboard" />
+          )}
+        </Route>
+        <Route exact path="/login">
+          {!localStorage.access_token ? (
+            <Login></Login>
           ) : (
             <Redirect to="/dashboard" />
           )}
