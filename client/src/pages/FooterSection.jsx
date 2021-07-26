@@ -75,7 +75,7 @@ function FooterSection() {
       };
       dispatch(updateTemplate(templateId, { footer: dataFooterSection }));
       history.push({
-        pathname: "/finish",
+        pathname: `/finish/${templateId}`,
         state: {
           templateId,
         },

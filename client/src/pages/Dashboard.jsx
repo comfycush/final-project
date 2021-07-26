@@ -11,17 +11,21 @@ function Dashboard() {
   const data = useSelector((state) => state.dashboard.data);
 
   useEffect(() => {
+    dispatch(generateColorArray());
     dispatch(fetchDashboard());
   }, []);
 
-  useEffect(() => {
-    dispatch(generateColorArray());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(generateColorArray());
+  // }, []);
 
   return (
     <section id="content">
-      <h1>Welcome, {localStorage.getItem("email")}!</h1>
-      <hr />
+      <h1>
+        Welcome,&nbsp;
+        <span className="user-email">{localStorage.getItem("email")}</span>!
+      </h1>
+      {/* <hr /> */}
       <div className="row">
         {data && data.length
           ? data.map((singleData, index) => (

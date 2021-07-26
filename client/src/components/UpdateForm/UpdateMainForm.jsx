@@ -61,12 +61,16 @@ function UpdateMainSection({ data, allData }) {
         footer: allData.footer,
       };
       dispatch(updateTemplate(allData.id, updatedTemplate));
-      history.push({
-        pathname: "/finish",
-        state: {
-          templateId: allData.id,
-        },
-      });
+      if (allData.isDeploy) {
+        history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
+      } else {
+        history.push({
+          pathname: `/finish/${allData.id}`,
+          state: {
+            templateId: allData.id,
+          },
+        });
+      }
     }
   }
 
@@ -96,12 +100,16 @@ function UpdateMainSection({ data, allData }) {
     };
     // history.push("/about-section");
     dispatch(updateTemplate(allData.id, updatedTemplate));
-    history.push({
-      pathname: "/finish",
-      state: {
-        templateId: allData.id,
-      },
-    });
+    if (allData.isDeploy) {
+      history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
+    } else {
+      history.push({
+        pathname: `/finish/${allData.id}`,
+        state: {
+          templateId: allData.id,
+        },
+      });
+    }
   }
 
   function uploadMainImage(file, code) {
@@ -241,7 +249,7 @@ function UpdateMainSection({ data, allData }) {
         <br />
         <br />
         <div className="button-main">
-          {/* <button onClick={removeMainSection}>Remove Section</button> */}
+          <button onClick={removeMainSection}>Remove Section</button>
           <button onClick={updateMainSection}>Update Section</button>
         </div>
       </div>

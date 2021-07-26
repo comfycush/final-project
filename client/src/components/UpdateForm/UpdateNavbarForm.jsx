@@ -81,12 +81,16 @@ export default function UpdateNavbarForm({ data, allData }) {
       };
       dispatch(updateTemplate(allData.id, updatedTemplate));
       // console.log(templateId, updatedTemplate, "<<< update");
-      history.push({
-        pathname: "/finish",
-        state: {
-          templateId: allData.id,
-        },
-      });
+      if (allData.isDeploy) {
+        history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
+      } else {
+        history.push({
+          pathname: `/finish/${allData.id}`,
+          state: {
+            templateId: allData.id,
+          },
+        });
+      }
     }
     console.log(dataNavbarSection, "<<< data navbar");
   }

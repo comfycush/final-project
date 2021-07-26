@@ -22,6 +22,8 @@
 ::before,
 ::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -53,6 +55,7 @@ a {
   padding: 1.5rem 1.5rem 2rem;
   transition: 0.5s;
   z-index: var(--z-fixed);
+  display: flex;
 }
 
 .nav {
@@ -173,4 +176,8 @@ a {
 
 #sticky-colormind {
   overflow: hidden;
+}
+
+.swal2-title {
+  font-family: "Poppins", sans-serif;
 }

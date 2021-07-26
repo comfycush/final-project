@@ -14,7 +14,7 @@ function UpdateSection() {
   const section = location.state.section;
   const dataSection = location.state.data;
   const allData = location.state.allData;
-  // const [selectedSection, setSelectedSection] = useState("navbar");
+  const [selectedSection, setSelectedSection] = useState(section);
   // console.log(allData, "<<< ALL DATA");
   // setSelectedSection(section);
   return (
@@ -27,8 +27,8 @@ function UpdateSection() {
         <select
           name="select-section"
           className="select-section"
-          value={section}
-          // onChange={(e) => setSelectedSection(e.target.value)}
+          value={selectedSection}
+          onChange={(e) => setSelectedSection(e.target.value)}
         >
           <option value="navbar">Navbar</option>
           <option value="main">Main</option>
@@ -39,36 +39,39 @@ function UpdateSection() {
         </select>
         <br />
         <br />
-        {section === "navbar" && (
+        {selectedSection === "navbar" && (
           <UpdateNavbarForm
-            data={dataSection}
+            data={allData.navbar}
             allData={allData}
           ></UpdateNavbarForm>
         )}
-        {section === "main" && (
-          <UpdateMainForm data={dataSection} allData={allData}></UpdateMainForm>
+        {selectedSection === "main" && (
+          <UpdateMainForm
+            data={allData.main}
+            allData={allData}
+          ></UpdateMainForm>
         )}
-        {section === "about" && (
+        {selectedSection === "about" && (
           <UpdateAboutForm
-            data={dataSection}
+            data={allData.about}
             allData={allData}
           ></UpdateAboutForm>
         )}
-        {section === "service" && (
+        {selectedSection === "service" && (
           <UpdateServiceForm
-            data={dataSection}
+            data={allData.service}
             allData={allData}
           ></UpdateServiceForm>
         )}
-        {section === "contact" && (
+        {selectedSection === "contact" && (
           <UpdateContactForm
-            data={dataSection}
+            data={allData.contact}
             allData={allData}
           ></UpdateContactForm>
         )}
-        {section === "footer" && (
+        {selectedSection === "footer" && (
           <UpdateFooterForm
-            data={dataSection}
+            data={allData.footer}
             allData={allData}
           ></UpdateFooterForm>
         )}

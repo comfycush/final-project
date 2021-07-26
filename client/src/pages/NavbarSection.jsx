@@ -115,6 +115,7 @@ function NavbarSection(props) {
   }
 
   function generateColor() {
+    console.log(" mau manggil generate clor");
     dispatch(generateColorArray());
   }
 

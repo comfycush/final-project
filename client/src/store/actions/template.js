@@ -2,10 +2,10 @@ import {
   SET_TEMPLATE,
   SET_TEMPLATE_LOADING,
   SET_TEMPLATE_ERROR,
-  SET_COLOR_ARRAY
+  SET_COLOR_ARRAY,
 } from "../actionTypes";
 import axios from "axios";
-import convert from 'color-convert'
+import convert from "color-convert";
 
 export function setTemplate(input) {
   return {
@@ -40,10 +40,10 @@ export function getTemplateId(id) {
     dispatch(setIsLoading(true));
     try {
       const response = await fetch(`http://localhost:4000/template/${id}`, {
-        headers: { "access_token": localStorage.access_token}
+        headers: { access_token: localStorage.access_token },
       });
       const data = await response.json();
-      console.log(data, `ini data fetch by template id di template.js`)
+      console.log(data, `ini data fetch by template id di template.js`);
       dispatch(setTemplate(data));
     } catch (err) {
       console.log(err, "<<< ERROR DI ACTIONS");
@@ -58,9 +58,9 @@ export function getDeployTemplate(id) {
   return async (dispatch) => {
     dispatch(setIsLoading(true));
     try {
-      const response = await fetch(`http://localhost:4000/${id}`)
+      const response = await fetch(`http://localhost:4000/${id}`);
       const data = await response.json();
-      console.log(data, `ini data fetch by template id di template.js`)
+      console.log(data, `ini data fetch by template id di template.js`);
       dispatch(setTemplate(data));
     } catch (err) {
       console.log(err, "<<< ERROR DI ACTIONS");
@@ -72,18 +72,21 @@ export function getDeployTemplate(id) {
 }
 
 export function generateColorArray() {
-  return dispatch => {
+  return (dispatch) => {
     axios({
       url: `http://colormind.io/api/`,
-      method: 'POST',
+      method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      data: { model:"default" }
-  })
-  .then(({data}) => {
-      let colorArray = data.result.map( el => `#${convert.rgb.hex(el)}`)
-      dispatch(setColorArray(colorArray))
-      localStorage.setItem('colorArray', JSON.stringify(colorArray))
-  })
-  .catch(err => console.log(err, `ini error`))
-  }
+      data: { model: "default" },
+    })
+      .then(({ data }) => {
+        console.log(" berhasil get color");
+        let colorArray = data.result.map((el) => `#${convert.rgb.hex(el)}`);
+        dispatch(setColorArray(colorArray));
+        localStorage.setItem("colorArray", JSON.stringify(colorArray));
+      })
+      .catch((err) => {
+        console.log(err, `ini error`);
+      });
+  };
 }

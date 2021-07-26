@@ -61,12 +61,16 @@ export default function UpdateAboutForm({ data, allData }) {
         footer: allData.footer,
       };
       dispatch(updateTemplate(allData.id, updatedTemplate));
-      history.push({
-        pathname: "/finish",
-        state: {
-          templateId: allData.id,
-        },
-      });
+      if (allData.isDeploy) {
+        history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
+      } else {
+        history.push({
+          pathname: `/finish/${allData.id}`,
+          state: {
+            templateId: allData.id,
+          },
+        });
+      }
     }
   }
 
@@ -95,12 +99,16 @@ export default function UpdateAboutForm({ data, allData }) {
       footer: allData.footer,
     };
     dispatch(updateTemplate(allData.id, updatedTemplate));
-    history.push({
-      pathname: "/finish",
-      state: {
-        templateId: allData.id,
-      },
-    });
+    if (allData.isDeploy) {
+      history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
+    } else {
+      history.push({
+        pathname: `/finish/${allData.id}`,
+        state: {
+          templateId: allData.id,
+        },
+      });
+    }
   }
 
   function uploadAboutImage(file, code) {

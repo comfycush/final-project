@@ -8,10 +8,11 @@ import {
   SET_FOOTER_SECTION,
   SET_TEMPLATE_ID,
   SET_USER_ID,
-  SET_IS_DEPLOY
+  SET_IS_DEPLOY,
 } from "../actionTypes";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { fetchDashboard } from "./dashboard";
 
 export function setTemplateId(input) {
   return {
@@ -85,85 +86,85 @@ export function setFooterSection(input) {
 
 export function createTemplate(data) {
   return (dispatch) => {
-  
-     fetch("http://localhost:4000/template", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "access_token": localStorage.access_token
-        },
-        body: JSON.stringify(data),
+    fetch("http://localhost:4000/template", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        access_token: localStorage.access_token,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, `ini data`);
+        dispatch(setTemplateId(data.id));
+        dispatch(setUserId(data.userId));
+        dispatch(setProjectTitle(data.projectTitle));
       })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data, `ini data`)
-        dispatch(setTemplateId(data.id))
-        dispatch(setUserId(data.userId))
-        dispatch(setProjectTitle(data.projectTitle))
-      })
-     .catch (err => {
-       console.log(err, `ini error`)
-     })
+      .catch((err) => {
+        console.log(err, `ini error`);
+      });
   };
 }
 
 export function updateTemplate(id, data) {
   return (dispatch) => {
-      fetch(`http://localhost:4000/template/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          "access_token": localStorage.access_token
-        },
-        body: JSON.stringify(data),
+    fetch(`http://localhost:4000/template/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        access_token: localStorage.access_token,
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        dispatch(setTemplateId(data.templateId));
+        console.log(data, `ini data update`);
       })
-      .then( res => res.json())
-      .then(data => {
-        console.log(data, `ini data update`)
-      })
-      .catch(err => console.log(err, `ini error update`))
+      .catch((err) => console.log(err, `ini error update`));
   };
 }
 
 export function deleteTemplate(id) {
   return (dispatch) => {
-      fetch(`http://localhost:4000/template/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "access_token": localStorage.access_token
-        }
+    fetch(`http://localhost:4000/template/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        access_token: localStorage.access_token,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data, `ini data delete`);
+        dispatch(fetchDashboard());
       })
-      .then( res => res.json())
-      .then(data => {
-        console.log(data, `ini data delete`)
-      })
-      .catch(err => console.log(err, `ini error update`))
+      .catch((err) => console.log(err, `ini error update`));
   };
 }
 
 export function changeIsDeploy(id, data) {
-  
   return (dispatch) => {
-      return new Promise((resolve, reject) => {
-        fetch(`http://localhost:4000/template/${id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-            "access_token": localStorage.access_token
-          },
-          body: JSON.stringify(data),
-        })
-        .then( res => res.json())
-        .then(data => {
-          dispatch(setIsDeploy(true))
-          console.log(data, `ini data patch`)
-          resolve(data)
-        })
-        .catch(err => {
-          console.log(err, `ini error patch`)
-          reject(err)
-        })
+    return new Promise((resolve, reject) => {
+      fetch(`http://localhost:4000/template/${id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.access_token,
+        },
+        body: JSON.stringify(data),
       })
-    };
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch(setIsDeploy(true));
+          console.log(data, `ini data patch`);
+          resolve(data);
+        })
+        .catch((err) => {
+          console.log(err, `ini error patch`);
+          reject(err);
+        });
+    });
+  };
 }
