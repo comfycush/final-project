@@ -64,7 +64,7 @@ function ServiceSection() {
   }
 
   const stateAbout = location.state;
-  const templateId = 4;
+  const templateId = 5;
 
   function addServiceSection() {
     const dataServiceSection = {

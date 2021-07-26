@@ -39,7 +39,7 @@ function AboutSection() {
   }
 
   const stateMain = location.state;
-  const templateId = 4;
+  const templateId = 5;
 
   function addAboutSection(event) {
     event.preventDefault();

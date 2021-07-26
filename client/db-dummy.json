@@ -347,6 +347,89 @@
         "navLinksColor": "#ffffff"
       },
       "id": 4
+    },
+    {
+      "navbar": {
+        "type": 3,
+        "logo": "",
+        "backgroundColor": "#ff6161",
+        "companyName": "haloo ",
+        "companyNameColor": "#ffa3a3",
+        "navLinks": [
+          "Service",
+          "Contact"
+        ],
+        "navLinksColor": "#ffffff"
+      },
+      "main": {
+        "type": null,
+        "image": null,
+        "headline": null,
+        "headlineColor": null,
+        "subHeadline": null,
+        "subHeadlineColor": null,
+        "backgroundColor": null
+      },
+      "about": {
+        "type": null,
+        "headline": null,
+        "headlineColor": null,
+        "image": null,
+        "backgroundColor": null,
+        "paragraph": null,
+        "paragraphColor": null
+      },
+      "service": {
+        "type": null,
+        "headline": null,
+        "headlineColor": null,
+        "backgroundColor": null,
+        "cardImage1": null,
+        "cardBackgroundColor1": null,
+        "cardTitle1": null,
+        "cardTitleColor1": null,
+        "cardText1": null,
+        "cardTextColor1": null,
+        "cardImage2": null,
+        "cardBackgroundColor2": null,
+        "cardTitle2": null,
+        "cardTitleColor2": null,
+        "cardText2": null,
+        "cardTextColor2": null,
+        "cardImage3": null,
+        "cardBackgroundColor3": null,
+        "cardTitle3": null,
+        "cardTitleColor3": null,
+        "cardText3": null,
+        "cardTextColor3": null
+      },
+      "contact": {
+        "type": 2,
+        "headline": "contact",
+        "headlineColor": "#000000",
+        "backgroundColor": "#ff8080",
+        "emailIcon": "",
+        "email": "john@mail.com",
+        "emailColor": "#ffffff",
+        "phoneIcon": "",
+        "phone": "",
+        "phoneColor": "#000000",
+        "addressIcon": "",
+        "address": "",
+        "addressColor": "#000000"
+      },
+      "footer": {
+        "type": 2,
+        "backgroundColor": "#ffffff",
+        "iconColor": "black",
+        "facebook": "https://www.facebook.com/",
+        "instagram": "",
+        "twitter": "",
+        "linkedin": "",
+        "youtube": "",
+        "companyNameColor": "#ffadad"
+      },
+      "id": 5
     }
   ]
 }

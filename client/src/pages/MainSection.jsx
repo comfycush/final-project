@@ -38,7 +38,7 @@ function MainSection() {
   }
 
   const stateNavbar = location.state;
-  const templateId = 4;
+  const templateId = 5;
 
   function addMainSection(event) {
     event.preventDefault();

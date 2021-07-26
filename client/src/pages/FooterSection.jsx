@@ -39,7 +39,7 @@ function FooterSection() {
   }
 
   const stateContact = location.state;
-  const templateId = 4;
+  const templateId = 5;
 
   function addFooterSection() {
     const dataFooterSection = {
