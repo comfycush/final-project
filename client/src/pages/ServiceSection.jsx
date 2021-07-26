@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -166,6 +166,29 @@ function ServiceSection() {
   function generateColor() {
     dispatch(generateColorArray());
   }
+
+  useEffect(() => {
+    dispatch(setCardImage1Url(""));
+    dispatch(setCardImage2Url(""));
+    dispatch(setCardImage3Url(""));
+  }, []);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      stickyColor();
+    };
+
+    const colorPalette = document.getElementById("sticky-colormind");
+    const stickyOffset = colorPalette.offsetTop;
+
+    function stickyColor() {
+      if (window.pageYOffset >= stickyOffset) {
+        colorPalette.classList.add("sticky");
+      } else {
+        colorPalette.classList.remove("sticky");
+      }
+    }
+  }, [window.pageYOffset]);
 
   return (
     <section id="service-section">
@@ -520,14 +543,16 @@ function ServiceSection() {
             </div>
           </div>
         </div>
-        <div>
-          <label htmlFor="generate-color" className="generate-color-label">
-            Generate Color Palette
-          </label>
-          <Color />
-          <button className="btn btn-refresh-color" onClick={generateColor}>
-            Refresh
-          </button>
+        <div className="colormind-component">
+          <div id="sticky-colormind">
+            <label htmlFor="generate-color" className="generate-color-label">
+              Generate Color Palette
+            </label>
+            <Color />
+            <button className="btn btn-refresh-color" onClick={generateColor}>
+              Refresh
+            </button>
+          </div>
         </div>
         {showModal && (
           <ModalImage

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setNavbarSection, updateTemplate } from "../store/actions/forms";
@@ -21,6 +21,10 @@ function NavbarSection(props) {
   const [modalImage, setModalImage] = useState("");
   const [modalHeight, setModalHeight] = useState("");
   const [modalWidth, setModalWidth] = useState("");
+
+  useEffect(() => {
+    dispatch(setLogoUrl(""));
+  }, []);
 
   function viewImage(image, height, width) {
     setShowModal(true);

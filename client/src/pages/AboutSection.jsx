@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
 import "../styles/aboutSection.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -110,6 +110,10 @@ function AboutSection() {
   function generateColor() {
     dispatch(generateColorArray());
   }
+
+  useEffect(() => {
+    dispatch(setAboutImageUrl(""));
+  }, []);
 
   return (
     <section id="about-section">

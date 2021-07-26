@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
 import "../styles/contactSection.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -132,6 +132,12 @@ function ContactSection() {
   function generateColor() {
     dispatch(generateColorArray());
   }
+
+  useEffect(() => {
+    dispatch(setEmailIconUrl(""));
+    dispatch(setPhoneIconUrl(""));
+    dispatch(setAddressIconUrl(""));
+  }, []);
 
   return (
     <section id="contact-section">
