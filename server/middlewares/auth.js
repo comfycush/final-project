@@ -16,7 +16,7 @@ function authentication(req, res, next) {
         }
       })
       .catch(err => {
-        next({message: err})
+        next({message: err.message})
       })
     } catch (err) {
       next({name: 'InvalidJWT', message: ['Invalid JWT']})
@@ -43,7 +43,7 @@ function authorization(req, res, next) {
     }
   })
   .catch(err => {
-    next({message: err})
+    next({message: err.message})
   })
 }
 

@@ -237,13 +237,6 @@ describe('Customer Login [ERROR CASE]', () => {
   })
 })
 
-
-
-
-
-
-
-
 describe('User Google Login [ERROR CASE]', () => {
   test('Should send an object with key: access_token, id, email', (done) => {
     let objToken = {
