@@ -19,7 +19,6 @@ const errHandler = (err, req, res, next) => {
         res.status(404).json({errors})
         break      
       default:
-        console.log(errors);
         res.status(500).json({errors})
         break
     }
