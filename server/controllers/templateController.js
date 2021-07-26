@@ -48,10 +48,10 @@ class TemplateController {
         const templateId = req.params.templateId
         Template.destroy({ where: { id: templateId } })
         .then( (countOfDeletedRows) => {
+            console.log(countOfDeletedRows);
             if(countOfDeletedRows) {
                 res.status(200).json({ message: `Template deleted successfully` })
             } else {
-                console.log('masuk');
                 next({ name: `NotFound`, message: `Template with such id not found` })
             }
         })
