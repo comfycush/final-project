@@ -29,7 +29,7 @@ class UserController {
                 })
                 next({name: 'SequelizeUniqueConstraintError', message: errMsg})
               } else {
-                next({message: err})
+                next({message: err.message})
               }
         })
     }
@@ -53,14 +53,17 @@ class UserController {
             }
         })
         .catch( err => {
-            next({ message: err })
+            next({ message: err.message })
         })
     }
 
     static googleLogin(req, res, next) {
+<<<<<<< HEAD
         console.log(`masuk`)
         console.log(req.body,`ini req.body di controller`)
        
+=======
+>>>>>>> 79eaa73bab01e5ec49ea012cf0a7784e2c9da83f
         let payload
         const client = new OAuth2Client('1035521074618-nkotpceb3p60muu0h5rmf6hn5pe72dtc.apps.googleusercontent.com')
         client.verifyIdToken({
@@ -73,9 +76,9 @@ class UserController {
         })
         .then( foundUser => {
             if (foundUser) {
-               return foundUser
+                return foundUser
             } else {
-              return User.create({ 
+                return User.create({ 
                     email : payload.email,
                     password: 'wc0l5yiQ1JsypFOVrZFRsyxM'
                 })
@@ -88,7 +91,9 @@ class UserController {
             })
             res.status(200).json({ access_token, id:user.id, email:user.email })
         })
-        .catch(err => next(err))
+        .catch(err => {
+            next({ message: err.message })
+        })
     }
 }
 

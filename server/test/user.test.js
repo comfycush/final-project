@@ -1,3 +1,5 @@
+const axios = require('axios')
+const e = require('express')
 const request = require('supertest')
 const app = require('../app')
 const { User } = require('../models')
@@ -139,6 +141,26 @@ describe('Register Customer [ERROR CASE]', () => {
       }
     })
   })
+
+  test('Failed because password is Float', (done) => {
+    const userFailedPassword = {
+      email: 'test4@mail.com',
+      password: parseFloat(2.4)
+    }
+    request(app)
+      .post('/register')
+      .send(userFailedPassword)
+      .end((err, res) => {
+        if (err) {
+          done(err)
+        } else {
+          expect(res.status).toBe(500)
+          expect(res.body).toHaveProperty('errors', expect.any(String))
+          expect(res.body.errors).toEqual('Illegal arguments: number, string')
+          done()
+        }
+      })
+  })
 })
 
 describe('Customer Login [SUCCESS CASE]', () => {
@@ -193,4 +215,111 @@ describe('Customer Login [ERROR CASE]', () => {
           done()
         }
       })
+<<<<<<< HEAD
   })
+=======
+  })
+
+  test('Failed because email is Float', (done) => {
+    const user_email_float = {
+      email: parseFloat(2.4),
+      password: '12345'
+    }
+    request(app)
+      .post('/login')
+      .send(user_email_float)
+      .end((err, res) => {
+        if (err) {
+          done(err)
+        } else {
+          expect(res.status).toBe(500)
+          expect(res.body).toHaveProperty('errors', expect.any(String))
+          expect(res.body.errors).toEqual('operator does not exist: character varying = numeric')
+          done()
+        }
+      })
+  })
+})
+
+
+
+
+
+
+
+
+describe('User Google Login [ERROR CASE]', () => {
+  test('Should send an object with key: access_token, id, email', (done) => {
+    let objToken = {
+      token: 'invalid_token'
+    }
+    request(app)
+      .post('/googleLogin')
+      .send(objToken) // dummy harus diganti dengan id_token yg dikirim google
+      .end((err, res) => {
+        if (err) {
+          done(err)
+        } else {
+          expect(res.status).toBe(500)
+          expect(res.body).toHaveProperty('errors', expect.any(String))
+          expect(res.body.errors).toEqual('Wrong number of segments in token: invalid_token')
+          done()
+        }
+      })
+  })
+})
+
+// jest.mock('axios')
+// describe('User Google Login [SUCCESS CASE]', () => {
+  
+//   test('should fetch users', () => {
+//     class Users {
+//       static all() {
+//         return new Promise((resolve, reject) => {
+//           return (
+//             axios({
+//               url: '/googleLogin',
+//               method: 'POST',
+//               data: {
+//                 idToken: '1035521074618-nkotpceb3p60muu0h5rmf6hn5pe72dtc.apps.googleusercontent.com'
+//               }
+//             })
+//               .then(resp => {
+//                 resp.data
+//                 resolve(resp.data)
+//               })
+//           )
+//         })
+//       }
+//     }
+    
+//     const users = [{name: 'Bob'}];
+//     const resp = {data: users};
+//     axios.get.mockResolvedValue(resp);
+  
+//     return Users.all().then(data => expect(data).toEqual(users));
+//   });
+  
+  // test('Should send an object with key: access_token', (done) => {
+  //   class Users {
+  //     static all() {
+  //       return axios.post('/googleLogin')
+  //         .then(resp => resp.data);
+  //     }
+  //   }
+  //   const users = [{name: 'Bob'}];
+  //   // const resp = 'string'
+  //   const resp = {data: users};
+  //   axios.get.mockResolvedValue(resp)
+
+  //   return Users.all().then(data => {
+  //     expect(data).toEqual(users)
+  //     done()
+  //   })
+  // })
+// })
+
+// describe('User Google Login [ERROR CASE]', () => {
+//   test.skip('Failed because')
+// })
+>>>>>>> 79eaa73bab01e5ec49ea012cf0a7784e2c9da83f

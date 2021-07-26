@@ -47,15 +47,12 @@ class TemplateController {
     static deleteTemplate(req, res, next) {
         const templateId = req.params.templateId
         Template.destroy({ where: { id: templateId } })
-        .then( (countOfDeletedRows) => {
-            if(countOfDeletedRows) {
-                res.status(200).json({ message: `Template deleted successfully` })
-            } else {
-                console.log('masuk');
-                next({ name: `NotFound`, message: `Template with such id not found` })
-            }
+        .then( () => {
+            res.status(200).json({ message: `Template deleted successfully` })
         })
-        .catch( err => next({ message: err }))
+        .catch( err => {
+            next({ message: err })
+        })
     }
 
     static createTemplate(req, res, next) {
@@ -83,16 +80,21 @@ class TemplateController {
         let putData = { userId, projectTitle, navbar, main, about, service, contact, footer }
 
         Template.update(putData, { where : { id:templateId } })
+<<<<<<< HEAD
         .then( data => {
             if(data[0]) {
                 res.status(200).json({ templateId, putData })
             } else {
                 next({ name: `NotFound`, message: `Template with such id not found` })
             }
+=======
+        .then( () => {
+            res.status(200).json(putData)
+>>>>>>> 79eaa73bab01e5ec49ea012cf0a7784e2c9da83f
         })
         .catch( err => {
             if(err.name === `SequelizeValidationError`) {
-                next({ name: `SequelizeValidationError`, message: err.errors })
+                next({ name: `SequelizeValidationError`, message: err.errors[0].message })
             } else {
                 next({ message: err })
             }
@@ -103,12 +105,8 @@ class TemplateController {
         let templateId = req.params.templateId
         let isDeploy = req.body.isDeploy
         Template.update( {isDeploy}, { where: { id: templateId } } )
-        .then( data => {
-            if(data[0]) {
-                res.status(200).json({ message: `Template is successfully deployed` })
-            } else {
-                next({ name: `NotFound`, message: `Template with such id not found` })
-            }
+        .then( () => {
+            res.status(200).json({ message: `Template is successfully deployed` })
         })
         .catch( err => {
             next({ message: err })
