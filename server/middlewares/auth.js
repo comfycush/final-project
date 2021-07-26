@@ -12,18 +12,18 @@ function authentication(req, res, next) {
           req.user = {id: user.id, email: user.email}
           next()
         } else {
-          next({name: 'InvalidJWT', message: ['invalid JWT']})
+          next({name: 'InvalidJWT', message: ['Invalid JWT']})
         }
       })
       .catch(err => {
         next({message: err})
       })
     } catch (err) {
-      next({name: 'InvalidJWT', message: ['invalid JWT']})
+      next({name: 'InvalidJWT', message: ['Invalid JWT']})
     }
     
   } else {
-    next({name: 'Unauthorized', message: ['please login first']})
+    next({name: 'Unauthorized', message: ['Please login first']})
   }
 }
 
@@ -35,7 +35,7 @@ function authorization(req, res, next) {
         if (req.user.id === template.userId) {
           next()
         } else {
-          next({name: 'Forbidden', message: ['access forbidden']})
+          next({name: 'Forbidden', message: ['Access forbidden']})
         }
       
     } else {
