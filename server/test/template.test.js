@@ -279,7 +279,7 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
       })
   })
 
-  test("Failed to delete template because wrong templadteId", (done) => {
+  test("Failed to delete template because wrong templateId", (done) => {
     request(app)
       .delete(`/template/${wrongTemplateId}`)
       .set('access_token', access_token)
@@ -381,6 +381,25 @@ describe('Post, get, update, delete template [ERROR CASE]', () => {
         }
       })
     })
-   
   })
+
+  test("Failed to fetch deployed template because templateId not found", (done) => {
+    Template.create(dummyData)
+    .then(data => {
+      templateId = data.id
+      request(app)
+      .get(`/${wrongTemplateId+2}?ProjectSapi`)
+      .end((err, res) => {
+        if (err) {
+          done(err)
+        } else {
+          expect(res.status).toBe(404)
+          expect(res.body).toEqual(expect.any(Object))
+          expect(res.body.errors).toContain('Template with such id not found')
+          done()
+        }
+      })
+    })
+  })
+
 })
