@@ -7,7 +7,7 @@
 }
 
 :root {
-  --nav-width: 92px;
+  --nav-width: 5rem;
   --first-color: #0c5df4;
   --bg-color: #125d98;
   --sub-color: #b6cefc;
@@ -66,7 +66,7 @@ a {
 .nav_brand {
   display: grid;
   grid-template-columns: max-content max-content;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
   margin-bottom: 2rem;
 }
@@ -75,11 +75,15 @@ a {
   cursor: pointer;
   font-size: 1.25rem;
   padding: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .nav_logo {
   color: var(--white-color);
   font-weight: 600;
+  font-size: 1.5rem;
 }
 
 .nav_link {
@@ -96,11 +100,15 @@ a {
 }
 
 .nav_link:hover {
-  background-color: var(--first-color);
+  background-color: #f5a962;
+  color: #125d98;
+  font-weight: bold;
 }
 
 .nav_icon {
   font-size: 1.25rem;
+  display: flex;
+  align-items: center;
 }
 
 .nav_name {
@@ -108,7 +116,7 @@ a {
 }
 
 .expander {
-  width: calc(var(--nav-width) + 8.5rem);
+  width: calc(var(--nav-width) + 10rem);
 }
 
 .body-pd {

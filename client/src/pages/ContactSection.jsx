@@ -25,7 +25,7 @@ function ContactSection() {
   const [type, setType] = useState(null);
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
+  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
 
   // const [emailIcon, setEmailIcon] = useState('')
   const emailIconUrl = useSelector((state) => state.uploadImage.emailIconUrl);
@@ -325,6 +325,7 @@ function ContactSection() {
               type="color"
               name="background-color-contact"
               id="background-color-contact"
+              value={backgroundColor}
             />
           </div>
           <br />

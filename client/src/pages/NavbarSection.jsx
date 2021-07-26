@@ -30,7 +30,7 @@ function NavbarSection(props) {
   }
 
   const [type, setType] = useState(null);
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
+  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
   const [companyName, setCompanyName] = useState("");
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
   const [navlinks, setNavlinks] = useState([]);
@@ -245,6 +245,7 @@ function NavbarSection(props) {
               type="color"
               name="background-color-navbar"
               id="background-color-navbar"
+              value={backgroundColor}
               style={{ border: "none" }}
             />
           </div>

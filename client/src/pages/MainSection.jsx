@@ -19,7 +19,7 @@ function MainSection() {
   const location = useLocation();
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
+  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
   const [subHeadline, setSubHeadline] = useState("");
   const [subHeadlineColor, setsubHeadlineColor] = useState("#000000");
   const [type, setType] = useState(null);
@@ -202,6 +202,7 @@ function MainSection() {
               name="background-color-mainb"
               id="background-color-main"
               style={{ border: "none" }}
+              value={backgroundColor}
             />
           </div>
           <br />

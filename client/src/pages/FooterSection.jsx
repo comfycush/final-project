@@ -17,7 +17,7 @@ function FooterSection() {
   const history = useHistory();
   const location = useLocation();
   const [type, setType] = useState(null);
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
+  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
   const [iconColor, setIconColor] = useState("");
   const [facebook, setFacebook] = useState("");
   const [instagram, setInstagram] = useState("");
@@ -211,6 +211,7 @@ function FooterSection() {
               type="color"
               name="background-color-navbar"
               id="background-color-navbar"
+              value={backgroundColor}
             />
           </div>
           <br />

@@ -21,7 +21,7 @@ function AboutSection() {
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
   // const [image, setImage] = useState("");
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
+  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
   const [paragraph, setParagraph] = useState("");
   const [paragraphColor, setParagraphColor] = useState("#000000");
   const aboutImageUrl = useSelector((state) => state.uploadImage.aboutImageUrl);
@@ -207,6 +207,7 @@ function AboutSection() {
               onChange={(event) => setBackgroundColor(event.target.value)}
               name="background-color-about"
               id="background-color-about"
+              value={backgroundColor}
             />
           </div>
           <br />

@@ -25,7 +25,7 @@ function ServiceSection() {
   const [type, setType] = useState(null);
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
-  const [backgroundColor, setBackgroundColor] = useState("#000000");
+  const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
 
   // const [cardImage1, setCardImage1] = useState('')
   const card1ImageUrl = useSelector((state) => state.uploadImage.card1ImageUrl);
@@ -464,6 +464,7 @@ function ServiceSection() {
               onChange={(event) => setBackgroundColor(event.target.value)}
               name="background-color-service"
               id="background-color-service"
+              value={backgroundColor}
             />
           </div>
           <br />
