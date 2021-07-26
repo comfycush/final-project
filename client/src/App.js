@@ -14,15 +14,14 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useLocation } from "react-router-dom";
 import UpdateSection from "./pages/UpdateSection";
-import Deploy from './pages/Deploy'
+import Deploy from "./pages/Deploy";
 import { useParams } from "react-router";
 
 import { useEffect } from "react";
 
 function App() {
   const location = useLocation();
-  const { templateId } = useParams()
-  console.log(location.pathname, `ini pathname <<<<<<`)
+  const { templateId } = useParams();
 
   useEffect(() => {
     const showMenu = (toggleId, navbarId, bodyId) => {
@@ -39,14 +38,14 @@ function App() {
     };
 
     showMenu("nav-toggle", "navbar", "body-pd");
-  });
+  }, [document.querySelector("nav-toggle")]);
 
   return (
     <section id="body-pd">
       {location.pathname !== "/register" &&
       location.pathname !== "/" &&
       location.pathname !== "/finish" &&
-      location.pathname.substring(0,7) !== '/deploy' ? (
+      location.pathname.substring(0, 7) !== "/deploy" ? (
         <Sidebar></Sidebar>
       ) : null}
       <Switch>
@@ -121,7 +120,7 @@ function App() {
           )}
         </Route>
         <Route exact path="/deploy/:templateId">
-            <Deploy></Deploy>
+          <Deploy></Deploy>
         </Route>
         <Route exact path="/finish">
           {localStorage.access_token ? (
