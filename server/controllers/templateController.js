@@ -85,7 +85,7 @@ class TemplateController {
         Template.update(putData, { where : { id:templateId } })
         .then( data => {
             if(data[0]) {
-                res.status(200).json(putData)
+                res.status(200).json({ templateId, putData })
             } else {
                 next({ name: `NotFound`, message: `Template with such id not found` })
             }

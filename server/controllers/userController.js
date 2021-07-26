@@ -59,6 +59,7 @@ class UserController {
 
     static googleLogin(req, res, next) {
         console.log(`masuk`)
+        console.log(req.body,`ini req.body di controller`)
        
         let payload
         const client = new OAuth2Client('1035521074618-nkotpceb3p60muu0h5rmf6hn5pe72dtc.apps.googleusercontent.com')

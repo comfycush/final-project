@@ -37,11 +37,11 @@ export default function Login() {
     const res = await fetch("http://localhost:4000/googleLogin", {
         method: "POST",
         body: JSON.stringify({
-        token: googleData.tokenId
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
+          token: googleData.tokenId
+        }),
+        headers: {
+          "Content-Type": "application/json"
+        }
     })
     const data = await res.json()
     if(data) {
