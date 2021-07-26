@@ -43,11 +43,6 @@
   width: 100px;
 } */
 
-.form-center {
-  display: flex;
-  align-items: center;
-}
-
 .selection-main .selection-img:hover {
   cursor: pointer;
 }

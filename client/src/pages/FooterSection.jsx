@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
@@ -86,6 +86,10 @@ function FooterSection() {
   function generateColor() {
     dispatch(generateColorArray());
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section id="footer-section">

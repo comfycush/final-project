@@ -139,6 +139,10 @@ function ContactSection() {
     dispatch(setAddressIconUrl(""));
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section id="contact-section">
       <h1>Contact Section</h1>

@@ -61,14 +61,28 @@
 
 .selection-navbar .selection-img {
   /* max-width: 100px; */
-  width: 40rem;
-  height: 3rem;
+  width: 30rem;
+  height: 5rem;
   object-fit: cover;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   object-position: 0 30%;
 }
 
-.selection-navbar .selection-img:hover {
+/* .selection-navbar .selection-img:hover {
+  cursor: pointer;
+} */
+
+/* .selection-navbar .selection-img:hover .overlay {
+  opacity: 1;
+} */
+
+.container-img-hover {
+  position: relative;
+  height: 80%;
+}
+
+.container-img-hover:hover .overlay {
+  opacity: 1;
   cursor: pointer;
 }
 
@@ -89,7 +103,7 @@
 }
 
 .btn-remove-image {
-  padding: 0.5rem 1rem;
+  padding: 0.8rem;
   background-color: #ff6767;
   color: white;
 }
@@ -97,8 +111,15 @@
 input[type="text"] {
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
-  width: 15rem;
+  width: 20rem;
   height: 2rem;
+}
+
+input[type="color"] {
+  width: 20rem;
+  height: 2rem;
+  border: none;
+  border-radius: 0.2rem;
 }
 
 textarea {
@@ -107,13 +128,6 @@ textarea {
   width: 18rem;
   height: 8rem;
   border: 0.2rem solid #125d98;
-  border-radius: 0.2rem;
-}
-
-input[type="color"] {
-  width: 5rem;
-  height: 2rem;
-  border: none;
   border-radius: 0.2rem;
 }
 
@@ -137,8 +151,83 @@ input[type="file"] {
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
 }
 
 .generate-color-label {
+  font-weight: bold;
+}
+
+.form-center {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  /* width: 30rem; */
+}
+
+.form-align-center {
+  display: flex;
+  /* align-items: center; */
+  margin: 0.5rem 0;
+  flex-direction: column;
+}
+
+.horizontal-center {
+  display: flex;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.contain-input {
+  flex-direction: column;
+  background-color: #f5a962;
+  padding: 1.5rem 2rem;
+  border-radius: 1rem;
+  width: 25rem;
+}
+
+.mt-1 {
+  margin-top: 2rem;
+}
+
+.title-subform {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #125d98;
+}
+
+label {
+  font-weight: bold;
+}
+
+.font-2 {
+  font-size: 2rem;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: 0.5s ease;
+  background-color: #3c8dad;
+  border-radius: 0.5rem;
+}
+
+.text {
+  color: white;
+  font-size: 1rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
   font-weight: bold;
 }

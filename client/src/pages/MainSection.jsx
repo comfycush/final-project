@@ -110,6 +110,27 @@ function MainSection() {
     dispatch(setMainImageUrl(""));
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      stickyColor();
+    };
+
+    const colorPalette = document.getElementById("sticky-colormind");
+    const stickyOffset = colorPalette.offsetTop;
+
+    function stickyColor() {
+      if (window.pageYOffset >= stickyOffset) {
+        colorPalette.classList.add("sticky");
+      } else {
+        colorPalette.classList.remove("sticky");
+      }
+    }
+  }, [window.pageYOffset]);
+
   return (
     <section id="main-section">
       <h1>Main Section</h1>
@@ -119,58 +140,86 @@ function MainSection() {
           display: "flex",
           justifyContent: "center",
           alignItems: "flex-start",
-          marginTop: "5rem",
+          marginTop: "3rem",
         }}
       >
         <div className="input">
-          <div className="form-center">
-            <label htmlFor="main-headline" className="main-headline">
-              Headline
-            </label>
-            <input
-              onChange={(event) => setHeadline(event.target.value)}
-              type="text"
-              name="main-headline"
-              className="main-headline"
-            />
-            <label htmlFor="main-headline" className="main-headline">
-              Color
-            </label>
-            <input
-              onChange={(event) => setHeadlineColor(event.target.value)}
-              type="color"
-              name="main-headline"
-              className="main-headline"
-              style={{ border: "none" }}
-            />
+          <h2 className="title-subform">Headline</h2>
+          <div className="contain-input form-center">
+            <div className="form-align-center">
+              <label
+                htmlFor="main-headline"
+                className="main-headline"
+                style={{ marginRight: "3rem" }}
+              >
+                Text
+              </label>
+              <input
+                onChange={(event) => setHeadline(event.target.value)}
+                type="text"
+                name="main-headline"
+                className="main-headline"
+              />
+            </div>
+            <div className="form-align-center">
+              <label
+                htmlFor="main-headline"
+                className="main-headline"
+                style={{ marginRight: "2rem" }}
+              >
+                Color
+              </label>
+              <input
+                onChange={(event) => setHeadlineColor(event.target.value)}
+                type="color"
+                name="main-headline"
+                className="main-headline"
+                style={{ border: "none" }}
+              />
+            </div>
           </div>
-          <br />
-          <br />
-          <div className="form-center">
-            <label htmlFor="main-subheadline" className="main-subheadline">
-              Subheadline
-            </label>
-            <input
-              onChange={(event) => setSubHeadline(event.target.value)}
-              type="text"
-              name="main-subheadline"
-              className="main-subheadline"
-            />
-            <label htmlFor="main-subheadline" className="main-subheadline">
-              Color
-            </label>
-            <input
-              onChange={(event) => setsubHeadlineColor(event.target.value)}
-              type="color"
-              name="main-subheadline"
-              className="main-subheadline"
-              style={{ border: "none" }}
-            />
+          <h2 className="title-subform" style={{ marginTop: "2rem" }}>
+            Subheadline
+          </h2>
+          <div className="contain-input form-center">
+            <div className="form-align-center">
+              <label
+                htmlFor="main-subheadline"
+                className="main-subheadline"
+                style={{ marginRight: "3rem" }}
+              >
+                Text
+              </label>
+              <input
+                onChange={(event) => setSubHeadline(event.target.value)}
+                type="text"
+                name="main-subheadline"
+                className="main-subheadline"
+              />
+            </div>
+            <div className="form-align-center">
+              <label
+                htmlFor="main-subheadline"
+                className="main-subheadline"
+                style={{ marginRight: "2rem" }}
+              >
+                Color
+              </label>
+              <input
+                onChange={(event) => setsubHeadlineColor(event.target.value)}
+                type="color"
+                name="main-subheadline"
+                className="main-subheadline"
+                style={{ border: "none" }}
+              />
+            </div>
           </div>
-          <br />
-          <br />
-          <div className="form-center">
-            <label htmlFor="company-background" className="company-background">
+          <div className="form-align-center" style={{ marginTop: "3rem" }}>
+            <label
+              htmlFor="company-background"
+              className="company-background"
+              style={{ fontSize: "2rem", marginBottom: "2rem" }}
+            >
               Image
             </label>
             <input
@@ -192,14 +241,21 @@ function MainSection() {
             <button
               className="btn btn-remove-image"
               onClick={() => dispatch(setMainImageUrl(""))}
+              style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
             >
               Remove Image
             </button>
           </div>
-          <br />
-          <br />
-          <div className="form-center">
-            <label htmlFor="background-color-main">Background Color</label>
+          <div
+            className="form-align-center"
+            style={{ marginTop: "3rem", marginBottom: "3rem" }}
+          >
+            <label
+              htmlFor="background-color-main"
+              style={{ fontSize: "2rem", marginBottom: "1rem" }}
+            >
+              Background Color
+            </label>
             <input
               onChange={(event) => setBackgroundColor(event.target.value)}
               type="color"
@@ -209,13 +265,11 @@ function MainSection() {
               value={backgroundColor}
             />
           </div>
-          <br />
-          <br />
-          <label htmlFor="template-layout">Template Layout</label>
-          <br />
-          <br />
-          <div className="selection-main">
-            <div className="form-center">
+          <label htmlFor="template-layout" style={{ fontSize: "2rem" }}>
+            Template Layout
+          </label>
+          <div className="selection-main" style={{ marginTop: "2rem" }}>
+            <div className="horizontal-center">
               <input
                 onClick={(event) => setType(event.target.value)}
                 defaultValue="1"
@@ -223,14 +277,22 @@ function MainSection() {
                 name="opt-navbar"
                 id="opt1-navbar"
               />
-              <img
-                className="selection-img"
-                src={main1}
-                alt="image1"
+              <div
+                className="container-img-hover"
                 onClick={() => viewImage(main1, "30", "80")}
-              />
+              >
+                <img
+                  className="selection-img"
+                  src={main1}
+                  alt="image1"
+                  onClick={() => viewImage(main1, "30", "80")}
+                />
+                <div className="overlay">
+                  <div className="text">Click To Enlarge The Picture</div>
+                </div>
+              </div>
             </div>
-            <div className="form-center">
+            <div className="horizontal-center">
               <input
                 onClick={(event) => setType(event.target.value)}
                 defaultValue="2"
@@ -238,14 +300,22 @@ function MainSection() {
                 name="opt-navbar"
                 id="opt2-navbar"
               />
-              <img
-                className="selection-img"
-                src={main2}
-                alt="image2"
+              <div
+                className="container-img-hover"
                 onClick={() => viewImage(main2, "30", "80")}
-              />
+              >
+                <img
+                  className="selection-img"
+                  src={main2}
+                  alt="image2"
+                  onClick={() => viewImage(main2, "30", "80")}
+                />
+                <div className="overlay">
+                  <div className="text">Click To Enlarge The Picture</div>
+                </div>
+              </div>
             </div>
-            <div className="form-center">
+            <div className="horizontal-center">
               <input
                 onClick={(event) => setType(event.target.value)}
                 defaultValue="3"
@@ -253,26 +323,36 @@ function MainSection() {
                 name="opt-navbar"
                 id="opt3-navbar"
               />
-              <img
-                className="selection-img"
-                src={main3}
-                alt="image3"
+              <div
+                className="container-img-hover"
                 onClick={() => viewImage(main3, "40", "70")}
-              />
+              >
+                <img
+                  className="selection-img"
+                  src={main3}
+                  alt="image3"
+                  onClick={() => viewImage(main3, "40", "70")}
+                />
+                <div className="overlay">
+                  <div className="text">Click To Enlarge The Picture</div>
+                </div>
+              </div>
             </div>
           </div>
-          <br />
-          <br />
         </div>
-        <div>
-          <label htmlFor="generate-color" className="generate-color-label">
-            Generate Color Palette
-          </label>
-          <Color />
-          <button className="btn btn-refresh-color" onClick={generateColor}>
-            Refresh
-          </button>
-        </div>
+        {localStorage.colorArray && (
+          <div className="colormind-component">
+            <div id="sticky-colormind">
+              <label htmlFor="generate-color" className="generate-color-label">
+                Generate Color Palette
+              </label>
+              <Color />
+              <button className="btn btn-refresh-color" onClick={generateColor}>
+                Refresh
+              </button>
+            </div>
+          </div>
+        )}
         {showModal && (
           <ModalImage
             image={modalImage}

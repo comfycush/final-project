@@ -115,6 +115,27 @@ function AboutSection() {
     dispatch(setAboutImageUrl(""));
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      stickyColor();
+    };
+
+    const colorPalette = document.getElementById("sticky-colormind");
+    const stickyOffset = colorPalette.offsetTop;
+
+    function stickyColor() {
+      if (window.pageYOffset >= stickyOffset) {
+        colorPalette.classList.add("sticky");
+      } else {
+        colorPalette.classList.remove("sticky");
+      }
+    }
+  }, [window.pageYOffset]);
+
   return (
     <section id="about-section">
       <h1>About Section</h1>
@@ -124,36 +145,41 @@ function AboutSection() {
           display: "flex",
           justifyContent: "center",
           alignItems: "flex-start",
-          marginTop: "5rem",
+          marginTop: "3rem",
         }}
       >
         <div className="input">
-          <div className="form-center">
-            <label htmlFor="about-headline" className="about-headline">
-              Headline
-            </label>
-            <input
-              onChange={(event) => setHeadline(event.target.value)}
-              type="text"
-              name="about-headline"
-              className="about-headline"
-            />
-            <label htmlFor="about-headline" className="about-headline">
-              Color
-            </label>
-            <input
-              type="color"
-              onChange={(event) => setHeadlineColor(event.target.value)}
-              name="about-headline"
-              className="about-headline"
-            />
+          <h2 className="title-subform">Headline</h2>
+          <div className="contain-input">
+            <div className="form-align-center">
+              <label htmlFor="about-headline" className="about-headline">
+                Text
+              </label>
+              <input
+                onChange={(event) => setHeadline(event.target.value)}
+                type="text"
+                name="about-headline"
+                className="about-headline"
+                style={{ marginBottom: "1rem" }}
+              />
+              <label htmlFor="about-headline" className="about-headline">
+                Color
+              </label>
+              <input
+                type="color"
+                onChange={(event) => setHeadlineColor(event.target.value)}
+                name="about-headline"
+                className="about-headline"
+              />
+            </div>
           </div>
-          <br />
-          <br />
-          <div style={{ display: "flex", alignItems: "flex-start" }}>
+          <h2 className="title-subform" style={{ marginTop: "2rem" }}>
+            Paragraph
+          </h2>
+          <div className="contain-input">
             {/* <div style={{ display: "flex", alignItems: "flex-start" }}></div> */}
             <label htmlFor="about-paragraph" className="about-paragraph">
-              Paragraph
+              Text
             </label>
             <br />
             <textarea
@@ -163,6 +189,7 @@ function AboutSection() {
               cols={30}
               rows={10}
               defaultValue={""}
+              style={{ marginBottom: "1rem" }}
             />
             <label htmlFor="about-paragraph" className="about-paragraph">
               Color
@@ -174,10 +201,12 @@ function AboutSection() {
               className="about-paragraph"
             />
           </div>
-          <br />
-          <br />
-          <div className="form-center">
-            <label htmlFor="about-image" className="about-image">
+          <div className="form-align-center" style={{ marginTop: "3rem" }}>
+            <label
+              htmlFor="about-image"
+              className="about-image"
+              style={{ fontSize: "2rem", marginBottom: "2rem" }}
+            >
               Image
             </label>
             <input
@@ -198,29 +227,36 @@ function AboutSection() {
             <button
               className="btn btn-remove-image"
               onClick={() => dispatch(setAboutImageUrl(""))}
+              style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
             >
               Remove Image
             </button>
           </div>
-          <br />
-          <br />
-          <div className="form-center">
-            <label htmlFor="background-color-about">Background Color</label>
+          <div className="form-align-center">
+            <label
+              htmlFor="background-color-about"
+              style={{
+                fontSize: "2rem",
+                marginBottom: "1rem",
+                marginTop: "2rem",
+              }}
+            >
+              Background Color
+            </label>
             <input
               type="color"
               onChange={(event) => setBackgroundColor(event.target.value)}
               name="background-color-about"
               id="background-color-about"
               value={backgroundColor}
+              style={{ marginBottom: "2rem" }}
             />
           </div>
-          <br />
-          <br />
-          <label htmlFor="template-layout">Template Layout</label>
-          <br />
-          <br />
-          <div className="selection-about">
-            <div className="form-center">
+          <label htmlFor="template-layout" style={{ fontSize: "2rem" }}>
+            Template Layout
+          </label>
+          <div className="selection-about" style={{ marginTop: "2rem" }}>
+            <div className="horizontal-center">
               <input
                 onClick={(event) => setType(event.target.value)}
                 type="radio"
@@ -228,14 +264,22 @@ function AboutSection() {
                 id="opt1-navbar"
                 defaultValue="1"
               />
-              <img
-                className="selection-img"
-                src={about1}
-                alt="image1"
+              <div
+                className="container-img-hover"
                 onClick={() => viewImage(about1, "25", "80")}
-              />
+              >
+                <img
+                  className="selection-img"
+                  src={about1}
+                  alt="image1"
+                  onClick={() => viewImage(about1, "25", "80")}
+                />
+                <div className="overlay">
+                  <div className="text">Click To Enlarge The Picture</div>
+                </div>
+              </div>
             </div>
-            <div className="form-center">
+            <div className="horizontal-center">
               <input
                 onClick={(event) => setType(event.target.value)}
                 type="radio"
@@ -243,14 +287,22 @@ function AboutSection() {
                 id="opt2-navbar"
                 defaultValue="2"
               />
-              <img
-                className="selection-img"
-                src={about2}
-                alt="image2"
+              <div
+                className="container-img-hover"
                 onClick={() => viewImage(about2, "25", "80")}
-              />
+              >
+                <img
+                  className="selection-img"
+                  src={about2}
+                  alt="image2"
+                  onClick={() => viewImage(about2, "25", "80")}
+                />
+                <div className="overlay">
+                  <div className="text">Click To Enlarge The Picture</div>
+                </div>
+              </div>
             </div>
-            <div className="form-center">
+            <div className="horizontal-center">
               <input
                 onClick={(event) => setType(event.target.value)}
                 type="radio"
@@ -258,26 +310,38 @@ function AboutSection() {
                 id="opt3-navbar"
                 defaultValue="3"
               />
-              <img
-                className="selection-img"
-                src={about3}
-                alt="image3"
+              <div
+                className="container-img-hover"
                 onClick={() => viewImage(about3, "35", "80")}
-              />
+              >
+                <img
+                  className="selection-img"
+                  src={about3}
+                  alt="image3"
+                  onClick={() => viewImage(about3, "35", "80")}
+                />
+                <div className="overlay">
+                  <div className="text">Click To Enlarge The Picture</div>
+                </div>
+              </div>
             </div>
           </div>
           <br />
           <br />
         </div>
-        <div>
-          <label htmlFor="generate-color" className="generate-color-label">
-            Generate Color Palette
-          </label>
-          <Color />
-          <button className="btn btn-refresh-color" onClick={generateColor}>
-            Refresh
-          </button>
-        </div>
+        {localStorage.colorArray && (
+          <div className="colormind-component">
+            <div id="sticky-colormind">
+              <label htmlFor="generate-color" className="generate-color-label">
+                Generate Color Palette
+              </label>
+              <Color />
+              <button className="btn btn-refresh-color" onClick={generateColor}>
+                Refresh
+              </button>
+            </div>
+          </div>
+        )}
         {showModal && (
           <ModalImage
             image={modalImage}

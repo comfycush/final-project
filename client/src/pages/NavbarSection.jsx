@@ -119,6 +119,27 @@ function NavbarSection(props) {
     dispatch(generateColorArray());
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    window.onscroll = () => {
+      stickyColor();
+    };
+
+    const colorPalette = document.getElementById("sticky-colormind");
+    const stickyOffset = colorPalette.offsetTop;
+
+    function stickyColor() {
+      if (window.pageYOffset >= stickyOffset) {
+        colorPalette.classList.add("sticky");
+      } else {
+        colorPalette.classList.remove("sticky");
+      }
+    }
+  }, [window.pageYOffset]);
+
   return (
     <section id="navbar-section">
       <h1>Navbar Section</h1>
@@ -128,142 +149,187 @@ function NavbarSection(props) {
           display: "flex",
           justifyContent: "center",
           alignItems: "flex-start",
-          marginTop: "5rem",
+          marginTop: "3rem",
         }}
       >
         <div className="input">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <label htmlFor="company-title" className="company-title">
-              Company Name
-            </label>
-            <input
-              onChange={(event) => setCompanyName(event.target.value)}
-              type="text"
-              name="company-title"
-              className="company-title"
-            />
-            <label
-              style={{ marginLeft: "1.5rem" }}
-              htmlFor="company-title-color"
-              className="company-title-color"
-            >
-              Color
-            </label>
-            <input
-              onChange={(event) => setCompanyNameColor(event.target.value)}
-              type="color"
-              name="company-title-color"
-              id="company-title-color"
-              style={{ border: "none" }}
-            />
-          </div>
-          <br />
-          <br />
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <label htmlFor="company-logo" className="company-logo">
-              Your Company Logo
-            </label>
-            <input
-              onChange={(event) => uploadLogo(event.target.files[0], "logo")}
-              type="file"
-              name="company-logo"
-              className="company-logo"
-              style={{ border: "none" }}
-            />
-            {logoUrl && (
-              <img
-                src={logoUrl}
-                alt=""
-                style={{ width: "5rem", height: "5rem" }}
+          <h2 className="title-subform">Company</h2>
+          <div className="form-center contain-input">
+            <div className="form-align-center">
+              <label
+                htmlFor="company-title"
+                className="company-title"
+                style={{ marginBottom: "0.5rem" }}
+              >
+                Name
+              </label>
+              <input
+                onChange={(event) => setCompanyName(event.target.value)}
+                type="text"
+                name="company-title"
+                className="company-title"
               />
-            )}
-            <button
-              className="btn btn-remove-image"
-              // style={{
-              //   padding: "0.5rem 1rem",
-              //   backgroundColor: "#FF6767",
-              //   color: "white",
-              // }}
-              onClick={() => dispatch(setLogoUrl(""))}
-            >
-              Remove Image
-            </button>
+            </div>
+            <div className="form-align-center">
+              <label
+                htmlFor="company-title-color"
+                className="company-title-color"
+                style={{ marginBottom: "0.5rem" }}
+              >
+                Color
+              </label>
+              <input
+                onChange={(event) => setCompanyNameColor(event.target.value)}
+                type="color"
+                name="company-title-color"
+                id="company-title-color"
+                style={{ border: "none", margin: "0rem" }}
+              />
+            </div>
+            <div className="form-align-center">
+              <label
+                htmlFor="company-logo"
+                className="company-logo"
+                style={{ marginBottom: "1rem" }}
+              >
+                Logo
+              </label>
+              <input
+                onChange={(event) => uploadLogo(event.target.files[0], "logo")}
+                type="file"
+                name="company-logo"
+                className="company-logo"
+                style={{ border: "none" }}
+              />
+              {logoUrl && (
+                <img
+                  src={logoUrl}
+                  alt=""
+                  style={{ width: "5rem", height: "5rem" }}
+                />
+              )}
+              <button
+                className="btn btn-remove-image"
+                onClick={() => dispatch(setLogoUrl(""))}
+                style={{ margin: "0rem" }}
+              >
+                Remove Image
+              </button>
+            </div>
           </div>
-          <br />
-          <br />
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <label htmlFor="links-navbar">Links</label>
-            <input
-              type="checkbox"
-              onClick={(event) =>
-                addNavlink(event.target.checked, event.target.value)
-              }
-              name="about"
-              id="about"
+          <h2 className="title-subform" style={{ marginTop: "2rem" }}>
+            Navigation Links
+          </h2>
+          <div className="contain-input">
+            <div className="form-align-center">
+              <label htmlFor="links-navbar">Links</label>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: "0.3rem",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  onClick={(event) =>
+                    addNavlink(event.target.checked, event.target.value)
+                  }
+                  name="about"
+                  id="about"
+                  style={{
+                    width: "3rem",
+                  }}
+                  defaultValue="About"
+                />
+                <label htmlFor="about" style={{ fontWeight: "normal" }}>
+                  About
+                </label>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: "0.3rem",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  onClick={(event) =>
+                    addNavlink(event.target.checked, event.target.value)
+                  }
+                  name="service"
+                  id="service"
+                  defaultValue="Service"
+                  style={{ width: "3rem" }}
+                />
+                <label htmlFor="service" style={{ fontWeight: "normal" }}>
+                  Service
+                </label>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginTop: "0.3rem",
+                }}
+              >
+                <input
+                  type="checkbox"
+                  onClick={(event) =>
+                    addNavlink(event.target.checked, event.target.value)
+                  }
+                  name="contact"
+                  id="contact"
+                  defaultValue="Contact"
+                  style={{ width: "3rem" }}
+                />
+                <label htmlFor="contact" style={{ fontWeight: "normal" }}>
+                  Contact
+                </label>
+              </div>
+            </div>
+            <div className="form-align-center" style={{ marginTop: "1rem" }}>
+              <label htmlFor="color-navbar" style={{ marginRight: "2.5rem" }}>
+                Color
+              </label>
+              <input
+                onChange={(event) => setNavlinksColor(event.target.value)}
+                type="color"
+                name="navlink-color"
+                id="navlink-color"
+                style={{ border: "none", marginTop: "0.5rem" }}
+              />
+            </div>
+          </div>
+          <div className="form-align-center mt-1">
+            <label
+              htmlFor="background-color-navbar"
               style={{
-                width: "3rem",
+                marginRight: "3rem",
+                fontSize: "2rem",
               }}
-              defaultValue="About"
-            />
-            <label htmlFor="about">About</label>
-            <input
-              type="checkbox"
-              onClick={(event) =>
-                addNavlink(event.target.checked, event.target.value)
-              }
-              name="service"
-              id="service"
-              defaultValue="Service"
-              style={{ width: "3rem" }}
-            />
-            <label htmlFor="service">Service</label>
-            <input
-              type="checkbox"
-              onClick={(event) =>
-                addNavlink(event.target.checked, event.target.value)
-              }
-              name="contact"
-              id="contact"
-              defaultValue="Contact"
-              style={{ width: "3rem" }}
-            />
-            <label htmlFor="contact" style={{ marginRight: "4rem" }}>
-              Contact
+            >
+              Background Color
             </label>
-            <br />
-            <br />
-            <label htmlFor="color-navbar">Color</label>
-            <input
-              onChange={(event) => setNavlinksColor(event.target.value)}
-              type="color"
-              name="navlink-color"
-              id="navlink-color"
-              style={{ border: "none" }}
-            />
-          </div>
-          <br />
-          <br />
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <label htmlFor="background-color-navbar">Background Color</label>
             <input
               onChange={(event) => setBackgroundColor(event.target.value)}
               type="color"
               name="background-color-navbar"
               id="background-color-navbar"
               value={backgroundColor}
-              style={{ border: "none" }}
+              style={{ border: "none", marginTop: "1rem" }}
             />
           </div>
-          <br />
-          <br />
           <div className="selection-navbar">
-            <label htmlFor="template-layout" style={{ marginTop: "2rem" }}>
+            <label
+              htmlFor="template-layout"
+              style={{ fontSize: "2rem", margin: "1.5rem 0" }}
+            >
               Template Layout
             </label>
-            <br />
-            <br />
             <div className="selection-navbar">
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="horizontal-center">
                 <input
                   onClick={(event) => setType(event.target.value)}
                   type="radio"
@@ -272,14 +338,22 @@ function NavbarSection(props) {
                   defaultValue="1"
                   style={{ width: "1rem", marginRight: "1rem" }}
                 />
-                <img
-                  className="selection-img"
-                  src={navbar1}
-                  alt="image1"
+                <div
+                  className="container-img-hover"
                   onClick={() => viewImage(navbar1, "3", "80")}
-                />
+                >
+                  <img
+                    className="selection-img"
+                    src={navbar1}
+                    alt="image1"
+                    onClick={() => viewImage(navbar1, "3", "80")}
+                  />
+                  <div className="overlay">
+                    <div className="text">Click To Enlarge The Picture</div>
+                  </div>
+                </div>
               </div>
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="horizontal-center">
                 <input
                   onClick={(event) => setType(event.target.value)}
                   type="radio"
@@ -288,14 +362,22 @@ function NavbarSection(props) {
                   defaultValue="2"
                   style={{ width: "1rem", marginRight: "1rem" }}
                 />
-                <img
-                  className="selection-img"
-                  src={navbar2}
-                  alt="image2"
+                <div
+                  className="container-img-hover"
                   onClick={() => viewImage(navbar2, "3", "80")}
-                />
+                >
+                  <img
+                    className="selection-img"
+                    src={navbar2}
+                    alt="image2"
+                    onClick={() => viewImage(navbar2, "3", "80")}
+                  />
+                  <div className="overlay">
+                    <div className="text">Click To Enlarge The Picture</div>
+                  </div>
+                </div>
               </div>
-              <div style={{ display: "flex", alignItems: "center" }}>
+              <div className="horizontal-center">
                 <input
                   onClick={(event) => setType(event.target.value)}
                   type="radio"
@@ -304,27 +386,37 @@ function NavbarSection(props) {
                   defaultValue="3"
                   style={{ width: "1rem", marginRight: "1rem" }}
                 />
-                <img
-                  className="selection-img"
-                  src={navbar3}
-                  alt="image3"
+                <div
+                  className="container-img-hover"
                   onClick={() => viewImage(navbar3, "10", "80")}
-                />
+                >
+                  <img
+                    className="selection-img"
+                    src={navbar3}
+                    alt="image3"
+                    onClick={() => viewImage(navbar3, "10", "80")}
+                  />
+                  <div className="overlay">
+                    <div className="text">Click To Enlarge The Picture</div>
+                  </div>
+                </div>
               </div>
             </div>
-            <br />
-            <br />
           </div>
         </div>
-        <div>
-          <label htmlFor="generate-color" className="generate-color-label">
-            Generate Color Palette
-          </label>
-          <Color />
-          <button className="btn btn-refresh-color" onClick={generateColor}>
-            Refresh
-          </button>
-        </div>
+        {localStorage.colorArray && (
+          <div className="colormind-component">
+            <div id="sticky-colormind">
+              <label htmlFor="generate-color" className="generate-color-label">
+                Generate Color Palette
+              </label>
+              <Color />
+              <button className="btn btn-refresh-color" onClick={generateColor}>
+                Refresh
+              </button>
+            </div>
+          </div>
+        )}
         {showModal && (
           <ModalImage
             image={modalImage}
