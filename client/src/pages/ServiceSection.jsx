@@ -506,7 +506,7 @@ function ServiceSection() {
               />
             </div>
             <div className="form-align-center">
-              <label htmlFor="service-card3" className="service-card3">
+              <label htmlFor="service-card3" className="service-card3 mb-1">
                 Background Color
               </label>
               <input

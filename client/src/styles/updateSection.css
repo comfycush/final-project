@@ -1,5 +1,5 @@
 #update-section {
-  margin-left: 8rem;
+  margin-left: 4rem;
   padding: 2rem;
   /* display: flex;
   flex-direction: column;
@@ -34,8 +34,21 @@
   align-items: center;
 }
 
-#update-section .input {
-  /* display: flex;
+/* #update-section .input { */
+/* display: flex;
   flex-direction: column;
   align-items: center; */
+/* } */
+
+.btn-remove {
+  width: 12rem;
+  background-color: rgb(255, 118, 77);
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.btn-update {
+  width: 12rem;
+  background-color: #50cb93;
+  color: white;
 }
