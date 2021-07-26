@@ -18,7 +18,7 @@ export default function ButtonTemplate() {
     .then( data => {
       console.log(data, `ini data dari changeIsDeploy`)
       dispatch(getTemplateId(templateId));
-      history.push(`/deploy?${projectTitle}`)
+      history.push(`/deploy/${templateId}`)
     })
     .catch(err => console.log(err))
   }
