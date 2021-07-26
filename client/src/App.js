@@ -15,10 +15,30 @@ import Register from "./pages/Register";
 import { useLocation } from "react-router-dom";
 import UpdateSection from "./pages/UpdateSection";
 
+import { useEffect } from "react";
+
 function App() {
   const location = useLocation();
+
+  useEffect(() => {
+    const showMenu = (toggleId, navbarId, bodyId) => {
+      const toggle = document.getElementById(toggleId),
+        navbar = document.getElementById(navbarId),
+        bodypadding = document.getElementById(bodyId);
+
+      if (toggle && navbar) {
+        toggle.addEventListener("click", () => {
+          navbar.classList.toggle("expander");
+          bodypadding.classList.toggle("body-pd");
+        });
+      }
+    };
+
+    showMenu("nav-toggle", "navbar", "body-pd");
+  });
+
   return (
-    <div className="App">
+    <section id="body-pd">
       {location.pathname !== "/register" &&
       location.pathname !== "/" &&
       location.pathname !== "/finish" &&
@@ -114,7 +134,7 @@ function App() {
           <UpdateSection></UpdateSection>
         </Route>
       </Switch>
-    </div>
+    </section>
   );
 }
 
