@@ -13,30 +13,12 @@ import FooterSection from "./pages/FooterSection";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import UpdateSection from "./pages/UpdateSection";
 
 function App() {
   const location = useLocation();
-
-  useEffect(() => {
-    const showMenu = (toggleId, navbarId, bodyId) => {
-      const toggle = document.getElementById(toggleId),
-        navbar = document.getElementById(navbarId),
-        bodypadding = document.getElementById(bodyId);
-
-      if (toggle && navbar) {
-        toggle.addEventListener("click", () => {
-          navbar.classList.toggle("expander");
-          bodypadding.classList.toggle("body-pd");
-        });
-      }
-    };
-
-    showMenu("nav-toggle", "navbar", "body-pd");
-  });
-
   return (
-    <section id="body-pd">
+    <div className="App">
       {location.pathname !== "/register" &&
       location.pathname !== "/" &&
       location.pathname !== "/finish" ? (
@@ -120,8 +102,11 @@ function App() {
             <Redirect to="/" />
           )}
         </Route>
+        <Route exact path="/update-template">
+          <UpdateSection></UpdateSection>
+        </Route>
       </Switch>
-    </section>
+    </div>
   );
 }
 

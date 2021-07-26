@@ -1,11 +1,24 @@
 import "../styles/main.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-export default function Main({ mainData }) {
-  const isDeploy = useSelector((state) => state.template.isDeploy);
+export default function Main({ mainData, isDeploy, templateData }) {
+  // const isDeploy = useSelector((state) => state.template.isDeploy);
+  const history = useHistory();
 
   if (!mainData.type) {
     return null;
+  }
+
+  function toUpdatePage() {
+    history.push({
+      pathname: "/update-template",
+      state: {
+        section: "main",
+        data: mainData,
+        allData: templateData,
+      },
+    });
   }
 
   return (
@@ -34,7 +47,9 @@ export default function Main({ mainData }) {
       </main>
       {!isDeploy && (
         <div className="update-main-section">
-          <button className="btn btn-update-section">Update Main</button>
+          <button onClick={toUpdatePage} className="btn btn-update-section">
+            Update Main
+          </button>
         </div>
       )}
     </div>

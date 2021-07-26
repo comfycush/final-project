@@ -8,17 +8,22 @@ import ServiceTemplate from "../components/ServiceTemplate";
 import ContactTemplate from "../components/ContactTemplate";
 import FooterTemplate from "../components/FooterTemplate";
 import ButtonTemplate from "../components/ButtonTemplate";
+import { useLocation } from "react-router";
 
 export default function RenderFinish() {
   const state = useSelector((state) => state.forms);
+  const location = useLocation();
   console.log(state);
-  const id = 1;
+  // const id = location.state.templateId ? location.state.templateId : 3;
+  const id = 4;
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
   const templateIsLoading = useSelector((state) => state.template.isLoading);
   const templateIsError = useSelector((state) => state.template.isError);
   // const isDeploy = useSelector((state) => state.template.isDeploy);
   const isDeploy = templateData.isDeploy;
+
+  console.log(templateData, "<<<,");
 
   useEffect(() => {
     dispatch(getTemplateId(id));
@@ -43,24 +48,46 @@ export default function RenderFinish() {
   return (
     <div className="render-template">
       {templateData.navbar && (
-        <NavbarTemplate navbarData={templateData.navbar}></NavbarTemplate>
+        <NavbarTemplate
+          navbarData={templateData.navbar}
+          isDeploy={isDeploy}
+          templateData={templateData}
+        ></NavbarTemplate>
       )}
       {templateData.main && (
-        <MainTemplate mainData={templateData.main}></MainTemplate>
+        <MainTemplate
+          mainData={templateData.main}
+          isDeploy={isDeploy}
+          templateData={templateData}
+        ></MainTemplate>
       )}
       {templateData.about && (
-        <AboutTemplate aboutData={templateData.about}></AboutTemplate>
+        <AboutTemplate
+          aboutData={templateData.about}
+          isDeploy={isDeploy}
+          templateData={templateData}
+        ></AboutTemplate>
       )}
       {templateData.service && (
-        <ServiceTemplate serviceData={templateData.service}></ServiceTemplate>
+        <ServiceTemplate
+          serviceData={templateData.service}
+          isDeploy={isDeploy}
+          templateData={templateData}
+        ></ServiceTemplate>
       )}
       {templateData.contact && (
-        <ContactTemplate contactData={templateData.contact}></ContactTemplate>
+        <ContactTemplate
+          contactData={templateData.contact}
+          isDeploy={isDeploy}
+          templateData={templateData}
+        ></ContactTemplate>
       )}
       {templateData.footer && (
         <FooterTemplate
           footerData={templateData.footer}
           navbarData={templateData.navbar}
+          isDeploy={isDeploy}
+          templateData={templateData}
         ></FooterTemplate>
       )}
       {!isDeploy && <ButtonTemplate></ButtonTemplate>}

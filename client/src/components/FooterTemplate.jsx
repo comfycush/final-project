@@ -1,12 +1,31 @@
 import "../styles/footer.css";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
-export default function FooterTemplate({ footerData, navbarData }) {
-  const isDeploy = useSelector((state) => state.template.isDeploy);
+export default function FooterTemplate({
+  footerData,
+  navbarData,
+  isDeploy,
+  templateData,
+}) {
+  // const isDeploy = useSelector((state) => state.template.isDeploy);
+  const history = useHistory();
 
   if (!footerData.backgroundColor) {
     return null;
   }
+
+  function toUpdatePage() {
+    history.push({
+      pathname: "/update-template",
+      state: {
+        section: "footer",
+        data: footerData,
+        allData: templateData,
+      },
+    });
+  }
+
   return (
     <div className="section-and-update">
       <div
@@ -111,7 +130,9 @@ export default function FooterTemplate({ footerData, navbarData }) {
       </div>
       {!isDeploy && (
         <div className="update-footer-section">
-          <button className="btn btn-update-section">Update Footer</button>
+          <button onClick={toUpdatePage} className="btn btn-update-section">
+            Update Footer
+          </button>
         </div>
       )}
     </div>
