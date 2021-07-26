@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import swal from "sweetalert";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -105,6 +105,10 @@ function MainSection() {
   function generateColor() {
     dispatch(generateColorArray());
   }
+
+  useEffect(() => {
+    dispatch(setMainImageUrl(""));
+  }, []);
 
   return (
     <section id="main-section">
