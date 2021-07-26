@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import swal from "sweetalert";
 import "../styles/footerSection.css";
@@ -23,7 +23,8 @@ function FooterSection() {
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
 
   const stateContact = location.state;
-  const templateId = 4;
+  const templateId = useSelector((state) => state.forms.templateId);
+  console.log(templateId, `ini templateId`)
 
   function addFooterSection() {
     const dataFooterSection = {
@@ -56,7 +57,7 @@ function FooterSection() {
         ...stateContact,
         footer: dataFooterSection,
       };
-      dispatch(updateTemplate(templateId, newestTemplate));
+      dispatch(updateTemplate(templateId, {footer: dataFooterSection}));
       history.push({
         pathname: "/finish",
         state: {
@@ -218,39 +219,28 @@ function FooterSection() {
             <button onClick={addFooterSection}>finish</button>
           </div>
         </div>
-        <div
-          style={{
-            marginLeft: "auto",
-            marginTop: 100,
-            display: "flex",
-            flexDirection: "column",
-            textAlign: "center",
-            marginRight: 100,
-          }}
-        >
+        <div style={{ marginTop: 100, position: 'fixed', marginLeft: 1000, textAlign:'center'}}>
           <Color />
-          <div style={{ marginTop: 20 }}>
-            <label
-              style={{ marginRight: 20 }}
-              htmlFor="generate-color"
-              className="generate-color-label"
-            >
-              Generate Color Palatte
-            </label>
-            <button
-              onClick={generateColor}
-              style={{
-                marginLeft: 20,
-                width: 80,
-                height: 30,
-                backgroundColor: "#BB5E53",
-                color: "white",
-                fontWeight: "bold",
-              }}
-            >
-              Refresh
-            </button>
-          </div>
+          <label
+            style={{ marginRight: 20 }}
+            htmlFor="generate-color"
+            className="generate-color-label"
+          >
+            Generate Color Palatte
+          </label>
+          <button
+            onClick={generateColor}
+            style={{
+              marginLeft: 20,
+              width: 80,
+              height: 30,
+              backgroundColor: "#BB5E53",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            Refresh
+          </button>
         </div>
       </div>
     </section>

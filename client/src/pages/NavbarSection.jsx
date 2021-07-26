@@ -22,8 +22,6 @@ function NavbarSection(props) {
   const [modalHeight, setModalHeight] = useState("");
   const [modalWidth, setModalWidth] = useState("");
 
-  console.log(showModal, "<<< SHOW modal");
-
   function viewImage(image, height, width) {
     setShowModal(true);
     setModalImage(image);
@@ -42,7 +40,7 @@ function NavbarSection(props) {
   const stateIntro = location.state;
   // console.log(stateIntro, "<<<< stateIntro");
   const navbar = useSelector((state) => state.forms.navbar);
-  const templateId = 4;
+  const templateId = useSelector((state) => state.forms.templateId);
 
   function addNavlink(status, input) {
     if (status) {
@@ -253,18 +251,9 @@ function NavbarSection(props) {
               next
             </button>
           </div>
-          <div
-            style={{
-              marginLeft: "auto",
-              marginTop: 100,
-              display: "flex",
-              flexDirection: "column",
-              textAlign: "center",
-              marginRight: 100,
-            }}
-          ></div>
         </div>
-        <div style={{ marginTop: 20 }}>
+
+        <div style={{ marginTop: 100, position: 'fixed', marginLeft: 1000, textAlign:'center'}}>
           <Color />
           <label
             style={{ marginRight: 20 }}

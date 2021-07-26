@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "nodemon bin/http.js",
-    "test": "jest --detectOpenHandles --forceExit --runInBand"
+    "test": "jest --detectOpenHandles --forceExit --runInBand --coverage"
   },
   "keywords": [],
   "author": "",

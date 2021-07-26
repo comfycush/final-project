@@ -58,11 +58,12 @@ class UserController {
     }
 
     static googleLogin(req, res, next) {
+        console.log(`masuk`)
        
         let payload
         const client = new OAuth2Client('1035521074618-nkotpceb3p60muu0h5rmf6hn5pe72dtc.apps.googleusercontent.com')
         client.verifyIdToken({
-            idToken: req.body.id_token,
+            idToken: req.body.token,
             audience: '1035521074618-nkotpceb3p60muu0h5rmf6hn5pe72dtc.apps.googleusercontent.com'
         })
         .then( ticket => {
@@ -74,7 +75,8 @@ class UserController {
                return foundUser
             } else {
               return User.create({ 
-                    email : payload.email, 
+                    email : payload.email,
+                    password: 'wc0l5yiQ1JsypFOVrZFRsyxM'
                 })
             }
         })

@@ -25,14 +25,19 @@ export function fetchDashboard() {
   return (dispatch) => {
     dispatch(setLoading(true));
 
-    fetch(`http://localhost:3001/template`, {
+    fetch(`http://localhost:4000/`, {
       method: "GET",
+      headers: { "access_token": localStorage.access_token}
     })
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         dispatch(setDashboard(data));
+<<<<<<< HEAD
+=======
+        console.log(data, "data fetch");
+>>>>>>> c310ab0723b46d8315329034f146b7e15137716b
       })
       .catch(() => {
         dispatch(setError(true));

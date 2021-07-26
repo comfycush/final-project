@@ -22,7 +22,7 @@ function MainSection() {
   const mainImageUrl = useSelector((state) => state.uploadImage.mainImageUrl);
 
   const stateNavbar = location.state;
-  const templateId = 4;
+  const templateId = useSelector((state) => state.forms.templateId);
 
   function addMainSection(event) {
     event.preventDefault();
@@ -52,13 +52,9 @@ function MainSection() {
         contact: {},
         footer: {},
       };
-      dispatch(updateTemplate(templateId, newestTemplate));
+      dispatch(updateTemplate(templateId, { main: dataMainSection }));
       history.push({
         pathname: "/about-section",
-        state: {
-          ...stateNavbar,
-          main: dataMainSection,
-        },
       });
     }
   }
@@ -218,39 +214,36 @@ function MainSection() {
             <button onClick={addMainSection}>next</button>
           </div>
         </div>
+
         <div
           style={{
-            marginLeft: "auto",
             marginTop: 100,
-            display: "flex",
-            flexDirection: "column",
+            position: "fixed",
+            marginLeft: 1000,
             textAlign: "center",
-            marginRight: 100,
           }}
         >
           <Color />
-          <div style={{ marginTop: 20 }}>
-            <label
-              style={{ marginRight: 20 }}
-              htmlFor="generate-color"
-              className="generate-color-label"
-            >
-              Generate Color Palatte
-            </label>
-            <button
-              onClick={generateColor}
-              style={{
-                marginLeft: 20,
-                width: 80,
-                height: 30,
-                backgroundColor: "#BB5E53",
-                color: "white",
-                fontWeight: "bold",
-              }}
-            >
-              Refresh
-            </button>
-          </div>
+          <label
+            style={{ marginRight: 20 }}
+            htmlFor="generate-color"
+            className="generate-color-label"
+          >
+            Generate Color Palatte
+          </label>
+          <button
+            onClick={generateColor}
+            style={{
+              marginLeft: 20,
+              width: 80,
+              height: 30,
+              backgroundColor: "#BB5E53",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            Refresh
+          </button>
         </div>
       </div>
     </section>

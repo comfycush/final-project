@@ -39,8 +39,11 @@ export function getTemplateId(id) {
   return async (dispatch) => {
     dispatch(setIsLoading(true));
     try {
-      const response = await fetch(`http://localhost:3001/template/${id}`);
+      const response = await fetch(`http://localhost:4000/template/${id}`, {
+        headers: { "access_token": localStorage.access_token}
+      });
       const data = await response.json();
+      console.log(data, `ini data fetch by template id di template.js`)
       dispatch(setTemplate(data));
     } catch (err) {
       console.log(err, "<<< ERROR DI ACTIONS");
