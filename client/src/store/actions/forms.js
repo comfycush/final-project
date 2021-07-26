@@ -6,7 +6,33 @@ import {
   SET_SERVICE_SECTION,
   SET_CONTACT_SECTION,
   SET_FOOTER_SECTION,
+  SET_TEMPLATE_ID,
+  SET_USER_ID,
+  SET_IS_DEPLOY
 } from "../actionTypes";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router";
+
+export function setTemplateId(input) {
+  return {
+    type: SET_TEMPLATE_ID,
+    payload: input,
+  };
+}
+
+export function setUserId(input) {
+  return {
+    type: SET_USER_ID,
+    payload: input,
+  };
+}
+
+export function setIsDeploy(input) {
+  return {
+    type: SET_IS_DEPLOY,
+    payload: input,
+  };
+}
 
 export function setProjectTitle(input) {
   return {
@@ -58,37 +84,86 @@ export function setFooterSection(input) {
 }
 
 export function createTemplate(data) {
-  return async (dispatch) => {
-    try {
-      const response = await fetch("http://localhost:3001/template", {
+  return (dispatch) => {
+  
+     fetch("http://localhost:4000/template", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "access_token": localStorage.access_token
         },
         body: JSON.stringify(data),
-      });
-      const result = await response;
-      console.log(result, "<<< result");
-    } catch (err) {
-      console.log(err);
-    }
+      })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data, `ini data`)
+        dispatch(setTemplateId(data.id))
+        dispatch(setUserId(data.userId))
+        dispatch(setProjectTitle(data.projectTitle))
+      })
+     .catch (err => {
+       console.log(err, `ini error`)
+     })
   };
 }
 
 export function updateTemplate(id, data) {
-  return async (dispatch) => {
-    try {
-      const response = await fetch(`http://localhost:3001/template/${id}`, {
+  return (dispatch) => {
+      fetch(`http://localhost:4000/template/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          "access_token": localStorage.access_token
         },
         body: JSON.stringify(data),
-      });
-      const result = await response;
-      console.log(result, "<<< result");
-    } catch (err) {
-      console.log(err);
-    }
+      })
+      .then( res => res.json())
+      .then(data => {
+        console.log(data, `ini data update`)
+      })
+      .catch(err => console.log(err, `ini error update`))
   };
+}
+
+export function deleteTemplate(id) {
+  return (dispatch) => {
+      fetch(`http://localhost:4000/template/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "access_token": localStorage.access_token
+        }
+      })
+      .then( res => res.json())
+      .then(data => {
+        console.log(data, `ini data delete`)
+      })
+      .catch(err => console.log(err, `ini error update`))
+  };
+}
+
+export function changeIsDeploy(id, data) {
+  
+  return (dispatch) => {
+      return new Promise((resolve, reject) => {
+        fetch(`http://localhost:4000/template/${id}`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            "access_token": localStorage.access_token
+          },
+          body: JSON.stringify(data),
+        })
+        .then( res => res.json())
+        .then(data => {
+          dispatch(setIsDeploy(true))
+          console.log(data, `ini data patch`)
+          resolve(data)
+        })
+        .catch(err => {
+          console.log(err, `ini error patch`)
+          reject(err)
+        })
+      })
+    };
 }

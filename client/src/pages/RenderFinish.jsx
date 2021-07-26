@@ -9,24 +9,26 @@ import ContactTemplate from "../components/ContactTemplate";
 import FooterTemplate from "../components/FooterTemplate";
 import ButtonTemplate from "../components/ButtonTemplate";
 import { useLocation } from "react-router";
+import { deleteTemplate } from "../store/actions/forms";
 
 export default function RenderFinish() {
   const state = useSelector((state) => state.forms);
   const location = useLocation();
   console.log(state);
   // const id = location.state.templateId ? location.state.templateId : 3;
-  const id = 4;
+  const templateId = useSelector((state) => state.forms.templateId);
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
+  console.log(templateData, `ini templateData <<<<<<<<<<<<<<<<`)
   const templateIsLoading = useSelector((state) => state.template.isLoading);
   const templateIsError = useSelector((state) => state.template.isError);
-  // const isDeploy = useSelector((state) => state.template.isDeploy);
-  const isDeploy = templateData.isDeploy;
-
-  console.log(templateData, "<<<,");
+  const isDeploy = useSelector((state) => state.forms.isDeploy);
+  console.log(isDeploy, `ini isDeploy dari finishrender`)
+  // const isDeploy = templateData.isDeploy;
 
   useEffect(() => {
-    dispatch(getTemplateId(id));
+    dispatch(getTemplateId(templateId));
+    console.log(`masuk renderfinish`)
   }, [dispatch]);
 
   if (templateIsLoading) {

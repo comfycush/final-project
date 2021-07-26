@@ -21,8 +21,6 @@ function IntroSection() {
     }
     dispatch(setProjectTitle(proTitle));
     const newTemplate = {
-      userId: 2,
-      isDeploy: false,
       projectTitle: proTitle,
       navbar: {},
       main: {},
@@ -35,11 +33,6 @@ function IntroSection() {
     event.preventDefault();
     history.push({
       pathname: "/navbar-section",
-      state: {
-        userId: 2,
-        isDeploy: false,
-        projectTitle: proTitle,
-      },
     });
   }
 

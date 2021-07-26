@@ -7,8 +7,8 @@ import { fetchDashboard } from "../store/actions/dashboard";
 
 function Dashboard() {
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.Dashboard);
-  console.log(data);
+  const data = useSelector((state) => state.dashboard.data);
+  console.log(data, `ini data dashboard dari store`);
 
   useEffect(() => {
     dispatch(fetchDashboard());

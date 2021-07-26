@@ -21,7 +21,8 @@ function App() {
     <div className="App">
       {location.pathname !== "/register" &&
       location.pathname !== "/" &&
-      location.pathname !== "/finish" ? (
+      location.pathname !== "/finish" &&
+      location.pathname !== `/deploy` ? (
         <Sidebar></Sidebar>
       ) : null}
       <Switch>
@@ -91,6 +92,13 @@ function App() {
         <Route exact path="/footer-section">
           {localStorage.access_token ? (
             <FooterSection></FooterSection>
+          ) : (
+            <Redirect to="/" />
+          )}
+        </Route>
+        <Route exact path="/deploy">
+          {localStorage.access_token ? (
+            <RenderFinish></RenderFinish>
           ) : (
             <Redirect to="/" />
           )}

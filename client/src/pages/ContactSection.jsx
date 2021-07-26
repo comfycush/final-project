@@ -41,7 +41,7 @@ function ContactSection() {
   const [addressColor, setAddressColor] = useState("#000000");
 
   const stateService = location.state;
-  const templateId = 4;
+  const templateId = useSelector((state) => state.forms.templateId);;
 
   function addContactSection() {
     const dataContactSection = {
@@ -77,7 +77,7 @@ function ContactSection() {
         contact: dataContactSection,
         footer: {},
       };
-      dispatch(updateTemplate(templateId, newestTemplate));
+      dispatch(updateTemplate(templateId, {contact: dataContactSection}));
       history.push({
         pathname: "/footer-section",
         state: {
@@ -327,39 +327,28 @@ function ContactSection() {
             <button onClick={addContactSection}>next</button>
           </div>
         </div>
-        <div
-          style={{
-            marginLeft: "auto",
-            marginTop: 100,
-            display: "flex",
-            flexDirection: "column",
-            textAlign: "center",
-            marginRight: 100,
-          }}
-        >
+        <div style={{ marginTop: 100, position: 'fixed', marginLeft: 1000, textAlign:'center'}}>
           <Color />
-          <div style={{ marginTop: 20 }}>
-            <label
-              style={{ marginRight: 20 }}
-              htmlFor="generate-color"
-              className="generate-color-label"
-            >
-              Generate Color Palatte
-            </label>
-            <button
-              onClick={generateColor}
-              style={{
-                marginLeft: 20,
-                width: 80,
-                height: 30,
-                backgroundColor: "#BB5E53",
-                color: "white",
-                fontWeight: "bold",
-              }}
-            >
-              Refresh
-            </button>
-          </div>
+          <label
+            style={{ marginRight: 20 }}
+            htmlFor="generate-color"
+            className="generate-color-label"
+          >
+            Generate Color Palatte
+          </label>
+          <button
+            onClick={generateColor}
+            style={{
+              marginLeft: 20,
+              width: 80,
+              height: 30,
+              backgroundColor: "#BB5E53",
+              color: "white",
+              fontWeight: "bold",
+            }}
+          >
+            Refresh
+          </button>
         </div>
       </div>
     </section>
