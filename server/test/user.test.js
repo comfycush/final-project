@@ -4,6 +4,7 @@ const request = require('supertest')
 const app = require('../app')
 const { User } = require('../models')
 
+
 let user_data = {
   email: 'test@mail.com',
   password: '12345',

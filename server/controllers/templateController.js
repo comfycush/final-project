@@ -80,8 +80,12 @@ class TemplateController {
         let putData = { userId, projectTitle, navbar, main, about, service, contact, footer }
 
         Template.update(putData, { where : { id:templateId } })
-        .then( () => {
-            res.status(200).json(putData)
+        .then( data => {
+            if(data[0]) {
+                res.status(200).json({ templateId, putData })
+            } else {
+                next({ name: `NotFound`, message: `Template with such id not found` })
+            }
         })
         .catch( err => {
             if(err.name === `SequelizeValidationError`) {
