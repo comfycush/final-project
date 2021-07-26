@@ -17,7 +17,7 @@ export default function UpdateNavbarForm({ data, allData }) {
     data.companyNameColor
   );
   const [navlinks, setNavlinks] = useState(data.navLinks);
-  const [navlinksColor, setNavlinksColor] = useState(data.navlinksColor);
+  const [navlinksColor, setNavlinksColor] = useState(data.navLinksColor);
   const logoUrl = useSelector((state) => state.uploadImage.logoUrl);
   // const [logoUrl, setLO]
 
@@ -57,7 +57,7 @@ export default function UpdateNavbarForm({ data, allData }) {
       companyName,
       companyNameColor,
       navLinks: sortNavlinks,
-      navlinksColor,
+      navLinksColor: navlinksColor,
     };
 
     if (!dataNavbarSection.companyName && !dataNavbarSection.logo) {
@@ -99,7 +99,7 @@ export default function UpdateNavbarForm({ data, allData }) {
     <section id="navbar-section">
       <div className="input">
         <label htmlFor="generate-color" className="generate-color-label">
-          Generate Color Palatte
+          Generate Color Palette
         </label>
         <input type="color" name="generate-color" className="generate-color" />
         <button>Refresh</button>

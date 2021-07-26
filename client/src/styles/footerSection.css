@@ -1,31 +1,49 @@
 #footer-section {
-  margin-left: 8rem;
+  margin-left: 5rem;
+  padding: 2rem;
 }
 
 #footer-section h1 {
   display: flex;
   justify-content: center;
+  font-size: 3rem;
+  color: #125d98;
 }
 
 #footer-section h3 {
   display: flex;
   justify-content: center;
+  color: #f5a962;
+  font-size: 2rem;
 }
 
 .selection-footer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .selection-footer .selection-img {
-  max-width: 100px;
+  /* max-width: 100px; */
+  width: 40rem;
+  height: 3rem;
+  object-fit: cover;
 }
 
 .button-footer {
-  display: inline-block;
-  margin-left: 29rem;
+  /* display: inline-block;
+  margin-left: 29rem; */
+  display: flex;
+  flex-direction: column;
 }
 
-.button-footer button {
+/* .button-footer button {
   width: 100px;
+} */
+
+.selection-footer .selection-img:hover {
+  cursor: pointer;
+}
+
+#footer-section input {
+  margin-right: 1rem;
 }

@@ -1,31 +1,52 @@
 #main-section {
-  margin-left: 8rem;
+  margin-left: 5rem;
+  padding: 2rem;
 }
 
 #main-section h1 {
   display: flex;
   justify-content: center;
+  font-size: 3rem;
+  color: #125d98;
+}
+
+#main-section input {
+  margin-right: 1rem;
 }
 
 #main-section h3 {
   display: flex;
   justify-content: center;
+  color: #f5a962;
+  font-size: 2rem;
 }
 
 .selection-main {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .selection-main .selection-img {
-  max-width: 100px;
+  /* max-width: 100px; */
+  width: 20rem;
+  height: 10rem;
+  object-fit: cover;
 }
 
 .button-main {
-  display: inline-block;
-  margin-left: 29rem;
+  display: flex;
+  flex-direction: column;
 }
 
-.button-main button {
+/* .button-main button {
   width: 100px;
+} */
+
+.form-center {
+  display: flex;
+  align-items: center;
+}
+
+.selection-main .selection-img:hover {
+  cursor: pointer;
 }

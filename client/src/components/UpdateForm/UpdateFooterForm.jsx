@@ -77,7 +77,7 @@ export default function UpdateFooterForm({ data, allData }) {
       <h3>6 of 6</h3>
       <div className="input">
         <label htmlFor="generate-color" className="generate-color-label">
-          Generate Color Palatte
+          Generate Color Palette
         </label>
         <input type="color" name="generate-color" className="generate-color" />
         <button>Refresh</button>

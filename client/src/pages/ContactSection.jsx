@@ -13,6 +13,10 @@ import {
   setAddressIconUrl,
 } from "../store/actions/uploadImage";
 import { useLocation } from "react-router";
+import contact1 from "../assets/contact1.png";
+import contact2 from "../assets/contact2.png";
+import contact3 from "../assets/contact3.png";
+import ModalImage from "../components/ModalImage";
 
 function ContactSection() {
   const dispatch = useDispatch();
@@ -40,8 +44,20 @@ function ContactSection() {
   const [address, setAddress] = useState("");
   const [addressColor, setAddressColor] = useState("#000000");
 
+  const [showModal, setShowModal] = useState(false);
+  const [modalImage, setModalImage] = useState("");
+  const [modalHeight, setModalHeight] = useState("");
+  const [modalWidth, setModalWidth] = useState("");
+
+  function viewImage(image, height, width) {
+    setShowModal(true);
+    setModalImage(image);
+    setModalHeight(height);
+    setModalWidth(width);
+  }
+
   const stateService = location.state;
-  const templateId = useSelector((state) => state.forms.templateId);;
+  const templateId = useSelector((state) => state.forms.templateId);
 
   function addContactSection() {
     const dataContactSection = {
@@ -77,7 +93,7 @@ function ContactSection() {
         contact: dataContactSection,
         footer: {},
       };
-      dispatch(updateTemplate(templateId, {contact: dataContactSection}));
+      dispatch(updateTemplate(templateId, { contact: dataContactSection }));
       history.push({
         pathname: "/footer-section",
         state: {
@@ -121,235 +137,274 @@ function ContactSection() {
     <section id="contact-section">
       <h1>Contact Section</h1>
       <h3>5 of 6</h3>
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          marginTop: "5rem",
+        }}
+      >
         <div className="input">
-          <label htmlFor="contact-headline" className="contact-headline">
-            Headline
-          </label>
-          <input
-            onChange={(event) => setHeadline(event.target.value)}
-            type="text"
-            name="contact-headline"
-            className="contact-headline"
-          />
-          <label htmlFor="contact-headline" className="contact-headline">
-            Color
-          </label>
-          <input
-            onChange={(event) => setHeadlineColor(event.target.value)}
-            type="color"
-            name="contact-headline"
-            className="contact-headline"
-          />
-          <br />
-          <br />
-          <label htmlFor="contact-email" className="contact-email">
-            Email
-          </label>
-          <input
-            onChange={(event) => setEmail(event.target.value)}
-            type="text"
-            name="contact-email"
-            className="contact-email"
-          />
-          <label htmlFor="contact-email" className="contact-email">
-            Color
-          </label>
-          <input
-            onChange={(event) => setEmailColor(event.target.value)}
-            type="color"
-            name="contact-email"
-            className="contact-email"
-          />
-          <br />
-          <br />
-          <label htmlFor="contact-email" className="contact-email">
-            Email Icon
-          </label>
-          <input
-            onChange={(event) =>
-              uploadContactIcon(event.target.files[0], "email")
-            }
-            type="file"
-            name="contact-email"
-            className="contact-email"
-          />
-          {emailIconUrl && (
-            <img
-              style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-              src={emailIconUrl}
-              alt="email"
+          <div className="form-center">
+            <label htmlFor="contact-headline" className="contact-headline">
+              Headline
+            </label>
+            <input
+              onChange={(event) => setHeadline(event.target.value)}
+              type="text"
+              name="contact-headline"
+              className="contact-headline"
             />
-          )}
-          <button onClick={() => dispatch(setEmailIconUrl(""))}>
-            Remove Image
-          </button>
-          <br />
-          <br />
-          <label htmlFor="contact-phone" className="contact-phone">
-            Phone
-          </label>
-          <input
-            onChange={(event) => setPhone(event.target.value)}
-            type="text"
-            name="contact-phone"
-            className="contact-phone"
-          />
-          <label htmlFor="contact-phone" className="contact-phone">
-            Color
-          </label>
-          <input
-            onChange={(event) => setPhoneColor(event.target.value)}
-            type="color"
-            name="contact-phone"
-            className="contact-phone"
-          />
-          <br />
-          <br />
-          <label htmlFor="contact-phone" className="contact-phone">
-            Phone Icon
-          </label>
-          <input
-            onChange={(event) =>
-              uploadContactIcon(event.target.files[0], "phone")
-            }
-            type="file"
-            name="contact-phone"
-            className="contact-phone"
-          />
-          {phoneIconUrl && (
-            <img
-              style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-              src={phoneIconUrl}
-              alt="phone"
+            <label htmlFor="contact-headline" className="contact-headline">
+              Color
+            </label>
+            <input
+              onChange={(event) => setHeadlineColor(event.target.value)}
+              type="color"
+              name="contact-headline"
+              className="contact-headline"
             />
-          )}
-          <button onClick={() => dispatch(setPhoneIconUrl(""))}>
-            Remove Image
-          </button>
+          </div>
           <br />
           <br />
-          <label htmlFor="contact-address" className="contact-address">
-            Address
-          </label>
-          <input
-            onChange={(event) => setAddress(event.target.value)}
-            type="text"
-            name="contact-address"
-            className="contact-address"
-          />
-          <label htmlFor="contact-address" className="contact-address">
-            Color
-          </label>
-          <input
-            onChange={(event) => setAddressColor(event.target.value)}
-            type="color"
-            name="contact-address"
-            className="contact-address"
-          />
-          <br />
-          <br />
-          <label htmlFor="contact-address" className="contact-address">
-            Address Icon
-          </label>
-          <input
-            onChange={(event) =>
-              uploadContactIcon(event.target.files[0], "address")
-            }
-            type="file"
-            name="contact-address"
-            className="contact-address"
-          />
-          {addressIconUrl && (
-            <img
-              style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-              src={addressIconUrl}
-              alt="address"
+          <div className="form-centre">
+            <label htmlFor="contact-email" className="contact-email">
+              Email
+            </label>
+            <input
+              onChange={(event) => setEmail(event.target.value)}
+              type="text"
+              name="contact-email"
+              className="contact-email"
             />
-          )}
-          <button onClick={() => dispatch(setAddressIconUrl(""))}>
-            Remove Image
-          </button>
+            <label htmlFor="contact-email" className="contact-email">
+              Color
+            </label>
+            <input
+              onChange={(event) => setEmailColor(event.target.value)}
+              type="color"
+              name="contact-email"
+              className="contact-email"
+            />
+          </div>
           <br />
           <br />
-          <label htmlFor="background-color-contact">Background Color</label>
-          <input
-            onChange={(event) => setBackgroundColor(event.target.value)}
-            type="color"
-            name="background-color-contact"
-            id="background-color-contact"
-          />
+          <div className="from-centre">
+            <label htmlFor="contact-email" className="contact-email">
+              Email Icon
+            </label>
+            <input
+              onChange={(event) =>
+                uploadContactIcon(event.target.files[0], "email")
+              }
+              type="file"
+              name="contact-email"
+              className="contact-email"
+            />
+            {emailIconUrl && (
+              <img
+                style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+                src={emailIconUrl}
+                alt="email"
+              />
+            )}
+            <button
+              className="btn btn-remove-image"
+              onClick={() => dispatch(setEmailIconUrl(""))}
+            >
+              Remove Image
+            </button>
+          </div>
+          <br />
+          <br />
+          <div className="form-center">
+            <label htmlFor="contact-phone" className="contact-phone">
+              Phone
+            </label>
+            <input
+              onChange={(event) => setPhone(event.target.value)}
+              type="text"
+              name="contact-phone"
+              className="contact-phone"
+            />
+            <label htmlFor="contact-phone" className="contact-phone">
+              Color
+            </label>
+            <input
+              onChange={(event) => setPhoneColor(event.target.value)}
+              type="color"
+              name="contact-phone"
+              className="contact-phone"
+            />
+          </div>
+          <br />
+          <br />
+          <div className="form-center">
+            <label htmlFor="contact-phone" className="contact-phone">
+              Phone Icon
+            </label>
+            <input
+              onChange={(event) =>
+                uploadContactIcon(event.target.files[0], "phone")
+              }
+              type="file"
+              name="contact-phone"
+              className="contact-phone"
+            />
+            {phoneIconUrl && (
+              <img
+                style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+                src={phoneIconUrl}
+                alt="phone"
+              />
+            )}
+            <button
+              className="btn btn-remove-image"
+              onClick={() => dispatch(setPhoneIconUrl(""))}
+            >
+              Remove Image
+            </button>
+          </div>
+          <br />
+          <br />
+          <div className="form-center">
+            <label htmlFor="contact-address" className="contact-address">
+              Address
+            </label>
+            <input
+              onChange={(event) => setAddress(event.target.value)}
+              type="text"
+              name="contact-address"
+              className="contact-address"
+            />
+            <label htmlFor="contact-address" className="contact-address">
+              Color
+            </label>
+            <input
+              onChange={(event) => setAddressColor(event.target.value)}
+              type="color"
+              name="contact-address"
+              className="contact-address"
+            />
+          </div>
+          <br />
+          <br />
+          <div className="form-center">
+            <label htmlFor="contact-address" className="contact-address">
+              Address Icon
+            </label>
+            <input
+              onChange={(event) =>
+                uploadContactIcon(event.target.files[0], "address")
+              }
+              type="file"
+              name="contact-address"
+              className="contact-address"
+            />
+            {addressIconUrl && (
+              <img
+                style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
+                src={addressIconUrl}
+                alt="address"
+              />
+            )}
+            <button
+              className="btn btn-remove-image"
+              onClick={() => dispatch(setAddressIconUrl(""))}
+            >
+              Remove Image
+            </button>
+          </div>
+          <br />
+          <br />
+          <div className="form-center">
+            <label htmlFor="background-color-contact">Background Color</label>
+            <input
+              onChange={(event) => setBackgroundColor(event.target.value)}
+              type="color"
+              name="background-color-contact"
+              id="background-color-contact"
+            />
+          </div>
           <br />
           <br />
           <label htmlFor="template-layout">Template Layout</label>
           <br />
           <br />
           <div className="selection-contact">
-            <input
-              onClick={(event) => setType(event.target.value)}
-              defaultValue="1"
-              type="radio"
-              name="opt-navbar"
-              id="opt1-navbar"
-            />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image1"
-            />
-            <input
-              onClick={(event) => setType(event.target.value)}
-              defaultValue="2"
-              type="radio"
-              name="opt-navbar"
-              id="opt2-navbar"
-            />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image2"
-            />
-            <input
-              onClick={(event) => setType(event.target.value)}
-              defaultValue="3"
-              type="radio"
-              name="opt-navbar"
-              id="opt3-navbar"
-            />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image3"
-            />
-          </div>
-          <div className="button-contact">
-            <button onClick={skipContactSection}>skip</button>
-            <button onClick={addContactSection}>next</button>
+            <div className="form-center">
+              <input
+                onClick={(event) => setType(event.target.value)}
+                defaultValue="1"
+                type="radio"
+                name="opt-navbar"
+                id="opt1-navbar"
+              />
+              <img
+                className="selection-img"
+                src={contact1}
+                alt="image1"
+                onClick={() => viewImage(contact1, "28", "80")}
+              />
+            </div>
+            <div className="form-center">
+              <input
+                onClick={(event) => setType(event.target.value)}
+                defaultValue="2"
+                type="radio"
+                name="opt-navbar"
+                id="opt2-navbar"
+              />
+              <img
+                className="selection-img"
+                src={contact2}
+                alt="image2"
+                onClick={() => viewImage(contact2, "30", "80")}
+              />
+            </div>
+            <div className="form-center">
+              <input
+                onClick={(event) => setType(event.target.value)}
+                defaultValue="3"
+                type="radio"
+                name="opt-navbar"
+                id="opt3-navbar"
+              />
+              <img
+                className="selection-img"
+                src={contact3}
+                alt="image3"
+                onClick={() => viewImage(contact3, "40", "31")}
+              />
+            </div>
           </div>
         </div>
-        <div style={{ marginTop: 100, position: 'fixed', marginLeft: 1000, textAlign:'center'}}>
-          <Color />
-          <label
-            style={{ marginRight: 20 }}
-            htmlFor="generate-color"
-            className="generate-color-label"
-          >
-            Generate Color Palatte
+        <div>
+          <label htmlFor="generate-color" className="generate-color-label">
+            Generate Color Palette
           </label>
-          <button
-            onClick={generateColor}
-            style={{
-              marginLeft: 20,
-              width: 80,
-              height: 30,
-              backgroundColor: "#BB5E53",
-              color: "white",
-              fontWeight: "bold",
-            }}
-          >
+          <Color />
+          <button className="btn btn-refresh-color" onClick={generateColor}>
             Refresh
           </button>
         </div>
+        {showModal && (
+          <ModalImage
+            image={modalImage}
+            height={modalHeight}
+            width={modalWidth}
+            setShowModal={setShowModal}
+          ></ModalImage>
+        )}
+      </div>
+      <div className="button-service btn-form-page">
+        <button className="btn btn-skip" onClick={skipContactSection}>
+          Skip
+        </button>
+        <button className="btn btn-next" onClick={addContactSection}>
+          Next
+        </button>
       </div>
     </section>
   );

@@ -111,7 +111,7 @@ export default function UpdateAboutForm({ data, allData }) {
     <section id="about-section">
       <div className="input">
         <label htmlFor="generate-color" className="generate-color-label">
-          Generate Color Palatte
+          Generate Color Palette
         </label>
         <input type="color" name="generate-color" className="generate-color" />
         <button>Refresh</button>

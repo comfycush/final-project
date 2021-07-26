@@ -19,16 +19,16 @@ export default function RenderFinish() {
   const templateId = useSelector((state) => state.forms.templateId);
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
-  console.log(templateData, `ini templateData <<<<<<<<<<<<<<<<`)
+  console.log(templateData, `ini templateData <<<<<<<<<<<<<<<<`);
   const templateIsLoading = useSelector((state) => state.template.isLoading);
   const templateIsError = useSelector((state) => state.template.isError);
   const isDeploy = useSelector((state) => state.forms.isDeploy);
-  console.log(isDeploy, `ini isDeploy dari finishrender`)
+  console.log(isDeploy, `ini isDeploy dari finishrender`);
   // const isDeploy = templateData.isDeploy;
 
   useEffect(() => {
     dispatch(getTemplateId(templateId));
-    console.log(`masuk renderfinish`)
+    console.log(`masuk renderfinish`);
   }, [dispatch]);
 
   if (templateIsLoading) {

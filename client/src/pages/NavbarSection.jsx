@@ -74,7 +74,7 @@ function NavbarSection(props) {
       companyName,
       companyNameColor,
       navLinks: sortNavlinks,
-      navlinksColor,
+      navLinksColor: navlinksColor,
     };
 
     if (!dataNavbarSection.companyName && !dataNavbarSection.logo) {
@@ -118,161 +118,204 @@ function NavbarSection(props) {
     <section id="navbar-section">
       <h1>Navbar Section</h1>
       <h3>1 of 6</h3>
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          marginTop: "5rem",
+        }}
+      >
         <div className="input">
-          <label htmlFor="company-title" className="company-title">
-            Company Name
-          </label>
-          <input
-            onChange={(event) => setCompanyName(event.target.value)}
-            type="text"
-            name="company-title"
-            className="company-title"
-          />
-          <label
-            style={{ marginLeft: "1.5rem" }}
-            htmlFor="company-title-color"
-            className="company-title-color"
-          >
-            Color
-          </label>
-          <input
-            onChange={(event) => setCompanyNameColor(event.target.value)}
-            type="color"
-            name="company-title-color"
-            id="company-title-color"
-          />
-          <br />
-          <br />
-          <label htmlFor="company-logo" className="company-logo">
-            Your Company Logo
-          </label>
-          <input
-            onChange={(event) => uploadLogo(event.target.files[0], "logo")}
-            type="file"
-            name="company-logo"
-            className="company-logo"
-          />
-          {logoUrl && (
-            <img
-              src={logoUrl}
-              alt=""
-              style={{ width: "5rem", height: "5rem" }}
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <label htmlFor="company-title" className="company-title">
+              Company Name
+            </label>
+            <input
+              onChange={(event) => setCompanyName(event.target.value)}
+              type="text"
+              name="company-title"
+              className="company-title"
             />
-          )}
-          <button onClick={() => dispatch(setLogoUrl(""))}>Remove Image</button>
+            <label
+              style={{ marginLeft: "1.5rem" }}
+              htmlFor="company-title-color"
+              className="company-title-color"
+            >
+              Color
+            </label>
+            <input
+              onChange={(event) => setCompanyNameColor(event.target.value)}
+              type="color"
+              name="company-title-color"
+              id="company-title-color"
+              style={{ border: "none" }}
+            />
+          </div>
           <br />
           <br />
-          <label htmlFor="links-navbar">Links</label>
-          <input
-            type="checkbox"
-            onClick={(event) =>
-              addNavlink(event.target.checked, event.target.value)
-            }
-            name="about"
-            id="about"
-            style={{ marginLeft: "1.5rem" }}
-            defaultValue="About"
-          />
-          <label htmlFor="about">About</label>
-          <input
-            type="checkbox"
-            onClick={(event) =>
-              addNavlink(event.target.checked, event.target.value)
-            }
-            name="service"
-            id="service"
-            defaultValue="Service"
-          />
-          <label htmlFor="service">Service</label>
-          <input
-            type="checkbox"
-            onClick={(event) =>
-              addNavlink(event.target.checked, event.target.value)
-            }
-            name="contact"
-            id="contact"
-            defaultValue="Contact"
-          />
-          <label htmlFor="contact">Contact</label>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <label htmlFor="company-logo" className="company-logo">
+              Your Company Logo
+            </label>
+            <input
+              onChange={(event) => uploadLogo(event.target.files[0], "logo")}
+              type="file"
+              name="company-logo"
+              className="company-logo"
+              style={{ border: "none" }}
+            />
+            {logoUrl && (
+              <img
+                src={logoUrl}
+                alt=""
+                style={{ width: "5rem", height: "5rem" }}
+              />
+            )}
+            <button
+              className="btn btn-remove-image"
+              // style={{
+              //   padding: "0.5rem 1rem",
+              //   backgroundColor: "#FF6767",
+              //   color: "white",
+              // }}
+              onClick={() => dispatch(setLogoUrl(""))}
+            >
+              Remove Image
+            </button>
+          </div>
           <br />
           <br />
-          <label htmlFor="color-navbar">Color</label>
-          <input
-            onChange={(event) => setNavlinksColor(event.target.value)}
-            type="color"
-            name="navlink-color"
-            id="navlink-color"
-          />
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <label htmlFor="links-navbar">Links</label>
+            <input
+              type="checkbox"
+              onClick={(event) =>
+                addNavlink(event.target.checked, event.target.value)
+              }
+              name="about"
+              id="about"
+              style={{
+                width: "3rem",
+              }}
+              defaultValue="About"
+            />
+            <label htmlFor="about">About</label>
+            <input
+              type="checkbox"
+              onClick={(event) =>
+                addNavlink(event.target.checked, event.target.value)
+              }
+              name="service"
+              id="service"
+              defaultValue="Service"
+              style={{ width: "3rem" }}
+            />
+            <label htmlFor="service">Service</label>
+            <input
+              type="checkbox"
+              onClick={(event) =>
+                addNavlink(event.target.checked, event.target.value)
+              }
+              name="contact"
+              id="contact"
+              defaultValue="Contact"
+              style={{ width: "3rem" }}
+            />
+            <label htmlFor="contact" style={{ marginRight: "4rem" }}>
+              Contact
+            </label>
+            <br />
+            <br />
+            <label htmlFor="color-navbar">Color</label>
+            <input
+              onChange={(event) => setNavlinksColor(event.target.value)}
+              type="color"
+              name="navlink-color"
+              id="navlink-color"
+              style={{ border: "none" }}
+            />
+          </div>
           <br />
           <br />
-          <label htmlFor="background-color-navbar">Background Color</label>
-          <input
-            onChange={(event) => setBackgroundColor(event.target.value)}
-            type="color"
-            name="background-color-navbar"
-            id="background-color-navbar"
-          />
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <label htmlFor="background-color-navbar">Background Color</label>
+            <input
+              onChange={(event) => setBackgroundColor(event.target.value)}
+              type="color"
+              name="background-color-navbar"
+              id="background-color-navbar"
+              style={{ border: "none" }}
+            />
+          </div>
           <br />
           <br />
           <div className="selection-navbar">
-            <label htmlFor="template-layout">Template Layout</label>
+            <label htmlFor="template-layout" style={{ marginTop: "2rem" }}>
+              Template Layout
+            </label>
             <br />
             <br />
             <div className="selection-navbar">
-              <input
-                onClick={(event) => setType(event.target.value)}
-                type="radio"
-                name="opt-navbar"
-                id="opt1-navbar"
-                defaultValue="1"
-              />
-              <img className="selection-img" src={navbar1} alt="image1" />
-              <input
-                onClick={(event) => setType(event.target.value)}
-                type="radio"
-                name="opt-navbar"
-                id="opt2-navbar"
-                defaultValue="2"
-              />
-              <img className="selection-img" src={navbar2} alt="image2" />
-              <input
-                onClick={(event) => setType(event.target.value)}
-                type="radio"
-                name="opt-navbar"
-                id="opt3-navbar"
-                defaultValue="3"
-              />
-              <img className="selection-img" src={navbar3} alt="image3" />
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <input
+                  onClick={(event) => setType(event.target.value)}
+                  type="radio"
+                  name="opt-navbar"
+                  id="opt1-navbar"
+                  defaultValue="1"
+                  style={{ width: "1rem", marginRight: "1rem" }}
+                />
+                <img
+                  className="selection-img"
+                  src={navbar1}
+                  alt="image1"
+                  onClick={() => viewImage(navbar1, "3", "80")}
+                />
+              </div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <input
+                  onClick={(event) => setType(event.target.value)}
+                  type="radio"
+                  name="opt-navbar"
+                  id="opt2-navbar"
+                  defaultValue="2"
+                  style={{ width: "1rem", marginRight: "1rem" }}
+                />
+                <img
+                  className="selection-img"
+                  src={navbar2}
+                  alt="image2"
+                  onClick={() => viewImage(navbar2, "3", "80")}
+                />
+              </div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <input
+                  onClick={(event) => setType(event.target.value)}
+                  type="radio"
+                  name="opt-navbar"
+                  id="opt3-navbar"
+                  defaultValue="3"
+                  style={{ width: "1rem", marginRight: "1rem" }}
+                />
+                <img
+                  className="selection-img"
+                  src={navbar3}
+                  alt="image3"
+                  onClick={() => viewImage(navbar3, "10", "80")}
+                />
+              </div>
             </div>
             <br />
             <br />
-            <button onClick={addNavbarSection} className="button-navbar">
-              next
-            </button>
           </div>
         </div>
-
-        <div style={{ marginTop: 100, position: 'fixed', marginLeft: 1000, textAlign:'center'}}>
-          <Color />
-          <label
-            style={{ marginRight: 20 }}
-            htmlFor="generate-color"
-            className="generate-color-label"
-          >
-            Generate Color Palatte
+        <div>
+          <label htmlFor="generate-color" className="generate-color-label">
+            Generate Color Palette
           </label>
-          <button
-            onClick={generateColor}
-            style={{
-              marginLeft: 20,
-              width: 80,
-              height: 30,
-              backgroundColor: "#BB5E53",
-              color: "white",
-              fontWeight: "bold",
-            }}
-          >
+          <Color />
+          <button className="btn btn-refresh-color" onClick={generateColor}>
             Refresh
           </button>
         </div>
@@ -281,8 +324,14 @@ function NavbarSection(props) {
             image={modalImage}
             height={modalHeight}
             width={modalWidth}
+            setShowModal={setShowModal}
           ></ModalImage>
         )}
+      </div>
+      <div className="btn-form-page">
+        <button className="btn btn-next" onClick={addNavbarSection}>
+          Next
+        </button>
       </div>
     </section>
   );

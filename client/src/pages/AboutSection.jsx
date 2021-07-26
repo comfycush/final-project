@@ -8,6 +8,10 @@ import { generateColorArray } from "../store/actions/template";
 import { setAboutSection, updateTemplate } from "../store/actions/forms";
 import { getImageUrl, setAboutImageUrl } from "../store/actions/uploadImage";
 import { useLocation } from "react-router";
+import about1 from "../assets/about1.png";
+import about2 from "../assets/about2.png";
+import about3 from "../assets/about3.png";
+import ModalImage from "../components/ModalImage";
 
 function AboutSection() {
   const dispatch = useDispatch();
@@ -22,8 +26,20 @@ function AboutSection() {
   const [paragraphColor, setParagraphColor] = useState("#000000");
   const aboutImageUrl = useSelector((state) => state.uploadImage.aboutImageUrl);
 
+  const [showModal, setShowModal] = useState(false);
+  const [modalImage, setModalImage] = useState("");
+  const [modalHeight, setModalHeight] = useState("");
+  const [modalWidth, setModalWidth] = useState("");
+
+  function viewImage(image, height, width) {
+    setShowModal(true);
+    setModalImage(image);
+    setModalHeight(height);
+    setModalWidth(width);
+  }
+
   const stateMain = location.state;
-  const templateId = useSelector((state) => state.forms.templateId);;
+  const templateId = useSelector((state) => state.forms.templateId);
 
   function addAboutSection(event) {
     event.preventDefault();
@@ -99,150 +115,180 @@ function AboutSection() {
     <section id="about-section">
       <h1>About Section</h1>
       <h3>3 of 6</h3>
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "flex-start",
+          marginTop: "5rem",
+        }}
+      >
         <div className="input">
-          <label htmlFor="about-headline" className="about-headline">
-            Headline
-          </label>
-          <input
-            onChange={(event) => setHeadline(event.target.value)}
-            type="text"
-            name="about-headline"
-            className="about-headline"
-          />
-          <label htmlFor="about-headline" className="about-headline">
-            Color
-          </label>
-          <input
-            type="color"
-            onChange={(event) => setHeadlineColor(event.target.value)}
-            name="about-headline"
-            className="about-headline"
-          />
-          <label htmlFor="about-paragraph" className="about-paragraph">
-            Paragraph
-          </label>
-          <br />
-          <textarea
-            onChange={(event) => setParagraph(event.target.value)}
-            name="about-paragraph"
-            className="about-paragraph"
-            cols={30}
-            rows={10}
-            defaultValue={""}
-          />
-          <label htmlFor="about-paragraph" className="about-paragraph">
-            Paragraph Color
-          </label>
-          <input
-            type="color"
-            onChange={(event) => setParagraphColor(event.target.value)}
-            name="about-paragraph"
-            className="about-paragraph"
-          />
-          <label htmlFor="about-image" className="about-image">
-            Image
-          </label>
-          <input
-            onChange={(event) =>
-              uploadAboutImage(event.target.files[0], "about")
-            }
-            type="file"
-            name="about-image"
-            className="about-image"
-          />
-          {aboutImageUrl && (
-            <img
-              style={{ width: "10rem", height: "10rem", objectFit: "cover" }}
-              src={aboutImageUrl}
-              alt="about"
+          <div className="form-center">
+            <label htmlFor="about-headline" className="about-headline">
+              Headline
+            </label>
+            <input
+              onChange={(event) => setHeadline(event.target.value)}
+              type="text"
+              name="about-headline"
+              className="about-headline"
             />
-          )}
-          <button onClick={() => dispatch(setAboutImageUrl(""))}>
-            Remove Image
-          </button>
+            <label htmlFor="about-headline" className="about-headline">
+              Color
+            </label>
+            <input
+              type="color"
+              onChange={(event) => setHeadlineColor(event.target.value)}
+              name="about-headline"
+              className="about-headline"
+            />
+          </div>
           <br />
           <br />
-          <label htmlFor="background-color-about">Background Color</label>
-          <input
-            type="color"
-            onChange={(event) => setBackgroundColor(event.target.value)}
-            name="background-color-about"
-            id="background-color-about"
-          />
+          <div style={{ display: "flex", alignItems: "flex-start" }}>
+            {/* <div style={{ display: "flex", alignItems: "flex-start" }}></div> */}
+            <label htmlFor="about-paragraph" className="about-paragraph">
+              Paragraph
+            </label>
+            <br />
+            <textarea
+              onChange={(event) => setParagraph(event.target.value)}
+              name="about-paragraph"
+              className="about-paragraph"
+              cols={30}
+              rows={10}
+              defaultValue={""}
+            />
+            <label htmlFor="about-paragraph" className="about-paragraph">
+              Color
+            </label>
+            <input
+              type="color"
+              onChange={(event) => setParagraphColor(event.target.value)}
+              name="about-paragraph"
+              className="about-paragraph"
+            />
+          </div>
+          <br />
+          <br />
+          <div className="form-center">
+            <label htmlFor="about-image" className="about-image">
+              Image
+            </label>
+            <input
+              onChange={(event) =>
+                uploadAboutImage(event.target.files[0], "about")
+              }
+              type="file"
+              name="about-image"
+              className="about-image"
+            />
+            {aboutImageUrl && (
+              <img
+                style={{ width: "10rem", height: "10rem", objectFit: "cover" }}
+                src={aboutImageUrl}
+                alt="about"
+              />
+            )}
+            <button
+              className="btn btn-remove-image"
+              onClick={() => dispatch(setAboutImageUrl(""))}
+            >
+              Remove Image
+            </button>
+          </div>
+          <br />
+          <br />
+          <div className="form-center">
+            <label htmlFor="background-color-about">Background Color</label>
+            <input
+              type="color"
+              onChange={(event) => setBackgroundColor(event.target.value)}
+              name="background-color-about"
+              id="background-color-about"
+            />
+          </div>
           <br />
           <br />
           <label htmlFor="template-layout">Template Layout</label>
           <br />
           <br />
           <div className="selection-about">
-            <input
-              onClick={(event) => setType(event.target.value)}
-              type="radio"
-              name="opt-navbar"
-              id="opt1-navbar"
-              defaultValue="1"
-            />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image1"
-            />
-            <input
-              onClick={(event) => setType(event.target.value)}
-              type="radio"
-              name="opt-navbar"
-              id="opt2-navbar"
-              defaultValue="2"
-            />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image2"
-            />
-            <input
-              onClick={(event) => setType(event.target.value)}
-              type="radio"
-              name="opt-navbar"
-              id="opt3-navbar"
-              defaultValue="3"
-            />
-            <img
-              className="selection-img"
-              src="https://img.freepik.com/free-psd/engraved-black-logo-mockup_125540-223.jpg?size=338&ext=jpg"
-              alt="image3"
-            />
+            <div className="form-center">
+              <input
+                onClick={(event) => setType(event.target.value)}
+                type="radio"
+                name="opt-navbar"
+                id="opt1-navbar"
+                defaultValue="1"
+              />
+              <img
+                className="selection-img"
+                src={about1}
+                alt="image1"
+                onClick={() => viewImage(about1, "25", "80")}
+              />
+            </div>
+            <div className="form-center">
+              <input
+                onClick={(event) => setType(event.target.value)}
+                type="radio"
+                name="opt-navbar"
+                id="opt2-navbar"
+                defaultValue="2"
+              />
+              <img
+                className="selection-img"
+                src={about2}
+                alt="image2"
+                onClick={() => viewImage(about2, "25", "80")}
+              />
+            </div>
+            <div className="form-center">
+              <input
+                onClick={(event) => setType(event.target.value)}
+                type="radio"
+                name="opt-navbar"
+                id="opt3-navbar"
+                defaultValue="3"
+              />
+              <img
+                className="selection-img"
+                src={about3}
+                alt="image3"
+                onClick={() => viewImage(about3, "35", "80")}
+              />
+            </div>
           </div>
           <br />
           <br />
-          <div className="button-about">
-            <button onClick={skipAboutSection}>skip</button>
-            <button onClick={addAboutSection}>next</button>
-          </div>
         </div>
-        <div style={{ marginTop: 100, position: 'fixed', marginLeft: 1000, textAlign:'center'}}>
-          <Color />
-          <label
-            style={{ marginRight: 20 }}
-            htmlFor="generate-color"
-            className="generate-color-label"
-          >
-            Generate Color Palatte
+        <div>
+          <label htmlFor="generate-color" className="generate-color-label">
+            Generate Color Palette
           </label>
-          <button
-            onClick={generateColor}
-            style={{
-              marginLeft: 20,
-              width: 80,
-              height: 30,
-              backgroundColor: "#BB5E53",
-              color: "white",
-              fontWeight: "bold",
-            }}
-          >
+          <Color />
+          <button className="btn btn-refresh-color" onClick={generateColor}>
             Refresh
           </button>
         </div>
+        {showModal && (
+          <ModalImage
+            image={modalImage}
+            height={modalHeight}
+            width={modalWidth}
+            setShowModal={setShowModal}
+          ></ModalImage>
+        )}
+      </div>
+      <div className="button-about btn-form-page">
+        <button className="btn btn-skip" onClick={skipAboutSection}>
+          Skip
+        </button>
+        <button className="btn btn-next" onClick={addAboutSection}>
+          Next
+        </button>
       </div>
     </section>
   );
