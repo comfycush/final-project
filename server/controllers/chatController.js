@@ -51,6 +51,7 @@ class ChatController {
         res.status(500).json(err);
       });
   }
+
 }
 
 module.exports = ChatController;
