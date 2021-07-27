@@ -12,7 +12,7 @@ import footer2 from "../assets/footer2.png";
 import footer3 from "../assets/footer3.png";
 import ModalImage from "../components/ModalImage";
 
-function FooterSection() {
+function FooterSection({ setIsOpen }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -115,7 +115,7 @@ function FooterSection() {
   }, [window.pageYOffset]);
 
   return (
-    <section id="footer-section">
+    <section id="footer-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">Footer Section</h1>
       <h3 className="title-bold">6 of 6</h3>
       <div

@@ -14,7 +14,7 @@ import main3 from "../assets/main3.png";
 import ModalImage from "../components/ModalImage";
 import { setToAboutSection } from "../store/actions/navigationGuard";
 
-function MainSection() {
+function MainSection({ setIsOpen }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -137,7 +137,7 @@ function MainSection() {
   }, [window.pageYOffset]);
 
   return (
-    <section id="main-section">
+    <section id="main-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">Main Section</h1>
       <h3 className="title-bold">2 of 6</h3>
       <div

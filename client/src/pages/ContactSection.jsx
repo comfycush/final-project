@@ -19,7 +19,7 @@ import contact3 from "../assets/contact3.png";
 import ModalImage from "../components/ModalImage";
 import { setToFooterSection } from "../store/actions/navigationGuard";
 
-function ContactSection() {
+function ContactSection({ setIsOpen }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -166,7 +166,7 @@ function ContactSection() {
   }, [window.pageYOffset]);
 
   return (
-    <section id="contact-section">
+    <section id="contact-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">Contact Section</h1>
       <h3 className="title-bold">5 of 6</h3>
       <div

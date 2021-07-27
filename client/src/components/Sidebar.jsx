@@ -10,6 +10,7 @@ function Sidebar({ isOpen, setIsOpen }) {
   const msgReplyChatbot = useSelector((state) => state.forms.msgReplyChatbot);
   const dispatch = useDispatch();
   const location = useLocation();
+  const [isListening, setIsListening] = useState(false);
 
   useEffect(() => {
     console.log(msgReplyChatbot);
@@ -38,6 +39,7 @@ function Sidebar({ isOpen, setIsOpen }) {
   recognition.maxAlternatives = 1;
 
   function talkToChatbot() {
+    setIsListening(true);
     recognition.start();
   }
 
@@ -45,6 +47,7 @@ function Sidebar({ isOpen, setIsOpen }) {
     const textListen = e.results[0][0].transcript.trim();
     console.log(textListen);
     dispatch(getReplyChatbot(textListen));
+    setIsListening(false);
   };
 
   return (
@@ -85,11 +88,19 @@ function Sidebar({ isOpen, setIsOpen }) {
               <span className="nav_name">Create Website</span>
             </Link>
             {location.pathname !== "/update-template" && (
-              <Link className="nav_link" onClick={talkToChatbot}>
+              <Link
+                className={isListening ? "nav_link ask_chatbot" : "nav_link"}
+                onClick={talkToChatbot}
+              >
                 <i className="nav_icon">
-                  <ion-icon name="call-outline" />
+                  {/* <ion-icon name="call-outline" /> */}
+                  <ion-icon name="mic-outline" />
                 </i>
-                <span className="nav_name">Contact Assistant</span>
+                {isListening ? (
+                  <span className="nav_name">Listening...</span>
+                ) : (
+                  <span className="nav_name">Ask Chatbot</span>
+                )}
               </Link>
             )}
           </div>

@@ -19,7 +19,7 @@ import service3 from "../assets/service3.png";
 import ModalImage from "../components/ModalImage";
 import { setToContactSection } from "../store/actions/navigationGuard";
 
-function ServiceSection() {
+function ServiceSection({ setIsOpen }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -200,7 +200,7 @@ function ServiceSection() {
   }, [window.pageYOffset]);
 
   return (
-    <section id="service-section">
+    <section id="service-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">Service Section</h1>
       <h3 className="title-bold">4 of 6</h3>
       <div

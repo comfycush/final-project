@@ -14,7 +14,7 @@ import about3 from "../assets/about3.png";
 import ModalImage from "../components/ModalImage";
 import { setToServiceSection } from "../store/actions/navigationGuard";
 
-function AboutSection() {
+function AboutSection({ setIsOpen }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -142,7 +142,7 @@ function AboutSection() {
   }, [window.pageYOffset]);
 
   return (
-    <section id="about-section">
+    <section id="about-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">About Section</h1>
       <h3 className="title-bold">3 of 6</h3>
       <div

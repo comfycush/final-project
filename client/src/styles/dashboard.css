@@ -66,6 +66,10 @@
   background-color: #d6efff;
   /* border: 0.3rem solid #50bae3; */
   width: 20rem;
+  min-height: 22rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title {
