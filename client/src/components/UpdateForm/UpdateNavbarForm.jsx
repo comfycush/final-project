@@ -437,8 +437,8 @@ export default function UpdateNavbarForm({ data, allData }) {
         )}
       </div>
       <div className="btn-form-page">
-        <button className="btn btn-next" onClick={updateNavbarSection}>
-          Update
+        <button className="btn btn-update" onClick={updateNavbarSection}>
+          Update Section
         </button>
       </div>
       {/* <div

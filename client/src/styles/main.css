@@ -44,7 +44,9 @@
 }
 
 .text-main-section {
-  max-width: 40rem;
+  /* max-width: 40rem; */
+  width: 40rem;
+  text-align: left;
 }
 
 .text-main-section h1 {

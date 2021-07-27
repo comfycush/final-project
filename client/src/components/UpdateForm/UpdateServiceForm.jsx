@@ -679,10 +679,10 @@ export default function UpdateServiceSection({ data, allData }) {
         )}
       </div>
       <div className="button-service btn-form-page">
-        <button className="btn btn-skip" onClick={removeServiceSection}>
+        <button className="btn btn-remove" onClick={removeServiceSection}>
           Remove Section
         </button>
-        <button className="btn btn-next" onClick={updateServiceSection}>
+        <button className="btn btn-update" onClick={updateServiceSection}>
           Update Section
         </button>
       </div>

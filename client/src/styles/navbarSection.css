@@ -130,6 +130,7 @@ textarea {
   height: 8rem;
   border: 0.2rem solid #125d98;
   border-radius: 0.2rem;
+  padding: 0.5rem;
 }
 
 input[type="checkbox"],
