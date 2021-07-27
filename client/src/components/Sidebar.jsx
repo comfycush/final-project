@@ -1,13 +1,15 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { getReplyChatbot } from "../store/actions/forms";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Sidebar({ isOpen, setIsOpen }) {
   const history = useHistory();
   const msgReplyChatbot = useSelector((state) => state.forms.msgReplyChatbot);
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     console.log(msgReplyChatbot);
@@ -66,35 +68,38 @@ function Sidebar({ isOpen, setIsOpen }) {
             </p>
           </div>
           <div className="nav_list">
-            <a onClick={() => history.push("/dashboard")} className="nav_link">
+            <Link to="/dashboard" className="nav_link">
               <i className="nav_icon">
                 <ion-icon name="home-outline" />
               </i>
               <span className="nav_name">Home</span>
-            </a>
-            <a
-              onClick={() => history.push("/intro-section")}
+            </Link>
+            <Link
+              to="/intro-section"
+              // onClick={() => history.push("/intro-section")}
               className="nav_link"
             >
               <i className="nav_icon">
                 <ion-icon name="add-circle-outline" />
               </i>
               <span className="nav_name">Create Website</span>
-            </a>
-            <a href="#" className="nav_link" onClick={talkToChatbot}>
-              <i className="nav_icon">
-                <ion-icon name="call-outline" />
-              </i>
-              <span className="nav_name">Contact Assistant</span>
-            </a>
+            </Link>
+            {location.pathname !== "/update-template" && (
+              <Link className="nav_link" onClick={talkToChatbot}>
+                <i className="nav_icon">
+                  <ion-icon name="call-outline" />
+                </i>
+                <span className="nav_name">Contact Assistant</span>
+              </Link>
+            )}
           </div>
         </div>
-        <a onClick={logout} className="nav_link">
+        <Link onClick={logout} className="nav_link">
           <i className="nav_icon">
             <ion-icon name="log-out-outline" />
           </i>
           <span className="nav_name">Log Out</span>
-        </a>
+        </Link>
       </nav>
     </div>
   );

@@ -169,8 +169,7 @@ function MainSection() {
             <div className="form-align-center">
               <label
                 htmlFor="main-headline"
-                className="main-headline"
-                style={{ marginRight: "2rem" }}
+                className="main-headline mt-1 mb-half"
               >
                 Color
               </label>
@@ -205,8 +204,7 @@ function MainSection() {
             <div className="form-align-center">
               <label
                 htmlFor="main-subheadline"
-                className="main-subheadline"
-                style={{ marginRight: "2rem" }}
+                className="main-subheadline mt-1 mb-half"
               >
                 Color
               </label>

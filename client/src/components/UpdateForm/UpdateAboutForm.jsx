@@ -315,7 +315,7 @@ export default function UpdateAboutForm({ data, allData }) {
                 name="opt-navbar"
                 id="opt2-navbar"
                 defaultValue="2"
-                defaultChecked={type === 1 ? true : false}
+                defaultChecked={type === 2 ? true : false}
               />
               <div
                 className="container-img-hover"

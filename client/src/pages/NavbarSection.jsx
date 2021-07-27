@@ -172,6 +172,7 @@ function NavbarSection(props) {
                 type="text"
                 name="company-title"
                 className="company-title"
+                placeholder="Ex. Whimson Law Firm"
               />
             </div>
             <div className="form-align-center">

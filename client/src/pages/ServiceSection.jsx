@@ -215,14 +215,14 @@ function ServiceSection() {
           <h2 className="title-subform">Headline</h2>
           <div className="contain-input">
             <label htmlFor="service-headline" className="service-headline">
-              Headline
+              Text
             </label>
             <input
               onChange={(event) => setHeadline(event.target.value)}
               type="text"
               name="service-headline"
               className="service-headline"
-              style={{ marginBottom: "1rem" }}
+              style={{ marginBottom: "2rem" }}
             />
             <label htmlFor="service-headline" className="service-headline">
               Color
@@ -231,7 +231,7 @@ function ServiceSection() {
               onChange={(event) => setHeadlineColor(event.target.value)}
               type="color"
               name="service-headline"
-              className="service-headline"
+              className="service-headline mt-half"
             />
           </div>
           <h2 className="title-subform" style={{ marginTop: "2rem" }}>
@@ -277,7 +277,7 @@ function ServiceSection() {
                 onChange={(event) => setCardTitle1(event.target.value)}
                 type="text"
                 name="service-card1"
-                className="service-card1"
+                className="service-card1 mb-half"
               />
               <label
                 htmlFor="service-card1"
@@ -290,7 +290,7 @@ function ServiceSection() {
                 type="color"
                 onChange={(event) => setCardTitleColor1(event.target.value)}
                 name="service-card1"
-                className="service-card1"
+                className="service-card1 mt-half"
               />
             </div>
             <div className="form-align-center sub-card">
@@ -305,7 +305,7 @@ function ServiceSection() {
                 onChange={(event) => setCardText1(event.target.value)}
                 type="text"
                 name="service-card1"
-                className="service-card1"
+                className="service-card1 mb-half"
               />
               <label
                 htmlFor="service-card1"
@@ -318,7 +318,7 @@ function ServiceSection() {
                 type="color"
                 onChange={(event) => setCardTextColor1(event.target.value)}
                 name="service-card1"
-                className="service-card1"
+                className="service-card1 mt-half"
               />
             </div>
             <div className="form-align-center">
@@ -379,8 +379,7 @@ function ServiceSection() {
                 onChange={(event) => setCardTitle2(event.target.value)}
                 type="text"
                 name="service-card2"
-                className="service-card2"
-                style={{ marginBottom: "0.5rem" }}
+                className="service-card2 mb-1"
               />
               <label htmlFor="service-card2" className="service-card2">
                 Color
@@ -389,7 +388,7 @@ function ServiceSection() {
                 type="color"
                 onChange={(event) => setCardTitleColor2(event.target.value)}
                 name="service-card2"
-                className="service-card2"
+                className="service-card2 mt-half"
               />
             </div>
             <div className="form-align-center sub-card">
@@ -404,8 +403,7 @@ function ServiceSection() {
                 onChange={(event) => setCardText2(event.target.value)}
                 type="text"
                 name="service-card2"
-                className="service-card2"
-                style={{ marginBottom: "0.5rem" }}
+                className="service-card2 mb-1"
               />
               <label htmlFor="service-card2" className="service-card2">
                 Color
@@ -414,7 +412,7 @@ function ServiceSection() {
                 type="color"
                 onChange={(event) => setCardTextColor2(event.target.value)}
                 name="service-card2"
-                className="service-card2"
+                className="service-card2 mt-half"
               />
             </div>
             <div className="form-align-center">

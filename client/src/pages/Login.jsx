@@ -5,6 +5,8 @@ import Aos from "aos";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { GoogleLogin } from "react-google-login";
+import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -32,9 +34,14 @@ export default function Login() {
         setEmail("");
         setPassword("");
         history.push("/dashboard");
+        Swal.fire("Successfully Login!", "", "success");
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err.response.data.errors[0], "<< error");
+        const errorResponse = err.response.data.errors
+          .map((msg) => msg)
+          .join(", ");
+        Swal.fire(errorResponse, "", "error");
       });
   }
 
@@ -140,13 +147,13 @@ export default function Login() {
                 </div>
                 <p className="text-sm text-center text-gray-400">
                   Don't have an account yet?{" "}
-                  <a
+                  <Link
                     onClick={() => history.push("/register")}
                     style={{ color: "#125D98" }}
                     className=" focus:outline-none focus:underline"
                   >
                     Sign up
-                  </a>
+                  </Link>
                   .
                 </p>
               </form>

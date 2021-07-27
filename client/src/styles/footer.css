@@ -11,6 +11,7 @@
   padding: 1rem 5rem;
   justify-content: space-between;
   align-items: center;
+  font-weight: bolder;
 }
 
 .type-1-footer .company-side {
@@ -40,12 +41,14 @@
   display: flex;
   align-items: center;
   margin-bottom: 2rem;
+  font-weight: bold;
 }
 
 .type-3-footer .company-side {
   display: flex;
   align-items: center;
   margin-top: 2rem;
+  font-weight: bold;
 }
 
 .social-media-side img {
@@ -62,4 +65,8 @@
 .type-2-footer .social-media-side,
 .type-3-footer .social-media-side {
   display: flex;
+}
+
+.company-side h1 {
+  font-size: 2rem;
 }

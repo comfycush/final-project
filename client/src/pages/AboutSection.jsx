@@ -167,7 +167,10 @@ function AboutSection() {
                 className="about-headline"
                 style={{ marginBottom: "1rem" }}
               />
-              <label htmlFor="about-headline" className="about-headline">
+              <label
+                htmlFor="about-headline"
+                className="about-headline mb-half mt-1"
+              >
                 Color
               </label>
               <input
@@ -190,7 +193,7 @@ function AboutSection() {
             <textarea
               onChange={(event) => setParagraph(event.target.value)}
               name="about-paragraph"
-              className="about-paragraph"
+              className="about-paragraph mt-half"
               cols={30}
               rows={10}
               defaultValue={""}
@@ -203,7 +206,7 @@ function AboutSection() {
               type="color"
               onChange={(event) => setParagraphColor(event.target.value)}
               name="about-paragraph"
-              className="about-paragraph"
+              className="about-paragraph mt-half"
             />
           </div>
           <div className="form-align-center" style={{ marginTop: "3rem" }}>

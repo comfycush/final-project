@@ -3,6 +3,7 @@ import "../styles/register.css";
 import axios from "axios";
 import Aos from "aos";
 import { useHistory, Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -25,9 +26,17 @@ export default function Register() {
     })
       .then(() => {
         history.push("/login");
+        Swal.fire("Successfully Registered", "", "success");
       })
       .catch((err) => {
-        console.log(err);
+        const errorResponse = err.response.data.errors
+          .map((msg) => msg)
+          .join(", ");
+        if (!password && !email) {
+          Swal.fire("Email and Password Cannot Be Empty", "", "error");
+        } else {
+          Swal.fire(errorResponse, "", "error");
+        }
       });
   }
 
