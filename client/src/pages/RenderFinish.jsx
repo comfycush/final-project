@@ -9,10 +9,10 @@ import ContactTemplate from "../components/ContactTemplate";
 import FooterTemplate from "../components/FooterTemplate";
 import ButtonTemplate from "../components/ButtonTemplate";
 import { useLocation } from "react-router";
-import { deleteTemplate } from "../store/actions/forms";
+import { deleteTemplate, setIsDeploy } from "../store/actions/forms";
 import { useParams } from "react-router";
 
-export default function RenderFinish() {
+export default function RenderFinish({ setIsOpen }) {
   const state = useSelector((state) => state.forms);
   const location = useLocation();
   const { templateId } = useParams();
@@ -30,6 +30,7 @@ export default function RenderFinish() {
   console.log(templateId, "<<<<<< TEMPLATE ID");
 
   useEffect(() => {
+    setIsOpen(false);
     dispatch(getTemplateId(templateId));
     console.log(`masuk renderfinish`);
   }, [dispatch]);

@@ -44,7 +44,8 @@ export default function Login() {
       },
     });
     const data = await res.json();
-    if (data) {
+    console.log(data, "<<< data google");
+    if (!data.errors) {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("email", data.email);
       history.push("/dashboard");

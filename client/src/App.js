@@ -24,21 +24,29 @@ function App() {
   const location = useLocation();
   const { templateId } = useParams();
   const [isOpen, setIsOpen] = useState(false);
-  const toNavbar = useSelector(state => state.navigation.toNavbar)
-  const toMainSection = useSelector(state => state.navigation.toMainSection)
-  const toAboutSection = useSelector(state => state.navigation.toAboutSection)
-  const toServiceSection = useSelector(state => state.navigation.toServiceSection)
-  const toContactSection = useSelector(state => state.navigation.toContactSection)
-  const toFooterSection = useSelector(state => state.navigation.toFooterSection)
-  const prevPage = location.pathname
-  const history = useHistory()
-  
-  console.log(toNavbar, `ini toNavbar`)
-  console.log(toMainSection, `ini toMainSection`)
-  console.log(toAboutSection, `ini toAboutSection`)
-  console.log(toServiceSection, `ini toServiceSection`)
-  console.log(toContactSection, `ini toContactSection`)
-  console.log(toFooterSection, `ini toFooterSection`)
+  const toNavbar = useSelector((state) => state.navigation.toNavbar);
+  const toMainSection = useSelector((state) => state.navigation.toMainSection);
+  const toAboutSection = useSelector(
+    (state) => state.navigation.toAboutSection
+  );
+  const toServiceSection = useSelector(
+    (state) => state.navigation.toServiceSection
+  );
+  const toContactSection = useSelector(
+    (state) => state.navigation.toContactSection
+  );
+  const toFooterSection = useSelector(
+    (state) => state.navigation.toFooterSection
+  );
+  const prevPage = location.pathname;
+  const history = useHistory();
+
+  console.log(toNavbar, `ini toNavbar`);
+  console.log(toMainSection, `ini toMainSection`);
+  console.log(toAboutSection, `ini toAboutSection`);
+  console.log(toServiceSection, `ini toServiceSection`);
+  console.log(toContactSection, `ini toContactSection`);
+  console.log(toFooterSection, `ini toFooterSection`);
 
   return (
     <section id="body-pd" className={isOpen ? "body-pd" : ""}>
@@ -86,65 +94,83 @@ function App() {
           )}
         </Route>
         <Route exact path="/navbar-section">
-          { localStorage.access_token ?
-            ( toNavbar ? 
-              ( <NavbarSection></NavbarSection> )
-                : ( <Redirect to="/intro-section" />) &&
-               ( <IntroSection></IntroSection> )
-            ) : ( <Redirect to="/" /> )
-          }
+          {localStorage.access_token ? (
+            toNavbar ? (
+              <NavbarSection></NavbarSection>
+            ) : (
+              <Redirect to="/intro-section" /> && <IntroSection></IntroSection>
+            )
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/main-section">
-          { localStorage.access_token ?
-            ( toMainSection ? 
-              ( <MainSection></MainSection> )
-                : ( <Redirect to="/navbar-section" /> &&
-                <NavbarSection></NavbarSection> )
-            ) : ( <Redirect to="/" /> )
-          }
+          {localStorage.access_token ? (
+            toMainSection ? (
+              <MainSection></MainSection>
+            ) : (
+              <Redirect to="/navbar-section" /> && (
+                <NavbarSection></NavbarSection>
+              )
+            )
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/about-section">
-          { localStorage.access_token ?
-            ( toAboutSection ? 
-              ( <AboutSection></AboutSection> )
-                : ( <Redirect to="/main-section" /> &&
-                <MainSection></MainSection> )
-            ) : ( <Redirect to="/" /> )
-          }
+          {localStorage.access_token ? (
+            toAboutSection ? (
+              <AboutSection></AboutSection>
+            ) : (
+              <Redirect to="/main-section" /> && <MainSection></MainSection>
+            )
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/service-section">
-          { localStorage.access_token ?
-            ( toServiceSection ? 
-              ( <ServiceSection></ServiceSection> )
-                : ( <Redirect to="/about-section" /> &&
-                <AboutSection></AboutSection> )
-            ) : ( <Redirect to="/" /> )
-          }
+          {localStorage.access_token ? (
+            toServiceSection ? (
+              <ServiceSection></ServiceSection>
+            ) : (
+              <Redirect to="/about-section" /> && <AboutSection></AboutSection>
+            )
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/contact-section">
-          { localStorage.access_token ?
-            ( toContactSection ? 
-              ( <ContactSection></ContactSection> )
-                : ( <Redirect to="/service-section" /> && 
-                <ServiceSection></ServiceSection> )
-            ) : ( <Redirect to="/" /> )
-          }
+          {localStorage.access_token ? (
+            toContactSection ? (
+              <ContactSection></ContactSection>
+            ) : (
+              <Redirect to="/service-section" /> && (
+                <ServiceSection></ServiceSection>
+              )
+            )
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/footer-section">
-          { localStorage.access_token ?
-            ( toFooterSection ? 
-              ( <FooterSection></FooterSection> )
-                : ( <Redirect to="/contact-section" /> &&
-                <ContactSection></ContactSection> )
-            ) : ( <Redirect to="/" /> )
-          }
+          {localStorage.access_token ? (
+            toFooterSection ? (
+              <FooterSection></FooterSection>
+            ) : (
+              <Redirect to="/contact-section" /> && (
+                <ContactSection></ContactSection>
+              )
+            )
+          ) : (
+            <Redirect to="/" />
+          )}
         </Route>
         <Route exact path="/deploy/:companyName/:templateId">
-          <Deploy></Deploy>
+          <Deploy setIsOpen={setIsOpen}></Deploy>
         </Route>
         <Route exact path="/finish/:templateId">
           {localStorage.access_token ? (
-            <RenderFinish></RenderFinish>
+            <RenderFinish setIsOpen={setIsOpen}></RenderFinish>
           ) : (
             <Redirect to="/" />
           )}

@@ -12,8 +12,7 @@ import { useLocation } from "react-router";
 import { deleteTemplate } from "../store/actions/forms";
 import { useParams } from "react-router";
 
-
-export default function RenderFinish() {
+export default function Deploy({ setIsOpen }) {
   const state = useSelector((state) => state.forms);
   const location = useLocation();
   console.log(state);
@@ -24,13 +23,14 @@ export default function RenderFinish() {
   console.log(templateData, `ini templateData <<<<<<<<<<<<<<<<`);
   const templateIsLoading = useSelector((state) => state.template.isLoading);
   const templateIsError = useSelector((state) => state.template.isError);
-  const isDeploy = templateData.isDeploy
+  const isDeploy = templateData.isDeploy;
   console.log(isDeploy, `ini isDeploy dari deploy component`);
   // const isDeploy = templateData.isDeploy;
-  const { templateId } = useParams()
-  console.log(templateId, `ini templateId dari component deploy`)
-  
+  const { templateId } = useParams();
+  console.log(templateId, `ini templateId dari component deploy`);
+
   useEffect(() => {
+    setIsOpen(false);
     dispatch(getDeployTemplate(templateId));
   }, [dispatch]);
 
