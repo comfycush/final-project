@@ -59,9 +59,6 @@ class TemplateController {
       .then(() => {
         res.status(200).json({ message: `Template deleted successfully` });
       })
-      .catch((err) => {
-        next({ message: err });
-      });
   }
 
   static createTemplate(req, res, next) {
@@ -151,9 +148,6 @@ class TemplateController {
           });
         }
       })
-      .catch((err) => {
-        next({ message: err });
-      });
   }
 }
 
