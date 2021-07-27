@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
+import { getReplyChatbot } from "../store/actions/forms";
+import { useSelector, useDispatch } from "react-redux";
 
 function Sidebar({ isOpen, setIsOpen }) {
   const history = useHistory();
+  const msgReplyChatbot = useSelector((state) => state.forms.msgReplyChatbot);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(msgReplyChatbot);
+    const synth = window.speechSynthesis;
+    const utter = new SpeechSynthesisUtterance(msgReplyChatbot.message);
+    // utter.text = message
+    synth.speak(utter);
+  }, [msgReplyChatbot]);
 
   function logout() {
     localStorage.clear();
@@ -14,11 +26,30 @@ function Sidebar({ isOpen, setIsOpen }) {
 
   // }
 
+  const recognition = new (window.SpeechRecognition ||
+    window.webkitSpeechRecognition ||
+    window.mozSpeechRecognition ||
+    window.msSpeechRecognition)();
+  recognition.continuous = false;
+  recognition.lang = "en-US";
+  recognition.interimResults = false;
+  recognition.maxAlternatives = 1;
+
+  function talkToChatbot() {
+    recognition.start();
+  }
+
+  recognition.onresult = (e) => {
+    const textListen = e.results[0][0].transcript.trim();
+    console.log(textListen);
+    dispatch(getReplyChatbot(textListen));
+  };
+
   return (
     <div
       className={isOpen ? "l-navbar expander" : "l-navbar"}
       id="navbar"
-      onClick={() => setIsOpen(isOpen ? false : true)}
+      // onClick={() => setIsOpen(isOpen ? false : true)}
     >
       <nav className="nav">
         <div>
@@ -50,7 +81,7 @@ function Sidebar({ isOpen, setIsOpen }) {
               </i>
               <span className="nav_name">Create Website</span>
             </a>
-            <a href="#" className="nav_link">
+            <a href="#" className="nav_link" onClick={talkToChatbot}>
               <i className="nav_icon">
                 <ion-icon name="call-outline" />
               </i>

@@ -9,6 +9,7 @@ import {
   SET_TEMPLATE_ID,
   SET_USER_ID,
   SET_IS_DEPLOY,
+  SET_REPLY_CHATBOT,
 } from "../actionTypes";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router";
@@ -80,6 +81,13 @@ export function setContactSection(input) {
 export function setFooterSection(input) {
   return {
     type: SET_FOOTER_SECTION,
+    payload: input,
+  };
+}
+
+export function setReplyChatbot(input) {
+  return {
+    type: SET_REPLY_CHATBOT,
     payload: input,
   };
 }
@@ -166,5 +174,25 @@ export function changeIsDeploy(id, data) {
           reject(err);
         });
     });
+  };
+}
+
+export function getReplyChatbot(msg) {
+  return async (dispatch) => {
+    console.log(msg, "masuk action reply");
+    try {
+      const response = await fetch("http://localhost:4000/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ chat: msg }),
+      });
+      const replyChatbot = await response.json();
+      dispatch(setReplyChatbot(replyChatbot));
+      console.log(replyChatbot, "<<< chatbot reply");
+    } catch (err) {
+      console.log(err, "<<< error chatbot");
+    }
   };
 }

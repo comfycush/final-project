@@ -8,13 +8,14 @@ import {
   SET_FOOTER_SECTION,
   SET_TEMPLATE_ID,
   SET_USER_ID,
-  SET_IS_DEPLOY
+  SET_IS_DEPLOY,
+  SET_REPLY_CHATBOT,
 } from "../actionTypes";
 
 const initialState = {
   projectTitle: "",
-  templateId: '',
-  userId: '',
+  templateId: "",
+  userId: "",
   isDeploy: false,
   navbar: {},
   main: {},
@@ -22,6 +23,7 @@ const initialState = {
   service: {},
   contact: {},
   footer: {},
+  msgReplyChatbot: "",
 };
 
 export default function formsReduces(state = initialState, action) {
@@ -45,6 +47,8 @@ export default function formsReduces(state = initialState, action) {
     return { ...state, contact: action.payload };
   } else if (action.type === SET_FOOTER_SECTION) {
     return { ...state, footer: action.payload };
+  } else if (action.type === SET_REPLY_CHATBOT) {
+    return { ...state, msgReplyChatbot: action.payload };
   }
   return state;
 }
