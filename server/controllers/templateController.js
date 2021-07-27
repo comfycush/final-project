@@ -7,7 +7,6 @@ class TemplateController {
       .then((data) => {
         res.status(200).json(data);
       })
-      .catch((err) => next({ message: err }));
   }
 
   static getByTemplateId(req, res, next) {
@@ -23,9 +22,6 @@ class TemplateController {
           });
         }
       })
-      .catch((err) => {
-        next({ message: err });
-      });
   }
 
   static getTemplateDeployedById(req, res, next) {
@@ -126,8 +122,6 @@ class TemplateController {
       .catch((err) => {
         if (err.name === `SequelizeValidationError`) {
           next({ name: `SequelizeValidationError`, message: err.errors[0].message });
-        } else {
-          next({ message: err });
         }
       });
   }
