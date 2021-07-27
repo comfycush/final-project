@@ -12,6 +12,7 @@ import main1 from "../assets/main1.png";
 import main2 from "../assets/main2.png";
 import main3 from "../assets/main3.png";
 import ModalImage from "../components/ModalImage";
+import { setToAboutSection } from "../store/actions/navigationGuard";
 
 function MainSection() {
   const history = useHistory();
@@ -69,6 +70,7 @@ function MainSection() {
         footer: {},
       };
       dispatch(updateTemplate(templateId, { main: dataMainSection }));
+      dispatch(setToAboutSection(true))
       history.push({
         pathname: "/about-section",
       });
@@ -88,6 +90,7 @@ function MainSection() {
     };
 
     dispatch(setMainSection(dataMainSection));
+    dispatch(setToAboutSection(true))
     // history.push("/about-section");
     history.push({
       pathname: "/about-section",

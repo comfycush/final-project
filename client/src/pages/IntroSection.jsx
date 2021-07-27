@@ -5,12 +5,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setProjectTitle } from "../store/actions/forms";
 import { createTemplate } from "../store/actions/forms";
+import { setToNavbar } from "../store/actions/navigationGuard";
 
 function IntroSection() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [proTitle, setProTitle] = useState("");
-
+  
+  
   function addProjectTitle(event) {
     if (proTitle) {
       dispatch(setProjectTitle(proTitle));
@@ -31,6 +33,7 @@ function IntroSection() {
     };
     dispatch(createTemplate(newTemplate));
     event.preventDefault();
+    dispatch(setToNavbar(true))
     history.push({
       pathname: "/navbar-section",
     });

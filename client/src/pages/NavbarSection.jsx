@@ -12,6 +12,7 @@ import navbar1 from "../assets/navbar1.png";
 import navbar2 from "../assets/navbar2.png";
 import navbar3 from "../assets/navbar3.png";
 import ModalImage from "../components/ModalImage";
+import { setToMainSection } from "../store/actions/navigationGuard";
 
 function NavbarSection(props) {
   const history = useHistory();
@@ -99,6 +100,7 @@ function NavbarSection(props) {
         footer: {},
       };
       dispatch(updateTemplate(templateId, newestTemplate));
+      dispatch(setToMainSection(true))
       console.log(templateId, newestTemplate, "<<< update");
       history.push({
         pathname: "/main-section",

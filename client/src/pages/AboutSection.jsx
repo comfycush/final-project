@@ -12,6 +12,7 @@ import about1 from "../assets/about1.png";
 import about2 from "../assets/about2.png";
 import about3 from "../assets/about3.png";
 import ModalImage from "../components/ModalImage";
+import { setToServiceSection } from "../store/actions/navigationGuard";
 
 function AboutSection() {
   const dispatch = useDispatch();
@@ -71,6 +72,7 @@ function AboutSection() {
         footer: {},
       };
       dispatch(updateTemplate(templateId, { about: dataAboutSection }));
+      dispatch(setToServiceSection(true))
       history.push({
         pathname: "/service-section",
         state: {
@@ -93,6 +95,7 @@ function AboutSection() {
       paragraphColor: null,
     };
     dispatch(setAboutSection(dataAboutSection));
+    dispatch(setToServiceSection(true))
     // history.push("/service-section");
     history.push({
       pathname: "/service-section",

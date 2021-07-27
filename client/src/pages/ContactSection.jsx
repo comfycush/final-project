@@ -17,6 +17,7 @@ import contact1 from "../assets/contact1.png";
 import contact2 from "../assets/contact2.png";
 import contact3 from "../assets/contact3.png";
 import ModalImage from "../components/ModalImage";
+import { setToFooterSection } from "../store/actions/navigationGuard";
 
 function ContactSection() {
   const dispatch = useDispatch();
@@ -94,6 +95,7 @@ function ContactSection() {
         footer: {},
       };
       dispatch(updateTemplate(templateId, { contact: dataContactSection }));
+      dispatch(setToFooterSection(true))
       history.push({
         pathname: "/footer-section",
         state: {
@@ -122,6 +124,7 @@ function ContactSection() {
     };
 
     dispatch(setContactSection(dataContactSection));
+    dispatch(setToFooterSection(true))
     history.push("/footer-section");
   }
 
