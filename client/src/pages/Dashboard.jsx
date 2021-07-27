@@ -25,16 +25,39 @@ function Dashboard() {
         Welcome,&nbsp;
         <span className="user-email">{localStorage.getItem("email")}</span>!
       </h1>
+      <hr
+        style={{ height: "0.2rem", backgroundColor: "#125D98", border: "none" }}
+      />
+      <h2
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          fontSize: "3rem",
+          marginBottom: "1.5rem",
+          color: "#125D98",
+          marginTop: "2rem",
+        }}
+      >
+        List Of Your Websites
+      </h2>
       {/* <hr /> */}
       <div className="row">
-        {data && data.length
-          ? data.map((singleData, index) => (
-              <DashboardCard
-                singleData={singleData}
-                key={index}
-              ></DashboardCard>
-            ))
-          : null}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "flex-start",
+            flexWrap: "wrap",
+          }}
+        >
+          {data && data.length
+            ? data.map((singleData, index) => (
+                <DashboardCard
+                  singleData={singleData}
+                  key={index}
+                ></DashboardCard>
+              ))
+            : null}
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { getTemplateId, getDeployTemplate } from "../store/actions/template";
 import { deleteTemplate } from "../store/actions/forms";
 import { useDispatch } from "react-redux";
@@ -9,6 +9,7 @@ function DashboardCard(props) {
   const data = props.singleData;
   const dispatch = useDispatch();
   const history = useHistory();
+  const [showButton, setShowButton] = useState(false);
 
   function toView() {
     console.log(data, "<<<<<< data to view");
@@ -39,34 +40,50 @@ function DashboardCard(props) {
   }
 
   return (
-    <div className="column">
+    <div
+      className="column"
+      onMouseEnter={() => setShowButton(true)}
+      onMouseLeave={() => setShowButton(false)}
+    >
       <div className="card">
-        {data.navbar.logo ? (
-          <img src={data.navbar.logo} alt="logo" />
-        ) : (
-          <img
-            src="https://ik.imagekit.io/vrvrzbdh5xfk/Default_Logo_ny7_mjnCM.png?updatedAt=1627280073186"
-            alt="logo"
-          />
-        )}
-        <h2>{data.projectTitle}</h2>
         <div
           style={{
             display: "flex",
             flexDirection: "column",
+            justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <button onClick={toView} className="btn btn-view-card">
-            View
-          </button>
-          <button onClick={toUpdate} className="btn btn-update-card">
-            Update
-          </button>
-          <button onClick={toDelete} className="btn btn-delete-card">
-            Delete
-          </button>
+          {data.navbar.logo ? (
+            <img src={data.navbar.logo} alt="logo" />
+          ) : (
+            <img
+              src="https://ik.imagekit.io/vrvrzbdh5xfk/Default_Logo_ny7_mjnCM.png?updatedAt=1627280073186"
+              alt="logo"
+            />
+          )}
+          <h2>{data.projectTitle}</h2>
         </div>
+        {showButton && (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              marginTop: "2rem",
+            }}
+          >
+            <button onClick={toView} className="btn btn-view-card">
+              View
+            </button>
+            <button onClick={toUpdate} className="btn btn-update-card">
+              Update
+            </button>
+            <button onClick={toDelete} className="btn btn-delete-card">
+              Delete
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

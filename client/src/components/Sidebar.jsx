@@ -30,7 +30,9 @@ function Sidebar({ isOpen, setIsOpen }) {
             >
               <ion-icon name="menu-outline"></ion-icon>
             </i>
-            <p className="nav_logo">webber</p>
+            <p className="nav_logo">
+              web<span style={{ color: "#F5A962" }}>ber</span>
+            </p>
           </div>
           <div className="nav_list">
             <a onClick={() => history.push("/dashboard")} className="nav_link">

@@ -6,6 +6,7 @@ import {
 } from "../actionTypes";
 import axios from "axios";
 import convert from "color-convert";
+import { setIsDeploy } from "./forms";
 
 export function setTemplate(input) {
   return {
@@ -45,6 +46,7 @@ export function getTemplateId(id) {
       const data = await response.json();
       console.log(data, `ini data fetch by template id di template.js`);
       dispatch(setTemplate(data));
+      dispatch(setIsDeploy(data.isDeploy));
     } catch (err) {
       console.log(err, "<<< ERROR DI ACTIONS");
       dispatch(setIsError(true));
