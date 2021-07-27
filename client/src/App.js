@@ -11,7 +11,6 @@ import ServiceSection from "./pages/ServiceSection";
 import ContactSection from "./pages/ContactSection";
 import FooterSection from "./pages/FooterSection";
 import Login from "./pages/Login";
-import Homepage from "./pages/Homepage";
 import Register from "./pages/Register";
 import { useLocation } from "react-router-dom";
 import UpdateSection from "./pages/UpdateSection";
@@ -23,6 +22,7 @@ import { useSelector } from "react-redux";
 function App() {
   const location = useLocation();
   const { templateId } = useParams();
+  // const [showBar, setShowBar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const toNavbar = useSelector((state) => state.navigation.toNavbar);
   const toMainSection = useSelector((state) => state.navigation.toMainSection);
@@ -38,21 +38,28 @@ function App() {
   const toFooterSection = useSelector(
     (state) => state.navigation.toFooterSection
   );
-  const prevPage = location.pathname;
-  const history = useHistory();
 
-  console.log(toNavbar, `ini toNavbar`);
-  console.log(toMainSection, `ini toMainSection`);
-  console.log(toAboutSection, `ini toAboutSection`);
-  console.log(toServiceSection, `ini toServiceSection`);
-  console.log(toContactSection, `ini toContactSection`);
-  console.log(toFooterSection, `ini toFooterSection`);
+  // useEffect(() => {
+  //   const showMenu = (toggleId, navbarId, bodyId) => {
+  //     const toggle = document.getElementById(toggleId),
+  //       navbar = document.getElementById(navbarId),
+  //       bodypadding = document.getElementById(bodyId);
+
+  //     if (toggle && navbar) {
+  //       toggle.addEventListener("click", () => {
+  //         console.log(" ke click!");
+  //         navbar.classList.toggle("expander");
+  //         bodypadding.classList.toggle("body-pd");
+  //       });
+  //     }
+  //     showMenu("nav-toggle", "navbar", "body-pd");
+  //   };
+  // }, []);
 
   return (
     <section id="body-pd" className={isOpen ? "body-pd" : ""}>
       {location.pathname !== "/register" &&
       location.pathname !== "/" &&
-      location.pathname !== "/login" &&
       location.pathname.substring(0, 7) !== "/finish" &&
       location.pathname.substring(0, 7) !== "/deploy" ? (
         <Sidebar isOpen={isOpen} setIsOpen={setIsOpen}></Sidebar>
@@ -60,21 +67,14 @@ function App() {
       <Switch>
         <Route exact path="/">
           {!localStorage.access_token ? (
-            <Homepage setIsOpen={setIsOpen}></Homepage>
-          ) : (
-            <Redirect to="/dashboard" />
-          )}
-        </Route>
-        <Route exact path="/login">
-          {!localStorage.access_token ? (
-            <Login setIsOpen={setIsOpen}></Login>
+            <Login />
           ) : (
             <Redirect to="/dashboard" />
           )}
         </Route>
         <Route exact path="/register">
           {!localStorage.access_token ? (
-            <Register setIsOpen={setIsOpen} />
+            <Register />
           ) : (
             localStorage.colorArray && <Redirect to="/dashboard" />
           )}
@@ -98,7 +98,7 @@ function App() {
             toNavbar ? (
               <NavbarSection></NavbarSection>
             ) : (
-              <Redirect to="/intro-section" /> && <IntroSection></IntroSection>
+              <Redirect to="/dashboard" />
             )
           ) : (
             <Redirect to="/" />
@@ -109,9 +109,7 @@ function App() {
             toMainSection ? (
               <MainSection></MainSection>
             ) : (
-              <Redirect to="/navbar-section" /> && (
-                <NavbarSection></NavbarSection>
-              )
+              <Redirect to="/dashboard" />
             )
           ) : (
             <Redirect to="/" />
@@ -122,7 +120,7 @@ function App() {
             toAboutSection ? (
               <AboutSection></AboutSection>
             ) : (
-              <Redirect to="/main-section" /> && <MainSection></MainSection>
+              <Redirect to="/dashboard" />
             )
           ) : (
             <Redirect to="/" />
@@ -133,7 +131,7 @@ function App() {
             toServiceSection ? (
               <ServiceSection></ServiceSection>
             ) : (
-              <Redirect to="/about-section" /> && <AboutSection></AboutSection>
+              <Redirect to="/dashboard" />
             )
           ) : (
             <Redirect to="/" />
@@ -144,9 +142,7 @@ function App() {
             toContactSection ? (
               <ContactSection></ContactSection>
             ) : (
-              <Redirect to="/service-section" /> && (
-                <ServiceSection></ServiceSection>
-              )
+              <Redirect to="/dashboard" />
             )
           ) : (
             <Redirect to="/" />
@@ -157,20 +153,18 @@ function App() {
             toFooterSection ? (
               <FooterSection></FooterSection>
             ) : (
-              <Redirect to="/contact-section" /> && (
-                <ContactSection></ContactSection>
-              )
+              <Redirect to="/dashboard" />
             )
           ) : (
             <Redirect to="/" />
           )}
         </Route>
         <Route exact path="/deploy/:companyName/:templateId">
-          <Deploy setIsOpen={setIsOpen}></Deploy>
+          <Deploy></Deploy>
         </Route>
         <Route exact path="/finish/:templateId">
           {localStorage.access_token ? (
-            <RenderFinish setIsOpen={setIsOpen}></RenderFinish>
+            <RenderFinish></RenderFinish>
           ) : (
             <Redirect to="/" />
           )}

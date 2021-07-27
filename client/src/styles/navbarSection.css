@@ -86,6 +86,7 @@
   cursor: pointer;
 }
 
+.btn-addCard,
 .btn-next,
 .btn-skip {
   width: 10rem;
@@ -100,6 +101,11 @@
 .btn-skip {
   background-color: #ffa940;
   margin-bottom: 1rem;
+}
+
+.btn-addCard {
+  background-color: #34bae0;
+  margin: 2rem;
 }
 
 .btn-remove-image {
