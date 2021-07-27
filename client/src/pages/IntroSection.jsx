@@ -11,16 +11,8 @@ function IntroSection() {
   const dispatch = useDispatch();
   const history = useHistory();
   const [proTitle, setProTitle] = useState("");
-  
-  
+
   function addProjectTitle(event) {
-    if (proTitle) {
-      dispatch(setProjectTitle(proTitle));
-      event.preventDefault();
-      history.push("/navbar-section");
-    } else {
-      swal("Please fill in your project title");
-    }
     dispatch(setProjectTitle(proTitle));
     const newTemplate = {
       projectTitle: proTitle,
@@ -33,10 +25,14 @@ function IntroSection() {
     };
     dispatch(createTemplate(newTemplate));
     event.preventDefault();
-    dispatch(setToNavbar(true))
-    history.push({
-      pathname: "/navbar-section",
-    });
+    dispatch(setToNavbar(true));
+    if (proTitle) {
+      dispatch(setProjectTitle(proTitle));
+      event.preventDefault();
+      history.push("/navbar-section");
+    } else {
+      swal("Please fill in your project title");
+    }
   }
 
   return (

@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
-.App {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 :root {
   --nav-width: 5rem;
   --first-color: #0c5df4;
@@ -27,6 +21,7 @@
 }
 
 body {
+  background-color: white;
   height: 100%;
 }
 
@@ -42,6 +37,7 @@ section {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 .l-navbar {
