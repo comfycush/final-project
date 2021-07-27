@@ -102,7 +102,7 @@ export default function Register() {
       </div>
       <div className="footer-homepage">
         <h2>
-          Web<span>ber</span>
+          web<span>ber</span>
         </h2>
         <h4>Copyright 2021 || Web Builder</h4>
       </div>

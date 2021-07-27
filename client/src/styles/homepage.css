@@ -1,5 +1,4 @@
-.wrapper {
-  background-color: whitesmoke;
+.wrapper-homepage {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
@@ -33,7 +32,7 @@
 }
 
 .navbar-homepage .links-homepage a {
-  margin-right: 25px;
+  margin-right: 2rem;
   font-size: 16px;
   font-weight: 600;
   color: #dddddd;
@@ -50,11 +49,12 @@
 }
 
 .landingText-homepage {
-  margin-right: 7rem;
+  margin-right: 3rem;
 }
 
 .landingText-homepage h1 {
   font-size: 4vw;
+  font-weight: bolder;
   margin: 0;
   color: #125d98;
 }
@@ -66,99 +66,111 @@
 }
 
 .landingText-homepage h3 {
+  width: 40rem;
   margin: 6px;
-  font-size: 20px;
+  font-size: 1.5rem;
   opacity: 0.5;
-  line-height: 30px;
+  line-height: 50px;
 }
 
 .landingText-homepage .btn-learn {
-  width: 120px;
+  width: 10rem;
   margin-top: 30px;
-  padding: 8px 12px 8px 12px;
+  padding: 1rem 2rem;
   background-color: #125d98;
   border-radius: 45px;
 }
 
 .landingText-homepage .btn-learn a {
-  font-size: 1.2vw;
+  font-size: 1.25vw;
   color: whitesmoke;
   margin-left: 2px;
 }
 
 .landingImage-homepage img {
-  width: 26vw;
+  width: 50vw;
 }
 
 .about-homepage {
+  /* width: 70rem; */
+  margin-top: 7rem;
   height: 600px;
-  padding: 50px;
+  padding: 0px;
   display: flex;
-  margin-top: 10rem;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 
 .aboutText-homepage {
+  margin-left: 0;
   position: relative;
-  padding: 0 50px;
+  /* padding: 0rem 2rem; */
+  padding-top: 0rem;
+  padding-left: 0rem;
+  width: 30rem;
   height: inherit;
 }
 
-.aboutText-homepage h1 {
-  font-size: 35px;
+.h1-style {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
   font-weight: 700;
   color: #125d98;
-  position: relative;
-  left: 15rem;
-  bottom: 5rem;
+  text-align: center;
+  /* bottom: 9rem; */
 }
 
 .aboutText-homepage img {
   width: 27vw;
-  position: absolute;
+  /* margin-left: 10rem; */
+  /* position: absolute; */
   top: 50px;
 }
 
 .aboutList-homepage {
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
+  /* bottom: 7rem; */
 }
 
 .aboutList-homepage h3 {
-  font-size: 27px;
+  width: 35rem;
+  font-size: 3rem;
   font-weight: 600;
   color: #f5a962;
 }
 
 .aboutList-homepage h4 {
-  font-size: 18px;
+  font-size: 1.5rem;
   opacity: 0.5;
 }
 
 .about-2-homepage {
   height: 600px;
-  padding: 50px;
+  padding: 80px;
   display: flex;
   margin-top: -10rem;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 
 .aboutList-2-homepage {
+  width: 50rem;
   margin-bottom: 5rem;
   margin-left: 5rem;
 }
 
 .aboutList-2-homepage h3 {
-  font-size: 27px;
+  font-size: 3rem;
   font-weight: 600;
   color: #f5a962;
 }
 
 .aboutList-2-homepage h4 {
-  font-size: 18px;
+  font-size: 1.5rem;
   opacity: 0.5;
 }
 
@@ -202,26 +214,26 @@
 }
 
 .aboutList-3-homepage h3 {
-  font-size: 27px;
+  font-size: 3rem;
   font-weight: 600;
   color: #f5a962;
 }
 
 .aboutList-3-homepage h4 {
-  font-size: 18px;
+  font-size: 1.5rem;
   opacity: 0.5;
 }
 
 .aboutList-3-homepage .btn-start {
-  width: 120px;
+  width: 10rem;
   margin-top: 30px;
-  padding: 8px 12px 8px 12px;
+  padding: 1rem 2rem;
   background-color: #125d98;
   border-radius: 45px;
 }
 
 .aboutList-3-homepage .btn-start a {
-  font-size: 1.2vw;
+  font-size: 1.3vw;
   color: whitesmoke;
   margin-left: 8px;
 }
@@ -236,6 +248,7 @@
 }
 
 .footer-homepage h2 {
+  font-weight: bolder;
   color: #125d98;
   font-size: 20px;
 }

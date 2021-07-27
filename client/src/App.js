@@ -37,21 +37,21 @@ function App() {
       <Switch>
         <Route exact path="/">
           {!localStorage.access_token ? (
-            <Homepage></Homepage>
+            <Homepage setIsOpen={setIsOpen}></Homepage>
           ) : (
             <Redirect to="/dashboard" />
           )}
         </Route>
         <Route exact path="/login">
           {!localStorage.access_token ? (
-            <Login></Login>
+            <Login setIsOpen={setIsOpen}></Login>
           ) : (
             <Redirect to="/dashboard" />
           )}
         </Route>
         <Route exact path="/register">
           {!localStorage.access_token ? (
-            <Register />
+            <Register setIsOpen={setIsOpen} />
           ) : (
             localStorage.colorArray && <Redirect to="/dashboard" />
           )}

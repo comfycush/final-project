@@ -1,21 +1,26 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router";
+import { scroller } from "react-scroll";
 import "../styles/homepage.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
-function Homepage() {
+function Homepage({ setIsOpen }) {
   const history = useHistory();
   useEffect(() => {
     Aos.init({ duration: 1500 });
   }, []);
 
+  useEffect(() => {
+    setIsOpen(false);
+  }, []);
+
   return (
-    <div className="wrapper">
+    <div className="wrapper-homepage">
       <div className="navbar-homepage">
         <div className="logo-homepage">
           <h4>
-            Web<span>ber</span>
+            web<span>ber</span>
           </h4>
         </div>
         <div className="links-homepage">
@@ -26,12 +31,12 @@ function Homepage() {
       <div data-aos="fade-down" className="landing-page-homepage">
         <div className="landingText-homepage">
           <h1>
-            Welcome to Web<span>ber</span>!
+            Welcome To web<span>ber</span>!
           </h1>
           <br />
           <h3>
-            Webber is a web app that allows you <br /> to build your own company
-            website in less <br /> than 10 minutes!
+            Webber is a web app that allows you to build your own company
+            website in less than 10 minutes!
           </h3>
           <div className="btn-learn">
             <a href="#">Learn More</a>
@@ -39,35 +44,37 @@ function Homepage() {
         </div>
         <div className="landingImage-homepage">
           <img
-            src="https://o.remove.bg/downloads/5575c009-c07c-4fab-b9a5-aa30669dd7e4/1055666-removebg-preview.png"
+            src="https://ik.imagekit.io/gdx8okwg6gt/1055666_Rs7KYlFOO.png?updatedAt=1627351585500"
             alt="computer"
           />
         </div>
       </div>
+      <div className="h1-style">
+        <h1 data-aos="fade-down">How To Build Your Own Website</h1>
+      </div>
       <div className="about-homepage">
         <div className="aboutText-homepage">
-          <h1 data-aos="fade-down">How To Build Your Own Website</h1>
           <img
             data-aos="fade-right"
-            src="https://o.remove.bg/downloads/21a3018e-e192-4527-a416-0e688b661ee9/3014261-removebg-preview.png"
+            src="https://ik.imagekit.io/gdx8okwg6gt/3014261_PLJ04Ys-e.png?updatedAt=1627351586708"
             alt="login"
           />
         </div>
         <div data-aos="fade-left" className="aboutList-homepage">
-          <h3>Login to your account</h3>
+          <h3>Register And Login To Your Account</h3>
           <br />
-          <h4>So you can use and create your own website!</h4>
+          <h4>Create an account to start building your website!</h4>
         </div>
       </div>
       <div className="about-2-homepage">
         <div data-aos="fade-right" className="aboutList-2-homepage">
-          <h3>Fill the required forms</h3>
+          <h3>Fill Your Website Content</h3>
           <br />
-          <h4>Start styling your own website!</h4>
+          <h4>Fill in your company information for the website</h4>
         </div>
         <div data-aos="fade-left" className="aboutText-2-homepage">
           <img
-            src="https://o.remove.bg/downloads/91d2816b-349f-4a3d-aa44-5017c0fa6ea1/2234689-removebg-preview.png"
+            src="https://ik.imagekit.io/gdx8okwg6gt/2234689_BEaT9oSjT.png?updatedAt=1627351585687"
             alt="form"
           />
         </div>
@@ -76,14 +83,14 @@ function Homepage() {
         <div className="aboutText-3-homepage">
           <img
             data-aos="fade-right"
-            src="https://o.remove.bg/downloads/87386680-f1e1-4807-b6c0-164789b27560/190411-removebg-preview.png"
+            src="https://ik.imagekit.io/gdx8okwg6gt/190411_iSsITygc4.png?updatedAt=1627351584451"
             alt="hooray"
           />
         </div>
         <div data-aos="fade-left" className="aboutList-3-homepage">
-          <h3>Success</h3>
+          <h3>Your Website Is Ready!</h3>
           <br />
-          <h4>Hooray! You have create your personal website</h4>
+          <h4>Now you can share your website to your customers</h4>
           <div className="btn-start">
             <a onClick={() => history.push("/login")}>Start Now</a>
           </div>
@@ -91,7 +98,7 @@ function Homepage() {
       </div>
       <div className="footer-homepage">
         <h2>
-          Web<span>ber</span>
+          web<span>ber</span>
         </h2>
         <h4>Copyright 2021 || Web Builder</h4>
       </div>
