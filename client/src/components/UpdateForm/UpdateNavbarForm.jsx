@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { setNavbarSection, updateTemplate } from "../../store/actions/forms";
 import { getImageUrl, setLogoUrl } from "../../store/actions/uploadImage";
@@ -72,11 +72,11 @@ export default function UpdateNavbarForm({ data, allData }) {
     };
 
     if (!dataNavbarSection.companyName && !dataNavbarSection.logo) {
-      swal("Please fill in your company name or company logo");
+      new Swal("Please fill in your company name or company logo", "", "error");
     } else if (sortNavlinks.length === 0) {
-      swal("Please choose minimum 1 link");
+      new Swal("Please choose at least 1 navigation link", "", "error");
     } else if (!dataNavbarSection.type) {
-      swal("please choose your required template");
+      new Swal("please choose the template layout", "", "error");
     } else {
       dispatch(setNavbarSection(dataNavbarSection));
       const updatedTemplate = {
@@ -199,10 +199,11 @@ export default function UpdateNavbarForm({ data, allData }) {
                 Logo
               </label>
               <input
+                id="logo-update"
                 onChange={(event) => uploadLogo(event.target.files[0], "logo")}
                 type="file"
                 name="company-logo"
-                className="company-logo"
+                className="company-logo mb-1"
                 style={{ border: "none" }}
               />
               {logoUrl && (
@@ -214,7 +215,10 @@ export default function UpdateNavbarForm({ data, allData }) {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setLogoUrl(""))}
+                onClick={() => {
+                  dispatch(setLogoUrl(""));
+                  document.getElementById("logo-update").value = "";
+                }}
                 style={{ margin: "0rem" }}
               >
                 Remove Image
@@ -335,6 +339,7 @@ export default function UpdateNavbarForm({ data, allData }) {
                 marginRight: "3rem",
                 fontSize: "2rem",
               }}
+              className="mt-1"
             >
               Background Color
             </label>
@@ -350,7 +355,7 @@ export default function UpdateNavbarForm({ data, allData }) {
           <div className="selection-navbar">
             <label
               htmlFor="template-layout"
-              style={{ fontSize: "2rem", margin: "1.5rem 0" }}
+              style={{ fontSize: "2rem", margin: "2rem 0" }}
             >
               Template Layout
             </label>

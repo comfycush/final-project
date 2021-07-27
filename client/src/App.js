@@ -81,14 +81,14 @@ function App() {
         </Route>
         <Route exact path="/dashboard">
           {localStorage.access_token ? (
-            <Dashboard></Dashboard>
+            <Dashboard setIsOpen={setIsOpen}></Dashboard>
           ) : (
             <Redirect to="/" />
           )}
         </Route>
         <Route exact path="/intro-section">
           {localStorage.access_token ? (
-            <IntroSection></IntroSection>
+            <IntroSection setIsOpen={setIsOpen}></IntroSection>
           ) : (
             <Redirect to="/" />
           )}
@@ -96,7 +96,7 @@ function App() {
         <Route exact path="/navbar-section">
           {localStorage.access_token ? (
             toNavbar ? (
-              <NavbarSection></NavbarSection>
+              <NavbarSection setIsOpen={setIsOpen}></NavbarSection>
             ) : (
               <Redirect to="/intro-section" /> && <IntroSection></IntroSection>
             )
@@ -107,7 +107,7 @@ function App() {
         <Route exact path="/main-section">
           {localStorage.access_token ? (
             toMainSection ? (
-              <MainSection></MainSection>
+              <MainSection setIsOpen={setIsOpen}></MainSection>
             ) : (
               <Redirect to="/navbar-section" /> && (
                 <NavbarSection></NavbarSection>
@@ -120,7 +120,7 @@ function App() {
         <Route exact path="/about-section">
           {localStorage.access_token ? (
             toAboutSection ? (
-              <AboutSection></AboutSection>
+              <AboutSection setIsOpen={setIsOpen}></AboutSection>
             ) : (
               <Redirect to="/main-section" /> && <MainSection></MainSection>
             )
@@ -131,7 +131,7 @@ function App() {
         <Route exact path="/service-section">
           {localStorage.access_token ? (
             toServiceSection ? (
-              <ServiceSection></ServiceSection>
+              <ServiceSection setIsOpen={setIsOpen}></ServiceSection>
             ) : (
               <Redirect to="/about-section" /> && <AboutSection></AboutSection>
             )
@@ -142,7 +142,7 @@ function App() {
         <Route exact path="/contact-section">
           {localStorage.access_token ? (
             toContactSection ? (
-              <ContactSection></ContactSection>
+              <ContactSection setIsOpen={setIsOpen}></ContactSection>
             ) : (
               <Redirect to="/service-section" /> && (
                 <ServiceSection></ServiceSection>
@@ -155,7 +155,7 @@ function App() {
         <Route exact path="/footer-section">
           {localStorage.access_token ? (
             toFooterSection ? (
-              <FooterSection></FooterSection>
+              <FooterSection setIsOpen={setIsOpen}></FooterSection>
             ) : (
               <Redirect to="/contact-section" /> && (
                 <ContactSection></ContactSection>
@@ -176,7 +176,7 @@ function App() {
           )}
         </Route>
         <Route exact path="/update-template">
-          <UpdateSection></UpdateSection>
+          <UpdateSection setIsOpen={setIsOpen}></UpdateSection>
         </Route>
       </Switch>
     </section>

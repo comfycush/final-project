@@ -28,7 +28,7 @@
 }
 
 .input {
-  margin-right: 6rem;
+  margin-right: 12rem;
 }
 
 .input label {
@@ -116,15 +116,15 @@
 input[type="text"] {
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
-  width: 20rem;
+  width: 25rem;
   height: 2rem;
-  padding-left: 0.5rem;
+  /* padding-left: 0.5rem; */
   border-bottom: 0.2rem solid #125d98;
   background-color: #f5a962;
 }
 
 input[type="color"] {
-  width: 20rem;
+  width: 25rem;
   height: 2rem;
   -webkit-appearance: none;
 }
@@ -132,11 +132,12 @@ input[type="color"] {
 textarea {
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
-  width: 18rem;
-  height: 8rem;
-  border: 0.2rem solid #125d98;
-  border-radius: 0.2rem;
+  width: 25rem;
+  height: 10rem;
+  /* border: 0.2rem solid #125d98; */
+  border-radius: 0.5rem;
   padding: 0.5rem;
+  background: #ffd9b5;
 }
 
 input[type="checkbox"],
@@ -196,7 +197,7 @@ input[type="file"] {
   background-color: #f5a962;
   padding: 1.5rem 2rem;
   border-radius: 1rem;
-  width: 25rem;
+  width: 30rem;
 }
 
 /* .mt-1 {
@@ -253,8 +254,8 @@ label {
 input[type="color"] {
   -webkit-appearance: none;
   border: none;
-  width: 20rem;
-  height: 32px;
+  width: 25rem;
+  height: 2rem;
   background-color: transparent;
 }
 input[type="color"]::-webkit-color-swatch-wrapper {

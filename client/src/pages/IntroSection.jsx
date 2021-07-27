@@ -7,7 +7,7 @@ import { setProjectTitle } from "../store/actions/forms";
 import { createTemplate } from "../store/actions/forms";
 import { setToNavbar } from "../store/actions/navigationGuard";
 
-function IntroSection() {
+function IntroSection({ setIsOpen }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [proTitle, setProTitle] = useState("");
@@ -36,7 +36,7 @@ function IntroSection() {
   }
 
   return (
-    <section id="intro-section">
+    <section id="intro-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">Let's Build Your Website!</h1>
       <div className="intro-input">
         <div className="horizontal-center">

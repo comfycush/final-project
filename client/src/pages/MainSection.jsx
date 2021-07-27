@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setMainSection, updateTemplate } from "../store/actions/forms";
@@ -54,11 +54,11 @@ function MainSection() {
     };
 
     if (!dataMainSection.headline) {
-      swal("Please fill your headline");
+      new Swal("Please fill the headline", "", "error");
     } else if (!dataMainSection.image) {
-      swal("Please fill your image");
+      new Swal("Please fill the image", "", "error");
     } else if (!dataMainSection.type) {
-      swal("Please choose your require template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setMainSection(dataMainSection));
       const newestTemplate = {
@@ -164,6 +164,7 @@ function MainSection() {
                 type="text"
                 name="main-headline"
                 className="main-headline"
+                placeholder="Ex. Welcome To Whimson"
               />
             </div>
             <div className="form-align-center">
@@ -226,6 +227,7 @@ function MainSection() {
               Image
             </label>
             <input
+              id="input-main-image"
               onChange={(event) =>
                 uploadMainImage(event.target.files[0], "main")
               }
@@ -243,7 +245,10 @@ function MainSection() {
             )}
             <button
               className="btn btn-remove-image"
-              onClick={() => dispatch(setMainImageUrl(""))}
+              onClick={() => {
+                dispatch(setMainImageUrl(""));
+                document.getElementById("input-main-image").value = "";
+              }}
               style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
             >
               Remove Image

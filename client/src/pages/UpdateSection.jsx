@@ -9,7 +9,7 @@ import UpdateServiceForm from "../components/UpdateForm/UpdateServiceForm";
 import UpdateContactForm from "../components/UpdateForm/UpdateContactForm";
 import UpdateFooterForm from "../components/UpdateForm/UpdateFooterForm";
 
-function UpdateSection() {
+function UpdateSection({ setIsOpen }) {
   const location = useLocation();
   const section = location.state.section;
   const dataSection = location.state.data;
@@ -20,7 +20,12 @@ function UpdateSection() {
   // console.log(allData, "<<< ALL DATA");
   // setSelectedSection(section);
   return (
-    <section id="update-section">
+    <section
+      id="update-section"
+      onClick={() => {
+        setIsOpen(false);
+      }}
+    >
       <h1>Update Section</h1>
       {/* <h1>{section}</h1>
       <h1>{JSON.stringify(dataPopulate)}</h1> */}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../../styles/serviceSection.css";
@@ -105,16 +105,16 @@ export default function UpdateServiceSection({ data, allData }) {
     };
 
     if (!dataServiceSection.headline) {
-      swal("Please fill your headline");
+      new Swal("Please fill the headline", "", "error");
     } else if (
       //bingung
       !dataServiceSection.cardTitle1 &&
       !dataServiceSection.cardTitle2 &&
       !dataServiceSection.cardTitle3
     ) {
-      swal("Please fill minimum 1 card title");
+      new Swal("Please fill at least 1 card", "", "error");
     } else if (!dataServiceSection.type) {
-      swal("Please choose your required template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setServiceSection(dataServiceSection));
       const updatedTemplate = {
@@ -240,7 +240,7 @@ export default function UpdateServiceSection({ data, allData }) {
           <h2 className="title-subform">Headline</h2>
           <div className="contain-input">
             <label htmlFor="service-headline" className="service-headline">
-              Headline
+              Text
             </label>
             <input
               onChange={(event) => setHeadline(event.target.value)}
@@ -257,7 +257,7 @@ export default function UpdateServiceSection({ data, allData }) {
               onChange={(event) => setHeadlineColor(event.target.value)}
               type="color"
               name="service-headline"
-              className="service-headline"
+              className="service-headline mt-half"
               value={headlineColor}
             />
           </div>
@@ -274,6 +274,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 Icon
               </label>
               <input
+                id="card1-icon-update"
                 onChange={(event) =>
                   uploadCardImage(event.target.files[0], "card1")
                 }
@@ -290,7 +291,10 @@ export default function UpdateServiceSection({ data, allData }) {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setCardImage1Url(""))}
+                onClick={() => {
+                  dispatch(setCardImage1Url(""));
+                  document.getElementById("card1-icon-update").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image
@@ -318,7 +322,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 type="color"
                 onChange={(event) => setCardTitleColor1(event.target.value)}
                 name="service-card1"
-                className="service-card1"
+                className="service-card1 mt-half"
                 value={cardTitleColor1}
               />
             </div>
@@ -348,7 +352,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 type="color"
                 onChange={(event) => setCardTextColor1(event.target.value)}
                 name="service-card1"
-                className="service-card1"
+                className="service-card1 mt-half"
                 value={cardTextColor1}
               />
             </div>
@@ -381,6 +385,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 Icon
               </label>
               <input
+                id="card2-icon-update"
                 onChange={(event) =>
                   uploadCardImage(event.target.files[0], "card2")
                 }
@@ -397,7 +402,10 @@ export default function UpdateServiceSection({ data, allData }) {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setCardImage2Url(""))}
+                onClick={() => {
+                  dispatch(setCardImage2Url(""));
+                  document.getElementById("card2-icon-update").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image
@@ -422,16 +430,12 @@ export default function UpdateServiceSection({ data, allData }) {
                 type="color"
                 onChange={(event) => setCardTitleColor2(event.target.value)}
                 name="service-card2"
-                className="service-card2"
+                className="service-card2 mt-half"
                 value={cardTitleColor2}
               />
             </div>
             <div className="form-align-center sub-card">
-              <label
-                htmlFor="service-card2"
-                className="service-card2"
-                style={{ marginBottom: "0.5rem" }}
-              >
+              <label htmlFor="service-card2" className="service-card2">
                 Paragraph
               </label>
               <input
@@ -439,7 +443,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 type="text"
                 name="service-card2"
                 className="service-card2"
-                style={{ marginBottom: "0.5rem" }}
+                style={{ marginBottom: "1rem" }}
                 value={cardText2}
               />
               <label htmlFor="service-card2" className="service-card2">
@@ -449,7 +453,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 type="color"
                 onChange={(event) => setCardTextColor2(event.target.value)}
                 name="service-card2"
-                className="service-card2"
+                className="service-card2 mt-half"
                 value={cardTextColor2}
               />
             </div>
@@ -485,6 +489,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 Icon
               </label>
               <input
+                id="card3-icon-update"
                 onChange={(event) =>
                   uploadCardImage(event.target.files[0], "card3")
                 }
@@ -501,7 +506,10 @@ export default function UpdateServiceSection({ data, allData }) {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setCardImage3Url(""))}
+                onClick={() => {
+                  dispatch(setCardImage3Url(""));
+                  document.getElementById("card3-icon-update").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image
@@ -515,7 +523,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 onChange={(event) => setCardTitle3(event.target.value)}
                 type="text"
                 name="service-card3"
-                className="service-card3"
+                className="service-card3 mb-1"
                 value={cardTitle3}
               />
               <label htmlFor="service-card3" className="service-card3">
@@ -525,7 +533,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 type="color"
                 onChange={(event) => setCardTitleColor3(event.target.value)}
                 name="service-card3"
-                className="service-card3"
+                className="service-card3 mt-half"
                 value={cardTitleColor3}
               />
             </div>
@@ -537,7 +545,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 onChange={(event) => setCardText3(event.target.value)}
                 type="text"
                 name="service-card3"
-                className="service-card3"
+                className="service-card3 mb-1"
                 value={cardText3}
               />
               <label htmlFor="service-card3" className="service-card3">
@@ -547,7 +555,7 @@ export default function UpdateServiceSection({ data, allData }) {
                 type="color"
                 onChange={(event) => setCardTextColor3(event.target.value)}
                 name="service-card3"
-                className="service-card3"
+                className="service-card3 mt-half"
                 value={cardTextColor3}
               />
             </div>
@@ -566,7 +574,7 @@ export default function UpdateServiceSection({ data, allData }) {
               />
             </div>
           </div>
-          <div className="form-align-center">
+          <div className="form-align-center mt-2">
             <label
               htmlFor="background-color-service"
               style={{ margin: "1rem 0", fontSize: "2rem" }}

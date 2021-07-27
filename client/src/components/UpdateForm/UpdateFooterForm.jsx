@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import "../../styles/footerSection.css";
 import { setFooterSection, updateTemplate } from "../../store/actions/forms";
 import { useLocation } from "react-router";
@@ -60,11 +60,11 @@ export default function UpdateFooterForm({ data, allData }) {
       !dataFooterSection.instagram &&
       !dataFooterSection.youtube
     ) {
-      swal("Please fill your social media link minimum 1");
+      new Swal("Please fill at least one social media", "", "error");
     } else if (!dataFooterSection.iconColor) {
-      swal("Please choose your required icon color");
+      new Swal("Please choose the social media icon color", "", "error");
     } else if (!dataFooterSection.type) {
-      swal("Please choose your required template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setFooterSection(dataFooterSection));
       const updatedTemplate = {

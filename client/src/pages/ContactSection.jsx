@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import "../styles/contactSection.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -78,15 +78,15 @@ function ContactSection() {
     };
 
     if (!dataContactSection.headline) {
-      swal("Please fill your headline");
+      new Swal("Please fill the headline", "", "error");
     } else if (
       !dataContactSection.email &&
       !dataContactSection.phone &&
       !dataContactSection.address
     ) {
-      swal("Please fill your information minimum 1");
+      new Swal("Please fill at least 1 contact information", "", "error");
     } else if (!dataContactSection.type) {
-      swal("Please choose your required template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setContactSection(dataContactSection));
       const newestTemplate = {
@@ -190,6 +190,7 @@ function ContactSection() {
                 name="contact-headline"
                 className="contact-headline"
                 style={{ marginBottom: "1rem" }}
+                placeholder="Ex. Contact Us"
               />
               <label htmlFor="contact-headline" className="contact-headline">
                 Color
@@ -198,7 +199,7 @@ function ContactSection() {
                 onChange={(event) => setHeadlineColor(event.target.value)}
                 type="color"
                 name="contact-headline"
-                className="contact-headline"
+                className="contact-headline mt-half"
               />
             </div>
           </div>
@@ -224,7 +225,7 @@ function ContactSection() {
                 onChange={(event) => setEmailColor(event.target.value)}
                 type="color"
                 name="contact-email"
-                className="contact-email"
+                className="contact-email mt-half"
                 style={{ marginBottom: "1rem" }}
               />
             </div>
@@ -237,6 +238,7 @@ function ContactSection() {
                 Icon
               </label>
               <input
+                id="input-email-icon"
                 onChange={(event) =>
                   uploadContactIcon(event.target.files[0], "email")
                 }
@@ -253,7 +255,10 @@ function ContactSection() {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setEmailIconUrl(""))}
+                onClick={() => {
+                  dispatch(setEmailIconUrl(""));
+                  document.getElementById("input-email-icon").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image
@@ -285,7 +290,7 @@ function ContactSection() {
                 onChange={(event) => setPhoneColor(event.target.value)}
                 type="color"
                 name="contact-phone"
-                className="contact-phone"
+                className="contact-phone mt-half mb-1"
               />
             </div>
             <div className="form-align-center">
@@ -297,6 +302,7 @@ function ContactSection() {
                 Icon
               </label>
               <input
+                id="input-phone-icon"
                 onChange={(event) =>
                   uploadContactIcon(event.target.files[0], "phone")
                 }
@@ -313,7 +319,10 @@ function ContactSection() {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setPhoneIconUrl(""))}
+                onClick={() => {
+                  dispatch(setPhoneIconUrl(""));
+                  document.getElementById("input-phone-icon").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image
@@ -341,7 +350,7 @@ function ContactSection() {
                 onChange={(event) => setAddressColor(event.target.value)}
                 type="color"
                 name="contact-address"
-                className="contact-address"
+                className="contact-address mt-half"
               />
             </div>
             <div className="form-align-center">
@@ -349,6 +358,7 @@ function ContactSection() {
                 Icon
               </label>
               <input
+                id="input-address-icon"
                 onChange={(event) =>
                   uploadContactIcon(event.target.files[0], "address")
                 }
@@ -365,7 +375,10 @@ function ContactSection() {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setAddressIconUrl(""))}
+                onClick={() => {
+                  dispatch(setAddressIconUrl(""));
+                  document.getElementById("input-address-icon").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image

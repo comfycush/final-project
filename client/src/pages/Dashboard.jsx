@@ -7,7 +7,7 @@ import { generateColorArray } from "../store/actions/template";
 import { fetchDashboard } from "../store/actions/dashboard";
 import { useHistory } from "react-router-dom";
 
-function Dashboard() {
+function Dashboard({ setIsOpen }) {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.dashboard.data);
   const history = useHistory();
@@ -22,7 +22,7 @@ function Dashboard() {
   // }, []);
 
   return (
-    <section id="content">
+    <section id="content" onClick={() => setIsOpen(false)}>
       <h1>
         Welcome,&nbsp;
         <span className="user-email">{localStorage.getItem("email")}</span>!

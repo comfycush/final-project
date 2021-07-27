@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../styles/serviceSection.css";
@@ -94,16 +94,16 @@ function ServiceSection() {
     };
 
     if (!dataServiceSection.headline) {
-      swal("Please fill your headline");
+      new Swal("Please fill the headline", "", "error");
     } else if (
       //bingung
       !dataServiceSection.cardTitle1 &&
       !dataServiceSection.cardTitle2 &&
       !dataServiceSection.cardTitle3
     ) {
-      swal("Please fill minimum 1 card title");
+      new Swal("Please fill at least 1 card", "", "error");
     } else if (!dataServiceSection.type) {
-      swal("Please choose your required template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setServiceSection(dataServiceSection));
       const newestTemplate = {
@@ -223,6 +223,7 @@ function ServiceSection() {
               name="service-headline"
               className="service-headline"
               style={{ marginBottom: "2rem" }}
+              placeholder="Ex. Our Services"
             />
             <label htmlFor="service-headline" className="service-headline">
               Color
@@ -247,6 +248,7 @@ function ServiceSection() {
                 Icon
               </label>
               <input
+                id="input-card1-icon"
                 onChange={(event) =>
                   uploadCardImage(event.target.files[0], "card1")
                 }
@@ -263,7 +265,10 @@ function ServiceSection() {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setCardImage1Url(""))}
+                onClick={() => {
+                  dispatch(setCardImage1Url(""));
+                  document.getElementById("input-card1-icon").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image
@@ -349,6 +354,7 @@ function ServiceSection() {
                 Icon
               </label>
               <input
+                id="input-card2-icon"
                 onChange={(event) =>
                   uploadCardImage(event.target.files[0], "card2")
                 }
@@ -365,7 +371,10 @@ function ServiceSection() {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setCardImage2Url(""))}
+                onClick={() => {
+                  dispatch(setCardImage2Url(""));
+                  document.getElementById("input-card2-icon").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image
@@ -446,6 +455,7 @@ function ServiceSection() {
                 Icon
               </label>
               <input
+                id="input-card3-icon"
                 onChange={(event) =>
                   uploadCardImage(event.target.files[0], "card3")
                 }
@@ -462,7 +472,10 @@ function ServiceSection() {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setCardImage3Url(""))}
+                onClick={() => {
+                  dispatch(setCardImage3Url(""));
+                  document.getElementById("input-card3-icon").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image
@@ -476,7 +489,7 @@ function ServiceSection() {
                 onChange={(event) => setCardTitle3(event.target.value)}
                 type="text"
                 name="service-card3"
-                className="service-card3"
+                className="service-card3 mb-1"
               />
               <label htmlFor="service-card3" className="service-card3">
                 Color
@@ -485,7 +498,7 @@ function ServiceSection() {
                 type="color"
                 onChange={(event) => setCardTitleColor3(event.target.value)}
                 name="service-card3"
-                className="service-card3"
+                className="service-card3 mt-half"
               />
             </div>
             <div className="form-align-center sub-card">
@@ -496,7 +509,7 @@ function ServiceSection() {
                 onChange={(event) => setCardText3(event.target.value)}
                 type="text"
                 name="service-card3"
-                className="service-card3"
+                className="service-card3 mb-1"
               />
               <label htmlFor="service-card3" className="service-card3">
                 Color
@@ -505,7 +518,7 @@ function ServiceSection() {
                 type="color"
                 onChange={(event) => setCardTextColor3(event.target.value)}
                 name="service-card3"
-                className="service-card3"
+                className="service-card3 mt-half"
               />
             </div>
             <div className="form-align-center">
