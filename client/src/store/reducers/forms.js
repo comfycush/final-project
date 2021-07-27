@@ -10,6 +10,7 @@ import {
   SET_USER_ID,
   SET_IS_DEPLOY,
   SET_IS_FOOTER_FINISHED,
+  SET_REPLY_CHATBOT,
 } from "../actionTypes";
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
   service: {},
   contact: {},
   footer: {},
+  msgReplyChatbot: "",
 };
 
 export default function formsReduces(state = initialState, action) {
@@ -49,6 +51,8 @@ export default function formsReduces(state = initialState, action) {
     return { ...state, footer: action.payload };
   } else if (action.type === SET_IS_FOOTER_FINISHED) {
     return { ...state, isFooterFinished: action.payload };
+  } else if (action.type === SET_REPLY_CHATBOT) {
+    return { ...state, msgReplyChatbot: action.payload };
   }
   return state;
 }
