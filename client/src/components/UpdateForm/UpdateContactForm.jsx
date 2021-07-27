@@ -102,17 +102,18 @@ export default function UpdateContactForm({ data, allData }) {
         contact: dataContactSection,
         footer: allData.footer,
       };
-      dispatch(updateTemplate(allData.id, updatedTemplate));
-      if (allData.isDeploy) {
-        history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
-      } else {
-        history.push({
-          pathname: `/finish/${allData.id}`,
-          state: {
-            templateId: allData.id,
-          },
-        });
-      }
+      dispatch(updateTemplate(allData.id, updatedTemplate)).then(() => {
+        if (allData.isDeploy) {
+          history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
+        } else {
+          history.push({
+            pathname: `/finish/${allData.id}`,
+            state: {
+              templateId: allData.id,
+            },
+          });
+        }
+      });
     }
   }
 
@@ -145,17 +146,18 @@ export default function UpdateContactForm({ data, allData }) {
       contact: dataContactSection,
       footer: allData.footer,
     };
-    dispatch(updateTemplate(allData.id, updatedTemplate));
-    if (allData.isDeploy) {
-      history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
-    } else {
-      history.push({
-        pathname: `/finish/${allData.id}`,
-        state: {
-          templateId: allData.id,
-        },
-      });
-    }
+    dispatch(updateTemplate(allData.id, updatedTemplate)).then(() => {
+      if (allData.isDeploy) {
+        history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
+      } else {
+        history.push({
+          pathname: `/finish/${allData.id}`,
+          state: {
+            templateId: allData.id,
+          },
+        });
+      }
+    });
   }
 
   function uploadContactIcon(file, code) {
@@ -167,18 +169,20 @@ export default function UpdateContactForm({ data, allData }) {
   }, []);
 
   useEffect(() => {
-    window.onscroll = () => {
-      stickyColor();
-    };
+    if (localStorage.colorArray) {
+      window.onscroll = () => {
+        stickyColor();
+      };
 
-    const colorPalette = document.getElementById("sticky-colormind");
-    const stickyOffset = colorPalette.offsetTop;
+      const colorPalette = document.getElementById("sticky-colormind");
+      const stickyOffset = colorPalette.offsetTop;
 
-    function stickyColor() {
-      if (window.pageYOffset >= stickyOffset) {
-        colorPalette.classList.add("sticky");
-      } else {
-        colorPalette.classList.remove("sticky");
+      function stickyColor() {
+        if (window.pageYOffset >= stickyOffset) {
+          colorPalette.classList.add("sticky");
+        } else {
+          colorPalette.classList.remove("sticky");
+        }
       }
     }
   }, [window.pageYOffset]);

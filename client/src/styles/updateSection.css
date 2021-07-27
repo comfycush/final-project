@@ -42,6 +42,7 @@
 
 .btn-remove {
   width: 12rem;
+  padding: 1rem 0;
   background-color: rgb(255, 118, 77);
   color: white;
   margin-bottom: 1rem;

@@ -22,7 +22,7 @@ export default function UpdateNavbarForm({ data, allData }) {
   const [companyNameColor, setCompanyNameColor] = useState(
     data.companyNameColor
   );
-  const [navlinks, setNavlinks] = useState(data.navLinks);
+  const [navlinks, setNavlinks] = useState(data.navLinks || []);
   const [navlinksColor, setNavlinksColor] = useState(data.navLinksColor);
   const logoUrl = useSelector((state) => state.uploadImage.logoUrl);
   // const [logoUrl, setLO]
@@ -90,20 +90,19 @@ export default function UpdateNavbarForm({ data, allData }) {
         footer: allData.footer,
         navbar: dataNavbarSection,
       };
-      dispatch(updateTemplate(allData.id, updatedTemplate));
-      // console.log(templateId, updatedTemplate, "<<< update");
-      if (allData.isDeploy) {
-        history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
-      } else {
-        history.push({
-          pathname: `/finish/${allData.id}`,
-          state: {
-            templateId: allData.id,
-          },
-        });
-      }
+      dispatch(updateTemplate(allData.id, updatedTemplate)).then(() => {
+        if (allData.isDeploy) {
+          history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
+        } else {
+          history.push({
+            pathname: `/finish/${allData.id}`,
+            state: {
+              templateId: allData.id,
+            },
+          });
+        }
+      });
     }
-    console.log(dataNavbarSection, "<<< data navbar");
   }
 
   function uploadLogo(file, code) {
@@ -127,18 +126,20 @@ export default function UpdateNavbarForm({ data, allData }) {
   }, []);
 
   useEffect(() => {
-    window.onscroll = () => {
-      stickyColor();
-    };
+    if (localStorage.colorArray) {
+      window.onscroll = () => {
+        stickyColor();
+      };
 
-    const colorPalette = document.getElementById("sticky-colormind");
-    const stickyOffset = colorPalette.offsetTop;
+      const colorPalette = document.getElementById("sticky-colormind");
+      const stickyOffset = colorPalette.offsetTop;
 
-    function stickyColor() {
-      if (window.pageYOffset >= stickyOffset) {
-        colorPalette.classList.add("sticky");
-      } else {
-        colorPalette.classList.remove("sticky");
+      function stickyColor() {
+        if (window.pageYOffset >= stickyOffset) {
+          colorPalette.classList.add("sticky");
+        } else {
+          colorPalette.classList.remove("sticky");
+        }
       }
     }
   }, [window.pageYOffset]);
@@ -244,7 +245,13 @@ export default function UpdateNavbarForm({ data, allData }) {
                     width: "3rem",
                   }}
                   defaultValue="About"
-                  defaultChecked={navlinks.includes("About") ? true : false}
+                  defaultChecked={
+                    !navlinks
+                      ? false
+                      : navlinks.includes("About")
+                      ? true
+                      : false
+                  }
                 />
                 <label htmlFor="about" style={{ fontWeight: "normal" }}>
                   About
@@ -266,7 +273,13 @@ export default function UpdateNavbarForm({ data, allData }) {
                   id="service"
                   defaultValue="Service"
                   style={{ width: "3rem" }}
-                  defaultChecked={navlinks.includes("Service") ? true : false}
+                  defaultChecked={
+                    !navlinks
+                      ? false
+                      : navlinks.includes("Service")
+                      ? true
+                      : false
+                  }
                 />
                 <label htmlFor="service" style={{ fontWeight: "normal" }}>
                   Service
@@ -288,7 +301,13 @@ export default function UpdateNavbarForm({ data, allData }) {
                   id="contact"
                   defaultValue="Contact"
                   style={{ width: "3rem" }}
-                  defaultChecked={navlinks.includes("Contact") ? true : false}
+                  defaultChecked={
+                    !navlinks
+                      ? false
+                      : navlinks.includes("Contact")
+                      ? true
+                      : false
+                  }
                 />
                 <label htmlFor="contact" style={{ fontWeight: "normal" }}>
                   Contact

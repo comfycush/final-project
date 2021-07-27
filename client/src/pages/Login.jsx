@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/login.css";
 import axios from "axios";
+import Aos from "aos";
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { GoogleLogin } from "react-google-login";
@@ -10,6 +11,10 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const history = useHistory();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    Aos.init({ duration: 1500 });
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -44,7 +49,6 @@ export default function Login() {
       },
     });
     const data = await res.json();
-    console.log(data, "<<< data google");
     if (!data.errors) {
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("email", data.email);
@@ -54,7 +58,7 @@ export default function Login() {
 
   return (
     <React.Fragment>
-      <div className="flex items-center min-h-screen">
+      <div data-aos="fade-down" className="flex items-center min-h-screen">
         <div className="container mx-auto">
           <div className="max-w-md mx-auto my-10">
             <div
@@ -67,11 +71,12 @@ export default function Login() {
                 alt="logo"
               />
             </div>
-            <div className="m-7">
+            <div className="m-7" style={{ marginTop: "2rem" }}>
               <form onSubmit={handleSubmit} action>
                 <div className="mb-6">
                   <label
                     htmlFor="email"
+                    style={{ marginBottom: "0.5rem" }}
                     className="block mb-2 text-sm text-gray-600 dark:text-gray-400"
                   >
                     Email Address
@@ -86,7 +91,10 @@ export default function Login() {
                   />
                 </div>
                 <div className="mb-6">
-                  <div className="flex justify-between mb-2">
+                  <div
+                    style={{ marginBottom: "0.5rem" }}
+                    className="flex justify-between mb-2"
+                  >
                     <label
                       htmlFor="password"
                       className="text-sm text-gray-600 dark:text-gray-400"
@@ -106,16 +114,24 @@ export default function Login() {
                 <div className="mb-6">
                   <button
                     type="submit"
-                    className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
+                    style={{ backgroundColor: "#125D98" }}
+                    className="w-full px-3 py-4 text-white rounded-md focus:outline-none"
                   >
                     Sign in
                   </button>
                 </div>
-                <div style={{ marginTop: 20, marginLeft: 110 }}>
+                <div
+                  style={{
+                    marginBottom: "1rem",
+                    marginTop: 20,
+                    marginLeft: 110,
+                  }}
+                >
                   <GoogleLogin
                     clientId={
                       "1035521074618-nkotpceb3p60muu0h5rmf6hn5pe72dtc.apps.googleusercontent.com"
                     }
+                    style={{ padding: "1rem 10rem" }}
                     buttonText="Log in with Google"
                     onSuccess={handleLogin}
                     onFailure={handleLogin}
@@ -126,7 +142,8 @@ export default function Login() {
                   Don't have an account yet?{" "}
                   <a
                     onClick={() => history.push("/register")}
-                    className="text-indigo-400 focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800"
+                    style={{ color: "#125D98" }}
+                    className=" focus:outline-none focus:underline"
                   >
                     Sign up
                   </a>

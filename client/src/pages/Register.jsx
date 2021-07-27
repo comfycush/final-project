@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/register.css";
 import axios from "axios";
+import Aos from "aos";
 import { useHistory, Link } from "react-router-dom";
 
 export default function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+
+  useEffect(() => {
+    Aos.init({ duration: 1500 });
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -28,7 +33,7 @@ export default function Register() {
 
   return (
     <React.Fragment>
-      <div className="flex items-center min-h-screen">
+      <div data-aos="fade-down" className="flex items-center min-h-screen">
         <div className="container mx-auto">
           <div className="max-w-md mx-auto my-10">
             <div
@@ -41,12 +46,13 @@ export default function Register() {
                 alt="logo"
               />
             </div>
-            <div className="m-7">
+            <div className="m-7" style={{ marginTop: "3rem" }}>
               <form onSubmit={handleSubmit} action>
                 <div className="mb-6">
                   <label
                     htmlFor="email"
-                    className="block mb-2 text-sm text-gray-600 dark:text-gray-400"
+                    style={{ marginBottom: "0.5rem" }}
+                    className="block text-sm text-gray-600 dark:text-gray-400"
                   >
                     Email Address
                   </label>
@@ -60,7 +66,10 @@ export default function Register() {
                   />
                 </div>
                 <div className="mb-6">
-                  <div className="flex justify-between mb-2">
+                  <div
+                    style={{ marginBottom: "0.5rem" }}
+                    className="flex justify-between"
+                  >
                     <label
                       htmlFor="password"
                       className="text-sm text-gray-600 dark:text-gray-400"
@@ -80,7 +89,8 @@ export default function Register() {
                 <div className="mb-6">
                   <button
                     type="submit"
-                    className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
+                    style={{ backgroundColor: "#125D98" }}
+                    className="w-full px-3 py-4 text-white rounded-md focus:outline-none"
                   >
                     Sign up
                   </button>
@@ -89,7 +99,8 @@ export default function Register() {
                   Already have an account?{" "}
                   <a
                     onClick={() => history.push("/login")}
-                    className="text-indigo-400 focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800"
+                    style={{ color: "#125D98" }}
+                    className="focus:outline-none focus:underline focus:text-indigo-500"
                   >
                     Sign in
                   </a>

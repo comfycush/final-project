@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useHistory } from "react-router";
-import { scroller } from "react-scroll";
+import { HashLink } from "react-router-hash-link";
 import "../styles/homepage.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
@@ -31,7 +31,7 @@ function Homepage({ setIsOpen }) {
       <div data-aos="fade-down" className="landing-page-homepage">
         <div className="landingText-homepage">
           <h1>
-            Welcome To web<span>ber</span>!
+            Welcome To Web<span>ber</span>!
           </h1>
           <br />
           <h3>
@@ -39,7 +39,8 @@ function Homepage({ setIsOpen }) {
             website in less than 10 minutes!
           </h3>
           <div className="btn-learn">
-            <a href="#">Learn More</a>
+            <HashLink to={"#how-to"}>Learn More</HashLink>
+            {/* <a onClick=""></a> */}
           </div>
         </div>
         <div className="landingImage-homepage">
@@ -49,7 +50,7 @@ function Homepage({ setIsOpen }) {
           />
         </div>
       </div>
-      <div className="h1-style">
+      <div style={{ paddingTop: "7rem" }} id="how-to" className="h1-style">
         <h1 data-aos="fade-down">How To Build Your Own Website</h1>
       </div>
       <div className="about-homepage">
@@ -68,13 +69,13 @@ function Homepage({ setIsOpen }) {
       </div>
       <div className="about-2-homepage">
         <div data-aos="fade-right" className="aboutList-2-homepage">
-          <h3>Fill Your Website Content</h3>
+          <h3>Craft Your Website Content</h3>
           <br />
           <h4>Fill in your company information for the website</h4>
         </div>
         <div data-aos="fade-left" className="aboutText-2-homepage">
           <img
-            src="https://ik.imagekit.io/gdx8okwg6gt/2234689_BEaT9oSjT.png?updatedAt=1627351585687"
+            src="https://image.flaticon.com/icons/png/512/5024/5024461.png"
             alt="form"
           />
         </div>
@@ -83,7 +84,7 @@ function Homepage({ setIsOpen }) {
         <div className="aboutText-3-homepage">
           <img
             data-aos="fade-right"
-            src="https://ik.imagekit.io/gdx8okwg6gt/190411_iSsITygc4.png?updatedAt=1627351584451"
+            src="https://image.flaticon.com/icons/png/512/1055/1055687.png"
             alt="hooray"
           />
         </div>

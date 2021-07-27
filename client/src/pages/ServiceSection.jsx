@@ -113,7 +113,7 @@ function ServiceSection() {
         footer: {},
       };
       dispatch(updateTemplate(templateId, { service: dataServiceSection }));
-      dispatch(setToContactSection(true))
+      dispatch(setToContactSection(true));
       history.push({
         pathname: "/contact-section",
         state: {
@@ -151,7 +151,7 @@ function ServiceSection() {
     };
 
     dispatch(setServiceSection(dataServiceSection));
-    dispatch(setToContactSection(true))
+    dispatch(setToContactSection(true));
     // history.push("/contact-section");
     history.push({
       pathname: "/contact-section",
@@ -181,26 +181,28 @@ function ServiceSection() {
   }, []);
 
   useEffect(() => {
-    window.onscroll = () => {
-      stickyColor();
-    };
+    if (localStorage.colorArray) {
+      window.onscroll = () => {
+        stickyColor();
+      };
 
-    const colorPalette = document.getElementById("sticky-colormind");
-    const stickyOffset = colorPalette.offsetTop;
+      const colorPalette = document.getElementById("sticky-colormind");
+      const stickyOffset = colorPalette.offsetTop;
 
-    function stickyColor() {
-      if (window.pageYOffset >= stickyOffset) {
-        colorPalette.classList.add("sticky");
-      } else {
-        colorPalette.classList.remove("sticky");
+      function stickyColor() {
+        if (window.pageYOffset >= stickyOffset) {
+          colorPalette.classList.add("sticky");
+        } else {
+          colorPalette.classList.remove("sticky");
+        }
       }
     }
   }, [window.pageYOffset]);
 
   return (
     <section id="service-section">
-      <h1>Service Section</h1>
-      <h3>4 of 6</h3>
+      <h1 className="title-bold">Service Section</h1>
+      <h3 className="title-bold">4 of 6</h3>
       <div
         style={{
           display: "flex",

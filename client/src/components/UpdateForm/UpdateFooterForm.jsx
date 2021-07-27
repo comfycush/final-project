@@ -78,18 +78,18 @@ export default function UpdateFooterForm({ data, allData }) {
         footer: dataFooterSection,
         navbar: allData.navbar,
       };
-      dispatch(updateTemplate(allData.id, updatedTemplate));
-      // console.log(templateId, updatedTemplate, "<<< update");
-      if (allData.isDeploy) {
-        history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
-      } else {
-        history.push({
-          pathname: `/finish/${allData.id}`,
-          state: {
-            templateId: allData.id,
-          },
-        });
-      }
+      dispatch(updateTemplate(allData.id, updatedTemplate)).then(() => {
+        if (allData.isDeploy) {
+          history.push(`/deploy/${allData.navbar.companyName}/${allData.id}`);
+        } else {
+          history.push({
+            pathname: `/finish/${allData.id}`,
+            state: {
+              templateId: allData.id,
+            },
+          });
+        }
+      });
     }
   }
 
@@ -102,18 +102,20 @@ export default function UpdateFooterForm({ data, allData }) {
   }, []);
 
   useEffect(() => {
-    window.onscroll = () => {
-      stickyColor();
-    };
+    if (localStorage.colorArray) {
+      window.onscroll = () => {
+        stickyColor();
+      };
 
-    const colorPalette = document.getElementById("sticky-colormind");
-    const stickyOffset = colorPalette.offsetTop;
+      const colorPalette = document.getElementById("sticky-colormind");
+      const stickyOffset = colorPalette.offsetTop;
 
-    function stickyColor() {
-      if (window.pageYOffset >= stickyOffset) {
-        colorPalette.classList.add("sticky");
-      } else {
-        colorPalette.classList.remove("sticky");
+      function stickyColor() {
+        if (window.pageYOffset >= stickyOffset) {
+          colorPalette.classList.add("sticky");
+        } else {
+          colorPalette.classList.remove("sticky");
+        }
       }
     }
   }, [window.pageYOffset]);
@@ -136,6 +138,7 @@ export default function UpdateFooterForm({ data, allData }) {
                 Facebook
               </label>
               <input
+                value={facebook}
                 onChange={(event) => setFacebook(event.target.value)}
                 type="text"
                 name="link-facebook"
@@ -147,6 +150,7 @@ export default function UpdateFooterForm({ data, allData }) {
                 Instagram
               </label>
               <input
+                value={instagram}
                 onChange={(event) => setInstagram(event.target.value)}
                 type="text"
                 name="link-instagram"
@@ -158,6 +162,7 @@ export default function UpdateFooterForm({ data, allData }) {
                 Twitter
               </label>
               <input
+                value={twitter}
                 onChange={(event) => setTwitter(event.target.value)}
                 type="text"
                 name="link-twitter"
@@ -169,6 +174,7 @@ export default function UpdateFooterForm({ data, allData }) {
                 Linkedin
               </label>
               <input
+                value={linkedin}
                 onChange={(event) => setLinkedin(event.target.value)}
                 type="text"
                 name="link-linkedin"
@@ -180,6 +186,7 @@ export default function UpdateFooterForm({ data, allData }) {
                 Youtube
               </label>
               <input
+                value={youtube}
                 onChange={(event) => setYoutube(event.target.value)}
                 type="text"
                 name="link-youtube"
@@ -194,6 +201,7 @@ export default function UpdateFooterForm({ data, allData }) {
                   defaultValue="black"
                   type="radio"
                   name="icon"
+                  defaultChecked={iconColor === "black" ? true : false}
                   id="black-icon"
                   style={{ marginRight: "1rem" }}
                 />
@@ -205,6 +213,7 @@ export default function UpdateFooterForm({ data, allData }) {
                 <input
                   onClick={(event) => setIconColor(event.target.value)}
                   defaultValue="white"
+                  defaultChecked={iconColor === "white" ? true : false}
                   type="radio"
                   name="icon"
                   id="white-icon"
@@ -225,6 +234,7 @@ export default function UpdateFooterForm({ data, allData }) {
               Company Name Color
             </label>
             <input
+              value={companyNameColor}
               onChange={(event) => setCompanyNameColor(event.target.value)}
               type="color"
               name="company-name-color"
@@ -240,6 +250,7 @@ export default function UpdateFooterForm({ data, allData }) {
               Background Color
             </label>
             <input
+              value={backgroundColor}
               onChange={(event) => setBackgroundColor(event.target.value)}
               type="color"
               name="background-color-navbar"
@@ -257,6 +268,7 @@ export default function UpdateFooterForm({ data, allData }) {
                 onClick={(event) => setType(event.target.value)}
                 defaultValue="1"
                 type="radio"
+                defaultChecked={type === 1 ? true : false}
                 name="opt-navbar"
                 id="opt1-navbar"
               />
@@ -280,6 +292,7 @@ export default function UpdateFooterForm({ data, allData }) {
               <input
                 onClick={(event) => setType(event.target.value)}
                 defaultValue="2"
+                defaultChecked={type === 2 ? true : false}
                 type="radio"
                 name="opt-navbar"
                 id="opt2-navbar"
@@ -304,6 +317,7 @@ export default function UpdateFooterForm({ data, allData }) {
               <input
                 onClick={(event) => setType(event.target.value)}
                 defaultValue="3"
+                defaultChecked={type === 3 ? true : false}
                 type="radio"
                 name="opt-navbar"
                 id="opt3-navbar"
@@ -351,8 +365,8 @@ export default function UpdateFooterForm({ data, allData }) {
         )}
       </div>
       <div className="button-footer btn-form-page">
-        <button className="btn btn-next" onClick={updateFooterSection}>
-          Finish
+        <button className="btn btn-update" onClick={updateFooterSection}>
+          Update Section
         </button>
       </div>
     </section>

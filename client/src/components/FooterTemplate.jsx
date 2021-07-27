@@ -11,7 +11,7 @@ export default function FooterTemplate({
   // const isDeploy = useSelector((state) => state.template.isDeploy);
   const history = useHistory();
 
-  if (!footerData.backgroundColor) {
+  if (!footerData.type) {
     return null;
   }
 

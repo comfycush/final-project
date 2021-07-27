@@ -58,3 +58,8 @@
   background-color: #c68b59;
   color: white;
 }
+
+.type-2-footer .social-media-side,
+.type-3-footer .social-media-side {
+  display: flex;
+}

@@ -37,7 +37,7 @@ function IntroSection() {
 
   return (
     <section id="intro-section">
-      <h1>Let's Build Your Website!</h1>
+      <h1 className="title-bold">Let's Build Your Website!</h1>
       <div className="intro-input">
         <div className="form-center">
           <label htmlFor="project-title" style={{ fontSize: "2rem" }}>

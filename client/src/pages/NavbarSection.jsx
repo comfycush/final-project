@@ -100,7 +100,7 @@ function NavbarSection(props) {
         footer: {},
       };
       dispatch(updateTemplate(templateId, newestTemplate));
-      dispatch(setToMainSection(true))
+      dispatch(setToMainSection(true));
       console.log(templateId, newestTemplate, "<<< update");
       history.push({
         pathname: "/main-section",
@@ -126,26 +126,28 @@ function NavbarSection(props) {
   }, []);
 
   useEffect(() => {
-    window.onscroll = () => {
-      stickyColor();
-    };
+    if (localStorage.colorArray) {
+      window.onscroll = () => {
+        stickyColor();
+      };
 
-    const colorPalette = document.getElementById("sticky-colormind");
-    const stickyOffset = colorPalette.offsetTop;
+      const colorPalette = document.getElementById("sticky-colormind");
+      const stickyOffset = colorPalette.offsetTop;
 
-    function stickyColor() {
-      if (window.pageYOffset >= stickyOffset) {
-        colorPalette.classList.add("sticky");
-      } else {
-        colorPalette.classList.remove("sticky");
+      function stickyColor() {
+        if (window.pageYOffset >= stickyOffset) {
+          colorPalette.classList.add("sticky");
+        } else {
+          colorPalette.classList.remove("sticky");
+        }
       }
     }
   }, [window.pageYOffset]);
 
   return (
     <section id="navbar-section">
-      <h1>Navbar Section</h1>
-      <h3>1 of 6</h3>
+      <h1 className="title-bold">Navbar Section</h1>
+      <h3 className="title-bold">1 of 6</h3>
       <div
         style={{
           display: "flex",
@@ -213,7 +215,7 @@ function NavbarSection(props) {
               <button
                 className="btn btn-remove-image"
                 onClick={() => dispatch(setLogoUrl(""))}
-                style={{ margin: "0rem" }}
+                style={{ margin: "0rem", marginTop: "1rem" }}
               >
                 Remove Image
               </button>

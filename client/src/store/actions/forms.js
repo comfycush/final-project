@@ -9,9 +9,10 @@ import {
   SET_TEMPLATE_ID,
   SET_USER_ID,
   SET_IS_DEPLOY,
+  SET_IS_FOOTER_FINISHED,
 } from "../actionTypes";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 import { fetchDashboard } from "./dashboard";
 
 export function setTemplateId(input) {
@@ -31,6 +32,13 @@ export function setUserId(input) {
 export function setIsDeploy(input) {
   return {
     type: SET_IS_DEPLOY,
+    payload: input,
+  };
+}
+
+export function setIsFooterFinished(input) {
+  return {
+    type: SET_IS_FOOTER_FINISHED,
     payload: input,
   };
 }
@@ -109,20 +117,26 @@ export function createTemplate(data) {
 
 export function updateTemplate(id, data) {
   return (dispatch) => {
-    fetch(`http://localhost:4000/template/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        access_token: localStorage.access_token,
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch(setTemplateId(data.templateId));
-        console.log(data, `ini data update`);
+    return new Promise((resolve, reject) => {
+      fetch(`http://localhost:4000/template/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          access_token: localStorage.access_token,
+        },
+        body: JSON.stringify(data),
       })
-      .catch((err) => console.log(err, `ini error update`));
+        .then((res) => res.json())
+        .then((data) => {
+          dispatch(setTemplateId(data.templateId));
+          resolve(data);
+        })
+
+        .catch((err) => {
+          console.log(err, `ini error update`);
+          reject(err);
+        });
+    });
   };
 }
 

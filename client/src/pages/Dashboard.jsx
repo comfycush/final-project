@@ -33,6 +33,7 @@ function Dashboard() {
           display: "flex",
           justifyContent: "center",
           fontSize: "3rem",
+          fontWeight: "bolder",
           marginBottom: "1.5rem",
           color: "#125D98",
           marginTop: "2rem",

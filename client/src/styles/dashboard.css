@@ -6,6 +6,7 @@
 #content h1 {
   font-size: 1.5rem;
   display: flex;
+  font-weight: bolder;
   justify-content: flex-end;
   /* margin-right: 3rem; */
   color: #125d98;
@@ -27,6 +28,7 @@
 }
 
 #content .card h2 {
+  font-weight: bolder;
   font-size: 2rem;
   /* margin-bottom: 1.5rem; */
   color: #125d98;

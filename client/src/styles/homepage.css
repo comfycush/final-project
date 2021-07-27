@@ -91,10 +91,21 @@
   width: 50vw;
 }
 
+.h1-style {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #125d98;
+  text-align: center;
+  /* bottom: 9rem; */
+}
+
 .about-homepage {
   /* width: 70rem; */
   margin-top: 7rem;
-  height: 600px;
+  height: 500px;
   padding: 0px;
   display: flex;
   flex-direction: row;
@@ -112,17 +123,6 @@
   height: inherit;
 }
 
-.h1-style {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  font-size: 3rem;
-  font-weight: 700;
-  color: #125d98;
-  text-align: center;
-  /* bottom: 9rem; */
-}
-
 .aboutText-homepage img {
   width: 27vw;
   /* margin-left: 10rem; */
@@ -131,7 +131,7 @@
 }
 
 .aboutList-homepage {
-  margin-bottom: 10rem;
+  margin-bottom: 11rem;
   /* bottom: 7rem; */
 }
 
@@ -147,47 +147,60 @@
   opacity: 0.5;
 }
 
-.about-2-homepage {
-  height: 600px;
-  padding: 80px;
+.about-2-homepage,
+.about-3-homepage {
+  height: 500px;
+  padding: 0px;
   display: flex;
-  margin-top: -10rem;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
 
-.aboutList-2-homepage {
-  width: 50rem;
-  margin-bottom: 5rem;
-  margin-left: 5rem;
+.aboutText-2-homepage,
+.aboutText-3-homepage {
+  margin-left: 0;
+  position: relative;
+  /* padding: 0rem 2rem; */
+  padding-top: 0rem;
+  padding-left: 0rem;
+  width: 28rem;
+  height: inherit;
 }
 
-.aboutList-2-homepage h3 {
+.aboutText-2-homepage img,
+.aboutText-3-homepage img {
+  width: 27vw;
+  /* margin-left: 10rem; */
+  /* position: absolute; */
+  top: 50px;
+}
+
+.aboutList-2-homepage {
+  margin-bottom: 17rem;
+  margin-right: 7rem;
+}
+
+.aboutList-2-homepage h3,
+.aboutList-3-homepage h3 {
+  width: 35rem;
   font-size: 3rem;
   font-weight: 600;
   color: #f5a962;
 }
 
-.aboutList-2-homepage h4 {
+.aboutList-2-homepage h4,
+.aboutList-3-homepage h4 {
   font-size: 1.5rem;
   opacity: 0.5;
 }
 
-.aboutText-2-homepage {
-  position: relative;
-  padding: 0 300px;
-  height: inherit;
-  margin-right: 5rem;
+.aboutList-3-homepage {
+  margin-left: 3rem;
+  margin-bottom: 15rem;
 }
 
-.aboutText-2-homepage img {
-  width: 27vw;
-  position: absolute;
-  top: 60px;
-}
-
-.about-3-homepage {
+/* .about-3-homepage {
   height: 600px;
   padding: 50px;
   display: flex;
@@ -222,7 +235,7 @@
 .aboutList-3-homepage h4 {
   font-size: 1.5rem;
   opacity: 0.5;
-}
+} */
 
 .aboutList-3-homepage .btn-start {
   width: 10rem;

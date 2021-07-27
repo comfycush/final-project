@@ -157,6 +157,10 @@ input[type="file"] {
   margin-bottom: 2rem;
 }
 
+.title-bold {
+  font-weight: bolder;
+}
+
 .generate-color-label {
   font-weight: bold;
 }
@@ -195,6 +199,7 @@ input[type="file"] {
 
 .title-subform {
   font-size: 2rem;
+  font-weight: bolder;
   margin-bottom: 1rem;
   color: #125d98;
 }

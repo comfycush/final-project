@@ -18,6 +18,9 @@ export default function NavbarTemplate({ navbarData, isDeploy, templateData }) {
     });
   }
 
+  if (!navbarData.type) {
+    return <h1>Error navbar section must be provided...</h1>;
+  }
   return (
     <div className="section-and-update">
       <nav

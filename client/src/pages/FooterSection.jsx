@@ -25,6 +25,7 @@ function FooterSection() {
   const [linkedin, setLinkedin] = useState("");
   const [youtube, setYoutube] = useState("");
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
+  const isFooterFinished = useSelector((state) => state.forms.isFooterFinished);
 
   const [showModal, setShowModal] = useState(false);
   const [modalImage, setModalImage] = useState("");
@@ -73,12 +74,15 @@ function FooterSection() {
         ...stateContact,
         footer: dataFooterSection,
       };
-      dispatch(updateTemplate(templateId, { footer: dataFooterSection }));
-      history.push({
-        pathname: `/finish/${templateId}`,
-        state: {
-          templateId,
-        },
+      dispatch(
+        updateTemplate(templateId, { footer: dataFooterSection }, "footer")
+      ).then(() => {
+        history.push({
+          pathname: `/finish/${templateId}`,
+          state: {
+            templateId,
+          },
+        });
       });
     }
   }
@@ -92,26 +96,28 @@ function FooterSection() {
   }, []);
 
   useEffect(() => {
-    window.onscroll = () => {
-      stickyColor();
-    };
+    if (localStorage.colorArray) {
+      window.onscroll = () => {
+        stickyColor();
+      };
 
-    const colorPalette = document.getElementById("sticky-colormind");
-    const stickyOffset = colorPalette.offsetTop;
+      const colorPalette = document.getElementById("sticky-colormind");
+      const stickyOffset = colorPalette.offsetTop;
 
-    function stickyColor() {
-      if (window.pageYOffset >= stickyOffset) {
-        colorPalette.classList.add("sticky");
-      } else {
-        colorPalette.classList.remove("sticky");
+      function stickyColor() {
+        if (window.pageYOffset >= stickyOffset) {
+          colorPalette.classList.add("sticky");
+        } else {
+          colorPalette.classList.remove("sticky");
+        }
       }
     }
   }, [window.pageYOffset]);
 
   return (
     <section id="footer-section">
-      <h1>Footer Section</h1>
-      <h3>6 of 6</h3>
+      <h1 className="title-bold">Footer Section</h1>
+      <h3 className="title-bold">6 of 6</h3>
       <div
         style={{
           display: "flex",

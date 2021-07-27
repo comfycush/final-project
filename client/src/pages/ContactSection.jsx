@@ -95,7 +95,7 @@ function ContactSection() {
         footer: {},
       };
       dispatch(updateTemplate(templateId, { contact: dataContactSection }));
-      dispatch(setToFooterSection(true))
+      dispatch(setToFooterSection(true));
       history.push({
         pathname: "/footer-section",
         state: {
@@ -124,7 +124,7 @@ function ContactSection() {
     };
 
     dispatch(setContactSection(dataContactSection));
-    dispatch(setToFooterSection(true))
+    dispatch(setToFooterSection(true));
     history.push("/footer-section");
   }
 
@@ -147,26 +147,28 @@ function ContactSection() {
   }, []);
 
   useEffect(() => {
-    window.onscroll = () => {
-      stickyColor();
-    };
+    if (localStorage.colorArray) {
+      window.onscroll = () => {
+        stickyColor();
+      };
 
-    const colorPalette = document.getElementById("sticky-colormind");
-    const stickyOffset = colorPalette.offsetTop;
+      const colorPalette = document.getElementById("sticky-colormind");
+      const stickyOffset = colorPalette.offsetTop;
 
-    function stickyColor() {
-      if (window.pageYOffset >= stickyOffset) {
-        colorPalette.classList.add("sticky");
-      } else {
-        colorPalette.classList.remove("sticky");
+      function stickyColor() {
+        if (window.pageYOffset >= stickyOffset) {
+          colorPalette.classList.add("sticky");
+        } else {
+          colorPalette.classList.remove("sticky");
+        }
       }
     }
   }, [window.pageYOffset]);
 
   return (
     <section id="contact-section">
-      <h1>Contact Section</h1>
-      <h3>5 of 6</h3>
+      <h1 className="title-bold">Contact Section</h1>
+      <h3 className="title-bold">5 of 6</h3>
       <div
         style={{
           display: "flex",

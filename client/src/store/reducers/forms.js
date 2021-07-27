@@ -8,14 +8,16 @@ import {
   SET_FOOTER_SECTION,
   SET_TEMPLATE_ID,
   SET_USER_ID,
-  SET_IS_DEPLOY
+  SET_IS_DEPLOY,
+  SET_IS_FOOTER_FINISHED,
 } from "../actionTypes";
 
 const initialState = {
   projectTitle: "",
-  templateId: '',
-  userId: '',
+  templateId: "",
+  userId: "",
   isDeploy: false,
+  isFooterFinished: false,
   navbar: {},
   main: {},
   about: {},
@@ -45,6 +47,8 @@ export default function formsReduces(state = initialState, action) {
     return { ...state, contact: action.payload };
   } else if (action.type === SET_FOOTER_SECTION) {
     return { ...state, footer: action.payload };
+  } else if (action.type === SET_IS_FOOTER_FINISHED) {
+    return { ...state, isFooterFinished: action.payload };
   }
   return state;
 }
