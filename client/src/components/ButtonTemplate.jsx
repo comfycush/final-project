@@ -22,7 +22,8 @@ export default function ButtonTemplate({ templateData }) {
         // dispatch(getTemplateId(templateId));
         // history.push(`/deploy/${templateId}`);
         history.push("/dashboard");
-        const host = "http://localhost:3000";
+        const host =
+          "http://web-builder-webber.s3-website-us-east-1.amazonaws.com";
         const win = window.open(
           `${host}/deploy/${
             templateData.navbar.companyName
