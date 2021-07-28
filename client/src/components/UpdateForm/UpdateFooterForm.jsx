@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import "../../styles/footerSection.css";
 import { setFooterSection, updateTemplate } from "../../store/actions/forms";
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
 import footer1 from "../../assets/footer1.png";
 import footer2 from "../../assets/footer2.png";
 import footer3 from "../../assets/footer3.png";
@@ -15,7 +15,7 @@ import { generateColorArray } from "../../store/actions/template";
 export default function UpdateFooterForm({ data, allData }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const location = useLocation();
+  // const location = useLocation();
   const [type, setType] = useState(data.type);
   const [backgroundColor, setBackgroundColor] = useState(data.backgroundColor);
   const [iconColor, setIconColor] = useState(data.iconColor);
@@ -118,7 +118,7 @@ export default function UpdateFooterForm({ data, allData }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="footer-section">

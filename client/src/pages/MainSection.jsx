@@ -62,14 +62,14 @@ function MainSection({ setIsOpen }) {
       new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setMainSection(dataMainSection));
-      const newestTemplate = {
-        ...stateNavbar,
-        main: dataMainSection,
-        about: {},
-        service: {},
-        contact: {},
-        footer: {},
-      };
+      // const newestTemplate = {
+      //   ...stateNavbar,
+      //   main: dataMainSection,
+      //   about: {},
+      //   service: {},
+      //   contact: {},
+      //   footer: {},
+      // };
       dispatch(updateTemplate(templateId, { main: dataMainSection }));
       dispatch(setToAboutSection(true));
       history.push({
@@ -113,7 +113,7 @@ function MainSection({ setIsOpen }) {
 
   useEffect(() => {
     dispatch(setMainImageUrl(""));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -136,7 +136,7 @@ function MainSection({ setIsOpen }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="main-section" onClick={() => setIsOpen(false)}>

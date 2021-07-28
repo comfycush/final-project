@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setAboutSection, updateTemplate } from "../../store/actions/forms";
 import { getImageUrl, setAboutImageUrl } from "../../store/actions/uploadImage";
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
 import { generateColorArray } from "../../store/actions/template";
 import about1 from "../../assets/about1.png";
 import about2 from "../../assets/about2.png";
@@ -16,7 +16,7 @@ import Color from "../Color";
 export default function UpdateAboutForm({ data, allData }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const location = useLocation();
+  // const location = useLocation();
   const [type, setType] = useState(data.type);
   const [headline, setHeadline] = useState(data.headline);
   const [headlineColor, setHeadlineColor] = useState(data.headlineColor);
@@ -42,9 +42,9 @@ export default function UpdateAboutForm({ data, allData }) {
 
   useEffect(() => {
     dispatch(setAboutImageUrl(data.image));
-  }, []);
+  }, [data.image, dispatch]);
 
-  console.log(aboutImageUrl, "<<< about url");
+  // console.log(aboutImageUrl, "<<< about url");
 
   function updateAboutSection(event) {
     event.preventDefault();
@@ -161,7 +161,7 @@ export default function UpdateAboutForm({ data, allData }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="about-section">

@@ -105,7 +105,7 @@ export function getImageUrl(file, code) {
       });
       const result = await response;
       const imageUrl = result.data.secure_url;
-      console.log(imageUrl, "<<<< imageUrl");
+      // console.log(imageUrl, "<<<< imageUrl");
       switch (code) {
         case "logo":
           dispatch(setLogoUrl(imageUrl));

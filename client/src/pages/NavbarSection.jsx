@@ -24,11 +24,11 @@ function NavbarSection({ setIsOpen }) {
   const [modalWidth, setModalWidth] = useState("");
   const uploadLoading = useSelector((state) => state.uploadImage.uploadLoading);
 
-  console.log(uploadLoading, "<<< loading state");
+  // console.log(uploadLoading, "<<< loading state");
 
   useEffect(() => {
     dispatch(setLogoUrl(""));
-  }, []);
+  }, [dispatch]);
 
   function viewImage(image, height, width) {
     setShowModal(true);
@@ -49,7 +49,7 @@ function NavbarSection({ setIsOpen }) {
 
   const stateIntro = location.state;
   // console.log(stateIntro, "<<<< stateIntro");
-  const navbar = useSelector((state) => state.forms.navbar);
+  // const navbar = useSelector((state) => state.forms.navbar);
   const templateId = useSelector((state) => state.forms.templateId);
 
   function addNavlink(status, input) {
@@ -106,7 +106,7 @@ function NavbarSection({ setIsOpen }) {
       };
       dispatch(updateTemplate(templateId, newestTemplate));
       dispatch(setToMainSection(true));
-      console.log(templateId, newestTemplate, "<<< update");
+      // console.log(templateId, newestTemplate, "<<< update");
       history.push({
         pathname: "/main-section",
         state: {
@@ -118,12 +118,12 @@ function NavbarSection({ setIsOpen }) {
   }
 
   function uploadLogo(file, code) {
-    console.log("to upload");
+    // console.log("to upload");
     dispatch(getImageUrl(file, code));
   }
 
   function generateColor() {
-    console.log(" mau manggil generate clor");
+    // console.log(" mau manggil generate clor");
     dispatch(generateColorArray());
   }
 
@@ -148,7 +148,7 @@ function NavbarSection({ setIsOpen }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="navbar-section" onClick={() => setIsOpen(false)}>

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { getReplyChatbot, setReplyChatbot } from "../store/actions/forms";
+import { getReplyChatbot } from "../store/actions/forms";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import speech from "speech-js";
@@ -12,17 +12,25 @@ function Sidebar({ isOpen, setIsOpen }) {
   const dispatch = useDispatch();
   const location = useLocation();
   const [isListening, setIsListening] = useState(false);
+  const [counterChatbot, setCounterChatbot] = useState(0);
+
+  // console.log(counterChatbot, "<< counter");
 
   useEffect(() => {
     if (msgReplyChatbot.message) {
-      console.log(msgReplyChatbot.message);
+      // console.log(msgReplyChatbot.message);
       if (!msgReplyChatbot.message) {
-        speech.synthesis("Sorry, can your repeat please", "en-US");
+        speech.synthesis("Sorry, can you repeat please", "en-US");
       } else {
+        setCounterChatbot(counterChatbot + 1);
         speech.synthesis(msgReplyChatbot.message, "en-US");
       }
+    } else {
+      if (counterChatbot !== 0) {
+        speech.synthesis("Sorry, can you repeat please", "en-US");
+      }
     }
-  }, [msgReplyChatbot]);
+  }, [msgReplyChatbot.message]);
 
   useEffect(() => {});
 
@@ -51,7 +59,7 @@ function Sidebar({ isOpen, setIsOpen }) {
 
   recognition.onresult = (e) => {
     const textListen = e.results[0][0].transcript.trim();
-    console.log(textListen.toLowerCase());
+    // console.log(textListen.toLowerCase());
     dispatch(getReplyChatbot(textListen.toLowerCase()));
     setIsListening(false);
   };

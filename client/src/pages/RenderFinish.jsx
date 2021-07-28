@@ -8,15 +8,15 @@ import ServiceTemplate from "../components/ServiceTemplate";
 import ContactTemplate from "../components/ContactTemplate";
 import FooterTemplate from "../components/FooterTemplate";
 import ButtonTemplate from "../components/ButtonTemplate";
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
 import { setIsFooterFinished } from "../store/actions/forms";
-import { deleteTemplate, setIsDeploy } from "../store/actions/forms";
+// import { deleteTemplate, setIsDeploy } from "../store/actions/forms";
 import { useParams } from "react-router";
 import { setReplyChatbot } from "../store/actions/forms";
 
 export default function RenderFinish({ setIsOpen }) {
-  const state = useSelector((state) => state.forms);
-  const location = useLocation();
+  // const state = useSelector((state) => state.forms);
+  // const location = useLocation();
   const { templateId } = useParams();
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
@@ -29,8 +29,8 @@ export default function RenderFinish({ setIsOpen }) {
     dispatch(setReplyChatbot(""));
     dispatch(setIsFooterFinished(false));
     dispatch(getTemplateId(templateId));
-    console.log(`masuk renderfinish`);
-  }, [dispatch]);
+    // console.log(`masuk renderfinish`);
+  }, [dispatch, setIsOpen, templateId]);
 
   if (templateIsLoading) {
     return (

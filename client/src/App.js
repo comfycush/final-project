@@ -1,5 +1,5 @@
 import "./App.css";
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import RenderFinish from "./pages/RenderFinish";
 import Dashboard from "./pages/Dashboard";
@@ -15,14 +15,14 @@ import Register from "./pages/Register";
 import { useLocation } from "react-router-dom";
 import UpdateSection from "./pages/UpdateSection";
 import Deploy from "./pages/Deploy";
-import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+// import { useParams } from "react-router";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import Homepage from "./pages/Homepage";
 
 function App() {
   const location = useLocation();
-  const { templateId } = useParams();
+  // const { templateId } = useParams();
   // const [showBar, setShowBar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const toNavbar = useSelector((state) => state.navigation.toNavbar);

@@ -1,5 +1,5 @@
 export default function ModalImage({ image, height, width, setShowModal }) {
-  console.log(image, height, width);
+  // console.log(image, height, width);
   return (
     <div className="modal" onClick={() => setShowModal(false)}>
       <img

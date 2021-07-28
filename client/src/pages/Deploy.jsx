@@ -8,33 +8,33 @@ import ServiceTemplate from "../components/ServiceTemplate";
 import ContactTemplate from "../components/ContactTemplate";
 import FooterTemplate from "../components/FooterTemplate";
 import ButtonTemplate from "../components/ButtonTemplate";
-import { useLocation } from "react-router";
-import { deleteTemplate } from "../store/actions/forms";
+// import { useLocation } from "react-router";
+// import { deleteTemplate } from "../store/actions/forms";
 import { useParams } from "react-router";
 import { setReplyChatbot } from "../store/actions/forms";
 
 export default function Deploy({ setIsOpen }) {
-  const state = useSelector((state) => state.forms);
-  const location = useLocation();
-  console.log(state);
+  // const state = useSelector((state) => state.forms);
+  // const location = useLocation();
+  // console.log(state);
   // const id = location.state.templateId ? location.state.templateId : 3;
   // const templateId = useSelector((state) => state.forms.templateId);
   const dispatch = useDispatch();
   const templateData = useSelector((state) => state.template.data);
-  console.log(templateData, `ini templateData <<<<<<<<<<<<<<<<`);
+  // console.log(templateData, `ini templateData <<<<<<<<<<<<<<<<`);
   const templateIsLoading = useSelector((state) => state.template.isLoading);
   const templateIsError = useSelector((state) => state.template.isError);
   const isDeploy = templateData.isDeploy;
-  console.log(isDeploy, `ini isDeploy dari deploy component`);
+  // console.log(isDeploy, `ini isDeploy dari deploy component`);
   // const isDeploy = templateData.isDeploy;
   const { templateId } = useParams();
-  console.log(templateId, `ini templateId dari component deploy`);
+  // console.log(templateId, `ini templateId dari component deploy`);
 
   useEffect(() => {
     setIsOpen(false);
     dispatch(setReplyChatbot(""));
     dispatch(getDeployTemplate(templateId));
-  }, [dispatch]);
+  }, [dispatch, templateId, setIsOpen]);
 
   if (templateIsLoading) {
     return (

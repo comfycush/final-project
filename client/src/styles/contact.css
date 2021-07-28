@@ -1,118 +1,3 @@
-.type-1-contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6rem 5rem;
-}
-
-.type-1-contact h1 {
-  font-size: 4rem;
-  margin-left: 2rem;
-  font-weight: bolder;
-  margin-bottom: 2rem;
-}
-
-.type-1-contact .card-contact img {
-  width: 7rem;
-  height: 7rem;
-  margin: 0;
-  margin-bottom: 2rem;
-}
-
-.type-1-contact .card-contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  /* max-width: 20rem; */
-  /* width: 30rem; */
-  max-width: 30rem;
-  text-align: center;
-  margin: 0 5rem;
-}
-
-.type-1-contact .card-contact p {
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
-.type-2-contact {
-  display: flex;
-  padding: 6rem 8rem;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.type-2-contact h1 {
-  font-size: 4rem;
-  width: 30rem;
-  font-weight: bolder;
-}
-
-.type-2-contact .contact-inside {
-  /* margin-left: 3rem; */
-  max-width: 40rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.type-2-contact .card-contact img {
-  width: 6rem;
-  height: 6rem;
-  margin-right: 3rem;
-}
-
-.type-2-contact .card-contact {
-  display: flex;
-  margin: 3rem 0;
-  align-items: center;
-  font-weight: bold;
-  font-size: 1.5rem;
-}
-
-.type-3-contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 6rem 5rem;
-}
-
-.type-3-contact h1 {
-  font-size: 4rem;
-  font-weight: bolder;
-}
-
-.type-3-contact .contact-inside {
-  margin-top: 4rem;
-}
-
-.type-3-contact img {
-  width: 8rem;
-  height: 8rem;
-  margin: 0;
-}
-
-.type-3-contact .card-contact {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 35rem;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.type-3-contact p {
-  font-size: 2rem;
-  font-weight: bold;
-  margin: 2rem 0 3rem 0;
-}
-
-.update-contact-section button {
-  background-color: #8d2828;
-  color: white;
-}
-
 @media (min-width: 1025px) {
   .type-1-contact .contact-inside {
     display: flex;
@@ -122,17 +7,152 @@
     margin-top: 5rem;
     margin-bottom: 2rem;
   }
+  .type-1-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem 5rem;
+  }
+
+  .type-1-contact h1 {
+    font-size: 4rem;
+    margin-left: 2rem;
+    font-weight: bolder;
+    margin-bottom: 2rem;
+  }
+
+  .type-1-contact .card-contact img {
+    width: 7rem;
+    height: 7rem;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+
+  .type-1-contact .card-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* max-width: 20rem; */
+    /* width: 30rem; */
+    max-width: 30rem;
+    text-align: center;
+    margin: 0 5rem;
+  }
+
+  .type-1-contact .card-contact p {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .type-2-contact {
+    display: flex;
+    padding: 6rem 8rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .type-2-contact h1 {
+    font-size: 4rem;
+    width: 30rem;
+    font-weight: bolder;
+  }
+
+  .type-2-contact .contact-inside {
+    /* margin-left: 3rem; */
+    max-width: 40rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .type-2-contact .card-contact img {
+    width: 6rem;
+    height: 6rem;
+    margin-right: 3rem;
+  }
+
+  .type-2-contact .card-contact {
+    display: flex;
+    margin: 3rem 0;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .type-3-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 6rem 5rem;
+  }
+
+  .type-3-contact h1 {
+    font-size: 4rem;
+    font-weight: bolder;
+  }
+
+  .type-3-contact .contact-inside {
+    margin-top: 4rem;
+  }
+
+  .type-3-contact img {
+    width: 8rem;
+    height: 8rem;
+    margin: 0;
+  }
+
+  .type-3-contact .card-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 35rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .type-3-contact p {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 2rem 0 3rem 0;
+  }
+
+  .update-contact-section button {
+    background-color: #8d2828;
+    color: white;
+  }
 }
 
 @media (max-width: 480px) {
+  .type-1-contact h1,
+  .type-2-contact h1,
+  .type-3-contact h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
   .contact-inside {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    align-items: center;
+    padding: 1rem 2rem;
   }
 
   .card-contact {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .card-contact p {
+    font-size: 0.8rem;
+  }
+
+  .card-contact img {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 1rem;
   }
 }

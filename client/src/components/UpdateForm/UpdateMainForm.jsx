@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { setMainSection, updateTemplate } from "../../store/actions/forms";
 import "../../styles/mainSection.css";
 import { getImageUrl, setMainImageUrl } from "../../store/actions/uploadImage";
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
 import { generateColorArray } from "../../store/actions/template";
 import ModalImage from "../ModalImage";
 import main1 from "../../assets/main1.png";
@@ -16,7 +16,7 @@ import Color from "../Color";
 function UpdateMainSection({ data, allData }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const location = useLocation();
+  // const location = useLocation();
   const [headline, setHeadline] = useState(data.headline);
   const [headlineColor, setHeadlineColor] = useState(data.headlineColor);
   // const [image, setImage] = useState('')
@@ -48,7 +48,7 @@ function UpdateMainSection({ data, allData }) {
 
   useEffect(() => {
     dispatch(setMainImageUrl(data.image));
-  }, []);
+  }, [dispatch, data.image]);
 
   function updateMainSection(event) {
     event.preventDefault();
@@ -164,7 +164,7 @@ function UpdateMainSection({ data, allData }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="main-section">

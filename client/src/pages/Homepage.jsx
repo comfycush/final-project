@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 import { HashLink } from "react-router-hash-link";
 import "../styles/homepage.css";
 import Aos from "aos";
@@ -9,7 +9,7 @@ import { setReplyChatbot } from "../store/actions/forms";
 import { useDispatch } from "react-redux";
 
 function Homepage({ setIsOpen }) {
-  const history = useHistory();
+  // const history = useHistory();
   const dispatch = useDispatch();
   useEffect(() => {
     Aos.init({ duration: 1500 });
@@ -18,7 +18,7 @@ function Homepage({ setIsOpen }) {
   useEffect(() => {
     setIsOpen(false);
     dispatch(setReplyChatbot(""));
-  }, []);
+  }, [dispatch, setIsOpen]);
 
   return (
     <div className="wrapper-homepage">
@@ -114,6 +114,7 @@ function Homepage({ setIsOpen }) {
             <img
               className="object-cover object-center w-full h-64 rounded-md shadow"
               src="https://cdn.discordapp.com/attachments/867703929218400256/869628893819203664/ezgif-2-7bff5e64d2a8.gif"
+              alt="home"
             />
             <h3
               className="mt-2"
@@ -136,6 +137,7 @@ function Homepage({ setIsOpen }) {
             <img
               className="object-cover object-center w-full h-64 rounded-md shadow"
               src="https://cdn.discordapp.com/attachments/867703929218400256/869628920272670760/CPT2107280005-1882x936-min.gif"
+              alt="home"
             />
             <h3
               className="mt-2"

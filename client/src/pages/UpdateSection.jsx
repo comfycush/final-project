@@ -2,22 +2,30 @@ import React from "react";
 import "../styles/updateSection.css";
 import { useLocation } from "react-router-dom";
 import UpdateNavbarForm from "../components/UpdateForm/UpdateNavbarForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import UpdateMainForm from "../components/UpdateForm/UpdateMainForm";
 import UpdateAboutForm from "../components/UpdateForm/UpdateAboutForm";
 import UpdateServiceForm from "../components/UpdateForm/UpdateServiceForm";
 import UpdateContactForm from "../components/UpdateForm/UpdateContactForm";
 import UpdateFooterForm from "../components/UpdateForm/UpdateFooterForm";
+import { setReplyChatbot } from "../store/actions/forms";
 
 function UpdateSection({ setIsOpen }) {
   const location = useLocation();
   const section = location.state.section;
-  const dataSection = location.state.data;
+  // const dataSection = location.state.data;
   const allData = location.state.allData;
   const [selectedSection, setSelectedSection] = useState(section);
   // const [selectedSection, setSelectedSection] = useState("navbar");
   // console.log(allData, "<<< ALL DATA");
   // setSelectedSection(section);
+
+  useEffect(() => {
+    setReplyChatbot({
+      message: "",
+    });
+  }, []);
+
   return (
     <section
       id="update-section"

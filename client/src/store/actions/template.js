@@ -44,11 +44,11 @@ export function getTemplateId(id) {
         headers: { access_token: localStorage.access_token },
       });
       const data = await response.json();
-      console.log(data, `ini data fetch by template id di template.js`);
+      // console.log(data, `ini data fetch by template id di template.js`);
       dispatch(setTemplate(data));
       dispatch(setIsDeploy(data.isDeploy));
     } catch (err) {
-      console.log(err, "<<< ERROR DI ACTIONS");
+      // console.log(err, "<<< ERROR DI ACTIONS");
       dispatch(setIsError(true));
     } finally {
       dispatch(setIsLoading(false));
@@ -62,10 +62,10 @@ export function getDeployTemplate(id) {
     try {
       const response = await fetch(`http://34.238.245.72:4000/${id}`);
       const data = await response.json();
-      console.log(data, `ini data fetch by template id di template.js`);
+      // console.log(data, `ini data fetch by template id di template.js`);
       dispatch(setTemplate(data));
     } catch (err) {
-      console.log(err, "<<< ERROR DI ACTIONS");
+      // console.log(err, "<<< ERROR DI ACTIONS");
       dispatch(setIsError(true));
     } finally {
       dispatch(setIsLoading(false));
@@ -82,7 +82,7 @@ export function generateColorArray() {
       data: { model: "default" },
     })
       .then(({ data }) => {
-        console.log(" berhasil get color");
+        // console.log(" berhasil get color");
         let colorArray = data.result.map((el) => `#${convert.rgb.hex(el)}`);
         dispatch(setColorArray(colorArray));
         localStorage.setItem("colorArray", JSON.stringify(colorArray));

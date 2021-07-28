@@ -16,7 +16,7 @@ export default function Register() {
   useEffect(() => {
     Aos.init({ duration: 1500 });
     dispatch(setReplyChatbot(""));
-  }, []);
+  }, [dispatch]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -110,13 +110,13 @@ export default function Register() {
                 </div>
                 <p className="text-sm text-center text-gray-400">
                   Already have an account?{" "}
-                  <a
-                    onClick={() => history.push("/login")}
+                  <Link
+                    to="/login"
                     style={{ color: "#125D98" }}
                     className="focus:outline-none focus:underline focus:text-indigo-500"
                   >
                     Sign in
-                  </a>
+                  </Link>
                   .
                 </p>
               </form>

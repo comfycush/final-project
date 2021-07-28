@@ -10,16 +10,29 @@ import { useHistory } from "react-router-dom";
 function Dashboard({ setIsOpen }) {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.dashboard.data);
+  const isLoading = useSelector((state) => state.dashboard.loading);
   const history = useHistory();
 
   useEffect(() => {
     dispatch(generateColorArray());
     dispatch(fetchDashboard());
-  }, []);
+  }, [dispatch]);
 
   // useEffect(() => {
   //   dispatch(generateColorArray());
   // }, []);
+
+  if (isLoading) {
+    return (
+      <div className="loading-render">
+        <img
+          src="https://ik.imagekit.io/vrvrzbdh5xfk/loading_finish_NuWE9NEI0.gif?updatedAt=1627461972812"
+          alt="loading"
+        />
+        <h1>Please Wait...</h1>
+      </div>
+    );
+  }
 
   return (
     <section id="content" onClick={() => setIsOpen(false)}>

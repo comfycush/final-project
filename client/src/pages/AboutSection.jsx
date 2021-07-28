@@ -27,7 +27,7 @@ function AboutSection({ setIsOpen }) {
   const [paragraphColor, setParagraphColor] = useState("#000000");
   const aboutImageUrl = useSelector((state) => state.uploadImage.aboutImageUrl);
   const uploadLoading = useSelector((state) => state.uploadImage.uploadLoading);
-  console.log(uploadLoading, "<<< loading state");
+  // console.log(uploadLoading, "<<< loading state");
 
   const [showModal, setShowModal] = useState(false);
   const [modalImage, setModalImage] = useState("");
@@ -66,13 +66,13 @@ function AboutSection({ setIsOpen }) {
       new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setAboutSection(dataAboutSection));
-      const newestTemplate = {
-        ...stateMain,
-        about: dataAboutSection,
-        service: {},
-        contact: {},
-        footer: {},
-      };
+      // const newestTemplate = {
+      //   ...stateMain,
+      //   about: dataAboutSection,
+      //   service: {},
+      //   contact: {},
+      //   footer: {},
+      // };
       dispatch(updateTemplate(templateId, { about: dataAboutSection }));
       dispatch(setToServiceSection(true));
       history.push({
@@ -119,7 +119,7 @@ function AboutSection({ setIsOpen }) {
 
   useEffect(() => {
     dispatch(setAboutImageUrl(""));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -142,7 +142,7 @@ function AboutSection({ setIsOpen }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="about-section" onClick={() => setIsOpen(false)}>
@@ -247,9 +247,10 @@ function AboutSection({ setIsOpen }) {
               aboutImageUrl && (
                 <img
                   style={{
-                    width: "10rem",
+                    width: "15rem",
                     height: "10rem",
                     objectFit: "cover",
+                    borderRadius: "0.5rem",
                   }}
                   src={aboutImageUrl}
                   alt="about"

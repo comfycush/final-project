@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import swal from "sweetalert";
 import "../styles/introSection.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setProjectTitle } from "../store/actions/forms";
 import { createTemplate } from "../store/actions/forms";
@@ -44,11 +44,14 @@ function IntroSection({ setIsOpen }) {
           <input
             required
             onChange={(event) => setProTitle(event.target.value)}
-            style={{ marginLeft: "1rem" }}
+            style={{
+              marginLeft: "1rem",
+              height: "2.5rem",
+              borderColor: "#125D98",
+            }}
             type="text"
             name="project-title"
             id="project-title"
-            style={{ height: "2.5rem", borderColor: "#125D98" }}
             placeholder="Ex. Whimson Website"
           />
         </div>

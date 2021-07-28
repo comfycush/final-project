@@ -10,7 +10,7 @@ import {
   setPhoneIconUrl,
   setAddressIconUrl,
 } from "../../store/actions/uploadImage";
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
 import contact1 from "../../assets/contact1.png";
 import contact2 from "../../assets/contact2.png";
 import contact3 from "../../assets/contact3.png";
@@ -21,7 +21,7 @@ import { generateColorArray } from "../../store/actions/template";
 export default function UpdateContactForm({ data, allData }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const location = useLocation();
+  // const location = useLocation();
   const [type, setType] = useState(data.type);
   const [headline, setHeadline] = useState(data.headline);
   const [headlineColor, setHeadlineColor] = useState(data.headlineColor);
@@ -62,7 +62,7 @@ export default function UpdateContactForm({ data, allData }) {
     dispatch(setEmailIconUrl(data.emailIcon));
     dispatch(setPhoneIconUrl(data.phoneIcon));
     dispatch(setAddressIconUrl(data.addressIcon));
-  }, []);
+  }, [data.emailIcon, data.phoneIcon, data.addressIcon, dispatch]);
 
   function updateContactSection() {
     const dataContactSection = {
@@ -187,7 +187,7 @@ export default function UpdateContactForm({ data, allData }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   function generateColor() {
     dispatch(generateColorArray());

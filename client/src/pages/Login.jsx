@@ -18,7 +18,7 @@ export default function Login() {
   useEffect(() => {
     Aos.init({ duration: 1500 });
     dispatch(setReplyChatbot(""));
-  }, []);
+  }, [dispatch]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -81,7 +81,11 @@ export default function Login() {
               />
             </div>
             <div className="m-7" style={{ marginTop: "2rem" }}>
-              <form onSubmit={handleSubmit} action>
+              <form
+                className="flex flex-col items-center"
+                onSubmit={handleSubmit}
+                action
+              >
                 <div className="mb-6">
                   <label
                     htmlFor="email"
@@ -99,7 +103,7 @@ export default function Login() {
                     className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
                   />
                 </div>
-                <div className="mb-6">
+                <div className="mb-3">
                   <div
                     style={{ marginBottom: "0.5rem" }}
                     className="flex justify-between mb-2"
@@ -119,32 +123,37 @@ export default function Login() {
                     placeholder="Your Password"
                     className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
                   />
-                </div>
-                <div className="mb-6">
-                  <button
-                    type="submit"
-                    style={{ backgroundColor: "#125D98" }}
-                    className="w-full px-3 py-4 text-white rounded-md focus:outline-none"
-                  >
-                    Sign in
-                  </button>
+                  <div className="mb-6">
+                    <button
+                      type="submit"
+                      style={{
+                        backgroundColor: "#125D98",
+                        // display: "flex",
+                        // padding: "1rem 8.8rem",
+                      }}
+                      className="w-full text-lg font-bold px-3 py-4 mt-5 text-white rounded-md focus:outline-none"
+                    >
+                      Sign in
+                    </button>
+                  </div>
                 </div>
                 <div
-                  style={{
-                    marginBottom: "1rem",
-                    marginTop: 20,
-                    marginLeft: 110,
-                  }}
+                  // style={{
+                  //   marginBottom: "1rem",
+                  //   marginTop: 20,
+                  //   marginLeft: 110,
+                  // }}
+                  className="mb-5"
                 >
                   <GoogleLogin
                     clientId={
                       "1035521074618-nkotpceb3p60muu0h5rmf6hn5pe72dtc.apps.googleusercontent.com"
                     }
-                    style={{ padding: "1rem 10rem" }}
                     buttonText="Log in with Google"
                     onSuccess={handleLogin}
                     onFailure={handleLogin}
                     cookiePolicy={"single_host_origin"}
+                    className="w-full"
                   />
                 </div>
                 <p className="text-sm text-center text-gray-400">

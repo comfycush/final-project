@@ -13,7 +13,7 @@ import ModalImage from "../../components/ModalImage";
 import Color from "../Color";
 
 export default function UpdateNavbarForm({ data, allData }) {
-  console.log(allData, "<< ALL DATA NAVBAR FORM");
+  // console.log(allData, "<< ALL DATA NAVBAR FORM");
   const dispatch = useDispatch();
   const history = useHistory();
   const [type, setType] = useState(data.type);
@@ -36,7 +36,7 @@ export default function UpdateNavbarForm({ data, allData }) {
 
   useEffect(() => {
     dispatch(setLogoUrl(data.logo));
-  }, []);
+  }, [dispatch, data.logo]);
 
   function addNavlink(status, input) {
     if (status) {
@@ -112,7 +112,7 @@ export default function UpdateNavbarForm({ data, allData }) {
   }
 
   function generateColor() {
-    console.log(" mau manggil generate clor");
+    // console.log(" mau manggil generate clor");
     dispatch(generateColorArray());
   }
 
@@ -144,7 +144,7 @@ export default function UpdateNavbarForm({ data, allData }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="navbar-section">

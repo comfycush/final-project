@@ -12,8 +12,6 @@ import {
   SET_IS_FOOTER_FINISHED,
   SET_REPLY_CHATBOT,
 } from "../actionTypes";
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { fetchDashboard } from "./dashboard";
 
 export function setTemplateId(input) {
@@ -112,13 +110,13 @@ export function createTemplate(data) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, `ini data`);
+        // console.log(data, `ini data`);
         dispatch(setTemplateId(data.id));
         dispatch(setUserId(data.userId));
         dispatch(setProjectTitle(data.projectTitle));
       })
       .catch((err) => {
-        console.log(err, `ini error`);
+        // console.log(err, `ini error`);
       });
   };
 }
@@ -141,7 +139,7 @@ export function updateTemplate(id, data) {
         })
 
         .catch((err) => {
-          console.log(err, `ini error update`);
+          // console.log(err, `ini error update`);
           reject(err);
         });
     });
@@ -159,7 +157,7 @@ export function deleteTemplate(id) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data, `ini data delete`);
+        // console.log(data, `ini data delete`);
         dispatch(fetchDashboard());
       })
       .catch((err) => console.log(err, `ini error update`));
@@ -180,11 +178,11 @@ export function changeIsDeploy(id, data) {
         .then((res) => res.json())
         .then((data) => {
           dispatch(setIsDeploy(true));
-          console.log(data, `ini data patch`);
+          // console.log(data, `ini data patch`);
           resolve(data);
         })
         .catch((err) => {
-          console.log(err, `ini error patch`);
+          // console.log(err, `ini error patch`);
           reject(err);
         });
     });
@@ -193,7 +191,7 @@ export function changeIsDeploy(id, data) {
 
 export function getReplyChatbot(msg) {
   return async (dispatch) => {
-    console.log(msg, "masuk action reply");
+    // console.log(msg, "masuk action reply");
     try {
       const response = await fetch("http://34.238.245.72:4000/chat", {
         method: "POST",
@@ -204,7 +202,7 @@ export function getReplyChatbot(msg) {
       });
       const replyChatbot = await response.json();
       dispatch(setReplyChatbot(replyChatbot));
-      console.log(replyChatbot, "<<< chatbot reply");
+      // console.log(replyChatbot, "<<< chatbot reply");
     } catch (err) {
       console.log(err, "<<< error chatbot");
     }

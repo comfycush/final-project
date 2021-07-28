@@ -90,11 +90,11 @@ function ContactSection({ setIsOpen }) {
       new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setContactSection(dataContactSection));
-      const newestTemplate = {
-        ...stateService,
-        contact: dataContactSection,
-        footer: {},
-      };
+      // const newestTemplate = {
+      //   ...stateService,
+      //   contact: dataContactSection,
+      //   footer: {},
+      // };
       dispatch(updateTemplate(templateId, { contact: dataContactSection }));
       dispatch(setToFooterSection(true));
       history.push({
@@ -141,7 +141,7 @@ function ContactSection({ setIsOpen }) {
     dispatch(setEmailIconUrl(""));
     dispatch(setPhoneIconUrl(""));
     dispatch(setAddressIconUrl(""));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -164,7 +164,7 @@ function ContactSection({ setIsOpen }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="contact-section" onClick={() => setIsOpen(false)}>

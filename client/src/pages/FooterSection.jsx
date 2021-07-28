@@ -6,7 +6,7 @@ import "../styles/footerSection.css";
 import Color from "../components/Color";
 import { generateColorArray } from "../store/actions/template";
 import { setFooterSection, updateTemplate } from "../store/actions/forms";
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
 import footer1 from "../assets/footer1.png";
 import footer2 from "../assets/footer2.png";
 import footer3 from "../assets/footer3.png";
@@ -15,7 +15,7 @@ import ModalImage from "../components/ModalImage";
 function FooterSection({ setIsOpen }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const location = useLocation();
+  // const location = useLocation();
   const [type, setType] = useState(null);
   const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
   const [iconColor, setIconColor] = useState("");
@@ -25,7 +25,7 @@ function FooterSection({ setIsOpen }) {
   const [linkedin, setLinkedin] = useState("");
   const [youtube, setYoutube] = useState("");
   const [companyNameColor, setCompanyNameColor] = useState("#000000");
-  const isFooterFinished = useSelector((state) => state.forms.isFooterFinished);
+  // const isFooterFinished = useSelector((state) => state.forms.isFooterFinished);
 
   const [showModal, setShowModal] = useState(false);
   const [modalImage, setModalImage] = useState("");
@@ -39,7 +39,7 @@ function FooterSection({ setIsOpen }) {
     setModalWidth(width);
   }
 
-  const stateContact = location.state;
+  // const stateContact = location.state;
   const templateId = useSelector((state) => state.forms.templateId);
   // console.log(templateId, `ini templateId`);
 
@@ -70,10 +70,10 @@ function FooterSection({ setIsOpen }) {
       new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setFooterSection(dataFooterSection));
-      const newestTemplate = {
-        ...stateContact,
-        footer: dataFooterSection,
-      };
+      // const newestTemplate = {
+      //   ...stateContact,
+      //   footer: dataFooterSection,
+      // };
       dispatch(
         updateTemplate(templateId, { footer: dataFooterSection }, "footer")
       ).then(() => {
@@ -112,7 +112,7 @@ function FooterSection({ setIsOpen }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="footer-section" onClick={() => setIsOpen(false)}>

@@ -10,7 +10,7 @@ import {
   setCardImage2Url,
   setCardImage3Url,
 } from "../../store/actions/uploadImage";
-import { useLocation } from "react-router";
+// import { useLocation } from "react-router";
 import { generateColorArray } from "../../store/actions/template";
 import service1 from "../../assets/service1.png";
 import service2 from "../../assets/service2.png";
@@ -19,10 +19,10 @@ import Color from "../Color";
 import ModalImage from "../ModalImage";
 
 export default function UpdateServiceSection({ data, allData }) {
-  console.log(data, "<<< data");
+  // console.log(data, "<<< data");
   const dispatch = useDispatch();
   const history = useHistory();
-  const location = useLocation();
+  // const location = useLocation();
   const [type, setType] = useState(data.type);
   const [headline, setHeadline] = useState(data.headline);
   const [headlineColor, setHeadlineColor] = useState(data.headlineColor);
@@ -76,9 +76,9 @@ export default function UpdateServiceSection({ data, allData }) {
     dispatch(setCardImage1Url(data.cardImage1));
     dispatch(setCardImage2Url(data.cardImage2));
     dispatch(setCardImage3Url(data.cardImage3));
-  }, []);
+  }, [data.cardImage1, data.cardImage2, data.cardImage3, dispatch]);
 
-  console.log(data.cardImage1, "data card image 1");
+  // console.log(data.cardImage1, "data card image 1");
 
   function updateServiceSection() {
     const dataServiceSection = {
@@ -226,7 +226,7 @@ export default function UpdateServiceSection({ data, allData }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="service-section">

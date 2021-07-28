@@ -108,12 +108,12 @@ function ServiceSection({ setIsOpen }) {
       new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setServiceSection(dataServiceSection));
-      const newestTemplate = {
-        ...stateAbout,
-        service: dataServiceSection,
-        contact: {},
-        footer: {},
-      };
+      // const newestTemplate = {
+      //   ...stateAbout,
+      //   service: dataServiceSection,
+      //   contact: {},
+      //   footer: {},
+      // };
       dispatch(updateTemplate(templateId, { service: dataServiceSection }));
       dispatch(setToContactSection(true));
       history.push({
@@ -173,7 +173,7 @@ function ServiceSection({ setIsOpen }) {
   }
 
   function addCounter() {
-    const newCounter = counter;
+    // const newCounter = counter;
     setCounter((counter += 1));
   }
 
@@ -181,7 +181,7 @@ function ServiceSection({ setIsOpen }) {
     dispatch(setCardImage1Url(""));
     dispatch(setCardImage2Url(""));
     dispatch(setCardImage3Url(""));
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -204,7 +204,7 @@ function ServiceSection({ setIsOpen }) {
         }
       }
     }
-  }, [window.pageYOffset]);
+  }, []);
 
   return (
     <section id="service-section" onClick={() => setIsOpen(false)}>
