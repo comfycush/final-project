@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import "../../styles/contactSection.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -80,15 +80,15 @@ export default function UpdateContactForm({ data, allData }) {
     };
 
     if (!dataContactSection.headline) {
-      swal("Please fill your headline");
+      new Swal("Please fill the headline", "", "error");
     } else if (
       !dataContactSection.email &&
       !dataContactSection.phone &&
       !dataContactSection.address
     ) {
-      swal("Please fill your information minimum 1");
+      new Swal("Please fill at least 1 contact information", "", "error");
     } else if (!dataContactSection.type) {
-      swal("Please choose your required template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setContactSection(dataContactSection));
       const updatedTemplate = {
@@ -223,7 +223,7 @@ export default function UpdateContactForm({ data, allData }) {
                 onChange={(event) => setHeadlineColor(event.target.value)}
                 type="color"
                 name="contact-headline"
-                className="contact-headline"
+                className="contact-headline mt-half"
                 value={headlineColor}
               />
             </div>
@@ -251,7 +251,7 @@ export default function UpdateContactForm({ data, allData }) {
                 onChange={(event) => setEmailColor(event.target.value)}
                 type="color"
                 name="contact-email"
-                className="contact-email"
+                className="contact-email mt-half"
                 style={{ marginBottom: "1rem" }}
                 value={emailColor}
               />
@@ -265,6 +265,7 @@ export default function UpdateContactForm({ data, allData }) {
                 Icon
               </label>
               <input
+                id="email-icon-update"
                 onChange={(event) =>
                   uploadContactIcon(event.target.files[0], "email")
                 }
@@ -281,7 +282,10 @@ export default function UpdateContactForm({ data, allData }) {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setEmailIconUrl(""))}
+                onClick={() => {
+                  dispatch(setEmailIconUrl(""));
+                  document.getElementById("email-icon-update").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image
@@ -314,7 +318,7 @@ export default function UpdateContactForm({ data, allData }) {
                 onChange={(event) => setPhoneColor(event.target.value)}
                 type="color"
                 name="contact-phone"
-                className="contact-phone"
+                className="contact-phone mt-half"
                 value={phoneColor}
               />
             </div>
@@ -327,6 +331,7 @@ export default function UpdateContactForm({ data, allData }) {
                 Icon
               </label>
               <input
+                id="phone-icon-update"
                 onChange={(event) =>
                   uploadContactIcon(event.target.files[0], "phone")
                 }
@@ -343,7 +348,10 @@ export default function UpdateContactForm({ data, allData }) {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setPhoneIconUrl(""))}
+                onClick={() => {
+                  dispatch(setPhoneIconUrl(""));
+                  document.getElementById("phone-icon-update").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image
@@ -372,7 +380,7 @@ export default function UpdateContactForm({ data, allData }) {
                 onChange={(event) => setAddressColor(event.target.value)}
                 type="color"
                 name="contact-address"
-                className="contact-address"
+                className="contact-address mt-half"
                 value={addressColor}
               />
             </div>
@@ -381,6 +389,7 @@ export default function UpdateContactForm({ data, allData }) {
                 Icon
               </label>
               <input
+                id="address-icon-update"
                 onChange={(event) =>
                   uploadContactIcon(event.target.files[0], "address")
                 }
@@ -397,7 +406,10 @@ export default function UpdateContactForm({ data, allData }) {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setAddressIconUrl(""))}
+                onClick={() => {
+                  dispatch(setAddressIconUrl(""));
+                  document.getElementById("address-icon-update").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
               >
                 Remove Image

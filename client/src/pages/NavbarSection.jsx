@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setNavbarSection, updateTemplate } from "../store/actions/forms";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { getImageUrl, setLogoUrl } from "../store/actions/uploadImage";
 import "../styles/navbarSection.css";
 import Color from "../components/Color";
@@ -14,7 +14,7 @@ import navbar3 from "../assets/navbar3.png";
 import ModalImage from "../components/ModalImage";
 import { setToMainSection } from "../store/actions/navigationGuard";
 
-function NavbarSection(props) {
+function NavbarSection({ setIsOpen }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const location = useLocation();
@@ -41,6 +41,8 @@ function NavbarSection(props) {
   const [navlinks, setNavlinks] = useState([]);
   const [navlinksColor, setNavlinksColor] = useState("#000000");
   const logoUrl = useSelector((state) => state.uploadImage.logoUrl);
+
+  console.log(logoUrl, "<<<<< LOGO URL");
 
   const stateIntro = location.state;
   // console.log(stateIntro, "<<<< stateIntro");
@@ -83,11 +85,11 @@ function NavbarSection(props) {
     };
 
     if (!dataNavbarSection.companyName && !dataNavbarSection.logo) {
-      swal("Please fill in your company name or company logo");
+      new Swal("Please fill in your company name or company logo", "", "error");
     } else if (sortNavlinks.length === 0) {
-      swal("Please choose minimum 1 link");
+      new Swal("Please choose at least 1 navigation link", "", "error");
     } else if (!dataNavbarSection.type) {
-      swal("please choose your required template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setNavbarSection(dataNavbarSection));
       const newestTemplate = {
@@ -113,6 +115,7 @@ function NavbarSection(props) {
   }
 
   function uploadLogo(file, code) {
+    console.log("to upload");
     dispatch(getImageUrl(file, code));
   }
 
@@ -145,7 +148,7 @@ function NavbarSection(props) {
   }, [window.pageYOffset]);
 
   return (
-    <section id="navbar-section">
+    <section id="navbar-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">Navbar Section</h1>
       <h3 className="title-bold">1 of 6</h3>
       <div
@@ -172,6 +175,7 @@ function NavbarSection(props) {
                 type="text"
                 name="company-title"
                 className="company-title"
+                placeholder="Ex. Whimson Law Firm"
               />
             </div>
             <div className="form-align-center">
@@ -199,6 +203,7 @@ function NavbarSection(props) {
                 Logo
               </label>
               <input
+                id="input-logo"
                 onChange={(event) => uploadLogo(event.target.files[0], "logo")}
                 type="file"
                 name="company-logo"
@@ -214,7 +219,10 @@ function NavbarSection(props) {
               )}
               <button
                 className="btn btn-remove-image"
-                onClick={() => dispatch(setLogoUrl(""))}
+                onClick={() => {
+                  dispatch(setLogoUrl(""));
+                  document.getElementById("input-logo").value = "";
+                }}
                 style={{ margin: "0rem", marginTop: "1rem" }}
               >
                 Remove Image
@@ -306,7 +314,7 @@ function NavbarSection(props) {
               />
             </div>
           </div>
-          <div className="form-align-center mt-1">
+          <div className="form-align-center mt-2">
             <label
               htmlFor="background-color-navbar"
               style={{
@@ -328,7 +336,7 @@ function NavbarSection(props) {
           <div className="selection-navbar">
             <label
               htmlFor="template-layout"
-              style={{ fontSize: "2rem", margin: "1.5rem 0" }}
+              style={{ fontSize: "2rem", margin: "2rem 0" }}
             >
               Template Layout
             </label>

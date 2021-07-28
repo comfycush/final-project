@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { setMainSection, updateTemplate } from "../../store/actions/forms";
@@ -61,11 +61,11 @@ function UpdateMainSection({ data, allData }) {
     };
 
     if (!dataMainSection.headline) {
-      swal("Please fill your headline");
+      new Swal("Please fill the headline", "", "error");
     } else if (!dataMainSection.image) {
-      swal("Please fill your image");
+      new Swal("Please fill the image", "", "error");
     } else if (!dataMainSection.type) {
-      swal("Please choose your require template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setMainSection(dataMainSection));
       const updatedTemplate = {
@@ -205,7 +205,7 @@ function UpdateMainSection({ data, allData }) {
                 onChange={(event) => setHeadlineColor(event.target.value)}
                 type="color"
                 name="main-headline"
-                className="main-headline"
+                className="main-headline mt-half"
                 style={{ border: "none" }}
                 value={headlineColor}
               />
@@ -243,7 +243,7 @@ function UpdateMainSection({ data, allData }) {
                 onChange={(event) => setsubHeadlineColor(event.target.value)}
                 type="color"
                 name="main-subheadline"
-                className="main-subheadline"
+                className="main-subheadline mt-half"
                 style={{ border: "none" }}
                 value={subHeadlineColor}
               />
@@ -258,6 +258,7 @@ function UpdateMainSection({ data, allData }) {
               Image
             </label>
             <input
+              id="main-image-update"
               onChange={(event) =>
                 uploadMainImage(event.target.files[0], "main")
               }
@@ -275,7 +276,10 @@ function UpdateMainSection({ data, allData }) {
             )}
             <button
               className="btn btn-remove-image"
-              onClick={() => dispatch(setMainImageUrl(""))}
+              onClick={() => {
+                dispatch(setMainImageUrl(""));
+                document.getElementById("main-image-update").value = "";
+              }}
               style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
             >
               Remove Image

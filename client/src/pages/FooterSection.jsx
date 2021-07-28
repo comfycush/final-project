@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import "../styles/footerSection.css";
 import Color from "../components/Color";
 import { generateColorArray } from "../store/actions/template";
@@ -12,7 +12,7 @@ import footer2 from "../assets/footer2.png";
 import footer3 from "../assets/footer3.png";
 import ModalImage from "../components/ModalImage";
 
-function FooterSection() {
+function FooterSection({ setIsOpen }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -63,11 +63,11 @@ function FooterSection() {
       !dataFooterSection.instagram &&
       !dataFooterSection.youtube
     ) {
-      swal("Please fill your social media link minimum 1");
+      new Swal("Please fill at least 1 social media", "", "error");
     } else if (!dataFooterSection.iconColor) {
-      swal("Please choose your required icon color");
+      new Swal("Please choose the socila media icon color", "", "error");
     } else if (!dataFooterSection.type) {
-      swal("Please choose your required template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setFooterSection(dataFooterSection));
       const newestTemplate = {
@@ -115,7 +115,7 @@ function FooterSection() {
   }, [window.pageYOffset]);
 
   return (
-    <section id="footer-section">
+    <section id="footer-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">Footer Section</h1>
       <h3 className="title-bold">6 of 6</h3>
       <div

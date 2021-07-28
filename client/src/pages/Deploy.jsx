@@ -11,6 +11,7 @@ import ButtonTemplate from "../components/ButtonTemplate";
 import { useLocation } from "react-router";
 import { deleteTemplate } from "../store/actions/forms";
 import { useParams } from "react-router";
+import { setReplyChatbot } from "../store/actions/forms";
 
 export default function Deploy({ setIsOpen }) {
   const state = useSelector((state) => state.forms);
@@ -31,6 +32,7 @@ export default function Deploy({ setIsOpen }) {
 
   useEffect(() => {
     setIsOpen(false);
+    dispatch(setReplyChatbot(""));
     dispatch(getDeployTemplate(templateId));
   }, [dispatch]);
 

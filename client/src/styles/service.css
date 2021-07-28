@@ -1,6 +1,6 @@
 .type-1-service,
 .type-3-service {
-  padding: 3rem 5rem;
+  padding: 6rem 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,6 +26,7 @@
 .type-3-service h1,
 .type-2-service h1 {
   font-size: 3rem;
+  font-weight: bolder;
 }
 
 .card-service {

@@ -12,7 +12,7 @@
 #intro-section h1 {
   display: flex;
   justify-content: center;
-  font-size: 3.5rem;
+  font-size: 4rem;
   color: #125d98;
   /* margin-bottom: 3rem; */
 }
@@ -39,14 +39,23 @@
 }
 
 #intro-section input {
-  width: 20rem;
+  width: 25 rem;
   font-size: 2rem;
-  border-radius: 0.5rem;
-  border: 0.2rem solid #3c8dad;
+  /* border-radius: 2rem; */
+  /* border: 0.3rem solid #3c8dad; */
   margin-left: 3rem !important;
+  padding: 1.5rem 1.5rem 1.5rem 0;
+  border-bottom: 0.2rem solid #3c8dad;
+  /* text-align: center; */
+  background-color: white;
 }
 
 #intro-section label {
   color: #f5a962;
   font-weight: bold;
+  font-size: 3rem;
+}
+
+::-webkit-input-placeholder {
+  font-size: 1.5rem;
 }

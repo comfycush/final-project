@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import "../styles/aboutSection.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -14,7 +14,7 @@ import about3 from "../assets/about3.png";
 import ModalImage from "../components/ModalImage";
 import { setToServiceSection } from "../store/actions/navigationGuard";
 
-function AboutSection() {
+function AboutSection({ setIsOpen }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -55,13 +55,13 @@ function AboutSection() {
     };
 
     if (!dataAboutSection.headline) {
-      swal("Please fill your headline");
+      new Swal("Please fill the headline", "", "error");
     } else if (!dataAboutSection.paragraph) {
-      swal("Please fill your paragraph");
+      new Swal("Please fill the paragraph", "", "error");
     } else if (!dataAboutSection.image) {
-      swal("Please fill your image");
+      new Swal("Please fill the image", "", "error");
     } else if (!dataAboutSection.type) {
-      swal("Please choose your required template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setAboutSection(dataAboutSection));
       const newestTemplate = {
@@ -142,7 +142,7 @@ function AboutSection() {
   }, [window.pageYOffset]);
 
   return (
-    <section id="about-section">
+    <section id="about-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">About Section</h1>
       <h3 className="title-bold">3 of 6</h3>
       <div
@@ -166,8 +166,12 @@ function AboutSection() {
                 name="about-headline"
                 className="about-headline"
                 style={{ marginBottom: "1rem" }}
+                placeholder="Ex. About Us"
               />
-              <label htmlFor="about-headline" className="about-headline">
+              <label
+                htmlFor="about-headline"
+                className="about-headline mb-half mt-1"
+              >
                 Color
               </label>
               <input
@@ -190,7 +194,7 @@ function AboutSection() {
             <textarea
               onChange={(event) => setParagraph(event.target.value)}
               name="about-paragraph"
-              className="about-paragraph"
+              className="about-paragraph mt-half"
               cols={30}
               rows={10}
               defaultValue={""}
@@ -203,7 +207,7 @@ function AboutSection() {
               type="color"
               onChange={(event) => setParagraphColor(event.target.value)}
               name="about-paragraph"
-              className="about-paragraph"
+              className="about-paragraph mt-half"
             />
           </div>
           <div className="form-align-center" style={{ marginTop: "3rem" }}>
@@ -215,6 +219,7 @@ function AboutSection() {
               Image
             </label>
             <input
+              id="input-about-image"
               onChange={(event) =>
                 uploadAboutImage(event.target.files[0], "about")
               }
@@ -231,7 +236,10 @@ function AboutSection() {
             )}
             <button
               className="btn btn-remove-image"
-              onClick={() => dispatch(setAboutImageUrl(""))}
+              onClick={() => {
+                dispatch(setAboutImageUrl(""));
+                document.getElementById("input-about-image").value = "";
+              }}
               style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
             >
               Remove Image

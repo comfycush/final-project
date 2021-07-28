@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import "../styles/serviceSection.css";
@@ -19,7 +19,7 @@ import service3 from "../assets/service3.png";
 import ModalImage from "../components/ModalImage";
 import { setToContactSection } from "../store/actions/navigationGuard";
 
-function ServiceSection() {
+function ServiceSection({ setIsOpen }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();
@@ -95,16 +95,16 @@ function ServiceSection() {
     };
 
     if (!dataServiceSection.headline) {
-      swal("Please fill your headline");
+      new Swal("Please fill the headline", "", "error");
     } else if (
       //bingung
       !dataServiceSection.cardTitle1 &&
       !dataServiceSection.cardTitle2 &&
       !dataServiceSection.cardTitle3
     ) {
-      swal("Please fill minimum 1 card title");
+      new Swal("Please fill at least 1 card", "", "error");
     } else if (!dataServiceSection.type) {
-      swal("Please choose your required template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setServiceSection(dataServiceSection));
       const newestTemplate = {
@@ -206,7 +206,7 @@ function ServiceSection() {
   }, [window.pageYOffset]);
 
   return (
-    <section id="service-section">
+    <section id="service-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">Service Section</h1>
       <h3 className="title-bold">4 of 6</h3>
       <div
@@ -221,14 +221,15 @@ function ServiceSection() {
           <h2 className="title-subform">Headline</h2>
           <div className="contain-input">
             <label htmlFor="service-headline" className="service-headline">
-              Headline
+              Text
             </label>
             <input
               onChange={(event) => setHeadline(event.target.value)}
               type="text"
               name="service-headline"
               className="service-headline"
-              style={{ marginBottom: "1rem" }}
+              style={{ marginBottom: "2rem" }}
+              placeholder="Ex. Our Services"
             />
             <label htmlFor="service-headline" className="service-headline">
               Color
@@ -237,7 +238,7 @@ function ServiceSection() {
               onChange={(event) => setHeadlineColor(event.target.value)}
               type="color"
               name="service-headline"
-              className="service-headline"
+              className="service-headline mt-half"
             />
           </div>
           <div>
@@ -254,6 +255,7 @@ function ServiceSection() {
                   Icon
                 </label>
                 <input
+                  id="input-card1-icon"
                   onChange={(event) =>
                     uploadCardImage(event.target.files[0], "card1")
                   }
@@ -274,7 +276,10 @@ function ServiceSection() {
                 )}
                 <button
                   className="btn btn-remove-image"
-                  onClick={() => dispatch(setCardImage1Url(""))}
+                  onClick={() => {
+                    dispatch(setCardImage1Url(""));
+                    document.getElementById("input-card1-icon").value = "";
+                  }}
                   style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
                 >
                   Remove Image
@@ -363,6 +368,7 @@ function ServiceSection() {
                     Icon
                   </label>
                   <input
+                    id="input-card2-icon"
                     onChange={(event) =>
                       uploadCardImage(event.target.files[0], "card2")
                     }
@@ -383,7 +389,10 @@ function ServiceSection() {
                   )}
                   <button
                     className="btn btn-remove-image"
-                    onClick={() => dispatch(setCardImage2Url(""))}
+                    onClick={() => {
+                      dispatch(setCardImage2Url(""));
+                      document.getElementById("input-card2-icon").value = "";
+                    }}
                     style={{
                       margin: "0rem",
                       marginTop: "1rem",
@@ -475,6 +484,7 @@ function ServiceSection() {
                     Icon
                   </label>
                   <input
+                    id="input-card3-icon"
                     onChange={(event) =>
                       uploadCardImage(event.target.files[0], "card3")
                     }
@@ -495,7 +505,10 @@ function ServiceSection() {
                   )}
                   <button
                     className="btn btn-remove-image"
-                    onClick={() => dispatch(setCardImage3Url(""))}
+                    onClick={() => {
+                      dispatch(setCardImage3Url(""));
+                      document.getElementById("input-card3-icon").value = "";
+                    }}
                     style={{
                       margin: "0rem",
                       marginTop: "1rem",

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import swal from "sweetalert";
+import Swal from "sweetalert2";
 import "../../styles/aboutSection.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -58,13 +58,13 @@ export default function UpdateAboutForm({ data, allData }) {
     };
 
     if (!dataAboutSection.headline) {
-      swal("Please fill your headline");
+      new Swal("Please fill the headline", "", "error");
     } else if (!dataAboutSection.paragraph) {
-      swal("Please fill your paragraph");
+      new Swal("Please fill the paragraph", "", "error");
     } else if (!dataAboutSection.image) {
-      swal("Please fill your image");
+      new Swal("Please fill the image", "", "error");
     } else if (!dataAboutSection.type) {
-      swal("Please choose your required template");
+      new Swal("Please choose the template layout", "", "error");
     } else {
       dispatch(setAboutSection(dataAboutSection));
       const updatedTemplate = {
@@ -194,7 +194,7 @@ export default function UpdateAboutForm({ data, allData }) {
                 type="color"
                 onChange={(event) => setHeadlineColor(event.target.value)}
                 name="about-headline"
-                className="about-headline"
+                className="about-headline mt-half"
                 value={headlineColor}
               />
             </div>
@@ -211,7 +211,7 @@ export default function UpdateAboutForm({ data, allData }) {
             <textarea
               onChange={(event) => setParagraph(event.target.value)}
               name="about-paragraph"
-              className="about-paragraph"
+              className="about-paragraph mt-half"
               cols={30}
               rows={10}
               defaultValue={""}
@@ -225,7 +225,7 @@ export default function UpdateAboutForm({ data, allData }) {
               type="color"
               onChange={(event) => setParagraphColor(event.target.value)}
               name="about-paragraph"
-              className="about-paragraph"
+              className="about-paragraph mt-half"
               value={paragraphColor}
             />
           </div>
@@ -238,6 +238,7 @@ export default function UpdateAboutForm({ data, allData }) {
               Image
             </label>
             <input
+              id="about-image-update"
               onChange={(event) =>
                 uploadAboutImage(event.target.files[0], "about")
               }
@@ -254,7 +255,10 @@ export default function UpdateAboutForm({ data, allData }) {
             )}
             <button
               className="btn btn-remove-image"
-              onClick={() => dispatch(setAboutImageUrl(""))}
+              onClick={() => {
+                dispatch(setAboutImageUrl(""));
+                document.getElementById("about-image-update").value = "";
+              }}
               style={{ margin: "0rem", marginTop: "1rem", width: "10rem" }}
             >
               Remove Image
@@ -315,7 +319,7 @@ export default function UpdateAboutForm({ data, allData }) {
                 name="opt-navbar"
                 id="opt2-navbar"
                 defaultValue="2"
-                defaultChecked={type === 1 ? true : false}
+                defaultChecked={type === 2 ? true : false}
               />
               <div
                 className="container-img-hover"

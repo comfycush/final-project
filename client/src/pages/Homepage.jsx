@@ -4,15 +4,20 @@ import { HashLink } from "react-router-hash-link";
 import "../styles/homepage.css";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
+import { setReplyChatbot } from "../store/actions/forms";
+import { useDispatch } from "react-redux";
 
 function Homepage({ setIsOpen }) {
   const history = useHistory();
+  const dispatch = useDispatch();
   useEffect(() => {
     Aos.init({ duration: 1500 });
   }, []);
 
   useEffect(() => {
     setIsOpen(false);
+    dispatch(setReplyChatbot(""));
   }, []);
 
   return (
@@ -24,8 +29,8 @@ function Homepage({ setIsOpen }) {
           </h4>
         </div>
         <div className="links-homepage">
-          <a onClick={() => history.push("/login")}>Login</a>
-          <a onClick={() => history.push("/register")}>Register</a>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
         </div>
       </div>
       <div data-aos="fade-down" className="landing-page-homepage">
@@ -93,7 +98,7 @@ function Homepage({ setIsOpen }) {
           <br />
           <h4>Now you can share your website to your customers</h4>
           <div className="btn-start">
-            <a onClick={() => history.push("/login")}>Start Now</a>
+            <Link to="/login">Start Now</Link>
           </div>
         </div>
       </div>

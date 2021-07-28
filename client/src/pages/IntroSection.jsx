@@ -7,7 +7,7 @@ import { setProjectTitle } from "../store/actions/forms";
 import { createTemplate } from "../store/actions/forms";
 import { setToNavbar } from "../store/actions/navigationGuard";
 
-function IntroSection() {
+function IntroSection({ setIsOpen }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [proTitle, setProTitle] = useState("");
@@ -36,13 +36,11 @@ function IntroSection() {
   }
 
   return (
-    <section id="intro-section">
+    <section id="intro-section" onClick={() => setIsOpen(false)}>
       <h1 className="title-bold">Let's Build Your Website!</h1>
       <div className="intro-input">
-        <div className="form-center">
-          <label htmlFor="project-title" style={{ fontSize: "2rem" }}>
-            Project Title
-          </label>
+        <div className="horizontal-center">
+          <label htmlFor="project-title">Project Title</label>
           <input
             required
             onChange={(event) => setProTitle(event.target.value)}
@@ -51,11 +49,10 @@ function IntroSection() {
             name="project-title"
             id="project-title"
             style={{ height: "2.5rem", borderColor: "#125D98" }}
+            placeholder="Ex. Whimson Website"
           />
         </div>
       </div>
-      <br />
-      <br />
       <button onClick={addProjectTitle} className="btn btn-intro">
         Next
       </button>

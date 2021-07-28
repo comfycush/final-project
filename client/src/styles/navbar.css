@@ -10,7 +10,7 @@
 .type-3-nav a {
   text-decoration: none;
   margin: 0 1.5rem;
-  font-weight: bold;
+  font-weight: bolder;
   font-size: 1.3rem;
 }
 
@@ -26,6 +26,7 @@
 .type-2-nav h1,
 .type-3-nav h1 {
   font-size: 2rem;
+  font-weight: bolder;
 }
 
 .type-1-nav,

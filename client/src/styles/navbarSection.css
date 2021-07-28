@@ -28,7 +28,7 @@
 }
 
 .input {
-  margin-right: 6rem;
+  margin-right: 12rem;
 }
 
 .input label {
@@ -37,12 +37,17 @@
   color: #125d98;
 }
 
-.input input {
-  /* width: 10rem;
-  height: 2rem; */
-  border: 0.2rem solid #125d98;
-  border-radius: 0.2rem;
+.contain-input label {
+  color: #125d98;
 }
+
+/* .input input {
+  width: 10rem;
+  height: 2rem;
+  border-bottom: 0.2rem solid #125d98;
+  border-radius: 0.2rem;
+  background-color: #f5a962;
+} */
 
 /* #navbar-section .input {
 } */
@@ -117,26 +122,28 @@
 input[type="text"] {
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
-  width: 20rem;
+  width: 25rem;
   height: 2rem;
-  padding-left: 0.5rem;
+  /* padding-left: 0.5rem; */
+  border-bottom: 0.2rem solid #125d98;
+  background-color: #f5a962;
 }
 
 input[type="color"] {
-  width: 20rem;
+  width: 25rem;
   height: 2rem;
-  border: none;
-  border-radius: 0.2rem;
+  -webkit-appearance: none;
 }
 
 textarea {
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
-  width: 18rem;
-  height: 8rem;
-  border: 0.2rem solid #125d98;
-  border-radius: 0.2rem;
+  width: 25rem;
+  height: 10rem;
+  /* border: 0.2rem solid #125d98; */
+  border-radius: 0.5rem;
   padding: 0.5rem;
+  background: #ffd9b5;
 }
 
 input[type="checkbox"],
@@ -196,12 +203,12 @@ input[type="file"] {
   background-color: #f5a962;
   padding: 1.5rem 2rem;
   border-radius: 1rem;
-  width: 25rem;
+  width: 30rem;
 }
 
-.mt-1 {
+/* .mt-1 {
   margin-top: 2rem;
-}
+} */
 
 .title-subform {
   font-size: 2rem;
@@ -243,4 +250,32 @@ label {
   transform: translate(-50%, -50%);
   text-align: center;
   font-weight: bold;
+}
+
+.input ::-webkit-input-placeholder {
+  font-size: 1.1rem;
+  color: rgb(170, 105, 0);
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  border: none;
+  width: 25rem;
+  height: 2rem;
+  background-color: transparent;
+}
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: 0.1rem solid gray;
+  border-radius: 1rem;
+}
+
+.mt-half {
+  margin-top: 0.5rem;
+}
+
+.mb-half {
+  margin-bottom: 0.5rem;
 }

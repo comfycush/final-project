@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 5rem;
+  padding: 6rem 5rem;
 }
 
 .type-1-contact .contact-inside {
@@ -15,7 +15,9 @@
 }
 
 .type-1-contact h1 {
-  font-size: 3rem;
+  font-size: 4rem;
+  font-weight: bolder;
+  margin-bottom: 2rem;
 }
 
 .type-1-contact .card-contact img {
@@ -31,7 +33,8 @@
   align-items: center;
   justify-content: flex-start;
   /* max-width: 20rem; */
-  width: 30rem;
+  /* width: 30rem; */
+  max-width: 30rem;
   text-align: center;
   margin: 0 5rem;
 }
@@ -43,7 +46,7 @@
 
 .type-2-contact {
   display: flex;
-  padding: 3rem 8rem;
+  padding: 6rem 8rem;
   align-items: center;
   justify-content: space-between;
 }
@@ -51,6 +54,7 @@
 .type-2-contact h1 {
   font-size: 4rem;
   width: 30rem;
+  font-weight: bolder;
 }
 
 .type-2-contact .contact-inside {
@@ -79,11 +83,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 5rem;
+  padding: 6rem 5rem;
 }
 
 .type-3-contact h1 {
-  font-size: 3rem;
+  font-size: 4rem;
+  font-weight: bolder;
 }
 
 .type-3-contact .contact-inside {
@@ -102,12 +107,13 @@
   align-items: center;
   max-width: 35rem;
   text-align: center;
+  margin-top: 2rem;
 }
 
 .type-3-contact p {
   font-size: 2rem;
   font-weight: bold;
-  margin: 1rem 0 3rem 0;
+  margin: 2rem 0 3rem 0;
 }
 
 .update-contact-section button {

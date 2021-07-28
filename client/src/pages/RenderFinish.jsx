@@ -12,6 +12,7 @@ import { useLocation } from "react-router";
 import { setIsFooterFinished } from "../store/actions/forms";
 import { deleteTemplate, setIsDeploy } from "../store/actions/forms";
 import { useParams } from "react-router";
+import { setReplyChatbot } from "../store/actions/forms";
 
 export default function RenderFinish({ setIsOpen }) {
   const state = useSelector((state) => state.forms);
@@ -25,6 +26,7 @@ export default function RenderFinish({ setIsOpen }) {
 
   useEffect(() => {
     setIsOpen(false);
+    dispatch(setReplyChatbot(""));
     dispatch(setIsFooterFinished(false));
     dispatch(getTemplateId(templateId));
     console.log(`masuk renderfinish`);

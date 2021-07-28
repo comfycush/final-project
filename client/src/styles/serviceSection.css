@@ -51,11 +51,16 @@
 
 .sub-card {
   background-color: #ffcc9d;
-  padding: 1rem 0.5rem;
+  padding: 1.5rem;
   border-radius: 0.5rem;
   margin: 1.5rem 0;
 }
 
 .sub-card label {
   font-size: 1.2rem;
+}
+
+.sub-card input {
+  background-color: #ffcc9d;
+  width: 22rem;
 }

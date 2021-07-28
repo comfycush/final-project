@@ -12,7 +12,7 @@ function DashboardCard(props) {
   const [showButton, setShowButton] = useState(false);
 
   function toView() {
-    console.log(data, "<<<<<< data to view");
+    // console.log(data, "<<<<<< data to view");
     if (data.isDeploy) {
       // dispatch(setTemplateId(data.id));
       dispatch(getDeployTemplate(data.id));
