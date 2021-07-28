@@ -70,3 +70,23 @@
 .company-side h1 {
   font-size: 2rem;
 }
+
+@media (max-width: 550px) {
+  .type-1-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+
+  .type-1-footer .company-side {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-weight: bold;
+  }
+
+  .type-1-footer .social-media-side {
+    display: flex;
+  }
+}
