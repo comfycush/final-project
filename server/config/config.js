@@ -16,13 +16,26 @@ module.exports = {
     dialect: "postgres",
     logging: false,
   },
+  // production: {
+  //   username: process.env.RDS_USERNAME,
+  //   password: process.env.RDS_PASSWORD,
+  //   database: process.env.RDS_DB_NAME,
+  //   host: process.env.RDS_HOSTNAME,
+  //   port: process.env.RDS_PORT,
+  //   dialect: "postgres",
+  //   logging: false,
+  // },
+  // {
   production: {
-    username: process.env.RDS_USERNAME,
-    password: process.env.RDS_PASSWORD,
-    database: process.env.RDS_DB_NAME,
-    host: process.env.RDS_HOSTNAME,
-    port: process.env.RDS_PORT,
+    use_env_variable: "DATABASE_URL",
+    ssl: true,
     dialect: "postgres",
-    logging: false,
+    protocol: "postgres",
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    },
   },
 };
