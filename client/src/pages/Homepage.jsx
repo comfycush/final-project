@@ -102,6 +102,63 @@ function Homepage({ setIsOpen }) {
           </div>
         </div>
       </div>
+      <div
+        data-aos="fade-down"
+        className="max-w-5xl px-6 py-16 mx-auto text-center"
+      >
+        <h2 className="text-5xl font-semibold" style={{ color: "#125d98" }}>
+          Our Satisfied Customers
+        </h2>
+        <div className="grid gap-8 mt-36 mb-20 md:grid-cols-2 lg:grid-cols-4">
+          <div className="w-96">
+            <img
+              className="object-cover object-center w-full h-64 rounded-md shadow"
+              src="https://cdn.discordapp.com/attachments/867703929218400256/869628893819203664/ezgif-2-7bff5e64d2a8.gif"
+            />
+            <h3
+              className="mt-2"
+              style={{
+                fontWeight: "bolder",
+                color: "#f5a962",
+                fontSize: "2.5rem",
+              }}
+            >
+              Jack Construction
+            </h3>
+            <p
+              className="text-gray-600"
+              style={{ fontSize: "1rem", marginTop: "0.5rem" }}
+            >
+              Website for a construction company by Jack
+            </p>
+          </div>
+          <div className="w-96 ml-80">
+            <img
+              className="object-cover object-center w-full h-64 rounded-md shadow"
+              src="https://cdn.discordapp.com/attachments/867703929218400256/869628920272670760/CPT2107280005-1882x936-min.gif"
+            />
+            <h3
+              className="mt-2"
+              style={{
+                fontWeight: "bolder",
+                color: "#f5a962",
+                fontSize: "2.5rem",
+              }}
+            >
+              Whimson Law Firm
+            </h3>
+            <p
+              className="text-gray-600"
+              style={{ fontSize: "1rem", marginTop: "0.5rem" }}
+            >
+              Website for a law firm based in Atlanta
+            </p>
+          </div>
+        </div>
+        <div className="btn-build mx-auto">
+          <Link to="/login">Let's Build Your Website</Link>
+        </div>
+      </div>
       <div className="footer-homepage">
         <h2>
           web<span>ber</span>

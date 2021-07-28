@@ -111,19 +111,19 @@ function ContactSection({ setIsOpen }) {
     const dataContactSection = {
       type: null,
       headline: null,
-      headlineColor: null,
-      backgroundColor: null,
+      headlineColor: "#000000",
+      backgroundColor: "#FFFFFF",
       emailIcon: null,
       email: null,
-      emailColor: null,
+      emailColor: "#000000",
       phoneIcon: null,
       phone: null,
-      phoneColor: null,
+      phoneColor: "#000000",
       addressIcon: null,
       address: null,
-      addressColor: null,
+      addressColor: "#000000",
     };
-
+    dispatch(updateTemplate(templateId, { contact: dataContactSection }));
     dispatch(setContactSection(dataContactSection));
     dispatch(setToFooterSection(true));
     history.push("/footer-section");

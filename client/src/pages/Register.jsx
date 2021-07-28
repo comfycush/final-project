@@ -21,7 +21,7 @@ export default function Register() {
   function handleSubmit(e) {
     e.preventDefault();
     axios({
-      url: "http://localhost:4000/register",
+      url: "http://34.238.245.72:4000/register",
       method: "POST",
       data: {
         email,

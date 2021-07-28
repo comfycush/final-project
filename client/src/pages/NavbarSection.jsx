@@ -350,7 +350,6 @@ function NavbarSection({ setIsOpen }) {
                   name="opt-navbar"
                   id="opt1-navbar"
                   defaultValue="1"
-                  style={{ width: "1rem", marginRight: "1rem" }}
                 />
                 <div
                   className="container-img-hover"
@@ -374,7 +373,6 @@ function NavbarSection({ setIsOpen }) {
                   name="opt-navbar"
                   id="opt2-navbar"
                   defaultValue="2"
-                  style={{ width: "1rem", marginRight: "1rem" }}
                 />
                 <div
                   className="container-img-hover"
@@ -398,7 +396,6 @@ function NavbarSection({ setIsOpen }) {
                   name="opt-navbar"
                   id="opt3-navbar"
                   defaultValue="3"
-                  style={{ width: "1rem", marginRight: "1rem" }}
                 />
                 <div
                   className="container-img-hover"

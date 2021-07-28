@@ -102,7 +102,7 @@ export function setReplyChatbot(input) {
 
 export function createTemplate(data) {
   return (dispatch) => {
-    fetch("http://localhost:4000/template", {
+    fetch("http://34.238.245.72:4000/template", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +126,7 @@ export function createTemplate(data) {
 export function updateTemplate(id, data) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
-      fetch(`http://localhost:4000/template/${id}`, {
+      fetch(`http://34.238.245.72:4000/template/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -150,7 +150,7 @@ export function updateTemplate(id, data) {
 
 export function deleteTemplate(id) {
   return (dispatch) => {
-    fetch(`http://localhost:4000/template/${id}`, {
+    fetch(`http://34.238.245.72:4000/template/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -169,7 +169,7 @@ export function deleteTemplate(id) {
 export function changeIsDeploy(id, data) {
   return (dispatch) => {
     return new Promise((resolve, reject) => {
-      fetch(`http://localhost:4000/template/${id}`, {
+      fetch(`http://34.238.245.72:4000/template/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -195,7 +195,7 @@ export function getReplyChatbot(msg) {
   return async (dispatch) => {
     console.log(msg, "masuk action reply");
     try {
-      const response = await fetch("http://localhost:4000/chat", {
+      const response = await fetch("http://34.238.245.72:4000/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

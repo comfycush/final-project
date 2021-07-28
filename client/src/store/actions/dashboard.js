@@ -25,7 +25,7 @@ export function fetchDashboard() {
   return (dispatch) => {
     dispatch(setLoading(true));
 
-    fetch(`http://localhost:4000/`, {
+    fetch(`http://34.238.245.72:4000/`, {
       method: "GET",
       headers: { access_token: localStorage.access_token },
     })

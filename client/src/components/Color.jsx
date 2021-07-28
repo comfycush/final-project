@@ -18,13 +18,13 @@ export default function Color() {
               <div
                 style={{
                   backgroundColor: `${color}`,
-                  width: "100px",
-                  height: "200px",
+                  width: "4rem",
+                  height: "8rem",
                 }}
               >
                 {/* <h1 style={{color:`${color}`}}>Test</h1> */}
               </div>
-              <p style={{ textAlign: "center" }}>{color}</p>
+              <p style={{ textAlign: "center", fontSize: "0.8rem" }}>{color}</p>
             </div>
           );
         })}

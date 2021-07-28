@@ -256,6 +256,22 @@
   margin-left: 8px;
 }
 
+.btn-build {
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  padding: 1rem 2rem;
+  background-color: #125d98;
+  border-radius: 45px;
+}
+
+.btn-build a {
+  font-size: 1.3vw;
+  color: whitesmoke;
+  margin-left: 8px;
+}
+
 .footer-homepage {
   margin-top: 10rem;
   display: flex;

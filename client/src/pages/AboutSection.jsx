@@ -90,12 +90,13 @@ function AboutSection({ setIsOpen }) {
     const dataAboutSection = {
       type: null,
       headline: null,
-      headlineColor: null,
+      headlineColor: "#000000",
       image: null,
-      backgroundColor: null,
+      backgroundColor: "#FFFFFF",
       paragraph: null,
-      paragraphColor: null,
+      paragraphColor: "#000000",
     };
+    dispatch(updateTemplate(templateId, { about: dataAboutSection }));
     dispatch(setAboutSection(dataAboutSection));
     dispatch(setToServiceSection(true));
     // history.push("/service-section");

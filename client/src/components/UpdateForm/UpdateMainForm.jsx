@@ -102,10 +102,10 @@ function UpdateMainSection({ data, allData }) {
       type: null,
       image: null,
       headline: null,
-      headlineColor: null,
+      headlineColor: "#000000",
       subHeadline: null,
-      subHeadlineColor: null,
-      backgroundColor: null,
+      subHeadlineColor: "#000000",
+      backgroundColor: "#FFFFFF",
     };
 
     dispatch(setMainSection(dataMainSection));
