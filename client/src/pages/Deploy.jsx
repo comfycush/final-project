@@ -30,7 +30,7 @@ export default function Deploy({ setIsOpen }) {
   console.log(templateId, `ini templateId dari component deploy`);
 
   useEffect(() => {
-    setIsOpen(false);
+    // setIsOpen(false);
     dispatch(getDeployTemplate(templateId));
   }, [dispatch]);
 

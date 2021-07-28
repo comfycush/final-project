@@ -24,7 +24,7 @@ export default function RenderFinish({ setIsOpen }) {
   const isDeploy = useSelector((state) => state.forms.isDeploy);
 
   useEffect(() => {
-    setIsOpen(false);
+    // setIsOpen(false);
     dispatch(setIsFooterFinished(false));
     dispatch(getTemplateId(templateId));
     console.log(`masuk renderfinish`);
