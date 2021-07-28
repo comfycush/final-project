@@ -299,10 +299,15 @@ describe('Should able to return reply', () => {
 
   test('Should send a default reply', (done) => {
     const resp = {
-      data: {}
+      data: {
+        "text": "asdasd asd kajnsfda",
+        "intents": [],
+        "entities": {},
+        "traits": {}
+    }
     }
     axios.mockResolvedValue(resp)
-    const chat = 'asdasd asd kajnsfda'
+    const chat = 'asdasd asd kajnsfda '
     
     request(app)
       .post('/chat')
@@ -313,7 +318,7 @@ describe('Should able to return reply', () => {
         } else {
           expect(res.status).toBe(200)
           expect(res.body).toHaveProperty('message', expect.any(String))
-          expect(res.body.message).toEqual("Ask me something like 'what does navbar mear?' or 'what is footer?'")
+          expect(res.body.message).toEqual("Ask me something like 'what does navbar mean?' or 'what is footer?'")
           done()
         }
       })

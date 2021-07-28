@@ -75,14 +75,10 @@ class TemplateController {
         res.status(201).json(data);
       })
       .catch((err) => {
-        if (err.name === `SequelizeValidationError`) {
-          let errMsg = err.errors.map((e) => {
-            return e.message;
-          });
-          next({ name: `SequelizeValidationError`, message: errMsg });
-        } else {
-          next({ message: err });
-        }
+        let errMsg = err.errors.map((e) => {
+          return e.message;
+        });
+        next({ name: `SequelizeValidationError`, message: errMsg });
       });
   }
 
@@ -110,19 +106,10 @@ class TemplateController {
     };
     Template.update(putData, { where: { id: templateId } })
       .then((data) => {
-        if (data[0]) {
-          res.status(200).json({ templateId, putData });
-        } else {
-          next({
-            name: `NotFound`,
-            message: `Template with such id not found`,
-          });
-        }
+        res.status(200).json({ templateId, putData });
       })
       .catch((err) => {
-        if (err.name === `SequelizeValidationError`) {
-          next({ name: `SequelizeValidationError`, message: err.errors[0].message });
-        }
+        next({ name: `SequelizeValidationError`, message: err.errors[0].message });
       });
   }
 
@@ -131,16 +118,9 @@ class TemplateController {
     let isDeploy = req.body.isDeploy;
     Template.update({ isDeploy }, { where: { id: templateId } })
       .then((data) => {
-        if (data[0]) {
-          res
-            .status(200)
-            .json({ message: `Template is successfully deployed` });
-        } else {
-          next({
-            name: `NotFound`,
-            message: `Template with such id not found`,
-          });
-        }
+        res
+          .status(200)
+          .json({ message: `Template is successfully deployed` });
       })
   }
 }
