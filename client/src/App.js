@@ -18,6 +18,7 @@ import Deploy from "./pages/Deploy";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import Homepage from "./pages/Homepage";
 
 function App() {
   const location = useLocation();
@@ -67,7 +68,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           {!localStorage.access_token ? (
-            <Login />
+            <Homepage
+              setIsOpen={setIsOpen}
+             />
           ) : (
             <Redirect to="/dashboard" />
           )}
