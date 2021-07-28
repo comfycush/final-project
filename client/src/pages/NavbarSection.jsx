@@ -22,6 +22,9 @@ function NavbarSection({ setIsOpen }) {
   const [modalImage, setModalImage] = useState("");
   const [modalHeight, setModalHeight] = useState("");
   const [modalWidth, setModalWidth] = useState("");
+  const uploadLoading = useSelector((state) => state.uploadImage.uploadLoading);
+
+  console.log(uploadLoading, "<<< loading state");
 
   useEffect(() => {
     dispatch(setLogoUrl(""));
@@ -42,7 +45,7 @@ function NavbarSection({ setIsOpen }) {
   const [navlinksColor, setNavlinksColor] = useState("#000000");
   const logoUrl = useSelector((state) => state.uploadImage.logoUrl);
 
-  console.log(logoUrl, "<<<<< LOGO URL");
+  // console.log(logoUrl, "<<<<< LOGO URL");
 
   const stateIntro = location.state;
   // console.log(stateIntro, "<<<< stateIntro");
@@ -84,8 +87,8 @@ function NavbarSection({ setIsOpen }) {
       navLinksColor: navlinksColor,
     };
 
-    if (!dataNavbarSection.companyName && !dataNavbarSection.logo) {
-      new Swal("Please fill in your company name or company logo", "", "error");
+    if (!dataNavbarSection.companyName) {
+      new Swal("Please fill in your company name", "", "error");
     } else if (sortNavlinks.length === 0) {
       new Swal("Please choose at least 1 navigation link", "", "error");
     } else if (!dataNavbarSection.type) {
@@ -186,13 +189,16 @@ function NavbarSection({ setIsOpen }) {
               >
                 Color
               </label>
-              <input
-                onChange={(event) => setCompanyNameColor(event.target.value)}
-                type="color"
-                name="company-title-color"
-                id="company-title-color"
-                style={{ border: "none", margin: "0rem" }}
-              />
+              <div className="input-color-side">
+                <input
+                  onChange={(event) => setCompanyNameColor(event.target.value)}
+                  type="color"
+                  name="company-title-color"
+                  id="company-title-color"
+                  style={{ border: "none", margin: "0rem" }}
+                />
+                <p className="color-info-tag">{companyNameColor}</p>
+              </div>
             </div>
             <div className="form-align-center">
               <label
@@ -210,12 +216,20 @@ function NavbarSection({ setIsOpen }) {
                 className="company-logo"
                 style={{ border: "none" }}
               />
-              {logoUrl && (
+              {uploadLoading ? (
                 <img
-                  src={logoUrl}
-                  alt=""
+                  src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__O7q4jtvrH.gif?updatedAt=1627456298380"
+                  alt="loading"
                   style={{ width: "5rem", height: "5rem" }}
                 />
+              ) : (
+                logoUrl && (
+                  <img
+                    src={logoUrl}
+                    alt=""
+                    style={{ width: "5rem", height: "5rem" }}
+                  />
+                )
               )}
               <button
                 className="btn btn-remove-image"
@@ -233,15 +247,9 @@ function NavbarSection({ setIsOpen }) {
             Navigation Links
           </h2>
           <div className="contain-input">
-            <div className="form-align-center">
+            <div className="form-align-center checkbox-links">
               <label htmlFor="links-navbar">Links</label>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginTop: "0.3rem",
-                }}
-              >
+              <div className="horizontal-center mt-half">
                 <input
                   type="checkbox"
                   onClick={(event) =>
@@ -258,13 +266,7 @@ function NavbarSection({ setIsOpen }) {
                   About
                 </label>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginTop: "0.3rem",
-                }}
-              >
+              <div className="horizontal-center mt-half">
                 <input
                   type="checkbox"
                   onClick={(event) =>
@@ -279,13 +281,7 @@ function NavbarSection({ setIsOpen }) {
                   Service
                 </label>
               </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginTop: "0.3rem",
-                }}
-              >
+              <div className="horizontal-center mt-half">
                 <input
                   type="checkbox"
                   onClick={(event) =>
@@ -305,13 +301,16 @@ function NavbarSection({ setIsOpen }) {
               <label htmlFor="color-navbar" style={{ marginRight: "2.5rem" }}>
                 Color
               </label>
-              <input
-                onChange={(event) => setNavlinksColor(event.target.value)}
-                type="color"
-                name="navlink-color"
-                id="navlink-color"
-                style={{ border: "none", marginTop: "0.5rem" }}
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  onChange={(event) => setNavlinksColor(event.target.value)}
+                  type="color"
+                  name="navlink-color"
+                  id="navlink-color"
+                  style={{ border: "none" }}
+                />
+                <p className="color-info-tag">{navlinksColor}</p>
+              </div>
             </div>
           </div>
           <div className="form-align-center mt-2">
@@ -324,14 +323,17 @@ function NavbarSection({ setIsOpen }) {
             >
               Background Color
             </label>
-            <input
-              onChange={(event) => setBackgroundColor(event.target.value)}
-              type="color"
-              name="background-color-navbar"
-              id="background-color-navbar"
-              value={backgroundColor}
-              style={{ border: "none", marginTop: "1rem" }}
-            />
+            <div className="input-color-side mt-1">
+              <input
+                onChange={(event) => setBackgroundColor(event.target.value)}
+                type="color"
+                name="background-color-navbar"
+                id="background-color-navbar"
+                value={backgroundColor}
+                style={{ border: "none" }}
+              />
+              <p className="color-info-tag">{backgroundColor}</p>
+            </div>
           </div>
           <div className="selection-navbar">
             <label

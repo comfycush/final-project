@@ -63,6 +63,8 @@ export default function UpdateServiceSection({ data, allData }) {
   const [modalHeight, setModalHeight] = useState("");
   const [modalWidth, setModalWidth] = useState("");
 
+  const uploadLoading = useSelector((state) => state.uploadImage.uploadLoading);
+
   function viewImage(image, height, width) {
     setShowModal(true);
     setModalImage(image);
@@ -253,13 +255,16 @@ export default function UpdateServiceSection({ data, allData }) {
             <label htmlFor="service-headline" className="service-headline">
               Color
             </label>
-            <input
-              onChange={(event) => setHeadlineColor(event.target.value)}
-              type="color"
-              name="service-headline"
-              className="service-headline mt-half"
-              value={headlineColor}
-            />
+            <div className="input-color-side mt-half">
+              <input
+                onChange={(event) => setHeadlineColor(event.target.value)}
+                type="color"
+                name="service-headline"
+                className="service-headline"
+                value={headlineColor}
+              />
+              <p className="color-info-tag">{headlineColor}</p>
+            </div>
           </div>
           <h2 className="title-subform" style={{ marginTop: "2rem" }}>
             First Card
@@ -282,12 +287,24 @@ export default function UpdateServiceSection({ data, allData }) {
                 name="service-card1"
                 className="service-card1"
               />
-              {card1ImageUrl && (
+              {uploadLoading ? (
                 <img
-                  style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-                  src={card1ImageUrl}
-                  alt="card 1"
+                  src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__O7q4jtvrH.gif?updatedAt=1627456298380"
+                  alt="loading"
+                  style={{ width: "5rem", height: "5rem" }}
                 />
+              ) : (
+                card1ImageUrl && (
+                  <img
+                    style={{
+                      width: "5rem",
+                      height: "5rem",
+                      objectFit: "cover",
+                    }}
+                    src={card1ImageUrl}
+                    alt="card 1"
+                  />
+                )
               )}
               <button
                 className="btn btn-remove-image"
@@ -308,68 +325,64 @@ export default function UpdateServiceSection({ data, allData }) {
                 onChange={(event) => setCardTitle1(event.target.value)}
                 type="text"
                 name="service-card1"
-                className="service-card1"
+                className="service-card1 mb-1"
                 value={cardTitle1}
               />
-              <label
-                htmlFor="service-card1"
-                className="service-card1"
-                style={{ marginTop: "1rem" }}
-              >
+              <label htmlFor="service-card1" className="service-card1">
                 Color
               </label>
-              <input
-                type="color"
-                onChange={(event) => setCardTitleColor1(event.target.value)}
-                name="service-card1"
-                className="service-card1 mt-half"
-                value={cardTitleColor1}
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  type="color"
+                  onChange={(event) => setCardTitleColor1(event.target.value)}
+                  name="service-card1"
+                  className="service-card1"
+                  value={cardTitleColor1}
+                />
+                <p className="color-info-tag">{cardTitleColor1}</p>
+              </div>
             </div>
             <div className="form-align-center sub-card">
-              <label
-                htmlFor="service-card1"
-                className="service-card1"
-                style={{ marginBottom: "0.5rem" }}
-              >
+              <label htmlFor="service-card1" className="service-card1">
                 Paragraph
               </label>
               <input
                 onChange={(event) => setCardText1(event.target.value)}
                 type="text"
                 name="service-card1"
-                className="service-card1"
+                className="service-card1 mb-1"
                 value={cardText1}
               />
-              <label
-                htmlFor="service-card1"
-                className="service-card1"
-                style={{ marginTop: "1rem" }}
-              >
+              <label htmlFor="service-card1" className="service-card1">
                 Color
               </label>
-              <input
-                type="color"
-                onChange={(event) => setCardTextColor1(event.target.value)}
-                name="service-card1"
-                className="service-card1 mt-half"
-                value={cardTextColor1}
-              />
+              <div className="input-color-side">
+                <input
+                  type="color"
+                  onChange={(event) => setCardTextColor1(event.target.value)}
+                  name="service-card1"
+                  className="service-card1"
+                  value={cardTextColor1}
+                />
+                <p className="color-info-tag">{cardTextColor1}</p>
+              </div>
             </div>
             <div className="form-align-center">
               <label htmlFor="service-card1" className="service-card1">
                 Background Color
               </label>
-              <input
-                type="color"
-                onChange={(event) =>
-                  setcardBackgroundColor1(event.target.value)
-                }
-                name="service-card1"
-                className="service-card1"
-                style={{ marginTop: "1rem" }}
-                value={cardBackgroundColor1}
-              />
+              <div className="input-color-side mt-1">
+                <input
+                  type="color"
+                  onChange={(event) =>
+                    setcardBackgroundColor1(event.target.value)
+                  }
+                  name="service-card1"
+                  className="service-card1"
+                  value={cardBackgroundColor1}
+                />
+                <p className="color-info-tag">{cardBackgroundColor1}</p>
+              </div>
             </div>
           </div>
           <h2 className="title-subform" style={{ marginTop: "2rem" }}>
@@ -393,12 +406,24 @@ export default function UpdateServiceSection({ data, allData }) {
                 name="service-card2"
                 className="service-card2"
               />
-              {card2ImageUrl && (
+              {uploadLoading ? (
                 <img
-                  style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-                  src={card2ImageUrl}
-                  alt="card 2"
+                  src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__O7q4jtvrH.gif?updatedAt=1627456298380"
+                  alt="loading"
+                  style={{ width: "5rem", height: "5rem" }}
                 />
+              ) : (
+                card2ImageUrl && (
+                  <img
+                    style={{
+                      width: "5rem",
+                      height: "5rem",
+                      objectFit: "cover",
+                    }}
+                    src={card2ImageUrl}
+                    alt="card 2"
+                  />
+                )
               )}
               <button
                 className="btn btn-remove-image"
@@ -419,20 +444,22 @@ export default function UpdateServiceSection({ data, allData }) {
                 onChange={(event) => setCardTitle2(event.target.value)}
                 type="text"
                 name="service-card2"
-                className="service-card2"
-                style={{ marginBottom: "0.5rem" }}
+                className="service-card2 mb-1"
                 value={cardTitle2}
               />
               <label htmlFor="service-card2" className="service-card2">
                 Color
               </label>
-              <input
-                type="color"
-                onChange={(event) => setCardTitleColor2(event.target.value)}
-                name="service-card2"
-                className="service-card2 mt-half"
-                value={cardTitleColor2}
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  type="color"
+                  onChange={(event) => setCardTitleColor2(event.target.value)}
+                  name="service-card2"
+                  className="service-card2"
+                  value={cardTitleColor2}
+                />
+                <p className="color-info-tag">{cardTitleColor2}</p>
+              </div>
             </div>
             <div className="form-align-center sub-card">
               <label htmlFor="service-card2" className="service-card2">
@@ -442,38 +469,39 @@ export default function UpdateServiceSection({ data, allData }) {
                 onChange={(event) => setCardText2(event.target.value)}
                 type="text"
                 name="service-card2"
-                className="service-card2"
-                style={{ marginBottom: "1rem" }}
+                className="service-card2 mb-1"
                 value={cardText2}
               />
               <label htmlFor="service-card2" className="service-card2">
                 Color
               </label>
-              <input
-                type="color"
-                onChange={(event) => setCardTextColor2(event.target.value)}
-                name="service-card2"
-                className="service-card2 mt-half"
-                value={cardTextColor2}
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  type="color"
+                  onChange={(event) => setCardTextColor2(event.target.value)}
+                  name="service-card2"
+                  className="service-card2"
+                  value={cardTextColor2}
+                />
+                <p className="color-info-tag">{cardTextColor2}</p>
+              </div>
             </div>
             <div className="form-align-center">
-              <label
-                htmlFor="service-card2"
-                className="service-card2"
-                style={{ marginBottom: "0.5rem" }}
-              >
+              <label htmlFor="service-card2" className="service-card2">
                 Background Color
               </label>
-              <input
-                type="color"
-                onChange={(event) =>
-                  setcardBackgroundColor2(event.target.value)
-                }
-                name="service-card2"
-                className="service-card2"
-                value={cardBackgroundColor2}
-              />
+              <div className="input-color-side mt-1">
+                <input
+                  type="color"
+                  onChange={(event) =>
+                    setcardBackgroundColor2(event.target.value)
+                  }
+                  name="service-card2"
+                  className="service-card2"
+                  value={cardBackgroundColor2}
+                />
+                <p className="color-info-tag">{cardBackgroundColor2}</p>
+              </div>
             </div>
           </div>
           <h2 className="title-subform" style={{ marginTop: "2rem" }}>
@@ -497,12 +525,24 @@ export default function UpdateServiceSection({ data, allData }) {
                 name="service-card3"
                 className="service-card3"
               />
-              {card3ImageUrl && (
+              {uploadLoading ? (
                 <img
-                  style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-                  src={card3ImageUrl}
-                  alt="card 3"
+                  src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__O7q4jtvrH.gif?updatedAt=1627456298380"
+                  alt="loading"
+                  style={{ width: "5rem", height: "5rem" }}
                 />
+              ) : (
+                card3ImageUrl && (
+                  <img
+                    style={{
+                      width: "5rem",
+                      height: "5rem",
+                      objectFit: "cover",
+                    }}
+                    src={card3ImageUrl}
+                    alt="card 3"
+                  />
+                )
               )}
               <button
                 className="btn btn-remove-image"
@@ -529,13 +569,16 @@ export default function UpdateServiceSection({ data, allData }) {
               <label htmlFor="service-card3" className="service-card3">
                 Color
               </label>
-              <input
-                type="color"
-                onChange={(event) => setCardTitleColor3(event.target.value)}
-                name="service-card3"
-                className="service-card3 mt-half"
-                value={cardTitleColor3}
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  type="color"
+                  onChange={(event) => setCardTitleColor3(event.target.value)}
+                  name="service-card3"
+                  className="service-card3"
+                  value={cardTitleColor3}
+                />
+                <p className="color-info-tag">{cardTitleColor3}</p>
+              </div>
             </div>
             <div className="form-align-center sub-card">
               <label htmlFor="service-card3" className="service-card3">
@@ -551,27 +594,33 @@ export default function UpdateServiceSection({ data, allData }) {
               <label htmlFor="service-card3" className="service-card3">
                 Color
               </label>
-              <input
-                type="color"
-                onChange={(event) => setCardTextColor3(event.target.value)}
-                name="service-card3"
-                className="service-card3 mt-half"
-                value={cardTextColor3}
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  type="color"
+                  onChange={(event) => setCardTextColor3(event.target.value)}
+                  name="service-card3"
+                  className="service-card3"
+                  value={cardTextColor3}
+                />
+                <p className="color-info-tag">{cardTextColor3}</p>
+              </div>
             </div>
             <div className="form-align-center">
               <label htmlFor="service-card3" className="service-card3">
                 Background Color
               </label>
-              <input
-                type="color"
-                onChange={(event) =>
-                  setcardBackgroundColor3(event.target.value)
-                }
-                name="service-card3"
-                className="service-card3"
-                value={cardBackgroundColor3}
-              />
+              <div className="input-color-side mt-1">
+                <input
+                  type="color"
+                  onChange={(event) =>
+                    setcardBackgroundColor3(event.target.value)
+                  }
+                  name="service-card3"
+                  className="service-card3"
+                  value={cardBackgroundColor3}
+                />
+                <p className="color-info-tag">{cardBackgroundColor3}</p>
+              </div>
             </div>
           </div>
           <div className="form-align-center mt-2">
@@ -581,14 +630,16 @@ export default function UpdateServiceSection({ data, allData }) {
             >
               Background Color
             </label>
-            <input
-              type="color"
-              onChange={(event) => setBackgroundColor(event.target.value)}
-              name="background-color-service"
-              id="background-color-service"
-              value={backgroundColor}
-              style={{ marginBottom: "2rem" }}
-            />
+            <div className="input-color-side mb-2 mt-half">
+              <input
+                type="color"
+                onChange={(event) => setBackgroundColor(event.target.value)}
+                name="background-color-service"
+                id="background-color-service"
+                value={backgroundColor}
+              />
+              <p className="color-info-tag">{backgroundColor}</p>
+            </div>
           </div>
           <label htmlFor="template-layout" style={{ fontSize: "2rem" }}>
             Template Layout

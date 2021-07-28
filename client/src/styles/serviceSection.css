@@ -60,7 +60,7 @@
   font-size: 1.2rem;
 }
 
-.sub-card input {
+.sub-card input[type="text"] {
   background-color: #ffcc9d;
   width: 22rem;
 }

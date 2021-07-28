@@ -26,6 +26,8 @@ function AboutSection({ setIsOpen }) {
   const [paragraph, setParagraph] = useState("");
   const [paragraphColor, setParagraphColor] = useState("#000000");
   const aboutImageUrl = useSelector((state) => state.uploadImage.aboutImageUrl);
+  const uploadLoading = useSelector((state) => state.uploadImage.uploadLoading);
+  console.log(uploadLoading, "<<< loading state");
 
   const [showModal, setShowModal] = useState(false);
   const [modalImage, setModalImage] = useState("");
@@ -174,12 +176,15 @@ function AboutSection({ setIsOpen }) {
               >
                 Color
               </label>
-              <input
-                type="color"
-                onChange={(event) => setHeadlineColor(event.target.value)}
-                name="about-headline"
-                className="about-headline"
-              />
+              <div className="input-color-side">
+                <input
+                  type="color"
+                  onChange={(event) => setHeadlineColor(event.target.value)}
+                  name="about-headline"
+                  className="about-headline"
+                />
+                <div className="color-info-tag">{headlineColor}</div>
+              </div>
             </div>
           </div>
           <h2 className="title-subform" style={{ marginTop: "2rem" }}>
@@ -187,28 +192,32 @@ function AboutSection({ setIsOpen }) {
           </h2>
           <div className="contain-input">
             {/* <div style={{ display: "flex", alignItems: "flex-start" }}></div> */}
-            <label htmlFor="about-paragraph" className="about-paragraph">
-              Text
-            </label>
-            <br />
-            <textarea
-              onChange={(event) => setParagraph(event.target.value)}
-              name="about-paragraph"
-              className="about-paragraph mt-half"
-              cols={30}
-              rows={10}
-              defaultValue={""}
-              style={{ marginBottom: "1rem" }}
-            />
-            <label htmlFor="about-paragraph" className="about-paragraph">
-              Color
-            </label>
-            <input
-              type="color"
-              onChange={(event) => setParagraphColor(event.target.value)}
-              name="about-paragraph"
-              className="about-paragraph mt-half"
-            />
+            <div className="form-align-center">
+              <label htmlFor="about-paragraph" className="about-paragraph">
+                Text
+              </label>
+              <textarea
+                onChange={(event) => setParagraph(event.target.value)}
+                name="about-paragraph"
+                className="about-paragraph mt-half"
+                cols={30}
+                rows={10}
+                defaultValue={""}
+                style={{ marginBottom: "1rem" }}
+              />
+              <label htmlFor="about-paragraph" className="about-paragraph">
+                Color
+              </label>
+              <div className="input-color-side mt-half">
+                <input
+                  type="color"
+                  onChange={(event) => setParagraphColor(event.target.value)}
+                  name="about-paragraph"
+                  className="about-paragraph"
+                />
+                <p className="color-info-tag">{paragraphColor}</p>
+              </div>
+            </div>
           </div>
           <div className="form-align-center" style={{ marginTop: "3rem" }}>
             <label
@@ -227,12 +236,24 @@ function AboutSection({ setIsOpen }) {
               name="about-image"
               className="about-image"
             />
-            {aboutImageUrl && (
+            {uploadLoading ? (
               <img
+                src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__JSBd4sNCC.gif?updatedAt=1627455463318"
+                alt="loading..."
                 style={{ width: "10rem", height: "10rem", objectFit: "cover" }}
-                src={aboutImageUrl}
-                alt="about"
               />
+            ) : (
+              aboutImageUrl && (
+                <img
+                  style={{
+                    width: "10rem",
+                    height: "10rem",
+                    objectFit: "cover",
+                  }}
+                  src={aboutImageUrl}
+                  alt="about"
+                />
+              )
             )}
             <button
               className="btn btn-remove-image"
@@ -256,14 +277,16 @@ function AboutSection({ setIsOpen }) {
             >
               Background Color
             </label>
-            <input
-              type="color"
-              onChange={(event) => setBackgroundColor(event.target.value)}
-              name="background-color-about"
-              id="background-color-about"
-              value={backgroundColor}
-              style={{ marginBottom: "2rem" }}
-            />
+            <div className="input-color-side mb-2">
+              <input
+                type="color"
+                onChange={(event) => setBackgroundColor(event.target.value)}
+                name="background-color-about"
+                id="background-color-about"
+                value={backgroundColor}
+              />
+              <p className="color-info-tag">{backgroundColor}</p>
+            </div>
           </div>
           <label htmlFor="template-layout" style={{ fontSize: "2rem" }}>
             Template Layout

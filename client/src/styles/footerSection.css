@@ -26,8 +26,9 @@
 .selection-footer .selection-img {
   /* max-width: 100px; */
   width: 30rem;
-  height: 3rem;
+  height: 5rem;
   object-fit: cover;
+  object-position: 20%;
 }
 
 .button-footer {

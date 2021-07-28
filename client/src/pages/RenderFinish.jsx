@@ -35,7 +35,11 @@ export default function RenderFinish({ setIsOpen }) {
   if (templateIsLoading) {
     return (
       <div className="loading-render">
-        <h1>Loading...</h1>
+        <img
+          src="https://ik.imagekit.io/vrvrzbdh5xfk/loading_finish_NuWE9NEI0.gif?updatedAt=1627461972812"
+          alt="loading"
+        />
+        <h1>Please Wait...</h1>
       </div>
     );
   }

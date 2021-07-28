@@ -8,6 +8,7 @@ import {
   SET_EMAIL_ICON_URL,
   SET_PHONE_ICON_URL,
   SET_ADDRESS_ICON_URL,
+  SET_UPLOAD_LOADING,
 } from "../actionTypes";
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
   emailIconUrl: "",
   phoneIconUrl: "",
   addressIconUrl: "",
+  uploadLoading: false,
 };
 
 export default function uploadImageReducer(state = initialState, action) {
@@ -42,6 +44,8 @@ export default function uploadImageReducer(state = initialState, action) {
       return { ...state, phoneIconUrl: action.payload };
     case SET_ADDRESS_ICON_URL:
       return { ...state, addressIconUrl: action.payload };
+    case SET_UPLOAD_LOADING:
+      return { ...state, uploadLoading: action.payload };
     default:
       return state;
   }

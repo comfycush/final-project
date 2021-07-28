@@ -185,3 +185,27 @@ a {
 .ask_chatbot {
   background-color: #50cb93;
 }
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+.loading-render {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-render img {
+  width: 20rem;
+  height: 20rem;
+}
+
+.loading-render h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+  color: #125d98;
+}

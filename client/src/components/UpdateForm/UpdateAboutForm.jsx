@@ -26,6 +26,7 @@ export default function UpdateAboutForm({ data, allData }) {
   const [paragraphColor, setParagraphColor] = useState(data.paragraphColor);
 
   const aboutImageUrl = useSelector((state) => state.uploadImage.aboutImageUrl);
+  const uploadLoading = useSelector((state) => state.uploadImage.uploadLoading);
 
   const [showModal, setShowModal] = useState(false);
   const [modalImage, setModalImage] = useState("");
@@ -190,24 +191,26 @@ export default function UpdateAboutForm({ data, allData }) {
               <label htmlFor="about-headline" className="about-headline">
                 Color
               </label>
-              <input
-                type="color"
-                onChange={(event) => setHeadlineColor(event.target.value)}
-                name="about-headline"
-                className="about-headline mt-half"
-                value={headlineColor}
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  type="color"
+                  onChange={(event) => setHeadlineColor(event.target.value)}
+                  name="about-headline"
+                  className="about-headline"
+                  value={headlineColor}
+                />
+                <p className="color-info-tag">{headlineColor}</p>
+              </div>
             </div>
           </div>
           <h2 className="title-subform" style={{ marginTop: "2rem" }}>
             Paragraph
           </h2>
-          <div className="contain-input">
+          <div className="contain-input form-align-center">
             {/* <div style={{ display: "flex", alignItems: "flex-start" }}></div> */}
             <label htmlFor="about-paragraph" className="about-paragraph">
               Text
             </label>
-            <br />
             <textarea
               onChange={(event) => setParagraph(event.target.value)}
               name="about-paragraph"
@@ -221,13 +224,16 @@ export default function UpdateAboutForm({ data, allData }) {
             <label htmlFor="about-paragraph" className="about-paragraph">
               Color
             </label>
-            <input
-              type="color"
-              onChange={(event) => setParagraphColor(event.target.value)}
-              name="about-paragraph"
-              className="about-paragraph mt-half"
-              value={paragraphColor}
-            />
+            <div className="input-color-side mt-half">
+              <input
+                type="color"
+                onChange={(event) => setParagraphColor(event.target.value)}
+                name="about-paragraph"
+                className="about-paragraph"
+                value={paragraphColor}
+              />
+              <p className="color-info-tag">{paragraphColor}</p>
+            </div>
           </div>
           <div className="form-align-center" style={{ marginTop: "3rem" }}>
             <label
@@ -246,12 +252,25 @@ export default function UpdateAboutForm({ data, allData }) {
               name="about-image"
               className="about-image"
             />
-            {aboutImageUrl && (
+            {uploadLoading ? (
               <img
-                style={{ width: "10rem", height: "10rem", objectFit: "cover" }}
-                src={aboutImageUrl}
-                alt="about"
+                src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__O7q4jtvrH.gif?updatedAt=1627456298380"
+                alt="loading"
+                style={{ width: "10rem", height: "10rem" }}
               />
+            ) : (
+              aboutImageUrl && (
+                <img
+                  style={{
+                    width: "20rem",
+                    height: "10rem",
+                    objectFit: "cover",
+                    borderRadius: "0.5rem",
+                  }}
+                  src={aboutImageUrl}
+                  alt="about"
+                />
+              )
             )}
             <button
               className="btn btn-remove-image"
@@ -275,14 +294,16 @@ export default function UpdateAboutForm({ data, allData }) {
             >
               Background Color
             </label>
-            <input
-              type="color"
-              onChange={(event) => setBackgroundColor(event.target.value)}
-              name="background-color-about"
-              id="background-color-about"
-              value={backgroundColor}
-              style={{ marginBottom: "2rem" }}
-            />
+            <div className="input-color-side mb-2">
+              <input
+                type="color"
+                onChange={(event) => setBackgroundColor(event.target.value)}
+                name="background-color-about"
+                id="background-color-about"
+                value={backgroundColor}
+              />
+              <p className="color-info-tag">{backgroundColor}</p>
+            </div>
           </div>
           <label htmlFor="template-layout" style={{ fontSize: "2rem" }}>
             Template Layout

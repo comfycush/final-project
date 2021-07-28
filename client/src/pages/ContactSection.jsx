@@ -27,6 +27,7 @@ function ContactSection({ setIsOpen }) {
   const [headline, setHeadline] = useState("");
   const [headlineColor, setHeadlineColor] = useState("#000000");
   const [backgroundColor, setBackgroundColor] = useState("#FFFFFF");
+  const uploadLoading = useSelector((state) => state.uploadImage.uploadLoading);
 
   // const [emailIcon, setEmailIcon] = useState('')
   const emailIconUrl = useSelector((state) => state.uploadImage.emailIconUrl);
@@ -195,12 +196,15 @@ function ContactSection({ setIsOpen }) {
               <label htmlFor="contact-headline" className="contact-headline">
                 Color
               </label>
-              <input
-                onChange={(event) => setHeadlineColor(event.target.value)}
-                type="color"
-                name="contact-headline"
-                className="contact-headline mt-half"
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  onChange={(event) => setHeadlineColor(event.target.value)}
+                  type="color"
+                  name="contact-headline"
+                  className="contact-headline"
+                />
+                <p className="color-info-tag">{headlineColor}</p>
+              </div>
             </div>
           </div>
           <h2 className="title-subform" style={{ marginTop: "2rem " }}>
@@ -221,13 +225,15 @@ function ContactSection({ setIsOpen }) {
               <label htmlFor="contact-email" className="contact-email">
                 Color
               </label>
-              <input
-                onChange={(event) => setEmailColor(event.target.value)}
-                type="color"
-                name="contact-email"
-                className="contact-email mt-half"
-                style={{ marginBottom: "1rem" }}
-              />
+              <div className="input-color-side mt-half mb-1">
+                <input
+                  onChange={(event) => setEmailColor(event.target.value)}
+                  type="color"
+                  name="contact-email"
+                  className="contact-email"
+                />
+                <p className="color-info-tag">{emailColor}</p>
+              </div>
             </div>
             <div className="form-align-center">
               <label
@@ -246,12 +252,24 @@ function ContactSection({ setIsOpen }) {
                 name="contact-email"
                 className="contact-email"
               />
-              {emailIconUrl && (
+              {uploadLoading ? (
                 <img
-                  style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-                  src={emailIconUrl}
-                  alt="email"
+                  src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__O7q4jtvrH.gif?updatedAt=1627456298380"
+                  alt="loading"
+                  style={{ width: "5rem", height: "5rem" }}
                 />
+              ) : (
+                emailIconUrl && (
+                  <img
+                    style={{
+                      width: "5rem",
+                      height: "5rem",
+                      objectFit: "cover",
+                    }}
+                    src={emailIconUrl}
+                    alt="email"
+                  />
+                )
               )}
               <button
                 className="btn btn-remove-image"
@@ -286,12 +304,15 @@ function ContactSection({ setIsOpen }) {
               >
                 Color
               </label>
-              <input
-                onChange={(event) => setPhoneColor(event.target.value)}
-                type="color"
-                name="contact-phone"
-                className="contact-phone mt-half mb-1"
-              />
+              <div className="input-color-side mt-half mb-1">
+                <input
+                  onChange={(event) => setPhoneColor(event.target.value)}
+                  type="color"
+                  name="contact-phone"
+                  className="contact-phone"
+                />
+                <p className="color-info-tag">{phoneColor}</p>
+              </div>
             </div>
             <div className="form-align-center">
               <label
@@ -310,12 +331,24 @@ function ContactSection({ setIsOpen }) {
                 name="contact-phone"
                 className="contact-phone"
               />
-              {phoneIconUrl && (
+              {uploadLoading ? (
                 <img
-                  style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-                  src={phoneIconUrl}
-                  alt="phone"
+                  src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__O7q4jtvrH.gif?updatedAt=1627456298380"
+                  alt="loading"
+                  style={{ width: "5rem", height: "5rem" }}
                 />
+              ) : (
+                phoneIconUrl && (
+                  <img
+                    style={{
+                      width: "5rem",
+                      height: "5rem",
+                      objectFit: "cover",
+                    }}
+                    src={phoneIconUrl}
+                    alt="phone"
+                  />
+                )
               )}
               <button
                 className="btn btn-remove-image"
@@ -346,15 +379,18 @@ function ContactSection({ setIsOpen }) {
               <label htmlFor="contact-address" className="contact-address mt-1">
                 Color
               </label>
-              <input
-                onChange={(event) => setAddressColor(event.target.value)}
-                type="color"
-                name="contact-address"
-                className="contact-address mt-half"
-              />
+              <div className="input-color-side mb-1 mt-half">
+                <input
+                  onChange={(event) => setAddressColor(event.target.value)}
+                  type="color"
+                  name="contact-address"
+                  className="contact-address"
+                />
+                <p className="color-info-tag">{addressColor}</p>
+              </div>
             </div>
             <div className="form-align-center">
-              <label htmlFor="contact-address" className="contact-address mt-1">
+              <label htmlFor="contact-address" className="contact-address">
                 Icon
               </label>
               <input
@@ -366,12 +402,24 @@ function ContactSection({ setIsOpen }) {
                 name="contact-address"
                 className="contact-address"
               />
-              {addressIconUrl && (
+              {uploadLoading ? (
                 <img
-                  style={{ width: "5rem", height: "5rem", objectFit: "cover" }}
-                  src={addressIconUrl}
-                  alt="address"
+                  src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__O7q4jtvrH.gif?updatedAt=1627456298380"
+                  alt="loading"
+                  style={{ width: "5rem", height: "5rem" }}
                 />
+              ) : (
+                addressIconUrl && (
+                  <img
+                    style={{
+                      width: "5rem",
+                      height: "5rem",
+                      objectFit: "cover",
+                    }}
+                    src={addressIconUrl}
+                    alt="address"
+                  />
+                )
               )}
               <button
                 className="btn btn-remove-image"
@@ -393,14 +441,16 @@ function ContactSection({ setIsOpen }) {
             >
               Background Color
             </label>
-            <input
-              onChange={(event) => setBackgroundColor(event.target.value)}
-              type="color"
-              name="background-color-contact"
-              id="background-color-contact"
-              value={backgroundColor}
-              className="mb-2"
-            />
+            <div className="input-color-side mb-2">
+              <input
+                onChange={(event) => setBackgroundColor(event.target.value)}
+                type="color"
+                name="background-color-contact"
+                id="background-color-contact"
+                value={backgroundColor}
+              />
+              <p className="color-info-tag">{backgroundColor}</p>
+            </div>
           </div>
           <label htmlFor="template-layout" style={{ fontSize: "2rem" }}>
             Template Layout

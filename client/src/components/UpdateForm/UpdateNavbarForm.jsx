@@ -32,6 +32,8 @@ export default function UpdateNavbarForm({ data, allData }) {
   const [modalHeight, setModalHeight] = useState("");
   const [modalWidth, setModalWidth] = useState("");
 
+  const uploadLoading = useSelector((state) => state.uploadImage.uploadLoading);
+
   useEffect(() => {
     dispatch(setLogoUrl(data.logo));
   }, []);
@@ -71,8 +73,8 @@ export default function UpdateNavbarForm({ data, allData }) {
       navLinksColor: navlinksColor,
     };
 
-    if (!dataNavbarSection.companyName && !dataNavbarSection.logo) {
-      new Swal("Please fill in your company name or company logo", "", "error");
+    if (!dataNavbarSection.companyName) {
+      new Swal("Please fill in your company name", "", "error");
     } else if (sortNavlinks.length === 0) {
       new Swal("Please choose at least 1 navigation link", "", "error");
     } else if (!dataNavbarSection.type) {
@@ -181,14 +183,17 @@ export default function UpdateNavbarForm({ data, allData }) {
               >
                 Color
               </label>
-              <input
-                onChange={(event) => setCompanyNameColor(event.target.value)}
-                type="color"
-                name="company-title-color"
-                id="company-title-color"
-                style={{ border: "none", margin: "0rem" }}
-                value={companyNameColor}
-              />
+              <div className="input-color-side">
+                <input
+                  onChange={(event) => setCompanyNameColor(event.target.value)}
+                  type="color"
+                  name="company-title-color"
+                  id="company-title-color"
+                  style={{ border: "none", margin: "0rem" }}
+                  value={companyNameColor}
+                />
+                <p className="color-info-tag">{companyNameColor}</p>
+              </div>
             </div>
             <div className="form-align-center">
               <label
@@ -206,12 +211,20 @@ export default function UpdateNavbarForm({ data, allData }) {
                 className="company-logo mb-1"
                 style={{ border: "none" }}
               />
-              {logoUrl && (
+              {uploadLoading ? (
                 <img
-                  src={logoUrl}
-                  alt=""
+                  src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__O7q4jtvrH.gif?updatedAt=1627456298380"
+                  alt="loading"
                   style={{ width: "5rem", height: "5rem" }}
                 />
+              ) : (
+                logoUrl && (
+                  <img
+                    src={logoUrl}
+                    alt=""
+                    style={{ width: "5rem", height: "5rem" }}
+                  />
+                )
               )}
               <button
                 className="btn btn-remove-image"
@@ -322,14 +335,17 @@ export default function UpdateNavbarForm({ data, allData }) {
               <label htmlFor="color-navbar" style={{ marginRight: "2.5rem" }}>
                 Color
               </label>
-              <input
-                onChange={(event) => setNavlinksColor(event.target.value)}
-                type="color"
-                name="navlink-color"
-                id="navlink-color"
-                style={{ border: "none", marginTop: "0.5rem" }}
-                value={navlinksColor}
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  onChange={(event) => setNavlinksColor(event.target.value)}
+                  type="color"
+                  name="navlink-color"
+                  id="navlink-color"
+                  style={{ border: "none" }}
+                  value={navlinksColor}
+                />
+                <p className="color-info-tag">{navlinksColor}</p>
+              </div>
             </div>
           </div>
           <div className="form-align-center mt-1">
@@ -339,18 +355,21 @@ export default function UpdateNavbarForm({ data, allData }) {
                 marginRight: "3rem",
                 fontSize: "2rem",
               }}
-              className="mt-1"
+              className="mt-2"
             >
               Background Color
             </label>
-            <input
-              onChange={(event) => setBackgroundColor(event.target.value)}
-              type="color"
-              name="background-color-navbar"
-              id="background-color-navbar"
-              value={backgroundColor}
-              style={{ border: "none", marginTop: "1rem" }}
-            />
+            <div className="input-color-side mt-1 mb-1">
+              <input
+                onChange={(event) => setBackgroundColor(event.target.value)}
+                type="color"
+                name="background-color-navbar"
+                id="background-color-navbar"
+                value={backgroundColor}
+                style={{ border: "none" }}
+              />
+              <p className="color-info-tag">{backgroundColor}</p>
+            </div>
           </div>
           <div className="selection-navbar">
             <label

@@ -233,13 +233,16 @@ export default function UpdateFooterForm({ data, allData }) {
             >
               Company Name Color
             </label>
-            <input
-              value={companyNameColor}
-              onChange={(event) => setCompanyNameColor(event.target.value)}
-              type="color"
-              name="company-name-color"
-              className="company-name-color"
-            />
+            <div className="input-color-side">
+              <input
+                value={companyNameColor}
+                onChange={(event) => setCompanyNameColor(event.target.value)}
+                type="color"
+                name="company-name-color"
+                className="company-name-color"
+              />
+              <p className="color-info-tag">{companyNameColor}</p>
+            </div>
           </div>
           <div className="form-align-center">
             <label
@@ -249,15 +252,16 @@ export default function UpdateFooterForm({ data, allData }) {
             >
               Background Color
             </label>
-            <input
-              value={backgroundColor}
-              onChange={(event) => setBackgroundColor(event.target.value)}
-              type="color"
-              name="background-color-navbar"
-              id="background-color-navbar"
-              value={backgroundColor}
-              className="mb-2"
-            />
+            <div className="input-color-side mb-2">
+              <input
+                value={backgroundColor}
+                onChange={(event) => setBackgroundColor(event.target.value)}
+                type="color"
+                name="background-color-navbar"
+                id="background-color-navbar"
+              />
+              <p className="color-info-tag">{backgroundColor}</p>
+            </div>
           </div>
           <label htmlFor="template-layout" style={{ fontSize: "2rem" }}>
             Template Layout

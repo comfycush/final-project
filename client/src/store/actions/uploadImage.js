@@ -8,6 +8,7 @@ import {
   SET_EMAIL_ICON_URL,
   SET_PHONE_ICON_URL,
   SET_ADDRESS_ICON_URL,
+  SET_UPLOAD_LOADING,
 } from "../actionTypes";
 
 import axios from "axios";
@@ -75,8 +76,16 @@ export function setAddressIconUrl(input) {
   };
 }
 
+export function setUploadLoading(input) {
+  return {
+    type: SET_UPLOAD_LOADING,
+    payload: input,
+  };
+}
+
 export function getImageUrl(file, code) {
   return async (dispatch) => {
+    dispatch(setUploadLoading(true));
     const formData = new FormData();
     formData.append("file", file);
     formData.append(
@@ -128,6 +137,7 @@ export function getImageUrl(file, code) {
         default:
           return null;
       }
+      dispatch(setUploadLoading(false));
       // dispatch(setLoading(false));
     } catch (err) {
       console.log(err, "<< errorrr");

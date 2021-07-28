@@ -41,7 +41,7 @@ function FooterSection({ setIsOpen }) {
 
   const stateContact = location.state;
   const templateId = useSelector((state) => state.forms.templateId);
-  console.log(templateId, `ini templateId`);
+  // console.log(templateId, `ini templateId`);
 
   function addFooterSection() {
     const dataFooterSection = {
@@ -222,13 +222,17 @@ function FooterSection({ setIsOpen }) {
             >
               Company Name Color
             </label>
-            <input
-              onChange={(event) => setCompanyNameColor(event.target.value)}
-              type="color"
-              name="company-name-color"
-              className="company-name-color"
-            />
+            <div className="input-color-side">
+              <input
+                onChange={(event) => setCompanyNameColor(event.target.value)}
+                type="color"
+                name="company-name-color"
+                className="company-name-color"
+              />
+              <p className="color-info-tag">{companyNameColor}</p>
+            </div>
           </div>
+
           <div className="form-align-center">
             <label
               htmlFor="background-color-navbar"
@@ -237,14 +241,16 @@ function FooterSection({ setIsOpen }) {
             >
               Background Color
             </label>
-            <input
-              onChange={(event) => setBackgroundColor(event.target.value)}
-              type="color"
-              name="background-color-navbar"
-              id="background-color-navbar"
-              value={backgroundColor}
-              className="mb-2"
-            />
+            <div className="input-color-side mb-2">
+              <input
+                onChange={(event) => setBackgroundColor(event.target.value)}
+                type="color"
+                name="background-color-navbar"
+                id="background-color-navbar"
+                value={backgroundColor}
+              />
+              <p className="color-info-tag">{backgroundColor}</p>
+            </div>
           </div>
           <label htmlFor="template-layout" style={{ fontSize: "2rem" }}>
             Template Layout
@@ -323,8 +329,6 @@ function FooterSection({ setIsOpen }) {
               </div>
             </div>
           </div>
-          <br />
-          <br />
         </div>
         {localStorage.colorArray && (
           <div className="colormind-component">

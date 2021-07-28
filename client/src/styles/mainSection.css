@@ -32,6 +32,12 @@
   width: 20rem;
   height: 10rem;
   object-fit: cover;
+  border-radius: 0.5rem;
+}
+
+.selection-img {
+  border: 0.2rem solid #125d98;
+  border-radius: 0.5rem;
 }
 
 .button-main {

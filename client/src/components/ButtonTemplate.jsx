@@ -24,7 +24,11 @@ export default function ButtonTemplate({ templateData }) {
         history.push("/dashboard");
         const host = "http://localhost:3000";
         const win = window.open(
-          `${host}/deploy/${templateData.navbar.companyName}/${templateId}`,
+          `${host}/deploy/${
+            templateData.navbar.companyName
+              ? templateData.navbar.companyName
+              : templateData.projectTitle
+          }/${templateId}`,
           "_blank"
         );
         win.focus();

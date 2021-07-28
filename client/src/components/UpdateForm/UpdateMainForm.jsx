@@ -31,6 +31,8 @@ function UpdateMainSection({ data, allData }) {
   const [modalHeight, setModalHeight] = useState("");
   const [modalWidth, setModalWidth] = useState("");
 
+  const uploadLoading = useSelector((state) => state.uploadImage.uploadLoading);
+
   function viewImage(image, height, width) {
     setShowModal(true);
     setModalImage(image);
@@ -201,14 +203,17 @@ function UpdateMainSection({ data, allData }) {
               >
                 Color
               </label>
-              <input
-                onChange={(event) => setHeadlineColor(event.target.value)}
-                type="color"
-                name="main-headline"
-                className="main-headline mt-half"
-                style={{ border: "none" }}
-                value={headlineColor}
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  onChange={(event) => setHeadlineColor(event.target.value)}
+                  type="color"
+                  name="main-headline"
+                  className="main-headline"
+                  style={{ border: "none" }}
+                  value={headlineColor}
+                />
+                <p className="color-info-tag">{headlineColor}</p>
+              </div>
             </div>
           </div>
           <h2 className="title-subform" style={{ marginTop: "2rem" }}>
@@ -239,14 +244,17 @@ function UpdateMainSection({ data, allData }) {
               >
                 Color
               </label>
-              <input
-                onChange={(event) => setsubHeadlineColor(event.target.value)}
-                type="color"
-                name="main-subheadline"
-                className="main-subheadline mt-half"
-                style={{ border: "none" }}
-                value={subHeadlineColor}
-              />
+              <div className="input-color-side mt-half">
+                <input
+                  onChange={(event) => setsubHeadlineColor(event.target.value)}
+                  type="color"
+                  name="main-subheadline"
+                  className="main-subheadline"
+                  style={{ border: "none" }}
+                  value={subHeadlineColor}
+                />
+                <p className="color-info-tag">{subHeadlineColor}</p>
+              </div>
             </div>
           </div>
           <div className="form-align-center" style={{ marginTop: "3rem" }}>
@@ -267,12 +275,25 @@ function UpdateMainSection({ data, allData }) {
               className="company-background"
               style={{ border: "none" }}
             />
-            {mainImageUrl && (
+            {uploadLoading ? (
               <img
-                style={{ width: "10rem", height: "10rem", objectFit: "cover" }}
-                src={mainImageUrl}
-                alt="about"
+                src="https://ik.imagekit.io/vrvrzbdh5xfk/Rolling-1s-200px__1__O7q4jtvrH.gif?updatedAt=1627456298380"
+                alt="loading"
+                style={{ width: "10rem", height: "10rem" }}
               />
+            ) : (
+              mainImageUrl && (
+                <img
+                  style={{
+                    width: "20rem",
+                    height: "10rem",
+                    objectFit: "cover",
+                    borderRadius: "0.5rem",
+                  }}
+                  src={mainImageUrl}
+                  alt="about"
+                />
+              )
             )}
             <button
               className="btn btn-remove-image"
@@ -295,14 +316,17 @@ function UpdateMainSection({ data, allData }) {
             >
               Background Color
             </label>
-            <input
-              onChange={(event) => setBackgroundColor(event.target.value)}
-              type="color"
-              name="background-color-mainb"
-              id="background-color-main"
-              style={{ border: "none" }}
-              value={backgroundColor}
-            />
+            <div className="input-color-side">
+              <input
+                onChange={(event) => setBackgroundColor(event.target.value)}
+                type="color"
+                name="background-color-mainb"
+                id="background-color-main"
+                style={{ border: "none" }}
+                value={backgroundColor}
+              />
+              <p className="color-info-tag">{backgroundColor}</p>
+            </div>
           </div>
           <label htmlFor="template-layout" style={{ fontSize: "2rem" }}>
             Template Layout
