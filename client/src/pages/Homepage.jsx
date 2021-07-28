@@ -40,8 +40,8 @@ function Homepage({ setIsOpen }) {
           </h1>
           <br />
           <h3>
-            Webber is a web app that allows you to build your own company
-            website in less than 10 minutes!
+            Web application that allows you to build your own company website in
+            less than 10 minutes!
           </h3>
           <div className="btn-learn">
             <HashLink to={"#how-to"}>Learn More</HashLink>

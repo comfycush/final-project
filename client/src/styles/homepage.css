@@ -10,20 +10,20 @@
   top: 0;
   right: 0;
   left: 0;
-  height: 80px;
+  height: 5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 25px 0 25px;
+  padding: 0 4rem;
   background-color: #125d98;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
 }
 
 .navbar-homepage .logo-homepage h4 {
   font-weight: bold;
-  font-size: 23px;
-  margin-left: 25px;
+  font-size: 2rem;
+  /* margin-left: 2rem; */
   color: #dddddd;
 }
 
@@ -32,10 +32,14 @@
 }
 
 .navbar-homepage .links-homepage a {
-  margin-right: 2rem;
-  font-size: 16px;
+  margin-left: 2.5rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #dddddd;
+}
+
+.navbar-homepage .links-homepage a:hover {
+  color: #f5a962;
 }
 
 .landing-page-homepage {
@@ -67,18 +71,18 @@
 
 .landingText-homepage h3 {
   width: 40rem;
-  margin: 6px;
+  margin-top: 0.5rem;
   font-size: 1.5rem;
   opacity: 0.5;
-  line-height: 50px;
+  line-height: 2.5rem;
 }
 
 .landingText-homepage .btn-learn {
-  width: 10rem;
-  margin-top: 30px;
+  margin-top: 2.5rem;
   padding: 1rem 2rem;
   background-color: #125d98;
-  border-radius: 45px;
+  border-radius: 3rem;
+  width: 11rem;
 }
 
 .landingText-homepage .btn-learn a {
@@ -88,7 +92,8 @@
 }
 
 .landingImage-homepage img {
-  width: 50vw;
+  width: 30vw;
+  margin-left: 2rem;
 }
 
 .h1-style {
@@ -105,8 +110,8 @@
 .about-homepage {
   /* width: 70rem; */
   margin-top: 7rem;
-  height: 500px;
-  padding: 0px;
+  height: 40rem;
+  /* padding: 0px; */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -149,7 +154,7 @@
 
 .about-2-homepage,
 .about-3-homepage {
-  height: 500px;
+  height: 40rem;
   padding: 0px;
   display: flex;
   flex-direction: row;
@@ -238,7 +243,7 @@
 } */
 
 .aboutList-3-homepage .btn-start {
-  width: 10rem;
+  width: 11rem;
   margin-top: 30px;
   padding: 1rem 2rem;
   background-color: #125d98;
