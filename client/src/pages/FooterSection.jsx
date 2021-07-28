@@ -65,7 +65,7 @@ function FooterSection({ setIsOpen }) {
     ) {
       new Swal("Please fill at least 1 social media", "", "error");
     } else if (!dataFooterSection.iconColor) {
-      new Swal("Please choose the socila media icon color", "", "error");
+      new Swal("Please choose the social media icon color", "", "error");
     } else if (!dataFooterSection.type) {
       new Swal("Please choose the template layout", "", "error");
     } else {
